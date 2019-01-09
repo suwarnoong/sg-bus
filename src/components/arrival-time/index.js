@@ -1,0 +1,1 @@
+export { default as ArrivalTime } from './arrival-time';

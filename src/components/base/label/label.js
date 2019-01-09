@@ -7,10 +7,13 @@ type Props = {
 };
 
 const sizeMap = {
-  'small': 10,
+  'xxsmall': 8,
+  'xsmall': 10,
+  'small': 12,
   'medium': 14,
-  'large': 18,
-  'xlarge': 22,
+  'large': 16,
+  'xlarge': 18,
+  'xxlarge': 20,
 };
 
 export default class Label extends PureComponent<Props> {
