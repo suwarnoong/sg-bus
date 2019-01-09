@@ -3,19 +3,35 @@ import { Button, View, Text } from 'react-native';
 import { BusArrival, H1, Label, TextInput } from '../../components';
 import styles from './bus-stop-arrivals.styles';
 
+const intervalMs = 10000;
+
 export default class BusStopArrivals extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      busStopNumber: '11141'
+      busStopNumber: '11149',
+      timerId: null,
     };
 
     this.handlePress = this.handlePress.bind(this);
+    this.tick = this.tick.bind(this);
+    this.resetTick = this.resetTick.bind(this);
   }
 
   handlePress() {
     this.props.getArrivals(this.state.busStopNumber);
+    this.resetTick();
+  }
+
+  tick() {
+    this.props.getArrivals(this.state.busStopNumber);
+  }
+
+  resetTick() {
+    clearInterval(this.state.timerId);
+    const timerId = setInterval(this.tick, intervalMs);
+    this.setState({ timerId });
   }
 
   render() {
@@ -35,6 +51,7 @@ export default class BusStopArrivals extends Component {
           arrivals && arrivals.map(item => {
             return (
               <BusArrival 
+                key={item.ServiceNo}
                 serviceNo={item.ServiceNo}
                 destinationCode={item.NextBus.DestinationCode}
                 estimatedArrival1={item.NextBus.EstimatedArrival}
