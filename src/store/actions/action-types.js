@@ -1,0 +1,1 @@
+export const UPDATE_ARRIVALS = 'UPDATE_ARRIVALS';
