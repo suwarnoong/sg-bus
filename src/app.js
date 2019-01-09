@@ -7,6 +7,7 @@
  */
 
 import React, { Component } from 'react';
+import { SafeAreaView } from 'react-native';
 import { Provider } from 'react-redux';
 import BusStopArrivals from './views/bus-stop-arrivals';
 import store from './store';
@@ -17,7 +18,9 @@ export default class App extends Component<Props> {
   render() {
     return (
       <Provider store={store}>
-        <BusStopArrivals></BusStopArrivals>
+        <SafeAreaView>
+          <BusStopArrivals></BusStopArrivals>
+        </SafeAreaView>
       </Provider>
     );
   }

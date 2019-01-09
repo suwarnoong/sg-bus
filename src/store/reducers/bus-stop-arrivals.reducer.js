@@ -6,10 +6,14 @@ const initialState = {
   arrivals: [],
 };
 
-const getArrivals = (state, action) => {
-  return merge({}, state, { arrivals: action.arrivals });
+const updateArrivals = (state, action) => {
+  console.log(action.arrivals);
+  return {
+    ...state,
+    arrivals: action.arrivals,
+  };
 };
 
 export const busStopArrivalsReducer = createReducer(initialState, {
-  [actions.UPDATE_ARRIVALS]: getArrivals,
+  [actions.UPDATE_ARRIVALS]: updateArrivals,
 });

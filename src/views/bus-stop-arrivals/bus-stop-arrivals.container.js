@@ -7,7 +7,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getArrivals: busStopNo => dispatch(getArrivals(busStopNo)),
+  getArrivals: busStopNumber => dispatch(getArrivals(busStopNumber)),
 });
 
 export default connect(
