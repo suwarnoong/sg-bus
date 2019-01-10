@@ -1,9 +1,9 @@
-import merge from 'lodash/merge';
 import createReducer from './create-reducer';
 import * as actions from '../actions/action-types';
 
 const initialState = {
   arrivals: [],
+  services: [],
 };
 
 const updateArrivals = (state, action) => {
@@ -14,6 +14,15 @@ const updateArrivals = (state, action) => {
   };
 };
 
-export const busStopArrivalsReducer = createReducer(initialState, {
+const updateServices = (state, action) => {
+  console.log(action.services);
+  return {
+    ...state,
+    services: action.services,
+  };
+};
+
+export const busReducer = createReducer(initialState, {
   [actions.UPDATE_ARRIVALS]: updateArrivals,
+  [actions.UPDATE_SERVICES]: updateServices,
 });

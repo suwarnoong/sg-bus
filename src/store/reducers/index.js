@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { busStopArrivalsReducer } from './bus-stop-arrivals.reducer';
+import { busReducer } from './bus.reducer';
 
 export default combineReducers({
-  busStopArrivals: busStopArrivalsReducer,
+  bus: busReducer,
 });
