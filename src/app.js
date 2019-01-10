@@ -9,8 +9,9 @@
 import React, { Component } from 'react';
 import { SafeAreaView } from 'react-native';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import BusStopArrivals from './views/bus-stop-arrivals';
-import store from './store';
+import { store, persistor } from './store';
 
 type Props = {};
 
@@ -18,9 +19,11 @@ export default class App extends Component<Props> {
   render() {
     return (
       <Provider store={store}>
-        <SafeAreaView>
-          <BusStopArrivals></BusStopArrivals>
-        </SafeAreaView>
+        <PersistGate loading={null} persistor={persistor}>
+          <SafeAreaView>
+            <BusStopArrivals></BusStopArrivals>
+          </SafeAreaView>
+        </PersistGate>
       </Provider>
     );
   }
