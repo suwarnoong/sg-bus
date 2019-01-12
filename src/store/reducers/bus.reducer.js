@@ -22,7 +22,9 @@ const updateServices = (state, action) => {
   };
 };
 
-export const busReducer = createReducer(initialState, {
+const busReducer = createReducer(initialState, {
   [actions.UPDATE_ARRIVALS]: updateArrivals,
   [actions.UPDATE_SERVICES]: updateServices,
 });
+
+export { busReducer }

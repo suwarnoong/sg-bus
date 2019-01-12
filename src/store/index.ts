@@ -1,16 +1,27 @@
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 
-import rootReducer from './reducers';
+import { busReducer } from './reducers';
 
-const persistConfig = {
+const rootPersistConfig = {
   key: 'SGPocket',
   storage,
+  whitelist: [],
 };
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const busPersistConfig = {
+  key: 'bus',
+  storage,
+  whitelist: ['services'],
+}
+
+const rootReducer = combineReducers({
+  bus: persistReducer(busPersistConfig, busReducer),
+})
+
+const persistedReducer = persistReducer(rootPersistConfig, rootReducer);
 
 const middlewares = applyMiddleware(thunk);
 
@@ -28,5 +39,6 @@ if (__DEV__) {
 }
 
 const persistor = persistStore(store);
+// persistor.purge();
 
 export { store, persistor };
