@@ -1,5 +1,5 @@
-import * as actions from './action-types';
-import request from '../../utils/request';
+import * as actions from './types';
+import request from '../../../utils/request';
 
 export const getArrivals = (busStopNumber) => {
   return (dispatch, getState) => {

@@ -15,18 +15,24 @@ export default class BusStopArrivals extends Component {
     };
 
     this.handlePressArrivals = this.handlePressArrivals.bind(this);
-    this.handlePressServices = this.handlePressServices.bind(this);
     this.tick = this.tick.bind(this);
     this.resetTick = this.resetTick.bind(this);
+  }
+
+  componentWillMount() {
+    if (!this.props.services || this.props.services.length == 0)
+      this.props.getServices();
+
+    if (!this.props.routes || this.props.routes.length == 0)
+      this.props.getRoutes();
+
+    if (!this.props.stops || this.props.stops.length == 0)
+      this.props.getStops();
   }
 
   handlePressArrivals() {
     this.props.getArrivals(this.state.busStopNumber);
     this.resetTick();
-  }
-
-  handlePressServices() {
-    this.props.getServices();
   }
 
   tick() {
@@ -69,9 +75,6 @@ export default class BusStopArrivals extends Component {
             );
           })
         }
-
-        <Button onPress={this.handlePressServices} title="Get Services" />
-
       </View>
     );
   }
