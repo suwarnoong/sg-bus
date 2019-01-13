@@ -8,7 +8,7 @@ type Props = {
     BusStopCode: string,
     RoadName: string,
     Description: string,
-    distanceKm: number,
+    distance: number,
   }>
 };
 
@@ -29,7 +29,8 @@ export default class NearestBusStops extends PureComponent<Props> {
                 busStopCode={item.BusStopCode}
                 description={item.Description}
                 roadName={item.RoadName}
-                distanceKm={item.distanceKm}
+                distance={item.distance}
+                routes={item.routes}
               />
             );
           })

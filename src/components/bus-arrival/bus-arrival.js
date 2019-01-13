@@ -10,6 +10,9 @@ type Props = {
   estimatedArrival1: string,
   estimatedArrival2: string,
   estimatedArrival3: string,
+  load1: string,
+  load2: string,
+  load3: string,
 };
 
 export default class BusArrival extends PureComponent<Props> {

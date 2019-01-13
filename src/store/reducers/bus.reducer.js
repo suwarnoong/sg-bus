@@ -4,10 +4,15 @@ import createReducer from './create-reducer';
 import * as actions from '../actions/types';
 import arrayToObject from '../../utils/array-to-object';
 
+import pipe from 'lodash/fp/pipe';
+import groupBy from 'lodash/fp/groupBy';
+import sortBy from 'lodash/fp/sortBy';
+import map from 'lodash/fp/map';
+
 const initialState = {
   arrivals: [],
   services: [],
-  routes: [],
+  routes: null,
   stops: [],
   nearest: [],
 };
@@ -27,9 +32,14 @@ const updateServices = (state, action) => {
 };
 
 const updateRoutes = (state, action) => {
+  const routes = pipe(
+    sortBy(['BusStopCode', 'ServiceNo']),
+    groupBy('BusStopCode')
+  )(action.routes);
+
   return {
     ...state,
-    routes: arrayToObject(action.routes, 'ServiceNo', 'Direction', 'BusStopCode'),
+    routes,
   };
 };
 
@@ -37,14 +47,17 @@ const updateStops = (state, action) => {
   return {
     ...state,
     stops: action.stops,
-    // stops: arrayToObject(action.stops, 'BusStopCode'),
   };
 };
 
 const updateNearest = (state, action) => {
+  const nearest = map(
+    item => ({ routes: state.routes[item.BusStopCode], ...item })
+  )(action.nearest)
+
   return {
     ...state,
-    nearest: action.nearest,
+    nearest,
   }
 }
 

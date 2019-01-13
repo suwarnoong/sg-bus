@@ -1,0 +1,1 @@
+export { default as BusArrivalCompact } from './bus-arrival-compact';
