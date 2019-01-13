@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Platform, PermissionAndroid, View, Text } from 'react-native';
-import { BusArrival, H1, Label, TextInput } from '../../components';
+import { BusArrival, BusStop, H1, Label, TextInput } from '../../components';
 import styles from './bus-stop-arrivals.styles';
 import requestAndroidPermission from '../../utils/request-android-permission';
+import NearestBusStops from '../../components/nearest-bus-stops/nearest-bus-stops';
 
 const intervalMs = 10000;
 
@@ -116,6 +117,22 @@ export default class BusStopArrivals extends Component {
             );
           })
         }
+
+        <NearestBusStops stops={nearest} />
+
+        {/* {
+          nearest && nearest.map(item => {
+            return (
+              <BusStop
+                key={item.BusStopCode}
+                busStopCode={item.BusStopCode}
+                description={item.Description}
+                roadName={item.RoadName}
+                distance={item.distanceKm}
+              />
+            );
+          })
+        } */}
       </View>
     );
   }

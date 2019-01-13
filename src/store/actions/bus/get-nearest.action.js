@@ -4,10 +4,14 @@ import distance from '../../../utils/distance';
 export const getNearestStops = (position) => {
   return async (dispatch, getState) => {
     const nearestStops = getState().bus.stops
-      .map(busStop => ({
-        distance: distance(position, { latitude: busStop.Latitude, longitude: busStop.Longitude }),
-        ...busStop
-      }))
+      .map(busStop => {
+        const m = distance(position, { latitude: busStop.Latitude, longitude: busStop.Longitude });
+        return {
+          distance: m,
+          distanceKm: m / 1000,
+          ...busStop
+        }
+      })
       .filter(busStop => busStop.distance < 300)
       .sort((a, b) => a.distance < b.distance ? -1 : 1);
 
