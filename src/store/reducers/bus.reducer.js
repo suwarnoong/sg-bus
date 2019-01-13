@@ -35,7 +35,8 @@ const updateRoutes = (state, action) => {
 const updateStops = (state, action) => {
   return {
     ...state,
-    stops: arrayToObject(action.stops, 'BusStopCode'),
+    stops: action.stops,
+    // stops: arrayToObject(action.stops, 'BusStopCode'),
   };
 };
 

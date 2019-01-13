@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Button, View, Text } from 'react-native';
+import { Button, Platform, PermissionAndroid, View, Text } from 'react-native';
 import { BusArrival, H1, Label, TextInput } from '../../components';
 import styles from './bus-stop-arrivals.styles';
+import requestAndroidPermission from '../../utils/request-android-permission';
 
 const intervalMs = 10000;
 
@@ -12,9 +13,14 @@ export default class BusStopArrivals extends Component {
     this.state = {
       busStopNumber: '11149',
       timerId: null,
+      watchId: null,
+      latitude: null,
+      longitude: null,
+      locationError: null,
     };
 
     this.handlePressArrivals = this.handlePressArrivals.bind(this);
+    this.watchGeolocation = this.watchGeolocation.bind(this);
     this.tick = this.tick.bind(this);
     this.resetTick = this.resetTick.bind(this);
   }
@@ -28,6 +34,38 @@ export default class BusStopArrivals extends Component {
 
     if (!this.props.stops || this.props.stops.length == 0)
       this.props.getStops();
+  }
+
+  componentDidMount() {
+    if (Platform.OS === 'android')
+      requestAndroidPermission(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION);
+
+    // navigator.geolocation.requestAuthorization();
+    // navigator.geolocation.getCurrentPosition(this.onLocationSuccess, this.onLocationError, { enableHighAccuracy: true });
+    this.watchGeolocation();
+  }
+
+  componentWillUnmount() {
+    navigator.geolocation.clearWatch(this.state.watchId);
+  }
+
+  watchGeolocation() {
+    const watchId = navigator.geolocation.watchPosition(
+      ({ coords: { latitude, longitude }}) => {
+        this.setState({
+          latitude,
+          longitude,
+        });
+
+        this.props.getNearestStops({ latitude, longitude });
+      },
+      ({ message }) => {
+        this.setState({ locationError: message });
+      },
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000, distanceFilter: 10 }
+    );
+
+    this.setState({ watchId });
   }
 
   handlePressArrivals() {
@@ -47,6 +85,8 @@ export default class BusStopArrivals extends Component {
 
   render() {
     const { arrivals, services } = this.props;
+
+    console.log('lat', this.state.latitude, 'lng', this.state.longitude);
 
     return (
       <View style={styles.container}>
