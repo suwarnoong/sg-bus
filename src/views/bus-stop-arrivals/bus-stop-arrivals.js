@@ -84,9 +84,10 @@ export default class BusStopArrivals extends Component {
   }
 
   render() {
-    const { arrivals, services } = this.props;
+    const { arrivals, services, nearest } = this.props;
 
     console.log('lat', this.state.latitude, 'lng', this.state.longitude);
+    console.log(nearest);
 
     return (
       <View style={styles.container}>

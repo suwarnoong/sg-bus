@@ -9,6 +9,7 @@ const initialState = {
   services: [],
   routes: [],
   stops: [],
+  nearest: [],
 };
 
 const updateArrivals = (state, action) => {
@@ -40,11 +41,19 @@ const updateStops = (state, action) => {
   };
 };
 
+const updateNearest = (state, action) => {
+  return {
+    ...state,
+    nearest: action.nearest,
+  }
+}
+
 const busReducer = createReducer(initialState, {
   [actions.UPDATE_ARRIVALS]: updateArrivals,
   [actions.UPDATE_SERVICES]: updateServices,
   [actions.UPDATE_ROUTES]: updateRoutes,
   [actions.UPDATE_STOPS]: updateStops,
+  [actions.UPDATE_NEAREST]: updateNearest,
 });
 
 const busPersistConfig = {

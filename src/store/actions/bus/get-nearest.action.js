@@ -10,6 +10,7 @@ export const getNearestStops = (position) => {
       }))
       .filter(busStop => busStop.distance < 300)
       .sort((a, b) => a.distance < b.distance ? -1 : 1);
-    console.log('nearest bus stops', nearestStops);
+
+    dispatch({ type: actions.UPDATE_NEAREST, nearest: nearestStops });
   }
 }

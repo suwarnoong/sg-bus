@@ -7,6 +7,7 @@ const mapStateToProps = state => ({
   services: state.bus.services,
   routes: state.bus.routes,
   stops: state.bus.stops,
+  nearest: state.bus.nearest,
 });
 
 const mapDispatchToProps = dispatch => ({
