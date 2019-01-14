@@ -85,21 +85,22 @@ export default class BusStopArrivals extends Component {
 
   render() {
     const { arrivals, services, nearest } = this.props;
+    const { busStopNumber, latitude, longitude } = this.state;
 
-    console.log('lat', this.state.latitude, 'lng', this.state.longitude);
+    console.log('lat', latitude, 'lng', longitude);
 
     return (
       <View style={styles.container}>
         <H1 style={{width: '100%', textAlign: 'center', marginBottom: 10}}>Testing</H1>
         <TextInput
-          value={this.state.busStopNumber}
+          value={busStopNumber}
           onChangeText={(busStopNumber) => {
             this.setState({ busStopNumber });
           }} />
         <Button onPress={this.handlePressArrivals} title="Get Arrivals" />
 
         {
-          arrivals && arrivals.map(item => {
+          arrivals && arrivals[busStopNumber] && arrivals[busStopNumber].map(item => {
             return (
               <BusArrival 
                 key={item.ServiceNo}

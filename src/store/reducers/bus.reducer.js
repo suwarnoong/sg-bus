@@ -10,7 +10,7 @@ import sortBy from 'lodash/fp/sortBy';
 import map from 'lodash/fp/map';
 
 const initialState = {
-  arrivals: [],
+  arrivals: {},
   services: [],
   routes: null,
   stops: [],
@@ -20,7 +20,10 @@ const initialState = {
 const updateArrivals = (state, action) => {
   return {
     ...state,
-    arrivals: action.arrivals,
+    arrivals: {
+      ...state.arrivals,
+      [action.busStopNumber]: action.arrivals,
+    },
   };
 };
 
