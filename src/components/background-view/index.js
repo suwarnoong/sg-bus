@@ -1,0 +1,1 @@
+export { default as BackgroundView } from './background-view.container';

@@ -3,26 +3,49 @@ import { Text, View } from 'react-native';
 import styles from './label.styles.js';
 
 type Props = {
-  size: string,
-};
-
-const sizeMap = {
-  'xxsmall': 8,
-  'xsmall': 10,
-  'small': 12,
-  'medium': 14,
-  'large': 16,
-  'xlarge': 18,
-  'xxlarge': 20,
+  size: string | number,
+  weight: string,
 };
 
 export default class Label extends PureComponent<Props> {
-  render() {
-    const { size, style, children } = this.props;
+  static WEIGHT_THIN = 'thin';
+  static WEIGHT_DEMI_BOLD = 'demi-bold';
+  static WEIGHT_BOLD = 'bold';
+  static WEIGHT_MEDIUM = 'medium';
+  static WEIGHT_NORMAL = 'normal';
 
-    let textStyles = [];
+  static SIZE_XXSMALL = 'xxsmall';
+  static SIZE_XSMALL = 'xsmall';
+  static SIZE_SMALL = 'small';
+  static SIZE_MEDIUM = 'medium';
+  static SIZE_LARGE = 'large';
+  static SIZE_XLARGE = 'xlarge';
+  static SIZE_XXLARGE = 'xxlarge';
+
+  getFontFamily(weight) {
+    switch (weight) {
+      case Label.WEIGHT_THIN:
+        return { fontFamily: 'Avenir-Light' };
+      case Label.WEIGHT_DEMI_BOLD:
+        return { fontFamily: 'AvenirNext-DemiBold' };
+      case Label.WEIGHT_BOLD:
+        return { fontFamily: 'AvenirNext-Bold' };
+      case Label.WEIGHT_MEDIUM:
+        return { fontFamily: 'Avenir-Medium' };
+      default:
+        return { fontFamily: 'Avenir Next' };
+    }
+  }
+
+  getSize(size = Label.SIZE_MEDIUM) {
+    return typeof size === 'number' ? { fontSize: size } : styles[`${size}`];
+  }
+
+  render() {
+    const { size, style, children, weight } = this.props;
+
+    let textStyles = [styles.container, this.getFontFamily(weight), this.getSize(size)];
     if (style) textStyles.push(style);
-    if (size && sizeMap[size]) textStyles.push({ fontSize: sizeMap[size] });
 
     return (
       <Text {...this.props} style={textStyles}>{children}</Text>

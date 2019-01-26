@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Text, View } from 'react-native';
 import { BusStop } from '../bus-stop';
+import { Card } from '../base/card';
 import styles from './nearest-bus-stops.styles.js';
 
 type Props = {
@@ -20,7 +21,7 @@ export default class NearestBusStops extends PureComponent<Props> {
     if (style) containerStyles.push(style);
 
     return (
-      <View style={containerStyles}>
+      <Card style={containerStyles}>
         {
           stops && stops.map(item => {
             return (
@@ -35,7 +36,7 @@ export default class NearestBusStops extends PureComponent<Props> {
             );
           })
         }
-      </View>
+      </Card>
     );
   }
 }
