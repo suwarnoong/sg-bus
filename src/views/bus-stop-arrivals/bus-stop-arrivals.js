@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Platform, PermissionAndroid, View, Text } from 'react-native';
-import { BusArrival, BusStop, NearestBusStops, H1, Label, TextInput } from '../../components';
+import { BusArrival, BusStop, NearestBusStops, H1, Label, TextInput, SelectSwitch } from '../../components';
 import styles from './bus-stop-arrivals.styles';
 import requestAndroidPermission from '../../utils/request-android-permission';
 
@@ -117,6 +117,18 @@ export default class BusStopArrivals extends Component {
           })
         }
 
+        <View style={{ alignItems: 'flex-start', paddingHorizontal: 10 }}>
+          <View style={{ width: 200 }}>
+            <SelectSwitch
+              initial={0}
+              onPress={value => this.setState({ gender: value })}
+              options={[
+                  { label: 'SAVED', value: 'S' },
+                  { label: 'NEAREST', value: 'N' }
+              ]}
+            />
+          </View>
+        </View>
         <NearestBusStops stops={nearest} />
       </View>
     );
