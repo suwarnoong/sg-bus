@@ -2,10 +2,11 @@ import React, { PureComponent } from 'react';
 import { Text, View } from 'react-native';
 import { BusStop } from '../bus-stop';
 import { Card } from '../base/card';
-import styles from './nearest-bus-stops.styles.js';
+import styles from './bus-stop-list.styles.js';
 
 type Props = {
-  stops: Array<{
+  Wrapper: React.Element,
+  list: Array<{
     BusStopCode: string,
     RoadName: string,
     Description: string,
@@ -13,17 +14,21 @@ type Props = {
   }>
 };
 
-export default class NearestBusStops extends PureComponent<Props> {
+export default class BusStopList extends PureComponent<Props> {
+  static defaultProps = {
+    Wrapper: Card,
+  }
+
   render() {
-    const { stops, style } = this.props;
+    const { Wrapper, list, style } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
     return (
-      <Card style={containerStyles}>
+      <Wrapper style={containerStyles}>
         {
-          stops && stops.map(item => {
+          list && list.map(item => {
             return (
               <BusStop
                 key={item.BusStopCode}
@@ -36,7 +41,7 @@ export default class NearestBusStops extends PureComponent<Props> {
             );
           })
         }
-      </Card>
+      </Wrapper>
     );
   }
 }

@@ -22,6 +22,11 @@ export default class Label extends PureComponent<Props> {
   static SIZE_XLARGE = 'xlarge';
   static SIZE_XXLARGE = 'xxlarge';
 
+  static defaultProps = {
+    size: 'medium',//Label.SIZE_MEDIUM,
+    weight: 'normal',//Label.WEIGHT_NORMAL,
+  }
+
   getFontFamily(weight) {
     switch (weight) {
       case Label.WEIGHT_THIN:

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Platform, PermissionAndroid, View, Text } from 'react-native';
-import { BusArrival, BusStop, NearestBusStops, H1, Label, TextInput, SelectSwitch } from '../../components';
+import { BusArrival, BusStop, BusStopList, H1, Label, TextInput, SelectSwitch } from '../../components';
 import styles from './bus-stop-arrivals.styles';
 import requestAndroidPermission from '../../utils/request-android-permission';
 
@@ -129,7 +129,7 @@ export default class BusStopArrivals extends Component {
             />
           </View>
         </View>
-        <NearestBusStops stops={nearest} />
+        <BusStopList list={nearest} />
       </View>
     );
   }

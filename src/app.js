@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { SafeAreaView, View } from 'react-native';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import BusStopArrivals from './views/bus-stop-arrivals';
+import Home from './views/home';
 import { store, persistor } from './store';
 import { BackgroundView } from './components';
 
@@ -13,9 +13,9 @@ export default class App extends Component<Props> {
     return (
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <View style={{ height:'100%' }}>
-            <SafeAreaView>
-              <BusStopArrivals></BusStopArrivals>
+          <View style={{ flex: 1 }}>
+            <SafeAreaView style={{ flex: 1 }}>
+              <Home style={{ flex: 1 }}></Home>
             </SafeAreaView>
             <BackgroundView></BackgroundView>
           </View>

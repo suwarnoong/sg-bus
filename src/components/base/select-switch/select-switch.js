@@ -18,14 +18,13 @@ export default class SelectSwitch extends PureComponent<Props> {
     bold: false,
     buttonColor: '#1289A7',
     animationDuration: 150,
-    returnObject: false,
   }
 
   constructor(props) {
     super(props);
 
     this.state = {
-      selected: this.props.initial ? this.props.initial : 0,
+      selected: null,
     };
 
     this.animatedValue = new Animated.Value(
@@ -40,6 +39,8 @@ export default class SelectSwitch extends PureComponent<Props> {
       onPanResponderRelease: this.responderEnd,
       onPanResponderTerminate: this.responderEnd,
     });
+    
+    this.toggleItem(this.props.initial);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -93,15 +94,15 @@ export default class SelectSwitch extends PureComponent<Props> {
   }
 
   toggleItem = index => {
-    const { options, returnObject, onPress } = this.props;
+    const { options, onPress } = this.props;
     if (options.length <= 1) return;
 
     this.animate(index / options.length, this.state.selected / options.length);
 
     if (onPress) {
-      onPress(returnObject ? options[index] : options[index].value);
+      onPress(options[index]);
     } else {
-      console.log('Call onPress with value: ', options[index].value);
+      console.log('Call onPress with value: ', options[index]);
     }
 
     this.setState({ selected: index });
