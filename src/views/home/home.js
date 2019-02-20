@@ -11,8 +11,8 @@ export default class Home extends PureComponent<Props> {
     super(props);
 
     this.state = {
-      selectedTab: 'S',
-    }
+      selectedTab: 'S'
+    };
   }
 
   renderTabs = (initialTab = 0) => {
@@ -30,7 +30,7 @@ export default class Home extends PureComponent<Props> {
         </View>
       </View>
     );
-  }
+  };
 
   render() {
     const { style } = this.props;
@@ -41,11 +41,11 @@ export default class Home extends PureComponent<Props> {
 
     return (
       <View style={containerStyles}>
-        <H1 style={{ paddingHorizontal: 10, paddingVertical: 20 }}>Bus Arrivals</H1>
+        <H1 style={{ paddingHorizontal: 10, paddingVertical: 20 }}>
+          Bus Arrivals
+        </H1>
         {this.renderTabs(1)}
-        <ScrollView>
-          {selectedTab === 'N' && <NearestBusStops />}
-        </ScrollView>
+        <ScrollView>{selectedTab === 'N' && <NearestBusStops />}</ScrollView>
       </View>
     );
   }
