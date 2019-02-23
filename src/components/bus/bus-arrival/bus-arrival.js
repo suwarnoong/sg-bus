@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
-import { Label, H1 } from '../base/label';
+import { Label, H1 } from '../../base/label';
 import styles from './bus-arrival.styles.js';
 import { ArrivalTime } from '../arrival-time';
 
@@ -12,7 +12,7 @@ type Props = {
   estimatedArrival3: string,
   load1: string,
   load2: string,
-  load3: string,
+  load3: string
 };
 
 export default class BusArrival extends PureComponent<Props> {
@@ -36,7 +36,7 @@ export default class BusArrival extends PureComponent<Props> {
       <View style={containerStyles}>
         <View style={styles.titleContainer}>
           <H1>{serviceNo}</H1>
-          <Label style={{color: '#999'}}>{destinationCode}</Label>
+          <Label style={{ color: '#999' }}>{destinationCode}</Label>
         </View>
         <View style={styles.arrivalContainer}>
           <ArrivalTime estTime={estimatedArrival1} load={load1} />

@@ -1,4 +1,4 @@
-import reduxConnect from '../../utils/redux-connect';
+import reduxConnect from '../../../utils/redux-connect';
 import MainView from './main-view';
 
 const mapStateToProps = state => ({

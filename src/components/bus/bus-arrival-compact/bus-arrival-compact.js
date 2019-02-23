@@ -1,13 +1,13 @@
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
-import { Small } from '../base/label';
+import { Small } from '../../base/label';
 import styles from './bus-arrival-compact.styles.js';
 
 type Props = {
   serviceNo: string,
   destinationCode: string,
   estimatedArrival1: string,
-  load1: string,
+  load1: string
 };
 
 export default class BusArrivalCompact extends PureComponent<Props> {

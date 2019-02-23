@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import styles from './bus-stop.styles.js';
-import { H1, H2, H3, Label, Small } from '../base/label';
-import { BusArrivalCompact } from '../bus-arrival-compact';
+import { H1, H2, H3, Label, Small } from '../../base/label';
 
 type Props = {
   busStopCode: string,

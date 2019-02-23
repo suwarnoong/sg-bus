@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { View, Platform } from 'react-native';
-import { BusStopList } from '../../../components';
+import { BusStopList } from '../../components';
 import styles from './nearest-bus-stops.styles.js';
 
 type Props = {};
@@ -18,7 +18,6 @@ export default class NearestBusStops extends PureComponent<Props> {
   }
 
   componentDidMount() {
-    console.log('nav', this.props.nav);
     if (Platform.OS === 'android')
       requestAndroidPermission(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
@@ -63,15 +62,12 @@ export default class NearestBusStops extends PureComponent<Props> {
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
-    //this.props.navigation.navigate('BusStopArrivals')
     return (
-      <View style={containerStyles}>
-        <BusStopList
-          list={nearest}
-          onPress={item => this.props.navigate('BusStopArrivals')}
-          style={{ margin: 0 }}
-        />
-      </View>
+      <BusStopList
+        list={nearest}
+        onPress={item => this.props.navigate('BusStopArrivals')}
+        style={containerStyles}
+      />
     );
   }
 }

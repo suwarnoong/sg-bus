@@ -1,12 +1,11 @@
 import React, { PureComponent } from 'react';
-import { Text, View } from 'react-native';
+import { View, FlatList } from 'react-native';
 import { BusStop } from '../bus-stop';
-import { Card } from '../base/card';
+import { Card } from '../../base/card';
 import styles from './bus-stop-list.styles.js';
-import { FlatList } from 'react-native-gesture-handler';
 
 type Props = {
-  Wrapper: React.Element,
+  Container: React.Element,
   list: Array<{
     BusStopCode: string,
     RoadName: string,
@@ -18,7 +17,7 @@ type Props = {
 
 export default class BusStopList extends PureComponent<Props> {
   static defaultProps = {
-    Wrapper: Card
+    Container: Card
   };
 
   handlePress = item => {
@@ -29,13 +28,13 @@ export default class BusStopList extends PureComponent<Props> {
   };
 
   render() {
-    const { Wrapper, list, style } = this.props;
+    const { Container, list, style } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
     return (
-      <Wrapper style={containerStyles}>
+      <Container style={containerStyles}>
         <FlatList
           data={list}
           keyExtractor={(item, index) => item.BusStopCode}
@@ -50,7 +49,7 @@ export default class BusStopList extends PureComponent<Props> {
             />
           )}
         />
-      </Wrapper>
+      </Container>
     );
   }
 }

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
 import { H1, Label, TextInput, SelectSwitch } from '../../components';
-import NearestBusStops from './nearest-bus-stops';
+import NearestBusStops from '../../fragments/nearest-bus-stops';
 import styles from './home.styles.js';
 
 type Props = {};
