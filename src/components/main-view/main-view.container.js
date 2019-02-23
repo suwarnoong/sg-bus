@@ -1,10 +1,8 @@
-import { connect } from 'react-redux';
+import reduxConnect from '../../utils/redux-connect';
 import MainView from './main-view';
 
 const mapStateToProps = state => ({
-  inset: state.app.inset,
+  inset: state.app.inset
 });
 
-export default connect(
-  mapStateToProps,
-)(MainView)
+export default reduxConnect(mapStateToProps)(MainView);

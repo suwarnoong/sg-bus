@@ -1,5 +1,11 @@
-import { connect } from 'react-redux';
-import { getArrivals, getNearestStops, getRoutes, getServices, getStops } from '../../store/actions';
+import reduxConnect from '../../utils/redux-connect';
+import {
+  getArrivals,
+  getNearestStops,
+  getRoutes,
+  getServices,
+  getStops
+} from '../../store/actions';
 import BusStopArrivals from './bus-stop-arrivals';
 
 const mapStateToProps = state => ({
@@ -7,7 +13,7 @@ const mapStateToProps = state => ({
   services: state.bus.services,
   routes: state.bus.routes,
   stops: state.bus.stops,
-  nearest: state.bus.nearest,
+  nearest: state.bus.nearest
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -18,7 +24,6 @@ const mapDispatchToProps = dispatch => ({
   getNearestStops: position => dispatch(getNearestStops(position))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(BusStopArrivals)
+export default reduxConnect(mapStateToProps, mapDispatchToProps)(
+  BusStopArrivals
+);

@@ -1,5 +1,12 @@
 import React, { PureComponent } from 'react';
-import { Animated, Easing, PanResponder, TouchableOpacity, View, Text } from 'react-native';
+import {
+  Animated,
+  Easing,
+  PanResponder,
+  TouchableOpacity,
+  View,
+  Text
+} from 'react-native';
 import styles from './select-switch.styles.js';
 
 type Props = {};
@@ -17,18 +24,18 @@ export default class SelectSwitch extends PureComponent<Props> {
     valuePadding: 1,
     bold: false,
     buttonColor: '#1289A7',
-    animationDuration: 150,
-  }
+    animationDuration: 150
+  };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      selected: null,
+      selected: null
     };
 
     this.animatedValue = new Animated.Value(
-      this.props.initial ? this.props.initial / this.props.options.length : 0,
+      this.props.initial ? this.props.initial / this.props.options.length : 0
     );
   }
 
@@ -37,9 +44,9 @@ export default class SelectSwitch extends PureComponent<Props> {
       onStartShouldSetPanResponder: this.shouldSetResponder,
       onMoveShouldSetPanResponder: this.shouldSetResponder,
       onPanResponderRelease: this.responderEnd,
-      onPanResponderTerminate: this.responderEnd,
+      onPanResponderTerminate: this.responderEnd
     });
-    
+
     this.toggleItem(this.props.initial);
   }
 
@@ -54,7 +61,7 @@ export default class SelectSwitch extends PureComponent<Props> {
       evt.nativeEvent.touches.length === 1 &&
       !(Math.abs(gestureState.dx) < 5 && Math.abs(gestureState.dy) < 5)
     );
-  }
+  };
 
   responderEnd = (evt, gestureState) => {
     const swipeDirection = this.getSwipeDirection(gestureState);
@@ -66,22 +73,22 @@ export default class SelectSwitch extends PureComponent<Props> {
     } else if (swipeDirection === 'LEFT' && this.state.selected > 0) {
       this.toggleItem(this.state.selected - 1);
     }
-  }
+  };
 
-  getSwipeDirection(gestureState) {
+  getSwipeDirection = gestureState => {
     const { dx, dy, vx } = gestureState;
     // 0.1 velocity
     if (Math.abs(vx) > 0.1 && Math.abs(dy) < 80) {
       return dx > 0 ? 'RIGHT' : 'LEFT';
     }
     return null;
-  }
+  };
 
-  getBgColor() {
+  getBgColor = () => {
     const { selected } = this.state;
     const { options, buttonColor } = this.props;
     return options[selected].activeColor || buttonColor;
-  }
+  };
 
   animate = (value, last) => {
     this.animatedValue.setValue(last);
@@ -89,9 +96,9 @@ export default class SelectSwitch extends PureComponent<Props> {
       toValue: value,
       duration: this.props.animationDuration,
       easing: Easing.in,
-      useNativeDriver: true,
+      useNativeDriver: true
     }).start();
-  }
+  };
 
   toggleItem = index => {
     const { options, onPress } = this.props;
@@ -106,7 +113,7 @@ export default class SelectSwitch extends PureComponent<Props> {
     }
 
     this.setState({ selected: index });
-  }
+  };
 
   renderOptions = () => {
     const {
@@ -116,16 +123,18 @@ export default class SelectSwitch extends PureComponent<Props> {
       textColor,
       selectedColor,
       textStyle,
-      selectedTextStyle,
+      selectedTextStyle
     } = this.props;
 
     return options.map((element, index) => (
       <View
         key={index}
-        style={{ flex: 1, flexDirection: 'column', justifyContent: 'center' }}>
+        style={{ flex: 1, flexDirection: 'column', justifyContent: 'center' }}
+      >
         <TouchableOpacity
           style={styles.button}
-          onPress={() => this.toggleItem(index)}>
+          onPress={() => this.toggleItem(index)}
+        >
           {typeof element.customIcon === 'function'
             ? element.customIcon(this.state.selected == index)
             : element.customIcon}
@@ -139,13 +148,14 @@ export default class SelectSwitch extends PureComponent<Props> {
                 backgroundColor: 'transparent'
               },
               this.state.selected == index ? selectedTextStyle : textStyle
-            ]}>
+            ]}
+          >
             {element.label}
           </Text>
         </TouchableOpacity>
       </View>
     ));
-  }
+  };
 
   render() {
     const {
@@ -155,7 +165,7 @@ export default class SelectSwitch extends PureComponent<Props> {
       height,
       hasPadding,
       valuePadding,
-      style,
+      style
     } = this.props;
 
     const containerStyles = [styles.container];
@@ -168,14 +178,15 @@ export default class SelectSwitch extends PureComponent<Props> {
             style={{
               borderRadius,
               backgroundColor,
-              height,
+              height
             }}
-            onLayout={ event => {
+            onLayout={event => {
               const { width } = event.nativeEvent.layout;
               this.setState({
-                sliderWidth: width - (hasPadding ? valuePadding : 0),
+                sliderWidth: width - (hasPadding ? valuePadding : 0)
               });
-            }}>
+            }}
+          >
             <View
               style={{
                 flex: 1,
@@ -183,29 +194,36 @@ export default class SelectSwitch extends PureComponent<Props> {
                 borderColor: borderColor || '#c9c9c9',
                 borderRadius,
                 borderWidth: hasPadding ? 1 : 0
-              }}>
-              {!!this.state.sliderWidth &&
+              }}
+            >
+              {!!this.state.sliderWidth && (
                 <Animated.View
-                  style={[{
+                  style={[
+                    {
                       height: hasPadding ? height - 4 : height,
                       backgroundColor: this.getBgColor(),
-                      width: this.state.sliderWidth /
-                        this.props.options.length -
+                      width:
+                        this.state.sliderWidth / this.props.options.length -
                         (hasPadding ? valuePadding : 0),
-                      transform: [{
-                        translateX: this.animatedValue.interpolate({
-                          inputRange: [0, 1],
-                          outputRange: [
-                            hasPadding ? valuePadding : 0,
-                            this.state.sliderWidth -
-                            (hasPadding ? valuePadding : 0)
-                          ],
-                        }),
-                      }],
+                      transform: [
+                        {
+                          translateX: this.animatedValue.interpolate({
+                            inputRange: [0, 1],
+                            outputRange: [
+                              hasPadding ? valuePadding : 0,
+                              this.state.sliderWidth -
+                                (hasPadding ? valuePadding : 0)
+                            ]
+                          })
+                        }
+                      ],
                       borderRadius,
                       marginTop: hasPadding ? valuePadding : 0
-                  }, styles.animated]} />
-              }
+                    },
+                    styles.animated
+                  ]}
+                />
+              )}
               {this.renderOptions()}
             </View>
           </View>

@@ -26,9 +26,9 @@ const updateInset = (state, action) => {
   };
 };
 
-const busReducer = createReducer(initialState, {
+const appReducer = createReducer(initialState, {
   [actions.UPDATE_BACKGROUND_COLOR]: updateBackgroundColor,
   [actions.UPDATE_INSET]: updateInset
 });
 
-export default busReducer;
+export default appReducer;

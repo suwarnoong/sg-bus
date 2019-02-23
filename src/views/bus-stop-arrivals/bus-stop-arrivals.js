@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import { Button, Platform, PermissionAndroid, View, Text } from 'react-native';
-import { BusArrival, BusStop, BusStopList, H1, Label, TextInput, SelectSwitch } from '../../components';
+import {
+  BusArrival,
+  BusStop,
+  BusStopList,
+  H1,
+  Label,
+  TextInput,
+  SelectSwitch
+} from '../../components';
 import styles from './bus-stop-arrivals.styles';
 import requestAndroidPermission from '../../utils/request-android-permission';
 
@@ -16,13 +24,8 @@ export default class BusStopArrivals extends Component {
       watchId: null,
       latitude: null,
       longitude: null,
-      locationError: null,
+      locationError: null
     };
-
-    this.handlePressArrivals = this.handlePressArrivals.bind(this);
-    this.watchGeolocation = this.watchGeolocation.bind(this);
-    this.tick = this.tick.bind(this);
-    this.resetTick = this.resetTick.bind(this);
   }
 
   componentWillMount() {
@@ -38,7 +41,9 @@ export default class BusStopArrivals extends Component {
 
   componentDidMount() {
     if (Platform.OS === 'android')
-      requestAndroidPermission(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION);
+      requestAndroidPermission(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
+      );
 
     // navigator.geolocation.requestAuthorization();
     // navigator.geolocation.getCurrentPosition(this.onLocationSuccess, this.onLocationError, { enableHighAccuracy: true });
@@ -49,12 +54,12 @@ export default class BusStopArrivals extends Component {
     navigator.geolocation.clearWatch(this.state.watchId);
   }
 
-  watchGeolocation() {
+  watchGeolocation = () => {
     const watchId = navigator.geolocation.watchPosition(
-      ({ coords: { latitude, longitude }}) => {
+      ({ coords: { latitude, longitude } }) => {
         this.setState({
           latitude,
-          longitude,
+          longitude
         });
 
         this.props.getNearestStops({ latitude, longitude });
@@ -62,26 +67,31 @@ export default class BusStopArrivals extends Component {
       ({ message }) => {
         this.setState({ locationError: message });
       },
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000, distanceFilter: 10 }
+      {
+        enableHighAccuracy: true,
+        timeout: 20000,
+        maximumAge: 1000,
+        distanceFilter: 10
+      }
     );
 
     this.setState({ watchId });
-  }
+  };
 
-  handlePressArrivals() {
+  handlePressArrivals = () => {
     this.props.getArrivals(this.state.busStopNumber);
     this.resetTick();
-  }
+  };
 
-  tick() {
+  tick = () => {
     this.props.getArrivals(this.state.busStopNumber);
-  }
+  };
 
-  resetTick() {
+  resetTick = () => {
     clearInterval(this.state.timerId);
     const timerId = setInterval(this.tick, intervalMs);
     this.setState({ timerId });
-  }
+  };
 
   render() {
     const { arrivals, services, nearest } = this.props;
@@ -91,18 +101,22 @@ export default class BusStopArrivals extends Component {
 
     return (
       <View style={styles.container}>
-        <H1 style={{width: '100%', textAlign: 'center', marginBottom: 10}}>Testing</H1>
+        <H1 style={{ width: '100%', textAlign: 'center', marginBottom: 10 }}>
+          Testing
+        </H1>
         <TextInput
           value={busStopNumber}
-          onChangeText={(busStopNumber) => {
+          onChangeText={busStopNumber => {
             this.setState({ busStopNumber });
-          }} />
+          }}
+        />
         <Button onPress={this.handlePressArrivals} title="Get Arrivals" />
 
-        {
-          arrivals && arrivals[busStopNumber] && arrivals[busStopNumber].map(item => {
+        {arrivals &&
+          arrivals[busStopNumber] &&
+          arrivals[busStopNumber].map(item => {
             return (
-              <BusArrival 
+              <BusArrival
                 key={item.ServiceNo}
                 serviceNo={item.ServiceNo}
                 destinationCode={item.NextBus.DestinationCode}
@@ -114,8 +128,7 @@ export default class BusStopArrivals extends Component {
                 load3={item.NextBus3.Load}
               />
             );
-          })
-        }
+          })}
 
         <View style={{ alignItems: 'flex-start', paddingHorizontal: 10 }}>
           <View style={{ width: 200 }}>
@@ -123,8 +136,8 @@ export default class BusStopArrivals extends Component {
               initial={0}
               onPress={value => this.setState({ gender: value })}
               options={[
-                  { label: 'SAVED', value: 'S' },
-                  { label: 'NEAREST', value: 'N' }
+                { label: 'SAVED', value: 'S' },
+                { label: 'NEAREST', value: 'N' }
               ]}
             />
           </View>

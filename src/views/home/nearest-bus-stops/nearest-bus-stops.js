@@ -5,7 +5,6 @@ import styles from './nearest-bus-stops.styles.js';
 
 type Props = {};
 
-
 export default class NearestBusStops extends PureComponent<Props> {
   constructor(props) {
     super(props);
@@ -14,13 +13,16 @@ export default class NearestBusStops extends PureComponent<Props> {
       watchId: null,
       latitude: null,
       longitude: null,
-      locationError: null,
-    }
+      locationError: null
+    };
   }
 
   componentDidMount() {
+    console.log('nav', this.props.nav);
     if (Platform.OS === 'android')
-      requestAndroidPermission(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION);
+      requestAndroidPermission(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
+      );
 
     // navigator.geolocation.requestAuthorization();
     // navigator.geolocation.getCurrentPosition(this.onLocationSuccess, this.onLocationError, { enableHighAccuracy: true });
@@ -31,12 +33,12 @@ export default class NearestBusStops extends PureComponent<Props> {
     navigator.geolocation.clearWatch(this.state.watchId);
   }
 
-  watchGeolocation() {
+  watchGeolocation = () => {
     const watchId = navigator.geolocation.watchPosition(
-      ({ coords: { latitude, longitude }}) => {
+      ({ coords: { latitude, longitude } }) => {
         this.setState({
           latitude,
-          longitude,
+          longitude
         });
 
         this.props.getNearestStops({ latitude, longitude });
@@ -44,11 +46,16 @@ export default class NearestBusStops extends PureComponent<Props> {
       ({ message }) => {
         this.setState({ locationError: message });
       },
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000, distanceFilter: 10 }
+      {
+        enableHighAccuracy: true,
+        timeout: 20000,
+        maximumAge: 1000,
+        distanceFilter: 10
+      }
     );
 
     this.setState({ watchId });
-  }
+  };
 
   render() {
     const { nearest, style } = this.props;
@@ -56,9 +63,14 @@ export default class NearestBusStops extends PureComponent<Props> {
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
+    //this.props.navigation.navigate('BusStopArrivals')
     return (
       <View style={containerStyles}>
-        <BusStopList list={nearest} style={{ margin: 0 }} />
+        <BusStopList
+          list={nearest}
+          onPress={item => this.props.navigate('BusStopArrivals')}
+          style={{ margin: 0 }}
+        />
       </View>
     );
   }

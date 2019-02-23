@@ -5,5 +5,5 @@ export default function createReducer(initialState, actionHandlers) {
     } else {
       return state;
     }
-  }
+  };
 }

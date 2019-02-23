@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import { BusStop } from '../bus-stop';
 import { Card } from '../base/card';
 import styles from './bus-stop-list.styles.js';
+import { FlatList } from 'react-native-gesture-handler';
 
 type Props = {
   Wrapper: React.Element,
@@ -10,14 +11,22 @@ type Props = {
     BusStopCode: string,
     RoadName: string,
     Description: string,
-    distance: number,
-  }>
+    distance: number
+  }>,
+  onPress: Function
 };
 
 export default class BusStopList extends PureComponent<Props> {
   static defaultProps = {
-    Wrapper: Card,
-  }
+    Wrapper: Card
+  };
+
+  handlePress = item => {
+    const { onPress } = this.props;
+    if (typeof onPress === 'function') {
+      onPress(item);
+    }
+  };
 
   render() {
     const { Wrapper, list, style } = this.props;
@@ -27,20 +36,20 @@ export default class BusStopList extends PureComponent<Props> {
 
     return (
       <Wrapper style={containerStyles}>
-        {
-          list && list.map(item => {
-            return (
-              <BusStop
-                key={item.BusStopCode}
-                busStopCode={item.BusStopCode}
-                description={item.Description}
-                roadName={item.RoadName}
-                distance={item.distance}
-                routes={item.routes}
-              />
-            );
-          })
-        }
+        <FlatList
+          data={list}
+          keyExtractor={(item, index) => item.BusStopCode}
+          renderItem={({ item }) => (
+            <BusStop
+              busStopCode={item.BusStopCode}
+              description={item.Description}
+              roadName={item.RoadName}
+              distance={item.distance}
+              routes={item.routes}
+              onPress={() => this.handlePress(item)}
+            />
+          )}
+        />
       </Wrapper>
     );
   }

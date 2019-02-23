@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { ScrollView, View } from 'react-native';
+import { View } from 'react-native';
 import { H1, Label, TextInput, SelectSwitch } from '../../components';
 import NearestBusStops from './nearest-bus-stops';
 import styles from './home.styles.js';
@@ -45,7 +45,9 @@ export default class Home extends PureComponent<Props> {
           Bus Arrivals
         </H1>
         {this.renderTabs(1)}
-        <ScrollView>{selectedTab === 'N' && <NearestBusStops />}</ScrollView>
+        <View style={{ flex: 1 }}>
+          {selectedTab === 'N' && <NearestBusStops />}
+        </View>
       </View>
     );
   }
