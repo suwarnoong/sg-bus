@@ -1,1 +1,1 @@
-export { default } from './bus-stop-arrivals.container';
+export { default } from './bus-stop-arrivals';

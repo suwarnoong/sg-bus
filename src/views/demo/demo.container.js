@@ -6,7 +6,7 @@ import {
   getServices,
   getStops
 } from '../../store/actions';
-import BusStopArrivals from './bus-stop-arrivals';
+import Demo from './demo';
 
 const mapStateToProps = state => ({
   arrivals: state.bus.arrivals,
@@ -24,6 +24,4 @@ const mapDispatchToProps = dispatch => ({
   getNearestStops: position => dispatch(getNearestStops(position))
 });
 
-export default reduxConnect(mapStateToProps, mapDispatchToProps)(
-  BusStopArrivals
-);
+export default reduxConnect(mapStateToProps, mapDispatchToProps)(Demo);

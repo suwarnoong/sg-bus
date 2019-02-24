@@ -1,5 +1,6 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import Home from '../views/home';
+import Demo from '../views/demo';
 import BusStopArrivals from '../views/bus-stop-arrivals';
 
 export default createStackNavigator(
@@ -13,14 +14,14 @@ export default createStackNavigator(
     },
     BusStopArrivals: {
       screen: BusStopArrivals
+    },
+    Demo: {
+      screen: Demo
     }
   },
   {
     initialRouteName: 'Home',
     headerMode: 'screen',
-    transparentCard: true,
-    cardShadowEnabled: true,
-    cardOverlayEnabled: true,
     headerStyle: {
       backgroundColor: '#F0F0F0'
     },

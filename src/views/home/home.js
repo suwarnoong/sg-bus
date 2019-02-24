@@ -1,6 +1,12 @@
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
-import { H1, Label, TextInput, SelectSwitch } from '../../components';
+import {
+  H1,
+  Label,
+  TextInput,
+  SelectSwitch,
+  ScreenView
+} from '../../components';
 import NearestBusStops from '../../fragments/nearest-bus-stops';
 import styles from './home.styles.js';
 
@@ -40,7 +46,7 @@ export default class Home extends PureComponent<Props> {
     if (style) containerStyles.push(style);
 
     return (
-      <View style={containerStyles}>
+      <ScreenView style={containerStyles}>
         <H1 style={{ paddingHorizontal: 10, paddingVertical: 20 }}>
           Bus Arrivals
         </H1>
@@ -48,7 +54,7 @@ export default class Home extends PureComponent<Props> {
         <View style={{ flex: 1 }}>
           {selectedTab === 'N' && <NearestBusStops />}
         </View>
-      </View>
+      </ScreenView>
     );
   }
 }
