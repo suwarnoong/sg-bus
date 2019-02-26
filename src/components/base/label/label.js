@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
 import styles from './label.styles.js';
 
 type Props = {
   size: string | number,
-  weight: string,
+  weight: string
 };
 
 export default class Label extends PureComponent<Props> {
@@ -23,9 +23,9 @@ export default class Label extends PureComponent<Props> {
   static SIZE_XXLARGE = 'xxlarge';
 
   static defaultProps = {
-    size: 'medium',//Label.SIZE_MEDIUM,
-    weight: 'normal',//Label.WEIGHT_NORMAL,
-  }
+    size: 'medium', //Label.SIZE_MEDIUM,
+    weight: 'normal' //Label.WEIGHT_NORMAL,
+  };
 
   getFontFamily(weight) {
     switch (weight) {
@@ -49,11 +49,17 @@ export default class Label extends PureComponent<Props> {
   render() {
     const { size, style, children, weight } = this.props;
 
-    let textStyles = [styles.container, this.getFontFamily(weight), this.getSize(size)];
+    let textStyles = [
+      styles.container,
+      this.getFontFamily(weight),
+      this.getSize(size)
+    ];
     if (style) textStyles.push(style);
 
     return (
-      <Text {...this.props} style={textStyles}>{children}</Text>
+      <Text {...this.props} style={textStyles}>
+        {children}
+      </Text>
     );
   }
 }

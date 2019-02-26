@@ -1,14 +1,13 @@
 import React, { PureComponent } from 'react';
-import { Text, View } from 'react-native';
 import {
-  Card,
-  ScreenView,
-  Label,
-  H3,
-  Small,
   ArrivalTimes,
   BusStopRoadInfo,
-  BusArrivalList
+  BusArrivalList,
+  Card,
+  H3,
+  Label,
+  ScreenView,
+  Small
 } from '../../components';
 import styles from './bus-stop-arrivals.styles.js';
 

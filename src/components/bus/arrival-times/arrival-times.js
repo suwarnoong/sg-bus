@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
-import { Text, View } from 'react-native';
 import { parse, differenceInMinutes } from 'date-fns';
-import { Label } from '../../../components/base';
+import { Label, View } from '../../../components/base';
 import styles from './arrival-times.styles.js';
 
 const busLoadColorMapping = {

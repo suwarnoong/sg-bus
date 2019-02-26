@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
-import { View } from 'react-native';
-import { Small } from '../../base/label';
+import { Small, View } from '../../base';
 import styles from './bus-arrival-compact.styles.js';
 
 type Props = {

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Text, View } from 'react-native';
+import { View } from '../native';
 import styles from './card.styles.js';
 
 type Props = {

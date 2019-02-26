@@ -1,13 +1,18 @@
 import React, { PureComponent } from 'react';
-import { View } from 'react-native';
+import { View } from '../components';
 
-export default ({ Icon, color = '#FFFFFF', backdropColor = 'transparent', size = 20 }) => {
+export default ({
+  Icon,
+  color = '#FFFFFF',
+  backdropColor = 'transparent',
+  size = 20
+}) => {
   class IconCircleFactory extends PureComponent {
     constructor(props) {
       super(props);
 
       this.state = {
-        boxSize: 0,
+        boxSize: 0
       };
     }
 
@@ -24,7 +29,7 @@ export default ({ Icon, color = '#FFFFFF', backdropColor = 'transparent', size =
           style={{
             backgroundColor: backdropColor,
             borderRadius: borderRadius,
-            padding: 8,
+            padding: 8
           }}
           onLayout={this.handleOnLayout.bind(this)}
         >

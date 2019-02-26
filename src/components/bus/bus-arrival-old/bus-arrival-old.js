@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
-import { View } from 'react-native';
-import { Label, H1 } from '../../base/label';
+import { H1, Label, View } from '../../base/label';
 import styles from './bus-arrival-old.styles';
 import { ArrivalTime } from '../arrival-time';
 

@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Text, View } from 'react-native';
-import { H3, Small, Label } from '../../../components/base';
+import { Label, Small, View } from '../../../components/base';
 import styles from './bus-stop-road-info.styles.js';
 
 type RoadInfo = {

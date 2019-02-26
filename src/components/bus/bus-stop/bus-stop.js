@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
-import { View, TouchableOpacity } from 'react-native';
 import styles from './bus-stop.styles.js';
-import { H1, H2, H3, Label, Small } from '../../base/label';
+import { H1, H2, H3, Label, Small, TouchableOpacity, View } from '../../base';
 import { BusStopRoadInfo } from '../bus-stop-road-info/index.js';
 
 type Props = {

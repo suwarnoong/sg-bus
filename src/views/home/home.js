@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
-import { View } from 'react-native';
 import {
   H1,
   Label,
   TextInput,
   SelectSwitch,
-  ScreenView
+  ScreenView,
+  View
 } from '../../components';
 import NearestBusStops from '../../fragments/nearest-bus-stops';
 import styles from './home.styles.js';

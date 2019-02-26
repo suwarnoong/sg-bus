@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Text, View } from 'react-native';
+import { View } from '../../base';
 import styles from './screen-view.styles.js';
 
 type Props = {};

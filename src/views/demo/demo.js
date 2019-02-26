@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { Button, Platform, PermissionAndroid, View, Text } from 'react-native';
+import { Button, Platform } from 'react-native';
 import {
   BusArrivalOld,
   BusStop,
   BusStopList,
   H1,
   Label,
+  SelectSwitch,
   TextInput,
-  SelectSwitch
+  View
 } from '../../components';
 import styles from './demo.styles';
 import requestAndroidPermission from '../../utils/request-android-permission';

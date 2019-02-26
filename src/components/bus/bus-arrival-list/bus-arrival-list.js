@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
-import { View, FlatList } from 'react-native';
-import { Card } from '../../base';
+import { Card, FlatList } from '../../base';
 import { BusArrival } from '../bus-arrival';
 import { ArrivalTime } from '../../../types.d';
 import styles from './bus-arrival-list.styles.js';

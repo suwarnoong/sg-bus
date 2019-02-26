@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
-import { View, FlatList } from 'react-native';
 import { BusStop } from '../bus-stop';
-import { Card } from '../../base/card';
+import { Card, FlatList, View } from '../../base';
 import styles from './bus-stop-list.styles.js';
 
 type Props = {

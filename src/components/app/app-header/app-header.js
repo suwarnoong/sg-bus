@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
-import { View, TouchableOpacity } from 'react-native';
-import { H2, Label } from '../../base';
+import { H2, Label, TouchableOpacity, View } from '../../base';
 import { ChevronLeftIcon } from '../../../icons';
 import styles from './app-header.styles.js';
 

@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
-import { Text, View } from 'react-native';
+import { View } from '../../base';
 import styles from './background-view.styles.js';
 
 type Props = {
-  backgroundColor: string,
+  backgroundColor: string
 };
 
 export default class BackgroundView extends PureComponent<Props> {
@@ -14,10 +14,6 @@ export default class BackgroundView extends PureComponent<Props> {
     if (style) containerStyles.push(style);
     if (backgroundColor) containerStyles.push({ backgroundColor });
 
-    return (
-      <View style={containerStyles}>
-        {children}
-      </View>
-    );
+    return <View style={containerStyles}>{children}</View>;
   }
 }

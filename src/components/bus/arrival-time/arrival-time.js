@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
-import { View } from 'react-native';
-import { Label, Small } from '../../base/label';
+import { Label, Small, View } from '../../base/label';
 import { parse, differenceInMinutes } from 'date-fns';
 import styles from './arrival-time.styles.js';
 
