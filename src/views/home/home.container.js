@@ -1,5 +1,5 @@
 import Home from './home';
-import reduxConnect from '../../utils/redux-connect';
+import { reduxConnect } from '../../utils';
 import { updateInset } from '../../store/actions';
 
 const mapStateToProps = state => ({});

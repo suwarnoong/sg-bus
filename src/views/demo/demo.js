@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Platform, PermissionAndroid, View, Text } from 'react-native';
 import {
-  BusArrival,
+  BusArrivalOld,
   BusStop,
   BusStopList,
   H1,
@@ -116,7 +116,7 @@ export default class Demo extends Component {
           arrivals[busStopNumber] &&
           arrivals[busStopNumber].map(item => {
             return (
-              <BusArrival
+              <BusArrivalOld
                 key={item.ServiceNo}
                 serviceNo={item.ServiceNo}
                 destinationCode={item.NextBus.DestinationCode}

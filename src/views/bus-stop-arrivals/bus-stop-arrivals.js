@@ -1,20 +1,35 @@
 import React, { PureComponent } from 'react';
 import { Text, View } from 'react-native';
-import { ScreenView } from '../../components';
+import {
+  Card,
+  ScreenView,
+  Label,
+  H3,
+  Small,
+  ArrivalTimes,
+  BusStopRoadInfo,
+  BusArrivalList
+} from '../../components';
 import styles from './bus-stop-arrivals.styles.js';
 
 type Props = {};
 
 export default class BusStopArrivals extends PureComponent<Props> {
+  componentDidMount() {
+    this.props.getArrivals(this.props.params.busStopCode);
+  }
+
   render() {
-    const { style } = this.props;
+    const { arrivals, style } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
+    const arrivalList = arrivals[this.props.params.busStopCode];
+
     return (
       <ScreenView style={containerStyles}>
-        <Text>BusStopArrivals rendered</Text>
+        <BusArrivalList list={arrivalList} />
       </ScreenView>
     );
   }

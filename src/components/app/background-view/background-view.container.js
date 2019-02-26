@@ -1,4 +1,4 @@
-import reduxConnect from '../../../utils/redux-connect';
+import { reduxConnect } from '../../../utils';
 import BackgroundView from './background-view';
 
 const mapStateToProps = state => ({

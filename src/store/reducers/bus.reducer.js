@@ -2,7 +2,6 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import createReducer from './create-reducer';
 import * as actions from '../actions/types';
-import arrayToObject from '../../utils/array-to-object';
 
 import pipe from 'lodash/fp/pipe';
 import groupBy from 'lodash/fp/groupBy';
@@ -14,7 +13,7 @@ const initialState = {
   services: [],
   routes: null,
   stops: [],
-  nearest: [],
+  nearest: []
 };
 
 const updateArrivals = (state, action) => {
@@ -22,15 +21,15 @@ const updateArrivals = (state, action) => {
     ...state,
     arrivals: {
       ...state.arrivals,
-      [action.busStopNumber]: action.arrivals,
-    },
+      [action.busStopNumber]: action.arrivals
+    }
   };
 };
 
 const updateServices = (state, action) => {
   return {
     ...state,
-    services: action.services,
+    services: action.services
   };
 };
 
@@ -42,40 +41,41 @@ const updateRoutes = (state, action) => {
 
   return {
     ...state,
-    routes,
+    routes
   };
 };
 
 const updateStops = (state, action) => {
   return {
     ...state,
-    stops: action.stops,
+    stops: action.stops
   };
 };
 
 const updateNearest = (state, action) => {
-  const nearest = map(
-    item => ({ routes: state.routes[item.BusStopCode], ...item })
-  )(action.nearest)
+  const nearest = map(item => ({
+    routes: state.routes[item.BusStopCode],
+    ...item
+  }))(action.nearest);
 
   return {
     ...state,
-    nearest,
-  }
-}
+    nearest
+  };
+};
 
 const busReducer = createReducer(initialState, {
   [actions.UPDATE_ARRIVALS]: updateArrivals,
   [actions.UPDATE_SERVICES]: updateServices,
   [actions.UPDATE_ROUTES]: updateRoutes,
   [actions.UPDATE_STOPS]: updateStops,
-  [actions.UPDATE_NEAREST]: updateNearest,
+  [actions.UPDATE_NEAREST]: updateNearest
 });
 
 const busPersistConfig = {
   key: 'bus',
   storage,
-  whitelist: ['services', 'routes', 'stops'],
+  whitelist: ['services', 'routes', 'stops']
 };
 
 const persistedBusReducer = persistReducer(busPersistConfig, busReducer);

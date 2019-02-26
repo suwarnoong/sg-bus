@@ -1,7 +1,9 @@
+import React from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import Home from '../views/home';
 import Demo from '../views/demo';
 import BusStopArrivals from '../views/bus-stop-arrivals';
+import { AppHeader } from '../components';
 
 export default createStackNavigator(
   {
@@ -26,6 +28,10 @@ export default createStackNavigator(
       backgroundColor: '#F0F0F0'
     },
     headerBackground: '#F0F0F0',
-    defaultNavigationOptions: {}
+    defaultNavigationOptions: ({ navigation }) => {
+      return {
+        header: <AppHeader title="App Title" />
+      };
+    }
   }
 );

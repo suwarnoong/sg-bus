@@ -1,21 +1,22 @@
 import React, { PureComponent } from 'react';
 import { View, FlatList } from 'react-native';
-import { BusStop } from '../bus-stop';
-import { Card } from '../../base/card';
-import styles from './bus-stop-list.styles.js';
+import { Card } from '../../base';
+import { BusArrival } from '../bus-arrival';
+import { ArrivalTime } from '../../../types.d';
+import styles from './bus-arrival-list.styles.js';
 
 type Props = {
   Container: React.Element,
   list: Array<{
-    BusStopCode: string,
-    RoadName: string,
-    Description: string,
-    distance: number
+    ServiceNo: string,
+    NextBus: Array<ArrivalTime>,
+    NextBus2: Array<ArrivalTime>,
+    NextBus3: Array<ArrivalTime>
   }>,
   onPress: Function
 };
 
-export default class BusStopList extends PureComponent<Props> {
+export default class BusArrivalList extends PureComponent<Props> {
   static defaultProps = {
     Container: Card
   };
@@ -37,14 +38,13 @@ export default class BusStopList extends PureComponent<Props> {
       <Container style={containerStyles} padding={0}>
         <FlatList
           data={list}
-          keyExtractor={(item, index) => item.BusStopCode}
+          keyExtractor={(item, index) => item.ServiceNo}
           renderItem={({ item }) => (
-            <BusStop
-              busStopCode={item.BusStopCode}
-              description={item.Description}
-              roadName={item.RoadName}
-              distance={item.distance}
-              routes={item.routes}
+            <BusArrival
+              serviceNo={item.ServiceNo}
+              nextBus={item.NextBus}
+              nextBus2={item.NextBus2}
+              nextBus3={item.NextBus3}
               onPress={() => this.handlePress(item)}
             />
           )}

@@ -8,7 +8,14 @@ export default StyleSheet.create({
   fill: {
     flex: 1
   },
-  busStopRoadInfo: {
-    marginTop: 5
+  roadName: {
+    color: '#777'
+  },
+  busStopCode: {
+    color: '#4A4A4A',
+    marginLeft: 15
+  },
+  distance: {
+    color: '#9B9B9B'
   }
 });

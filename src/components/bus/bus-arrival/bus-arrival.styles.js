@@ -2,19 +2,18 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderLeftWidth: 5,
-    borderLeftColor: '#F5A623',
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    marginBottom: 5,
-    marginHorizontal: 5,
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: '#f2f2f2'
   },
-  titleContainer: {
-    flex: 1,
+  row: {
+    flexDirection: 'row'
   },
-  arrivalContainer: {
-    flexDirection: 'row',
+  fill: {
+    flex: 1
   },
+  busStopRoadInfo: {
+    marginTop: 5
+  }
 });

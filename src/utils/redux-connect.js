@@ -1,9 +1,13 @@
 import { connect } from 'react-redux';
-import { navigate, back, setParams } from '../store/actions';
+import { navigate, back, setParams } from '../store/actions/navigation';
+import getCurrentRoute from './get-current-route';
 
 export default (mapStateToProps, mapDispatchToProps) => {
   const stateToProps = state => {
-    const newState = {};
+    const newState = {
+      params: !!state.nav ? getCurrentRoute(state.nav).params : null
+    };
+
     return mapStateToProps
       ? {
           ...mapStateToProps(state),

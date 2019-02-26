@@ -1,47 +1,35 @@
 import React, { PureComponent } from 'react';
-import { View } from 'react-native';
-import { Label, H1 } from '../../base/label';
+import { Text, View } from 'react-native';
+import { Label } from '../../base';
+import { ArrivalTimes } from '../arrival-times';
+import { ArrivalTime } from '../../../types.d.js';
 import styles from './bus-arrival.styles.js';
-import { ArrivalTime } from '../arrival-time';
 
 type Props = {
   serviceNo: string,
-  destinationCode: string,
-  estimatedArrival1: string,
-  estimatedArrival2: string,
-  estimatedArrival3: string,
-  load1: string,
-  load2: string,
-  load3: string
+  nextBus: ArrivalTime,
+  nextBus2: ArrivalTime,
+  nextBus3: ArrivalTime
 };
 
 export default class BusArrival extends PureComponent<Props> {
   render() {
-    const {
-      serviceNo,
-      destinationCode,
-      estimatedArrival1,
-      estimatedArrival2,
-      estimatedArrival3,
-      load1,
-      load2,
-      load3,
-      style
-    } = this.props;
+    const { serviceNo, nextBus, nextBus2, nextBus3, style } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
     return (
       <View style={containerStyles}>
-        <View style={styles.titleContainer}>
-          <H1>{serviceNo}</H1>
-          <Label style={{ color: '#999' }}>{destinationCode}</Label>
-        </View>
-        <View style={styles.arrivalContainer}>
-          <ArrivalTime estTime={estimatedArrival1} load={load1} />
-          <ArrivalTime estTime={estimatedArrival2} load={load2} />
-          <ArrivalTime estTime={estimatedArrival3} load={load3} />
+        <View style={styles.row}>
+          <Label size={30} weight={Label.WEIGHT_DEMI_BOLD} style={styles.fill}>
+            {serviceNo}
+          </Label>
+          <ArrivalTimes
+            nextBus={nextBus}
+            nextBus2={nextBus2}
+            nextBus3={nextBus3}
+          />
         </View>
       </View>
     );
