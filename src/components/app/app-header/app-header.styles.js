@@ -3,8 +3,8 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     backgroundColor: '#1289A7',
-    height: 56,
-    paddingHorizontal: 7,
+    height: 65,
+    paddingHorizontal: 15,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center'
@@ -21,15 +21,19 @@ export default StyleSheet.create({
   },
   titleContainer: {
     position: 'absolute',
-    left: 0,
+    left: 45,
     right: 0,
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     zIndex: -1
   },
   title: {
     color: '#FFFFFF'
+  },
+  subTitle: {
+    color: '#DDDDDD',
+    marginTop: -3
   },
   backText: {
     color: '#FFFFFF'

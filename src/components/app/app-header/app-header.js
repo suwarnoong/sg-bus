@@ -1,26 +1,24 @@
 import React, { PureComponent } from 'react';
-import { H2, Label, TouchableOpacity, View } from '../../base';
-import { ChevronLeftIcon } from '../../../icons';
+import { H3, Label, Small, TouchableOpacity, View } from '../../base';
+import { ArrowLeftIcon } from '../../../icons';
 import styles from './app-header.styles.js';
 
 type Props = {
-  title: string
+  title: string,
+  subTitle: string
 };
 
 export default class AppHeader extends PureComponent<Props> {
   renderBackButton = () => {
     return (
       <TouchableOpacity style={styles.leftPanel} onPress={this.props.back}>
-        <ChevronLeftIcon style={styles.backIcon} size={20} color="#FFFFFF" />
-        <Label style={[styles.backText]} size={Label.SIZE_SMALL}>
-          Back
-        </Label>
+        <ArrowLeftIcon style={styles.backIcon} size={16} color="#FFFFFF" />
       </TouchableOpacity>
     );
   };
 
   render() {
-    const { title, style } = this.props;
+    const { title, subTitle, style } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
@@ -29,7 +27,12 @@ export default class AppHeader extends PureComponent<Props> {
       <View style={containerStyles}>
         {this.renderBackButton()}
         <View style={styles.titleContainer}>
-          <H2 style={styles.title}>{title}</H2>
+          <H3 style={styles.title}>{title}</H3>
+          {!!subTitle && (
+            <Small style={styles.subTitle} weight={Label.WEIGHT_MEDIUM}>
+              {subTitle}
+            </Small>
+          )}
         </View>
       </View>
     );

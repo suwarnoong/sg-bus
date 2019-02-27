@@ -1,5 +1,5 @@
 import { reduxConnect } from '../../utils';
-import { getArrivals } from '../../store/actions';
+import { getArrivals, updateHeader } from '../../store/actions';
 import BusStopArrivals from './bus-stop-arrivals';
 
 const mapStateToProps = state => ({
@@ -7,7 +7,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getArrivals: busStopNumber => dispatch(getArrivals(busStopNumber))
+  getArrivals: busStopNumber => dispatch(getArrivals(busStopNumber)),
+  updateHeader: (title, subTitle = '') =>
+    dispatch(updateHeader(title, subTitle))
 });
 
 export default reduxConnect(mapStateToProps, mapDispatchToProps)(
