@@ -2,6 +2,7 @@ import { applyMiddleware, createStore } from 'redux';
 import { persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
 import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers';
+import screenTracking from './middleware/screen-tracking';
 
 import rootReducer from './reducers';
 
@@ -10,7 +11,11 @@ const navigationMiddleware = createReactNavigationReduxMiddleware(
   'RootNavigator'
 );
 
-const middlewares = applyMiddleware(thunk, navigationMiddleware);
+const middlewares = applyMiddleware(
+  thunk,
+  navigationMiddleware,
+  screenTracking
+);
 
 let store;
 

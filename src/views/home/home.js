@@ -21,6 +21,10 @@ export default class Home extends PureComponent<Props> {
     };
   }
 
+  componentWillMount() {
+    this.props.updateHeaderBackgroundColor('#F0F0F0');
+  }
+
   renderTabs = (initialTab = 0) => {
     return (
       <View style={{ alignItems: 'flex-start', paddingBottom: 10 }}>
