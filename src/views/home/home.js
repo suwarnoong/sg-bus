@@ -22,7 +22,14 @@ export default class Home extends PureComponent<Props> {
   }
 
   componentWillMount() {
-    this.props.updateHeaderBackgroundColor('#F0F0F0');
+    if (!this.props.routes || this.props.routes.length == 0)
+      this.props.getRoutes();
+
+    if (!this.props.services || this.props.services.length == 0)
+      this.props.getServices();
+
+    if (!this.props.stops || this.props.stops.length == 0)
+      this.props.getStops();
   }
 
   renderTabs = (initialTab = 0) => {
