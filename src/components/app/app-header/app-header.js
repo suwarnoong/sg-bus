@@ -5,7 +5,8 @@ import styles from './app-header.styles.js';
 
 type Props = {
   title: string,
-  subTitle: string
+  subTitle: string,
+  backgroundColor: string
 };
 
 export default class AppHeader extends PureComponent<Props> {
@@ -18,10 +19,11 @@ export default class AppHeader extends PureComponent<Props> {
   };
 
   render() {
-    const { title, subTitle, style } = this.props;
+    const { title, subTitle, backgroundColor, style } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
+    if (backgroundColor) containerStyles.push({ backgroundColor });
 
     return (
       <View style={containerStyles}>

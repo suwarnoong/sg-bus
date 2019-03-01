@@ -10,5 +10,11 @@ export default StyleSheet.create({
     left: 0,
     height: '100%',
     zIndex: -1000
+  },
+  headerBackdrop: {
+    position: 'absolute',
+    top: 0,
+    height: 50,
+    width: '100%'
   }
 });

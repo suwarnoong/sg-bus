@@ -14,12 +14,8 @@ import styles from './bus-stop-arrivals.styles.js';
 type Props = {};
 
 export default class BusStopArrivals extends PureComponent<Props> {
-  componentDidMount() {
+  componentWillMount() {
     this.props.getArrivals(this.props.params.busStopCode);
-    this.props.updateHeader(
-      this.props.params.description,
-      `${this.props.params.roadName}    ${this.props.params.busStopCode}`
-    );
   }
 
   render() {

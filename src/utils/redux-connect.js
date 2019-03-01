@@ -5,7 +5,7 @@ import getCurrentRoute from './get-current-route';
 export default (mapStateToProps, mapDispatchToProps) => {
   const stateToProps = state => {
     const newState = {
-      params: !!state.nav ? getCurrentRoute(state.nav).params : null
+      params: state.nav ? getCurrentRoute(state.nav).params : null
     };
 
     return mapStateToProps

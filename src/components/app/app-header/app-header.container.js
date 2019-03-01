@@ -1,9 +1,14 @@
-import { reduxConnect } from '../../../utils';
+import { reduxConnect, getCurrentRoute } from '../../../utils';
 import AppHeader from './app-header';
 
-const mapStateToProps = state => ({
-  title: state.app.title,
-  subTitle: state.app.subTitle
-});
+const mapStateToProps = state => {
+  const currentRoute = getCurrentRoute(state.nav);
+
+  return {
+    title: currentRoute.params.title || state.app.header.title,
+    subTitle: currentRoute.params.subTitle || state.app.header.subTitle,
+    backgroundColor: state.app.header.backgroundColor
+  };
+};
 
 export default reduxConnect(mapStateToProps)(AppHeader);

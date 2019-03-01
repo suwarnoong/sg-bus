@@ -8,12 +8,26 @@ type Props = {
 
 export default class BackgroundView extends PureComponent<Props> {
   render() {
-    const { backgroundColor, style, children } = this.props;
+    const {
+      backgroundColor,
+      headerBackgroundColor,
+      style,
+      children
+    } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
     if (backgroundColor) containerStyles.push({ backgroundColor });
 
-    return <View style={containerStyles}>{children}</View>;
+    const headerBackdropStyles = [styles.headerBackdrop];
+    if (headerBackgroundColor)
+      headerBackdropStyles.push({ backgroundColor: headerBackgroundColor });
+
+    return (
+      <View style={containerStyles}>
+        {children}
+        <View style={headerBackdropStyles} />
+      </View>
+    );
   }
 }
