@@ -1,5 +1,5 @@
-import { NavigationActions, StackActions } from 'react-navigation';
-import { PERSIST, REHYDRATE } from 'redux-persist';
+import { NavigationActions } from 'react-navigation';
+import { REHYDRATE } from 'redux-persist';
 import { getCurrentRoute } from '../../utils';
 import { reset, updateHeaderBackgroundColor } from '../actions';
 import rootRoutes from '../../routes/root.routes';
@@ -15,14 +15,18 @@ const onScreenChanged = (nav, dispatch) => {
     dispatch(updateHeaderBackgroundColor(data.headerBackgroundColor));
 };
 
+const isRehydratingNavigation = action =>
+  action.type === REHYDRATE && action.key === 'nav';
+
+const isNavigateOrBack = action =>
+  action.type === NavigationActions.NAVIGATE ||
+  action.type === NavigationActions.BACK;
+
 const screenTracking = ({ getState, dispatch }) => next => action => {
-  if (action.type === REHYDRATE && action.key === 'nav') {
+  if (isRehydratingNavigation(action)) {
     onScreenChanged(action.payload, dispatch);
     return next(action);
-  } else if (
-    action.type === NavigationActions.NAVIGATE ||
-    action.type === NavigationActions.BACK
-  ) {
+  } else if (isNavigateOrBack(action)) {
     const currentScreen = getCurrentRoute(getState().nav);
     const result = next(action);
     const nextScreen = getCurrentRoute(getState().nav);
