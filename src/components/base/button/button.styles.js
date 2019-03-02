@@ -43,8 +43,11 @@ export default StyleSheet.create({
   disabledLable: {
     color: '#FFFFFF'
   },
-  icon: {
-    width: 40,
-    alignItems: 'center'
+  icon: {},
+  startIcon: {
+    marginRight: 7
+  },
+  endIcon: {
+    marginLeft: 7
   }
 });

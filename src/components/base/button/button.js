@@ -22,7 +22,8 @@ export default class Button extends PureComponent<Props> {
   static ICON_PLACEMENT_END = 'end';
 
   static defaultProps = {
-    type: 'default'
+    type: 'default', // TYPE_DEFAULT
+    iconPlacement: 'start' // ICON_PLACEMENT_START
   };
 
   handlePress = _ => {
@@ -34,10 +35,12 @@ export default class Button extends PureComponent<Props> {
   };
 
   renderIcon = _ => {
-    const { Icon } = this.props;
+    const { Icon, iconPlacement } = this.props;
+    const iconStyles = [styles.icon, styles[`${iconPlacement}Icon`]];
+
     if (Icon) {
       return (
-        <View style={styles.icon}>
+        <View style={iconStyles}>
           <Icon size={16} />
         </View>
       );
