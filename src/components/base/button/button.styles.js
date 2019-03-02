@@ -2,9 +2,9 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    height: 45,
-    width: '100%',
+    minHeight: 45,
     borderRadius: 10,
+    paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center'
@@ -29,10 +29,18 @@ export default StyleSheet.create({
     borderColor: '#4A4A4A',
     backgroundColor: '#FFFFFF'
   },
+  clearContainer: {
+    borderWidth: 0,
+    borderColor: 'transparent',
+    backgroundColor: 'transparent'
+  },
   disabledContainer: {
     borderWidth: 1,
     borderColor: '#DDDDDD',
     backgroundColor: '#DDDDDD'
+  },
+  topIconContainer: {
+    flexDirection: 'column'
   },
   label: {
     color: '#FFFFFF'
@@ -40,14 +48,20 @@ export default StyleSheet.create({
   plainLabel: {
     color: '#4A4A4A'
   },
+  clearLabel: {
+    color: '#4A4A4A'
+  },
   disabledLable: {
     color: '#FFFFFF'
   },
-  icon: {},
-  startIcon: {
+  leftIconLabel: {
+    marginLeft: 7
+  },
+  rightIconLabel: {
     marginRight: 7
   },
-  endIcon: {
-    marginLeft: 7
-  }
+  topIconLabel: {
+    marginTop: 7
+  },
+  icon: {}
 });

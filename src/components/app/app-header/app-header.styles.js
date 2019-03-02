@@ -12,7 +12,8 @@ export default StyleSheet.create({
   leftPanel: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    paddingVertical: 10
   },
   rightPanel: {
     flexDirection: 'row',
@@ -39,6 +40,7 @@ export default StyleSheet.create({
     color: '#FFFFFF'
   },
   backIcon: {
-    marginRight: 3
+    marginRight: 3,
+    padding: 5
   }
 });

@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
-import { Label, View } from '../../base';
+import { Button, Label, View } from '../../base';
+import { StarOutlineIcon } from '../../../icons';
 import { ArrivalTimes } from '../arrival-times';
 import { ArrivalTime } from '../../../types.d.js';
 import styles from './bus-arrival.styles.js';
@@ -21,9 +22,21 @@ export default class BusArrival extends PureComponent<Props> {
     return (
       <View style={containerStyles}>
         <View style={styles.row}>
-          <Label size={30} weight={Label.WEIGHT_DEMI_BOLD} style={styles.fill}>
-            {serviceNo}
-          </Label>
+          <View style={[styles.row, styles.fill]}>
+            <Label
+              size={30}
+              weight={Label.WEIGHT_DEMI_BOLD}
+              style={styles.serviceNo}
+            >
+              {serviceNo}
+            </Label>
+            <Button
+              Icon={StarOutlineIcon}
+              iconSize={20}
+              type={Button.TYPE_CLEAR}
+            />
+          </View>
+
           <ArrivalTimes
             nextBus={nextBus}
             nextBus2={nextBus2}

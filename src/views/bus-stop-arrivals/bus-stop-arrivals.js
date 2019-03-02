@@ -7,9 +7,20 @@ import {
   H3,
   Label,
   ScreenView,
-  Small
+  Small,
+  Button,
+  ButtonIconLeft,
+  ButtonIconRight,
+  ToolbarItem,
+  View
 } from '../../components';
 import styles from './bus-stop-arrivals.styles.js';
+import {
+  StarFilledIcon,
+  StarOutlineIcon,
+  ChevronDownIcon,
+  ArrowRightIcon
+} from '../../icons';
 
 type Props = {};
 
@@ -28,7 +39,7 @@ export default class BusStopArrivals extends PureComponent<Props> {
 
     return (
       <ScreenView style={containerStyles}>
-        <BusArrivalList list={arrivalList} />
+        <BusArrivalList style={styles.fill} list={arrivalList} />
       </ScreenView>
     );
   }

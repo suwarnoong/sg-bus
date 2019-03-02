@@ -13,6 +13,9 @@ export default StyleSheet.create({
   fill: {
     flex: 1
   },
+  serviceNo: {
+    width: 90
+  },
   busStopRoadInfo: {
     marginTop: 5
   }
