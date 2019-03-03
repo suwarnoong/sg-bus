@@ -9,7 +9,8 @@ type Props = {
   serviceNo: string,
   nextBus: ArrivalTime,
   nextBus2: ArrivalTime,
-  nextBus3: ArrivalTime
+  nextBus3: ArrivalTime,
+  style: { [string]: mixed }
 };
 
 export default class BusArrival extends PureComponent<Props> {

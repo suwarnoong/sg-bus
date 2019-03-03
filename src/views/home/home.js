@@ -10,10 +10,22 @@ import {
 import NearestBusStops from '../../fragments/nearest-bus-stops';
 import styles from './home.styles.js';
 
-type Props = {};
+type Props = {
+  routes: Array<mixed>,
+  services: Array<mixed>,
+  stops: Array<mixed>,
+  getRoutes: () => void,
+  getServices: () => void,
+  getStops: () => void,
+  style: { [string]: mixed }
+};
 
-export default class Home extends PureComponent<Props> {
-  constructor(props) {
+type State = {
+  selectedTab: string
+};
+
+export default class Home extends PureComponent<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -32,7 +44,7 @@ export default class Home extends PureComponent<Props> {
       this.props.getStops();
   }
 
-  renderTabs = (initialTab = 0) => {
+  renderTabs = (initialTab: number = 0) => {
     return (
       <View style={{ alignItems: 'flex-start', paddingBottom: 10 }}>
         <View style={{ width: 200 }}>

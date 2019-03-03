@@ -9,7 +9,8 @@ type Props = {
   roadName: string,
   distance: number,
   routes: Array<any>,
-  onPress: Function
+  onPress: Function,
+  style: { [string]: mixed }
 };
 
 export default class BusStop extends PureComponent<Props> {

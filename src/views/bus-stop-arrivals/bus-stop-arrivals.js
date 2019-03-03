@@ -22,7 +22,12 @@ import {
   ArrowRightIcon
 } from '../../icons';
 
-type Props = {};
+type Props = {
+  params: { [string]: mixed },
+  arrivals: { [string]: Array<mixed> },
+  getArrivals: (busStopCode: string) => void,
+  style: { [string]: mixed }
+};
 
 export default class BusStopArrivals extends PureComponent<Props> {
   componentWillMount() {
