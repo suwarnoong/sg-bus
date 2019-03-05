@@ -15,49 +15,39 @@ const initialState = {
 };
 
 const updateBackgroundColor = (state, action) => {
-  return {
-    ...state,
+  return Object.assign({}, state, {
     backgroundColor: action.backgroundColor
-  };
+  });
 };
 
 const updateHeaderTitle = (state, action) => {
-  return {
-    ...state,
-    header: {
-      ...state.header,
-      title: action.title,
-      subTitle: action.subTitle || ''
-    }
-  };
+  const header = Object.assign({}, state.header, {
+    title: action.title,
+    subTitle: action.subTitle || ''
+  });
+
+  return Object.assign({}, state, { header });
 };
 
 const updateHeaderBackgroundColor = (state, action) => {
-  return {
-    ...state,
-    header: {
-      ...state.header,
-      backgroundColor: action.backgroundColor
-    }
-  };
+  const header = Object.assign({}, state.header, {
+    backgroundColor: action.backgroundColor
+  });
+
+  return Object.assign({}, state, { header });
 };
 
 const updateInset = (state, action) => {
-  return {
-    ...state,
-    inset: {
-      ...state.inset,
-      [action.inset.type]: action.inset.value
-    }
-  };
+  const inset = Object.assign({}, state.inset, {
+    [action.inset.type]: action.inset.value
+  });
+  return Object.assign({}, state, { inset });
 };
 
 const reset = (state, action) => {
-  return {
-    ...initialState,
-    header: { ...initialState.header },
-    inset: { ...initialState.inset }
-  };
+  const header = Object.assign({}, initialState.header);
+  const inset = Object.assign({}, initialState.inset);
+  return Object.assign({}, initialState, { header, inset });
 };
 
 const appReducer = createReducer(initialState, {

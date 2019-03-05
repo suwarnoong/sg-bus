@@ -27,11 +27,10 @@ const updateServices = (state, action) => {
       ? true
       : false;
 
-  return {
-    ...state,
+  return Object.assign({}, state, {
     services: action.services,
     persisted
-  };
+  });
 };
 
 const updateRoutes = (state, action) => {
@@ -43,11 +42,10 @@ const updateRoutes = (state, action) => {
       ? true
       : false;
 
-  return {
-    ...state,
+  return Object.assign({}, state, {
     routes: action.routes,
     persisted
-  };
+  });
 };
 
 const updateStops = (state, action) => {
@@ -59,33 +57,28 @@ const updateStops = (state, action) => {
       ? true
       : false;
 
-  return {
-    ...state,
+  return Object.assign({}, state, {
     stops: action.stops,
     persisted
-  };
+  });
 };
 
 const updateArrivals = (state, action) => {
-  return {
-    ...state,
-    arrivals: {
-      ...state.arrivals,
-      [action.busStopNumber]: action.arrivals
-    }
-  };
+  const arrivals = Object.assign({}, state.arrivals, {
+    [action.busStopNumber]: action.arrivals
+  });
+
+  return Object.assign({}, state, { arrivals });
 };
 
 const updateNearest = (state, action) => {
-  const nearest = map(item => ({
-    ...item,
-    routes: state.routes.filter(i => i.BusStopCode === item.BusStopCode)
-  }))(action.nearest);
+  const nearest = map(item =>
+    Object.assign({}, item, {
+      routes: state.routes.filter(i => i.BusStopCode === item.BusStopCode)
+    })
+  )(action.nearest);
 
-  return {
-    ...state,
-    nearest
-  };
+  return Object.assign({}, state, { nearest });
 };
 
 const busReducer = createReducer(initialState, {
