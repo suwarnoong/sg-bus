@@ -9,8 +9,8 @@ export const getNearestStops = position => {
       .map(busStop =>
         Object.assign({}, busStop, {
           distance: distance(position, {
-            latitude: busStop.Latitude,
-            longitude: busStop.Longitude
+            latitude: busStop.latitude,
+            longitude: busStop.longitude
           })
         })
       )

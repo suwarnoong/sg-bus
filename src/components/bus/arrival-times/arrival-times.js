@@ -72,12 +72,12 @@ export default class ArrivalTimes extends PureComponent<Props> {
       >
         {arr.map(index => {
           const arrival = arrivals[index];
-          if (arrival && arrival.EstimatedArrival !== '') {
+          if (arrival && arrival.estimatedArrival !== '') {
             count++;
             return this.renderArrivalTime(
               index,
-              arrival.EstimatedArrival,
-              arrival.Load
+              arrival.estimatedArrival,
+              arrival.load
             );
           } else {
             return <View key={index} width={arrivalWidth} />;

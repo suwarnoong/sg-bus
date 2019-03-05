@@ -76,9 +76,9 @@ export default class NearestBusStops extends PureComponent<Props> {
         list={nearest}
         onPress={item => {
           this.props.navigate('BusStopArrivals', {
-            title: item.Description,
-            subTitle: `${item.RoadName}    ${item.BusStopCode}`,
-            busStopCode: item.BusStopCode
+            title: item.description,
+            subTitle: `${item.roadName}    ${item.busStopCode}`,
+            busStopCode: item.busStopCode
           });
         }}
         style={containerStyles}

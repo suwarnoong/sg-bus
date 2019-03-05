@@ -11,7 +11,7 @@ export const getArrivals = busStopCode => {
         dispatch({
           type: actions.UPDATE_ARRIVALS,
           busStopCode,
-          arrivals: data.Services
+          arrivals: data.services
         });
       });
   };

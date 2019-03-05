@@ -28,7 +28,7 @@ export default class BusArrival extends PureComponent<Props> {
 
   isSaved = () => {
     const { busStopCode, serviceNo, savedList } = this.props;
-    return !!find({ busStopCode, serviceNo })(savedList) ? true : false;
+    return !!find({ busStopCode, serviceNo }, savedList) ? true : false;
   };
 
   render() {

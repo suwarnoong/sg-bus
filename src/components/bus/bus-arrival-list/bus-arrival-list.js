@@ -8,10 +8,10 @@ type Props = {
   Container: React.Element,
   busStopCode: string,
   list: Array<{
-    ServiceNo: string,
-    NextBus: Array<ArrivalTime>,
-    NextBus2: Array<ArrivalTime>,
-    NextBus3: Array<ArrivalTime>
+    serviceNo: string,
+    nextBus: Array<ArrivalTime>,
+    nextBus2: Array<ArrivalTime>,
+    nextBus3: Array<ArrivalTime>
   }>,
   savedList: Array<{ busStopCode: string, serviceNo: string }>,
   onSaved: Function
@@ -39,15 +39,15 @@ export default class BusArrivalList extends PureComponent<Props> {
       <Container style={containerStyles} padding={0}>
         <FlatList
           data={list}
-          keyExtractor={(item, index) => item.ServiceNo}
+          keyExtractor={(item, index) => item.serviceNo}
           extraData={savedList}
           renderItem={({ item }) => (
             <BusArrival
               busStopCode={busStopCode}
-              serviceNo={item.ServiceNo}
-              nextBus={item.NextBus}
-              nextBus2={item.NextBus2}
-              nextBus3={item.NextBus3}
+              serviceNo={item.serviceNo}
+              nextBus={item.nextBus}
+              nextBus2={item.nextBus2}
+              nextBus3={item.nextBus3}
               savedList={savedList}
               onSaved={this.handleSaved}
             />

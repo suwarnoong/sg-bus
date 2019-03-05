@@ -46,14 +46,14 @@ export default class BusStop extends PureComponent<Props> {
             return (<BusArrivalCompact style={{marginRight: 3}} serviceNo={ServiceNo} key={ServiceNo} />);
           })} */}
           {routes &&
-            routes.map(({ ServiceNo }) => {
+            routes.map(({ serviceNo }) => {
               return (
                 <Label
                   weight={Label.WEIGHT_BOLD}
                   style={styles.bus}
-                  key={ServiceNo}
+                  key={serviceNo}
                 >
-                  {ServiceNo}
+                  {serviceNo}
                 </Label>
               );
             })}

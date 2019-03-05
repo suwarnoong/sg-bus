@@ -3,13 +3,8 @@ import storage from 'redux-persist/lib/storage';
 import createReducer from './create-reducer';
 import * as actions from '../actions/types';
 
-import pipe from 'lodash/fp/pipe';
-import groupBy from 'lodash/fp/groupBy';
-import sortBy from 'lodash/fp/sortBy';
-import keyBy from 'lodash/fp/keyBy';
 import map from 'lodash/fp/map';
 import concat from 'lodash/fp/concat';
-import find from 'lodash/fp/find';
 import filter from 'lodash/fp/filter';
 
 const initialState = {
@@ -78,7 +73,7 @@ const updateArrivals = (state, action) => {
 const updateNearest = (state, action) => {
   const nearest = map(item =>
     Object.assign({}, item, {
-      routes: state.routes.filter(i => i.BusStopCode === item.BusStopCode)
+      routes: state.routes.filter(i => i.busStopCode === item.busStopCode)
     })
   )(action.nearest);
 

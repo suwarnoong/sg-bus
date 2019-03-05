@@ -4,3 +4,4 @@ export { default as getRoute } from './get-route';
 export { default as reduxConnect } from './redux-connect';
 export { default as requestLoop } from './request-loop';
 export { default as request } from './request';
+export { default as toCamelCase } from './to-camelcase';

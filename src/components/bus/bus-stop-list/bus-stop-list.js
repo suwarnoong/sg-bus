@@ -6,9 +6,9 @@ import styles from './bus-stop-list.styles.js';
 type Props = {
   Container: React.Element,
   list: Array<{
-    BusStopCode: string,
-    RoadName: string,
-    Description: string,
+    busStopCode: string,
+    roadName: string,
+    description: string,
     distance: number
   }>,
   onPress: Function
@@ -36,12 +36,12 @@ export default class BusStopList extends PureComponent<Props> {
       <Container style={containerStyles} padding={0}>
         <FlatList
           data={list}
-          keyExtractor={(item, index) => item.BusStopCode}
+          keyExtractor={(item, index) => item.busStopCode}
           renderItem={({ item }) => (
             <BusStop
-              busStopCode={item.BusStopCode}
-              description={item.Description}
-              roadName={item.RoadName}
+              busStopCode={item.busStopCode}
+              description={item.description}
+              roadName={item.roadName}
               distance={item.distance}
               routes={item.routes}
               onPress={() => this.handlePress(item)}
