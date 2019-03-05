@@ -24,7 +24,8 @@ const isNavigateOrBack = action =>
 
 const screenTracking = ({ getState, dispatch }) => next => action => {
   if (isRehydratingNavigation(action)) {
-    onScreenChanged(action.payload, dispatch);
+    const nav = action.payload || getState().nav;
+    onScreenChanged(nav, dispatch);
     return next(action);
   } else if (isNavigateOrBack(action)) {
     const currentScreen = getCurrentRoute(getState().nav);

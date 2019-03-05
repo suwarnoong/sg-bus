@@ -3,6 +3,7 @@ import { reduxConnect } from '../../utils';
 import NearestBusStops from './nearest-bus-stops';
 
 const mapStateToProps = state => ({
+  persisted: state.bus.persisted,
   nearest: state.bus.nearest,
   nav: state.nav
 });

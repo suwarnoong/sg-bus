@@ -1,11 +1,18 @@
 import * as actions from './types';
 import { requestLoop } from '../../../utils';
 
-export const getServices = () => {
+export const getServices = force => {
   return async (dispatch, getState) => {
-    const data = await requestLoop.get(
-      'http://datamall2.mytransport.sg/ltaodataservice/BusServices'
-    );
-    dispatch({ type: actions.UPDATE_SERVICES, services: data });
+    let services = getState().bus.services;
+    if (!services || services.length === 0 || force) {
+      if (force) {
+        services = await requestLoop.get(
+          'http://datamall2.mytransport.sg/ltaodataservice/BusServices'
+        );
+      } else {
+        services = require('../../../stubs/bus/services.json');
+      }
+    }
+    dispatch({ type: actions.UPDATE_SERVICES, services });
   };
 };

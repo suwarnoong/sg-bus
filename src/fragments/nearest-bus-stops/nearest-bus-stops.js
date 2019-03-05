@@ -25,7 +25,16 @@ export default class NearestBusStops extends PureComponent<Props> {
 
     // navigator.geolocation.requestAuthorization();
     // navigator.geolocation.getCurrentPosition(this.onLocationSuccess, this.onLocationError, { enableHighAccuracy: true });
-    this.watchGeolocation();
+
+    if (this.props.persisted) {
+      this.watchGeolocation();
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.persisted) {
+      this.watchGeolocation();
+    }
   }
 
   componentWillUnmount() {
