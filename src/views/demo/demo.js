@@ -20,7 +20,7 @@ export default class Demo extends Component {
     super(props);
 
     this.state = {
-      busStopNumber: '11149',
+      busStopCode: '11149',
       timerId: null,
       watchId: null,
       latitude: null,
@@ -80,12 +80,12 @@ export default class Demo extends Component {
   };
 
   handlePressArrivals = () => {
-    this.props.getArrivals(this.state.busStopNumber);
+    this.props.getArrivals(this.state.busStopCode);
     this.resetTick();
   };
 
   tick = () => {
-    this.props.getArrivals(this.state.busStopNumber);
+    this.props.getArrivals(this.state.busStopCode);
   };
 
   resetTick = () => {
@@ -96,7 +96,7 @@ export default class Demo extends Component {
 
   render() {
     const { arrivals, services, nearest } = this.props;
-    const { busStopNumber, latitude, longitude } = this.state;
+    const { busStopCode, latitude, longitude } = this.state;
 
     console.log('lat', latitude, 'lng', longitude);
 
@@ -106,16 +106,16 @@ export default class Demo extends Component {
           Testing
         </H1>
         <TextInput
-          value={busStopNumber}
-          onChangeText={busStopNumber => {
-            this.setState({ busStopNumber });
+          value={busStopCode}
+          onChangeText={busStopCode => {
+            this.setState({ busStopCode });
           }}
         />
         <Button onPress={this.handlePressArrivals} title="Get Arrivals" />
 
         {arrivals &&
-          arrivals[busStopNumber] &&
-          arrivals[busStopNumber].map(item => {
+          arrivals[busStopCode] &&
+          arrivals[busStopCode].map(item => {
             return (
               <BusArrivalOld
                 key={item.ServiceNo}

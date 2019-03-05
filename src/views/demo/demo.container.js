@@ -17,7 +17,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getArrivals: busStopNumber => dispatch(getArrivals(busStopNumber)),
+  getArrivals: busStopCode => dispatch(getArrivals(busStopCode)),
   getServices: _ => dispatch(getServices()),
   getRoutes: _ => dispatch(getRoutes()),
   getStops: _ => dispatch(getStops()),

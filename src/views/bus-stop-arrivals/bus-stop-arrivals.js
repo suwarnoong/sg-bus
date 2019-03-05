@@ -34,8 +34,20 @@ export default class BusStopArrivals extends PureComponent<Props> {
     this.props.getArrivals(this.props.params.busStopCode);
   }
 
+  handleSaved = (isSaving, { busStopCode, serviceNo }) => {
+    const { addToSaved, removeFromSaved } = this.props;
+    isSaving
+      ? addToSaved({ busStopCode, serviceNo })
+      : removeFromSaved({ busStopCode, serviceNo });
+  };
+
   render() {
-    const { arrivals, style } = this.props;
+    const {
+      arrivals,
+      saved,
+      style,
+      params: { busStopCode }
+    } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
@@ -44,7 +56,13 @@ export default class BusStopArrivals extends PureComponent<Props> {
 
     return (
       <ScreenView style={containerStyles}>
-        <BusArrivalList style={styles.fill} list={arrivalList} />
+        <BusArrivalList
+          style={styles.fill}
+          list={arrivalList}
+          savedList={saved}
+          busStopCode={busStopCode}
+          onSaved={this.handleSaved}
+        />
       </ScreenView>
     );
   }

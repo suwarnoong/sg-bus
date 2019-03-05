@@ -1,19 +1,36 @@
 import React, { PureComponent } from 'react';
 import { Button, Label, View } from '../../base';
-import { StarOutlineIcon } from '../../../icons';
+import { StarOutlineIcon, StarFilledIcon } from '../../../icons';
 import { ArrivalTimes } from '../arrival-times';
 import { ArrivalTime } from '../../../types.d.js';
 import styles from './bus-arrival.styles.js';
 
+import find from 'lodash/fp/find';
+
 type Props = {
+  busStopCode: string,
   serviceNo: string,
   nextBus: ArrivalTime,
   nextBus2: ArrivalTime,
   nextBus3: ArrivalTime,
+  savedList: Array<{ busStopCode: string, serviceNo: string }>,
   style: { [string]: mixed }
 };
 
 export default class BusArrival extends PureComponent<Props> {
+  handleSaved = () => {
+    const { onSaved, busStopCode, serviceNo } = this.props;
+    if (typeof onSaved === 'function') {
+      const isSaving = !this.isSaved();
+      onSaved(isSaving, { busStopCode, serviceNo });
+    }
+  };
+
+  isSaved = () => {
+    const { busStopCode, serviceNo, savedList } = this.props;
+    return !!find({ busStopCode, serviceNo })(savedList) ? true : false;
+  };
+
   render() {
     const { serviceNo, nextBus, nextBus2, nextBus3, style } = this.props;
 
@@ -32,9 +49,10 @@ export default class BusArrival extends PureComponent<Props> {
               {serviceNo}
             </Label>
             <Button
-              Icon={StarOutlineIcon}
+              Icon={this.isSaved() ? StarFilledIcon : StarOutlineIcon}
               iconSize={20}
               type={Button.TYPE_CLEAR}
+              onPress={this.handleSaved}
             />
           </View>
 

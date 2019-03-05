@@ -8,6 +8,9 @@ import groupBy from 'lodash/fp/groupBy';
 import sortBy from 'lodash/fp/sortBy';
 import keyBy from 'lodash/fp/keyBy';
 import map from 'lodash/fp/map';
+import concat from 'lodash/fp/concat';
+import find from 'lodash/fp/find';
+import filter from 'lodash/fp/filter';
 
 const initialState = {
   persisted: false,
@@ -15,7 +18,8 @@ const initialState = {
   stops: [],
   routes: [],
   arrivals: {},
-  nearest: []
+  nearest: [],
+  saved: []
 };
 
 const updateServices = (state, action) => {
@@ -65,7 +69,7 @@ const updateStops = (state, action) => {
 
 const updateArrivals = (state, action) => {
   const arrivals = Object.assign({}, state.arrivals, {
-    [action.busStopNumber]: action.arrivals
+    [action.busStopCode]: action.arrivals
   });
 
   return Object.assign({}, state, { arrivals });
@@ -81,12 +85,29 @@ const updateNearest = (state, action) => {
   return Object.assign({}, state, { nearest });
 };
 
+const addToSaved = (state, action) => {
+  const saved = concat(state.saved, [
+    { busStopCode: action.busStopCode, serviceNo: action.serviceNo }
+  ]);
+  return Object.assign({}, state, { saved });
+};
+
+const removeFromSaved = (state, action) => {
+  const saved = filter(
+    i =>
+      i.busStopCode !== action.busStopCode || i.serviceNo !== action.serviceNo
+  )(state.saved);
+  return Object.assign({}, state, { saved });
+};
+
 const busReducer = createReducer(initialState, {
   [actions.UPDATE_ARRIVALS]: updateArrivals,
   [actions.UPDATE_SERVICES]: updateServices,
   [actions.UPDATE_ROUTES]: updateRoutes,
   [actions.UPDATE_STOPS]: updateStops,
-  [actions.UPDATE_NEAREST]: updateNearest
+  [actions.UPDATE_NEAREST]: updateNearest,
+  [actions.ADD_TO_SAVED]: addToSaved,
+  [actions.REMOVE_FROM_SAVED]: removeFromSaved
 });
 
 const busPersistConfig = {

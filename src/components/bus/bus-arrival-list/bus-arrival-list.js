@@ -6,13 +6,15 @@ import styles from './bus-arrival-list.styles.js';
 
 type Props = {
   Container: React.Element,
+  busStopCode: string,
   list: Array<{
     ServiceNo: string,
     NextBus: Array<ArrivalTime>,
     NextBus2: Array<ArrivalTime>,
     NextBus3: Array<ArrivalTime>
   }>,
-  onPress: Function
+  savedList: Array<{ busStopCode: string, serviceNo: string }>,
+  onSaved: Function
 };
 
 export default class BusArrivalList extends PureComponent<Props> {
@@ -20,15 +22,15 @@ export default class BusArrivalList extends PureComponent<Props> {
     Container: Card
   };
 
-  handlePress = item => {
-    const { onPress } = this.props;
-    if (typeof onPress === 'function') {
-      onPress(item);
+  handleSaved = (isSaving, { busStopCode, serviceNo }) => {
+    const { onSaved } = this.props;
+    if (typeof onSaved === 'function') {
+      onSaved(isSaving, { busStopCode, serviceNo });
     }
   };
 
   render() {
-    const { Container, list, style } = this.props;
+    const { Container, busStopCode, list, savedList, style } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
@@ -38,13 +40,16 @@ export default class BusArrivalList extends PureComponent<Props> {
         <FlatList
           data={list}
           keyExtractor={(item, index) => item.ServiceNo}
+          extraData={savedList}
           renderItem={({ item }) => (
             <BusArrival
+              busStopCode={busStopCode}
               serviceNo={item.ServiceNo}
               nextBus={item.NextBus}
               nextBus2={item.NextBus2}
               nextBus3={item.NextBus3}
-              onPress={() => this.handlePress(item)}
+              savedList={savedList}
+              onSaved={this.handleSaved}
             />
           )}
         />
