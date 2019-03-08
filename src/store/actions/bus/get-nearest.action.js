@@ -6,14 +6,13 @@ export const getNearestStops = position => {
     const busStops = getState().bus.stops;
 
     const nearestStops = busStops
-      .map(busStop =>
-        Object.assign({}, busStop, {
-          distance: distance(position, {
-            latitude: busStop.latitude,
-            longitude: busStop.longitude
-          })
+      .map(busStop => ({
+        ...busStop,
+        distance: distance(position, {
+          latitude: busStop.latitude,
+          longitude: busStop.longitude
         })
-      )
+      }))
       .filter(busStop => busStop.distance < 0.3)
       .sort((a, b) => (a.distance < b.distance ? -1 : 1));
 

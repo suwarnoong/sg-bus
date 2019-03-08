@@ -8,7 +8,7 @@ type Props = {
   description: string,
   roadName: string,
   distance: number,
-  routes: Array<any>,
+  routesByStop: Array<any>,
   onPress: Function,
   style: { [string]: mixed }
 };
@@ -27,13 +27,15 @@ export default class BusStop extends PureComponent<Props> {
       description,
       roadName,
       distance,
-      routes,
+      routesByStop,
       style,
       onPress
     } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
+
+    const services = routesByStop[busStopCode];
 
     return (
       <TouchableOpacity style={containerStyles} onPress={this.handlePress}>
@@ -42,11 +44,8 @@ export default class BusStop extends PureComponent<Props> {
           info={{ description, busStopCode, roadName, distance }}
         />
         <View style={styles.routesContainer}>
-          {/* {routes && routes.map(({ ServiceNo }) => {
-            return (<BusArrivalCompact style={{marginRight: 3}} serviceNo={ServiceNo} key={ServiceNo} />);
-          })} */}
-          {routes &&
-            routes.map(({ serviceNo }) => {
+          {services &&
+            services.map(({ serviceNo }) => {
               return (
                 <Label
                   weight={Label.WEIGHT_BOLD}

@@ -12,6 +12,7 @@ const initialState = {
   services: [],
   stops: [],
   routes: [],
+  routesByStop: {},
   arrivals: {},
   nearest: [],
   saved: []
@@ -41,8 +42,15 @@ const updateRoutes = (state, action) => {
       ? true
       : false;
 
+  const routesByStop = {};
+  action.routes.forEach(r => {
+    routesByStop[r.busStopCode] = routesByStop[r.busStopCode] || [];
+    routesByStop[r.busStopCode].push(r);
+  });
+
   return Object.assign({}, state, {
     routes: action.routes,
+    routesByStop,
     persisted
   });
 };
@@ -71,13 +79,13 @@ const updateArrivals = (state, action) => {
 };
 
 const updateNearest = (state, action) => {
-  const nearest = map(item =>
-    Object.assign({}, item, {
-      routes: state.routes.filter(i => i.busStopCode === item.busStopCode)
-    })
-  )(action.nearest);
+  // const nearest = map(item =>
+  //   Object.assign({}, item, {
+  //     routes: state.routesByStop[item.busStopCode]
+  //   })
+  // )(action.nearest);
 
-  return Object.assign({}, state, { nearest });
+  return Object.assign({}, state, { nearest: action.nearest });
 };
 
 const addToSaved = (state, action) => {
@@ -108,7 +116,7 @@ const busReducer = createReducer(initialState, {
 const busPersistConfig = {
   key: 'bus',
   storage,
-  whitelist: ['services', 'routes', 'stops']
+  whitelist: ['services', 'routes', 'stops', 'saved']
 };
 
 const persistedBusReducer = persistReducer(busPersistConfig, busReducer);

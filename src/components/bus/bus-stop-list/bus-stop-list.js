@@ -43,7 +43,6 @@ export default class BusStopList extends PureComponent<Props> {
               description={item.description}
               roadName={item.roadName}
               distance={item.distance}
-              routes={item.routes}
               onPress={() => this.handlePress(item)}
             />
           )}
