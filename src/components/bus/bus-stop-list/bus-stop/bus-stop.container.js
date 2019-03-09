@@ -1,4 +1,4 @@
-import { reduxConnect } from '../../../utils';
+import { reduxConnect } from '../../../../utils';
 import BusStop from './bus-stop';
 
 const mapStateToProps = state => ({

@@ -1,6 +1,7 @@
 import Home from '../views/home';
 import Demo from '../views/demo';
 import BusStopArrivals from '../views/bus-stop-arrivals';
+import BusRoutes from '../views/bus-routes';
 
 export default {
   Home: {
@@ -17,6 +18,10 @@ export default {
   BusStopArrivals: {
     screen: BusStopArrivals,
     path: 'bus-stop-arrivals'
+  },
+  BusRoutes: {
+    screen: BusRoutes,
+    path: 'bus-routes'
   },
   Demo: {
     screen: Demo

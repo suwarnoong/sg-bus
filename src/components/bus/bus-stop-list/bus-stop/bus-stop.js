@@ -1,7 +1,15 @@
 import React, { PureComponent } from 'react';
 import styles from './bus-stop.styles.js';
-import { H1, H2, H3, Label, Small, TouchableOpacity, View } from '../../base';
-import { BusStopRoadInfo } from '../bus-stop-road-info/index.js';
+import {
+  H1,
+  H2,
+  H3,
+  Label,
+  Small,
+  TouchableOpacity,
+  View
+} from '../../../base';
+import { BusStopRoadInfo } from '../../bus-stop-road-info/index.js';
 
 type Props = {
   busStopCode: string,

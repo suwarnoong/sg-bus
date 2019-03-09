@@ -1,18 +1,13 @@
 import { reduxConnect } from '../../utils';
-import { getArrivals, addToSaved, removeFromSaved } from '../../store/actions';
+import { getArrivals } from '../../store/actions';
 import BusStopArrivals from './bus-stop-arrivals';
 
 const mapStateToProps = state => ({
-  arrivals: state.bus.arrivals,
-  saved: state.bus.saved
+  arrivals: state.bus.arrivals
 });
 
 const mapDispatchToProps = dispatch => ({
-  getArrivals: busStopCode => dispatch(getArrivals(busStopCode)),
-  addToSaved: ({ busStopCode, serviceNo }) =>
-    dispatch(addToSaved({ busStopCode, serviceNo })),
-  removeFromSaved: ({ busStopCode, serviceNo }) =>
-    dispatch(removeFromSaved({ busStopCode, serviceNo }))
+  getArrivals: busStopCode => dispatch(getArrivals(busStopCode))
 });
 
 export default reduxConnect(mapStateToProps, mapDispatchToProps)(
