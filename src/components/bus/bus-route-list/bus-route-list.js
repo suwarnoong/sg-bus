@@ -31,8 +31,10 @@ export default class BusRouteList extends PureComponent<Props> {
   handleScroll = event => {
     const { nativeEvent } = event;
     const { list } = this.props;
+    if (!list) return;
 
     const scrollY = nativeEvent.contentOffset.y;
+    if (scrollY < 0) return;
 
     const item = list[parseInt(scrollY / 80)];
     if (item) {
