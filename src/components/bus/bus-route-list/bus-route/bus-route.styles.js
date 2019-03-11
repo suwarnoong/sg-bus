@@ -34,6 +34,9 @@ export default StyleSheet.create({
     borderColor: '#9B9B9B',
     backgroundColor: 'white'
   },
+  currentBullet: {
+    borderColor: '#d35400'
+  },
   routeConnector: {
     height,
     width: routeLineSize,

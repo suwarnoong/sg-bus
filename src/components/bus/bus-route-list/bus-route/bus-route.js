@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Label, Small, View } from '../../../base';
+import { Label, Small, TouchableOpacity, View } from '../../../base';
 import { BusStopRoadInfo } from '../../../bus/bus-stop-road-info';
 import styles from './bus-route.styles.js';
 
@@ -10,21 +10,33 @@ type Props = {
   distance: number,
   stopsByStop: Array<mixed>,
   isFirst: boolean,
-  isLast: boolean
+  isLast: boolean,
+  isCurrentLocation: boolean,
+  onLocationPress: Function
 };
 
 export default class BusRoute extends PureComponent<Props> {
+  handleBulletPress = ({ busStopCode, longitude, latitude }) => {
+    const { onLocationPress } = this.props;
+    if (typeof onLocationPress === 'function') {
+      onLocationPress({ busStopCode, longitude, latitude });
+    }
+  };
+
   render() {
     const {
       busStopCode,
       distance,
+      isCurrentLocation,
       isFirst,
       isLast,
       stopsByStop,
       style
     } = this.props;
 
-    const { description, roadName } = stopsByStop[busStopCode];
+    const { description, roadName, longitude, latitude } = stopsByStop[
+      busStopCode
+    ];
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
@@ -32,6 +44,9 @@ export default class BusRoute extends PureComponent<Props> {
     const routeConnectorStyles = [styles.routeConnector];
     if (isFirst) routeConnectorStyles.push(styles.firstRouteConnector);
     if (isLast) routeConnectorStyles.push(styles.lastRouteConnector);
+
+    const bulletStyles = [styles.bullet];
+    if (isCurrentLocation) bulletStyles.push(styles.currentBullet);
 
     return (
       <View style={containerStyles}>
@@ -41,7 +56,12 @@ export default class BusRoute extends PureComponent<Props> {
         />
         <View style={styles.distanceContainer}>
           <View>
-            <View style={styles.bullet} />
+            <TouchableOpacity
+              style={bulletStyles}
+              onPress={() =>
+                this.handleBulletPress({ busStopCode, longitude, latitude })
+              }
+            />
             <View style={routeConnectorStyles} />
           </View>
           <Small weight={Label.WEIGHT_MEDIUM}>{distance.toFixed(1)}</Small>
