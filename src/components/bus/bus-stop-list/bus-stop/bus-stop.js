@@ -11,12 +11,14 @@ import {
 } from '../../../base';
 import { BusStopRoadInfo } from '../../bus-stop-road-info/index.js';
 
+import pick from 'lodash/fp/pick';
+
 type Props = {
   busStopCode: string,
   description: string,
   roadName: string,
   distance: number,
-  routesByStop: Array<any>,
+  routesByStop: Array<mixed>,
   onPress: Function,
   style: { [string]: mixed }
 };
@@ -49,7 +51,10 @@ export default class BusStop extends PureComponent<Props> {
       <TouchableOpacity style={containerStyles} onPress={this.handlePress}>
         <BusStopRoadInfo
           style={styles.busStopContainer}
-          info={{ description, busStopCode, roadName, distance }}
+          {...pick(
+            ['description', 'busStopCode', 'roadName', 'distance'],
+            this.props
+          )}
         />
         <View style={styles.routesContainer}>
           {services &&

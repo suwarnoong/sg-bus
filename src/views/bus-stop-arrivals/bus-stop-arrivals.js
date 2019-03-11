@@ -37,7 +37,6 @@ export default class BusStopArrivals extends PureComponent<Props> {
   render() {
     const {
       arrivals,
-      saved,
       style,
       params: { busStopCode }
     } = this.props;
@@ -52,9 +51,7 @@ export default class BusStopArrivals extends PureComponent<Props> {
         <BusArrivalList
           style={styles.fill}
           list={arrivalList}
-          savedList={saved}
           busStopCode={busStopCode}
-          onSaved={this.handleSaved}
         />
       </ScreenView>
     );

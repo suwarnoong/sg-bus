@@ -14,6 +14,7 @@ type Props = {
   nextBus2: ArrivalTime,
   nextBus3: ArrivalTime,
   saved: Array<mixed>,
+  stopsByStop: Array<mixed>,
   addToSaved: Function,
   removeFromSaved: Function,
   style: { [string]: mixed }
@@ -34,11 +35,13 @@ export default class BusArrival extends PureComponent<Props> {
   };
 
   handlePress = () => {
+    const { busStopCode, serviceNo, stopsByStop } = this.props;
+    const busStop = stopsByStop[busStopCode];
     this.props.navigate('BusRoutes', {
       title: serviceNo,
-      subTitle: `${description}`,
-      serviceNo: serviceNo,
-      busStopCode: busStopCode
+      subTitle: `${busStop.description}`,
+      serviceNo,
+      busStopCode
     });
   };
 

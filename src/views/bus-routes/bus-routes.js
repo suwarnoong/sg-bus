@@ -1,35 +1,43 @@
 import React, { PureComponent } from 'react';
 import styles from './bus-routes.styles.js';
-import { Card, FlatList, Label, View } from '../../components';
+import {
+  BusRouteList,
+  Card,
+  FlatList,
+  Label,
+  View,
+  ScreenView
+} from '../../components';
 
 type Props = {
   params: { [string]: mixed },
-  routes: { [string]: Array<mixed> },
+  routesByService: { [string]: Array<mixed> },
   style: { [string]: mixed }
 };
 
 export default class BusRoutes extends PureComponent<Props> {
   render() {
-    const { routes, style } = this.props;
+    const {
+      persisted,
+      routesByService,
+      params: { serviceNo },
+      style
+    } = this.props;
+
+    if (!persisted) return <ScreenView />;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
-    console.log(routes);
+    const routeList = routesByService[serviceNo];
 
     return (
-      <View style={containerStyles}>
-        <Card>
-          <FlatList
-            data={list}
-            keyExtractor={(item, index) => item.busStopCode}
-            renderItem={({ item }) => (
-              <View>
-                <Label>{item.busStopCode}</Label>
-              </View>
-            )}
-          />
-        </Card>
-      </View>
+      <ScreenView style={containerStyles}>
+        <BusRouteList
+          style={styles.fill}
+          list={routeList}
+          serviceNo={serviceNo}
+        />
+      </ScreenView>
     );
   }
 }

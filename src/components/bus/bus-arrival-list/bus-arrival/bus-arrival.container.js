@@ -3,7 +3,8 @@ import { addToSaved, removeFromSaved } from '../../../../store/actions';
 import BusArrival from './bus-arrival';
 
 const mapStateToProps = state => ({
-  saved: state.bus.saved
+  saved: state.bus.saved,
+  stopsByStop: state.bus.stopsByStop
 });
 
 const mapDispatchToProps = dispatch => ({

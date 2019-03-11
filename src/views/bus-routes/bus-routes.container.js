@@ -2,7 +2,8 @@ import { reduxConnect } from '../../utils';
 import BusRoutes from './bus-routes';
 
 const mapStateToProps = state => ({
-  routes: state.bus.routes
+  persisted: state.bus.persisted,
+  routesByService: state.bus.routesByService
 });
 
 const mapDispatchToProps = dispatch => ({});
