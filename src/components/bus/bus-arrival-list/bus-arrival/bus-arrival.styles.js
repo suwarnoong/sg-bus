@@ -16,7 +16,7 @@ export default StyleSheet.create({
   serviceNo: {
     width: 90
   },
-  busStopRoadInfo: {
+  busStopRoad: {
     marginTop: 5
   }
 });

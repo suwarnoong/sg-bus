@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import { Label, Small, View } from '../../../components/base';
-import styles from './bus-stop-road-info.styles.js';
+import { Label, Small, View } from '../../base';
+import styles from './bus-stop-road.styles.js';
 
 type Props = {
   description: string,
@@ -9,7 +9,7 @@ type Props = {
   distance: number
 };
 
-export default class BusStopRoadInfo extends PureComponent<Props> {
+export default class BusStopRoad extends PureComponent<Props> {
   render() {
     const { description, busStopCode, roadName, distance, style } = this.props;
 

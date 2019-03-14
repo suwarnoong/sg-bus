@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   View
 } from '../../../base';
-import { BusStopRoadInfo } from '../../bus-stop-road-info/index.js';
+import { BusStopRoad } from '../../bus-stop-road/index.js';
 
 import pick from 'lodash/fp/pick';
 
@@ -49,7 +49,7 @@ export default class BusStop extends PureComponent<Props> {
 
     return (
       <TouchableOpacity style={containerStyles} onPress={this.handlePress}>
-        <BusStopRoadInfo
+        <BusStopRoad
           style={styles.busStopContainer}
           {...pick(
             ['description', 'busStopCode', 'roadName', 'distance'],

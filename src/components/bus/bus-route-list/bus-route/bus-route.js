@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Label, Small, TouchableOpacity, View } from '../../../base';
-import { BusStopRoadInfo } from '../../../bus/bus-stop-road-info';
+import { BusStopRoad } from '../../../bus/bus-stop-road';
 import styles from './bus-route.styles.js';
 
 import pick from 'lodash/fp/pick';
@@ -50,7 +50,7 @@ export default class BusRoute extends PureComponent<Props> {
 
     return (
       <View style={containerStyles}>
-        <BusStopRoadInfo
+        <BusStopRoad
           style={styles.roadContainer}
           {...pick(['description', 'roadName'], stopsByStop[busStopCode])}
         />

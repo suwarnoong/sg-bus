@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import {
   ArrivalTimes,
-  BusStopRoadInfo,
+  BusStopRoad,
   BusArrivalList,
   Card,
   H3,

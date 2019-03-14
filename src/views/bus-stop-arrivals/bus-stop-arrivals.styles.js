@@ -8,7 +8,7 @@ export default StyleSheet.create({
   fill: {
     flex: 1
   },
-  busStopRoadInfo: {
+  busStopRoad: {
     marginTop: 5
   }
 });
