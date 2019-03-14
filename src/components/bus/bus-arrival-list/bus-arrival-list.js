@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Card, FlatList } from '../../base';
-import BusArrival from './bus-arrival';
+import BusArrival from '../bus-arrival';
 import { ArrivalTime } from '../../../types.d';
 import styles from './bus-arrival-list.styles.js';
 

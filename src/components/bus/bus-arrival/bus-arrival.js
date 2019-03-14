@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
-import { Button, Label, TouchableOpacity, View } from '../../../base';
-import { StarOutlineIcon, StarFilledIcon } from '../../../../icons';
-import ArrivalTimes from '../arrival-times';
-import { ArrivalTime } from '../../../../types.d.js';
+import { Button, Label, TouchableOpacity, View } from '../../base';
+import { StarOutlineIcon, StarFilledIcon } from '../../../icons';
+import ArrivalTimes from './arrival-times';
+import { ArrivalTime } from '../../../types.d.js';
 import styles from './bus-arrival.styles.js';
 
 import find from 'lodash/fp/find';

@@ -1,5 +1,5 @@
-import { reduxConnect } from '../../../../utils';
-import { addToSaved, removeFromSaved } from '../../../../store/actions';
+import { reduxConnect } from '../../../utils';
+import { addToSaved, removeFromSaved } from '../../../store/actions';
 import BusArrival from './bus-arrival';
 
 const mapStateToProps = state => ({
