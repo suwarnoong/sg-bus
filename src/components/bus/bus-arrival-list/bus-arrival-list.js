@@ -1,18 +1,13 @@
 import React, { PureComponent } from 'react';
 import { Card, FlatList } from '../../base';
 import BusArrival from '../bus-arrival';
-import { ArrivalTime } from '../../../types.d';
+import { IBusArrival } from '../../../types.d';
 import styles from './bus-arrival-list.styles.js';
 
 type Props = {
   Container: React.Element,
   busStopCode: string,
-  list: Array<{
-    serviceNo: string,
-    nextBus: Array<ArrivalTime>,
-    nextBus2: Array<ArrivalTime>,
-    nextBus3: Array<ArrivalTime>
-  }>
+  list: Array<IBusArrival>
 };
 
 export default class BusArrivalList extends PureComponent<Props> {

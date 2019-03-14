@@ -12,7 +12,6 @@ const initialState = {
   services: [],
   stops: [],
   routes: [],
-  routesByStop: {},
   arrivals: {},
   nearest: [],
   saved: []
@@ -42,22 +41,8 @@ const updateRoutes = (state, action) => {
       ? true
       : false;
 
-  const routesByStop = {};
-  action.routes.forEach(r => {
-    routesByStop[r.busStopCode] = routesByStop[r.busStopCode] || [];
-    routesByStop[r.busStopCode].push(r);
-  });
-
-  const routesByService = {};
-  action.routes.forEach(r => {
-    routesByService[r.serviceNo] = routesByService[r.serviceNo] || [];
-    routesByService[r.serviceNo].push(r);
-  });
-
   return Object.assign({}, state, {
     routes: action.routes,
-    routesByStop,
-    routesByService,
     persisted
   });
 };
@@ -71,14 +56,8 @@ const updateStops = (state, action) => {
       ? true
       : false;
 
-  const stopsByStop = {};
-  action.stops.forEach(s => {
-    stopsByStop[s.busStopCode] = s;
-  });
-
   return Object.assign({}, state, {
     stops: action.stops,
-    stopsByStop,
     persisted
   });
 };

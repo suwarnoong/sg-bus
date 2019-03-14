@@ -38,13 +38,7 @@ export default class BusStopList extends PureComponent<Props> {
           data={list}
           keyExtractor={(item, index) => item.busStopCode}
           renderItem={({ item }) => (
-            <BusStop
-              busStopCode={item.busStopCode}
-              description={item.description}
-              roadName={item.roadName}
-              distance={item.distance}
-              onPress={() => this.handlePress(item)}
-            />
+            <BusStop {...item} onPress={() => this.handlePress(item)} />
           )}
         />
       </Container>

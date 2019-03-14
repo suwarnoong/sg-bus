@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { parse, differenceInMinutes } from 'date-fns';
 import { Label, View } from '../../../base';
+import { IArrivalTime } from '../../../../types.d';
 import styles from './arrival-times.styles.js';
 
 const busLoadColorMapping = {
@@ -10,9 +11,9 @@ const busLoadColorMapping = {
 };
 
 type Props = {
-  nextBus: ArrivalTime,
-  nextBus2: ArrivalTime,
-  nextBus3: ArrivalTime
+  nextBus: IArrivalTime,
+  nextBus2: IArrivalTime,
+  nextBus3: IArrivalTime
 };
 
 const arrivalWidth = 25;

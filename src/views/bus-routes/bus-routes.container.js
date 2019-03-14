@@ -1,9 +1,10 @@
 import { reduxConnect } from '../../utils';
+import { getRoutesByService } from '../../store/selectors';
 import BusRoutes from './bus-routes';
 
 const mapStateToProps = state => ({
   persisted: state.bus.persisted,
-  routesByService: state.bus.routesByService
+  routesByService: getRoutesByService(state.bus)
 });
 
 const mapDispatchToProps = dispatch => ({});

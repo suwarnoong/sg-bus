@@ -1,5 +1,5 @@
-import { getNearestStops } from '../../store/actions';
-import { reduxConnect } from '../../utils';
+import { getNearestStops } from '../../../store/actions';
+import { reduxConnect } from '../../../utils';
 import NearestBusStops from './nearest-bus-stops';
 
 const mapStateToProps = state => ({

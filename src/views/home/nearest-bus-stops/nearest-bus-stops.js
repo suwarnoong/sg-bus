@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Platform } from 'react-native';
-import { BusStopList, View } from '../../components';
+import { BusStopList, View } from '../../../components';
 import styles from './nearest-bus-stops.styles.js';
 
 type Props = {};

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Button, Label, TouchableOpacity, View } from '../../base';
 import { StarOutlineIcon, StarFilledIcon } from '../../../icons';
 import ArrivalTimes from './arrival-times';
-import { ArrivalTime } from '../../../types.d.js';
+import { IArrivalTime } from '../../../types.d.js';
 import styles from './bus-arrival.styles.js';
 
 import find from 'lodash/fp/find';
@@ -10,9 +10,9 @@ import find from 'lodash/fp/find';
 type Props = {
   busStopCode: string,
   serviceNo: string,
-  nextBus: ArrivalTime,
-  nextBus2: ArrivalTime,
-  nextBus3: ArrivalTime,
+  nextBus: IArrivalTime,
+  nextBus2: IArrivalTime,
+  nextBus3: IArrivalTime,
   saved: Array<mixed>,
   stopsByStop: Array<mixed>,
   addToSaved: Function,

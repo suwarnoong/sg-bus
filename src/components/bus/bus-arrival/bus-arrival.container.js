@@ -1,10 +1,11 @@
 import { reduxConnect } from '../../../utils';
 import { addToSaved, removeFromSaved } from '../../../store/actions';
+import { getStopsByStop } from '../../../store/selectors';
 import BusArrival from './bus-arrival';
 
 const mapStateToProps = state => ({
   saved: state.bus.saved,
-  stopsByStop: state.bus.stopsByStop
+  stopsByStop: getStopsByStop(state.bus)
 });
 
 const mapDispatchToProps = dispatch => ({
