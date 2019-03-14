@@ -1,5 +1,4 @@
 import Home from '../views/home';
-import Demo from '../views/demo';
 import BusStopArrivals from '../views/bus-stop-arrivals';
 import BusRoutes from '../views/bus-routes';
 
@@ -22,8 +21,5 @@ export default {
   BusRoutes: {
     screen: BusRoutes,
     path: 'bus-routes'
-  },
-  Demo: {
-    screen: Demo
   }
 };
