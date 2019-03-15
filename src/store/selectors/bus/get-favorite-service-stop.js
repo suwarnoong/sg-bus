@@ -2,12 +2,12 @@ import { createSelector } from 'reselect';
 import { distance } from '../../../utils';
 import { getStopsByStop } from './get-stops-by-stop';
 
-const getSaved = state => state.saved;
+const getFavorites = state => state.favorites;
 
-export const getBookmarks = createSelector(
-  [getSaved, getStopsByStop],
-  (saved, stopsByStop) => {
-    return saved.map(s => ({
+export const getFavoriteServiceStop = createSelector(
+  [getFavorites, getStopsByStop],
+  (favorites, stopsByStop) => {
+    return favorites.map(s => ({
       ...s,
       ...stopsByStop[s.busStopCode]
       // distance: distance(position, {

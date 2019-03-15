@@ -8,7 +8,7 @@ import {
   View
 } from '../../components';
 import NearestBusStops from './nearest-bus-stops';
-import Bookmark from './bookmark';
+import FavoriteServiceStop from './favorite-service-stop';
 import styles from './home.styles.js';
 
 type Props = {
@@ -72,7 +72,7 @@ export default class Home extends PureComponent<Props, State> {
         {this.renderTabs(1)}
         <View style={{ flex: 1 }}>
           {selectedTab === 'N' && <NearestBusStops />}
-          {selectedTab === 'S' && <Bookmark />}
+          {selectedTab === 'S' && <FavoriteServiceStop />}
         </View>
       </ScreenView>
     );

@@ -13,25 +13,30 @@ type Props = {
   nextBus: IArrivalTime,
   nextBus2: IArrivalTime,
   nextBus3: IArrivalTime,
-  saved: Array<mixed>,
+  favorites: Array<mixed>,
   stopsByStop: Array<mixed>,
-  addToSaved: Function,
-  removeFromSaved: Function,
+  addToFavorites: Function,
+  removeFromFavorites: Function,
   style: { [string]: mixed }
 };
 
 export default class BusArrival extends PureComponent<Props> {
   isSaved = () => {
-    const { busStopCode, serviceNo, saved } = this.props;
-    return !!find({ busStopCode, serviceNo }, saved) ? true : false;
+    const { busStopCode, serviceNo, favorites } = this.props;
+    return !!find({ busStopCode, serviceNo }, favorites) ? true : false;
   };
 
   handleSaved = () => {
-    const { busStopCode, serviceNo, addToSaved, removeFromSaved } = this.props;
+    const {
+      busStopCode,
+      serviceNo,
+      addToFavorites,
+      removeFromFavorites
+    } = this.props;
 
     !this.isSaved()
-      ? addToSaved({ busStopCode, serviceNo })
-      : removeFromSaved({ busStopCode, serviceNo });
+      ? addToFavorites({ busStopCode, serviceNo })
+      : removeFromFavorites({ busStopCode, serviceNo });
   };
 
   handlePress = () => {

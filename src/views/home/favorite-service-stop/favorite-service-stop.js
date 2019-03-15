@@ -1,21 +1,24 @@
 import React, { PureComponent } from 'react';
-import { BookmarkList } from '../../../components';
-import styles from './bookmark.styles.js';
+import { ServiceStopList } from '../../../components';
+import styles from './favorite-service-stop.styles.js';
+
+import uniq from 'lodash/fp/uniq';
 
 type Props = {};
 
-export default class Bookmark extends PureComponent<Props> {
+export default class FavoriteServiceStop extends PureComponent<Props> {
   render() {
-    const { bookmarks, bookmarksStops, style } = this.props;
+    const { favoriteServiceStop, style } = this.props;
 
-    bookmarks.forEach(b => this.props.getArrivals(b.busStopCode));
+    const favoriteStops = uniq(favoriteServiceStop.map(b => b.busStopCode));
+    favoriteStops.forEach(b => this.props.getArrivals(b));
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
     return (
-      <BookmarkList
-        list={bookmarks}
+      <ServiceStopList
+        list={favoriteServiceStop}
         onPress={item => {
           this.props.navigate('BusStopArrivals', {
             title: item.description,

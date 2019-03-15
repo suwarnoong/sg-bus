@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import styles from './bookmark.styles.js';
+import styles from './service-stop.styles.js';
 import {
   H1,
   H2,
@@ -25,7 +25,7 @@ type Props = {
   style: { [string]: mixed }
 };
 
-export default class Bookmark extends PureComponent<Props> {
+export default class ServiceStop extends PureComponent<Props> {
   handlePress = () => {
     const { onPress } = this.props;
     if (typeof onPress === 'function') {

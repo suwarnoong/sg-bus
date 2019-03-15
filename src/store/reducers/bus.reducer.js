@@ -14,7 +14,7 @@ const initialState = {
   routes: [],
   arrivals: {},
   nearest: [],
-  saved: []
+  favorites: []
 };
 
 const updateServices = (state, action) => {
@@ -74,19 +74,19 @@ const updateNearest = (state, action) => {
   return Object.assign({}, state, { nearest: action.nearest });
 };
 
-const addToSaved = (state, action) => {
-  const saved = concat(state.saved, [
+const addToFavorites = (state, action) => {
+  const favorites = concat(state.favorites, [
     { busStopCode: action.busStopCode, serviceNo: action.serviceNo }
   ]);
-  return Object.assign({}, state, { saved });
+  return Object.assign({}, state, { favorites });
 };
 
-const removeFromSaved = (state, action) => {
-  const saved = filter(
+const removeFromFavorites = (state, action) => {
+  const favorites = filter(
     i =>
       i.busStopCode !== action.busStopCode || i.serviceNo !== action.serviceNo
-  )(state.saved);
-  return Object.assign({}, state, { saved });
+  )(state.favorites);
+  return Object.assign({}, state, { favorites });
 };
 
 const busReducer = createReducer(initialState, {
@@ -95,14 +95,14 @@ const busReducer = createReducer(initialState, {
   [actions.UPDATE_ROUTES]: updateRoutes,
   [actions.UPDATE_STOPS]: updateStops,
   [actions.UPDATE_NEAREST]: updateNearest,
-  [actions.ADD_TO_SAVED]: addToSaved,
-  [actions.REMOVE_FROM_SAVED]: removeFromSaved
+  [actions.ADD_TO_FAVORITES]: addToFavorites,
+  [actions.REMOVE_FROM_FAVORITES]: removeFromFavorites
 });
 
 const busPersistConfig = {
   key: 'bus',
   storage,
-  whitelist: ['services', 'routes', 'stops', 'saved']
+  whitelist: ['services', 'routes', 'stops', 'favorites']
 };
 
 const persistedBusReducer = persistReducer(busPersistConfig, busReducer);

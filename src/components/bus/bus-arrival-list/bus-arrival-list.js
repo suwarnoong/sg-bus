@@ -16,7 +16,7 @@ export default class BusArrivalList extends PureComponent<Props> {
   };
 
   render() {
-    const { Container, busStopCode, list, saved, style } = this.props;
+    const { Container, busStopCode, list, favorites, style } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
@@ -26,7 +26,7 @@ export default class BusArrivalList extends PureComponent<Props> {
         <FlatList
           data={list}
           keyExtractor={(item, index) => item.serviceNo}
-          extraData={saved}
+          extraData={favorites}
           renderItem={({ item }) => (
             <BusArrival
               busStopCode={busStopCode}

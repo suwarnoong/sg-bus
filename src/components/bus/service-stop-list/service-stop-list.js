@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
-import Bookmark from './bookmark';
+import ServiceStop from './service-stop';
 import { Card, FlatList, View } from '../../base';
 import { IBusArrival } from '../../../types.d';
-import styles from './bookmark-list.styles.js';
+import styles from './service-stop-list.styles.js';
 
 import pick from 'lodash/fp/pick';
 
@@ -19,7 +19,7 @@ type Props = {
   onPress: Function
 };
 
-export default class BookmarkList extends PureComponent<Props> {
+export default class ServiceStopList extends PureComponent<Props> {
   static defaultProps = {
     Container: Card
   };
@@ -55,7 +55,7 @@ export default class BookmarkList extends PureComponent<Props> {
               );
 
             return (
-              <Bookmark
+              <ServiceStop
                 {...item}
                 arrivals={busArrival}
                 onPress={() => this.handlePress(item)}
