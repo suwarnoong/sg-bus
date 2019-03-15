@@ -69,7 +69,7 @@ export default class Home extends PureComponent<Props, State> {
         <H1 style={{ paddingHorizontal: 10, paddingVertical: 20 }}>
           Bus Arrivals
         </H1>
-        {this.renderTabs(1)}
+        {this.renderTabs()}
         <View style={{ flex: 1 }}>
           {selectedTab === 'N' && <NearestBusStops />}
           {selectedTab === 'S' && <FavoriteServiceStop />}

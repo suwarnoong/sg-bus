@@ -9,10 +9,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addToFavorites: ({ busStopCode, serviceNo }) =>
-    dispatch(addToFavorites({ busStopCode, serviceNo })),
-  removeFromFavorites: ({ busStopCode, serviceNo }) =>
-    dispatch(removeFromFavorites({ busStopCode, serviceNo }))
+  addToFavorites: ({ name, busStopCode, serviceNo }) =>
+    dispatch(addToFavorites({ name, busStopCode, serviceNo })),
+  removeFromFavorites: ({ name, busStopCode, serviceNo }) =>
+    dispatch(removeFromFavorites({ name, busStopCode, serviceNo }))
 });
 
 export default reduxConnect(mapStateToProps, mapDispatchToProps)(BusArrival);

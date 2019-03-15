@@ -1,10 +1,14 @@
 import FavoriteServiceStop from './favorite-service-stop';
 import { reduxConnect } from '../../../utils';
 import { getArrivals } from '../../../store/actions';
-import { getFavoriteServiceStop } from '../../../store/selectors';
+import {
+  getFavoriteServiceStop,
+  getFavoriteStops
+} from '../../../store/selectors';
 
 const mapStateToProps = state => ({
-  favoriteServiceStop: getFavoriteServiceStop(state.bus)
+  favoriteServiceStop: getFavoriteServiceStop(state.bus),
+  favoriteStops: getFavoriteStops(state.bus)
 });
 
 const mapDispatchToProps = dispatch => ({

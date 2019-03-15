@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import ServiceStop from './service-stop';
-import { Card, FlatList, View } from '../../base';
+import { Card, Label, SectionList, View } from '../../base';
 import { IBusArrival } from '../../../types.d';
 import styles from './service-stop-list.styles.js';
 
@@ -37,15 +37,20 @@ export default class ServiceStopList extends PureComponent<Props> {
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
-    console.log('arrivals', arrivals);
-
     return (
       <Container style={containerStyles} padding={0}>
-        <FlatList
-          data={list}
+        <SectionList
+          sections={list}
           keyExtractor={(item, index) =>
             `${item.busStopCode}|${item.serviceNo}`
           }
+          renderSectionHeader={({ section: { name } }) => {
+            return (
+              <View style={styles.sectionHeader}>
+                <Label style={styles.sectionTitle}>{name}</Label>
+              </View>
+            );
+          }}
           renderItem={({ item }) => {
             const busArrival =
               arrivals &&

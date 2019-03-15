@@ -76,15 +76,23 @@ const updateNearest = (state, action) => {
 
 const addToFavorites = (state, action) => {
   const favorites = concat(state.favorites, [
-    { busStopCode: action.busStopCode, serviceNo: action.serviceNo }
+    {
+      name: action.name,
+      busStopCode: action.busStopCode,
+      serviceNo: action.serviceNo
+    }
   ]);
   return Object.assign({}, state, { favorites });
 };
 
 const removeFromFavorites = (state, action) => {
   const favorites = filter(
-    i =>
-      i.busStopCode !== action.busStopCode || i.serviceNo !== action.serviceNo
+    f =>
+      !(
+        f.name === action.name &&
+        f.busStopCode === action.busStopCode &&
+        f.serviceNo === action.serviceNo
+      )
   )(state.favorites);
   return Object.assign({}, state, { favorites });
 };

@@ -29,14 +29,17 @@ export default class BusArrival extends PureComponent<Props> {
   handleSaved = () => {
     const {
       busStopCode,
+      stopsByStop,
       serviceNo,
       addToFavorites,
       removeFromFavorites
     } = this.props;
 
+    const { description: name } = stopsByStop[busStopCode];
+
     !this.isSaved()
-      ? addToFavorites({ busStopCode, serviceNo })
-      : removeFromFavorites({ busStopCode, serviceNo });
+      ? addToFavorites({ name, busStopCode, serviceNo })
+      : removeFromFavorites({ name, busStopCode, serviceNo });
   };
 
   handlePress = () => {

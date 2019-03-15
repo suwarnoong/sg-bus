@@ -2,16 +2,16 @@ import React, { PureComponent } from 'react';
 import { ServiceStopList } from '../../../components';
 import styles from './favorite-service-stop.styles.js';
 
-import uniq from 'lodash/fp/uniq';
-
 type Props = {};
 
 export default class FavoriteServiceStop extends PureComponent<Props> {
+  componentWillMount() {
+    const { favoriteStops } = this.props;
+    favoriteStops.forEach(b => this.props.getArrivals(b));
+  }
+
   render() {
     const { favoriteServiceStop, style } = this.props;
-
-    const favoriteStops = uniq(favoriteServiceStop.map(b => b.busStopCode));
-    favoriteStops.forEach(b => this.props.getArrivals(b));
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);

@@ -50,13 +50,6 @@ export default class ServiceStop extends PureComponent<Props> {
     return (
       <TouchableOpacity style={containerStyles} onPress={this.handlePress}>
         <BusArrival {...arrivals} />
-        <BusStopRoad
-          style={styles.busStopContainer}
-          {...pick(
-            ['description', 'busStopCode', 'roadName', 'distance'],
-            this.props
-          )}
-        />
       </TouchableOpacity>
     );
   }
