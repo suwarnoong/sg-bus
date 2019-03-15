@@ -15,6 +15,7 @@ type Props = {
   nextBus3: IArrivalTime,
   favorites: Array<mixed>,
   stopsByStop: Array<mixed>,
+  hideFavorite: boolean,
   addToFavorites: Function,
   removeFromFavorites: Function,
   style: { [string]: mixed }
@@ -45,6 +46,7 @@ export default class BusArrival extends PureComponent<Props> {
   handlePress = () => {
     const { busStopCode, serviceNo, stopsByStop } = this.props;
     const busStop = stopsByStop[busStopCode];
+    console.log('bus-arrival', busStop, stopsByStop);
     this.props.navigate('BusRoutes', {
       title: serviceNo,
       subTitle: `${busStop.description}`,
@@ -54,7 +56,14 @@ export default class BusArrival extends PureComponent<Props> {
   };
 
   render() {
-    const { serviceNo, nextBus, nextBus2, nextBus3, style } = this.props;
+    const {
+      serviceNo,
+      nextBus,
+      nextBus2,
+      nextBus3,
+      hideFavorite,
+      style
+    } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
@@ -72,12 +81,14 @@ export default class BusArrival extends PureComponent<Props> {
                 {serviceNo}
               </Label>
             </TouchableOpacity>
-            <Button
-              Icon={this.isSaved() ? StarFilledIcon : StarOutlineIcon}
-              iconSize={20}
-              type={Button.TYPE_CLEAR}
-              onPress={this.handleSaved}
-            />
+            {!hideFavorite && (
+              <Button
+                Icon={this.isSaved() ? StarFilledIcon : StarOutlineIcon}
+                iconSize={20}
+                type={Button.TYPE_CLEAR}
+                onPress={this.handleSaved}
+              />
+            )}
           </View>
 
           <ArrivalTimes

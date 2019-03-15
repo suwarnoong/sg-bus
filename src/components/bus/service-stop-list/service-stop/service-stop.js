@@ -49,7 +49,11 @@ export default class ServiceStop extends PureComponent<Props> {
 
     return (
       <TouchableOpacity style={containerStyles} onPress={this.handlePress}>
-        <BusArrival {...arrivals} />
+        <BusArrival
+          {...arrivals}
+          busStopCode={busStopCode}
+          hideFavorite={true}
+        />
       </TouchableOpacity>
     );
   }

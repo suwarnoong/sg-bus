@@ -5,5 +5,6 @@ export default StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 10,
     margin: 10,
-  },
+    overflow: 'hidden'
+  }
 });
