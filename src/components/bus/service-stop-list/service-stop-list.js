@@ -47,7 +47,13 @@ export default class ServiceStopList extends PureComponent<Props> {
           renderSectionHeader={({ section: { name } }) => {
             return (
               <View style={styles.sectionHeader}>
-                <Label style={styles.sectionTitle}>{name}</Label>
+                <Label
+                  weight={Label.WEIGHT_DEMI_BOLD}
+                  size={Label.SIZE_LARGE}
+                  style={styles.sectionTitle}
+                >
+                  {name}
+                </Label>
               </View>
             );
           }}

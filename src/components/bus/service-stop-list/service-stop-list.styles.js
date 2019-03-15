@@ -4,10 +4,13 @@ export default StyleSheet.create({
   container: {},
   sectionHeader: {
     paddingHorizontal: 10,
-    paddingVertical: 5,
-    backgroundColor: '#1289A7'
+    paddingBottom: 5,
+    paddingTop: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#f2f2f2',
+    backgroundColor: '#f2f2f2'
   },
   sectionTitle: {
-    color: 'white'
+    color: '#1289A7'
   }
 });
