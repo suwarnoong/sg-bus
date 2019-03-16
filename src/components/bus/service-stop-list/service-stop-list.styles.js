@@ -12,5 +12,16 @@ export default StyleSheet.create({
   },
   sectionTitle: {
     color: '#1289A7'
+  },
+  itemContainer: {
+    backgroundColor: 'white'
+  },
+  firstItemContainer: {
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10
+  },
+  lastItemContainer: {
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10
   }
 });

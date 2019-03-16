@@ -21,7 +21,7 @@ type Props = {
 
 export default class ServiceStopList extends PureComponent<Props> {
   static defaultProps = {
-    Container: Card
+    Container: View
   };
 
   handlePress = item => {
@@ -38,7 +38,7 @@ export default class ServiceStopList extends PureComponent<Props> {
     if (style) containerStyles.push(style);
 
     return (
-      <Container style={containerStyles} padding={0}>
+      <Container style={containerStyles}>
         <SectionList
           sections={list}
           keyExtractor={(item, index) =>
@@ -57,7 +57,7 @@ export default class ServiceStopList extends PureComponent<Props> {
               </View>
             );
           }}
-          renderItem={({ item }) => {
+          renderItem={({ item, index, section }) => {
             const busArrival =
               arrivals &&
               arrivals[item.busStopCode] &&
@@ -65,12 +65,20 @@ export default class ServiceStopList extends PureComponent<Props> {
                 a => a.serviceNo === item.serviceNo
               );
 
+            const itemContainerStyles = [styles.itemContainer];
+            if (index === 0)
+              itemContainerStyles.push(styles.firstItemContainer);
+            if (index === section.data.length - 1)
+              itemContainerStyles.push(styles.lastItemContainer);
+
             return (
-              <ServiceStop
-                {...item}
-                arrivals={busArrival}
-                onPress={() => this.handlePress(item)}
-              />
+              <View style={itemContainerStyles}>
+                <ServiceStop
+                  {...item}
+                  arrivals={busArrival}
+                  onPress={() => this.handlePress(item)}
+                />
+              </View>
             );
           }}
         />

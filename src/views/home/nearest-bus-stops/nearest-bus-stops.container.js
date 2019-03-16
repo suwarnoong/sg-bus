@@ -5,7 +5,8 @@ import NearestBusStops from './nearest-bus-stops';
 const mapStateToProps = state => ({
   persisted: state.bus.persisted,
   nearest: state.bus.nearest,
-  nav: state.nav
+  nav: state.nav,
+  geolocation: state.service.geolocation
 });
 
 const mapDispatchToProps = dispatch => ({
