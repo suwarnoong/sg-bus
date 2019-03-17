@@ -53,10 +53,6 @@ export default class Geolocation extends PureComponent<Props> {
     this.stopWatch();
   }
 
-  stopWatch() {
-    navigator.geolocation.clearWatch(this.state.watchId);
-  }
-
   startWatch = () => {
     const {
       enableHighAccuracy,
@@ -84,6 +80,10 @@ export default class Geolocation extends PureComponent<Props> {
     );
 
     this.setState({ watchId });
+  };
+
+  stopWatch = () => {
+    navigator.geolocation.clearWatch(this.state.watchId);
   };
 
   render() {

@@ -12,7 +12,8 @@ import {
   ButtonIconLeft,
   ButtonIconRight,
   ToolbarItem,
-  View
+  View,
+  Timer
 } from '../../components';
 import styles from './bus-stop-arrivals.styles.js';
 import {
@@ -30,9 +31,9 @@ type Props = {
 };
 
 export default class BusStopArrivals extends PureComponent<Props> {
-  componentWillMount() {
+  handleTick = () => {
     this.props.getArrivals(this.props.params.busStopCode);
-  }
+  };
 
   render() {
     const {
@@ -53,6 +54,7 @@ export default class BusStopArrivals extends PureComponent<Props> {
           list={arrivalList}
           busStopCode={busStopCode}
         />
+        <Timer autoStart={true} interval={5000} onTick={this.handleTick} />
       </ScreenView>
     );
   }
