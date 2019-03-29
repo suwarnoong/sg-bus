@@ -12,11 +12,11 @@ export default class App extends Component<Props> {
     return (
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
+          <Geolocation enabled={true} />
+          <BackgroundView />
           <MainView>
             <NavigatorContainer />
           </MainView>
-          <BackgroundView />
-          <Geolocation enabled={true} />
         </PersistGate>
       </Provider>
     );

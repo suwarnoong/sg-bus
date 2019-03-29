@@ -44,6 +44,7 @@ export default class Timer extends PureComponent<Props> {
     if (!isNaN(this.state.timerId) && this.state.timerId >= 0) {
       clearInterval(this.state.timerId);
     }
+    this.tick();
     const timerId = setInterval(this.tick, this.props.interval);
     this.setState({ timerId });
   };
