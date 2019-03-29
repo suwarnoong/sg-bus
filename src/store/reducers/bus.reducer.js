@@ -110,7 +110,7 @@ const busReducer = createReducer(initialState, {
 const busPersistConfig = {
   key: 'bus',
   storage,
-  whitelist: ['services', 'routes', 'stops', 'favorites']
+  whitelist: ['services', 'stops', 'favorites'] // 'routes',
 };
 
 const persistedBusReducer = persistReducer(busPersistConfig, busReducer);

@@ -1,4 +1,4 @@
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, compose, createStore } from 'redux';
 import { persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
 import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers';
@@ -17,15 +17,15 @@ const middlewares = applyMiddleware(
   screenTracking
 );
 
-let store;
-
-if (__DEV__) {
-  // Reactotron
-  const Reactotron = require('../../reactotron').default;
-  store = Reactotron.createStore(rootReducer, middlewares);
-} else {
-  store = createStore(rootReducer, middlewares);
-}
+// if (__DEV__) {
+//   // Reactotron
+//   const Reactotron = require('../../reactotron').default;
+//   store = createStore(rootReducer, middlewares, Reactotron.createEnhancer());
+// } else {
+//   store = createStore(rootReducer, middlewares);
+// }
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(rootReducer, composeEnhancer(middlewares));
 
 const persistor = persistStore(store);
 // persistor.purge();

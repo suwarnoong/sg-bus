@@ -58,12 +58,12 @@ export default class BusStop extends PureComponent<Props> {
         />
         <View style={styles.routesContainer}>
           {services &&
-            services.map(({ serviceNo }) => {
+            services.map(({ serviceNo }, index) => {
               return (
                 <Label
                   weight={Label.WEIGHT_BOLD}
                   style={styles.bus}
-                  key={serviceNo}
+                  key={index}
                 >
                   {serviceNo}
                 </Label>

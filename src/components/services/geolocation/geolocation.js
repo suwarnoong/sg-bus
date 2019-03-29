@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
-import { Platform } from 'react-native';
+import { Platform, PermissionsAndroid } from 'react-native';
+import NativeGeo from 'react-native-geolocation-service';
+import { requestAndroidPermission } from '../../../utils';
 
 type Props = {
   enabled: boolean,
@@ -28,13 +30,18 @@ export default class Geolocation extends PureComponent<Props> {
     };
   }
   componentDidMount() {
-    if (Platform.OS === 'android')
+    if (Platform.OS === 'android') {
       requestAndroidPermission(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
       );
+    }
 
-    // navigator.geolocation.requestAuthorization();
-    // navigator.geolocation.getCurrentPosition(this.onLocationSuccess, this.onLocationError, { enableHighAccuracy: true });
+    // NativeGeo.requestAuthorization();
+    // navigator.geolocation.getCurrentPosition(
+    //   this.onLocationSuccess,
+    //   this.onLocationError,
+    //   { enableHighAccuracy: true }
+    // );
 
     if (this.props.enabled) {
       this.startWatch();
@@ -61,7 +68,7 @@ export default class Geolocation extends PureComponent<Props> {
       distanceFilter
     } = this.props;
 
-    const watchId = navigator.geolocation.watchPosition(
+    const watchId = NativeGeo.watchPosition(
       ({ coords: { latitude, longitude } }) => {
         this.props.updateGeolocation({
           latitude,
@@ -74,7 +81,7 @@ export default class Geolocation extends PureComponent<Props> {
       {
         enableHighAccuracy,
         timeout,
-        maximumAge,
+        // maximumAge,
         distanceFilter
       }
     );
@@ -83,7 +90,7 @@ export default class Geolocation extends PureComponent<Props> {
   };
 
   stopWatch = () => {
-    navigator.geolocation.clearWatch(this.state.watchId);
+    NativeGeo.clearWatch(this.state.watchId);
   };
 
   render() {
