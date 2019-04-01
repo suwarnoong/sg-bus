@@ -139,12 +139,17 @@ android {
 }
 
 dependencies {
-    implementation project(':react-native-mapbox-gl')
     implementation project(':react-native-geolocation-service')
     implementation project(':react-native-svg')
     implementation project(':react-native-gesture-handler')
+    implementation project(':mapbox-react-native-mapbox-gl')
+//    implementation project(':mapbox-react-native-mapbox-gl') {
+//        implementation ('com.squareup.okhttp3:okhttp:3.6.0') {
+//            force = true
+//        }
+//    }
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "com.android.support:design:${rootProject.ext.supportLibVersion}"
+//    implementation "com.android.support:design:${rootProject.ext.supportLibVersion}"
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.android.support:multidex:1.0.0"
     implementation "com.facebook.react:react-native:+"  // From node_modules
