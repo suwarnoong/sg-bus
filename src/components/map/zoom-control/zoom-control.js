@@ -46,14 +46,14 @@ export default class ZoomControl extends PureComponent<Props> {
         <Button
           Icon={AddIcon}
           type={Button.TYPE_CLEAR}
-          iconSize={24}
+          iconSize={16}
           onPress={() => this.handleZoom(true)}
           disabled={currentZoom === maxZoomLevel}
         />
         <Button
           Icon={MinusIcon}
           type={Button.TYPE_CLEAR}
-          iconSize={24}
+          iconSize={16}
           onPress={() => this.handleZoom(false)}
           disabled={currentZoom === minZoomLevel}
         />

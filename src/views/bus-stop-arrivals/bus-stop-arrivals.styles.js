@@ -15,7 +15,7 @@ export default StyleSheet.create({
     position: 'absolute',
     top: 10,
     right: 10,
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   controlItem: {
     marginBottom: 10

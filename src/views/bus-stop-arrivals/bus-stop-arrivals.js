@@ -220,9 +220,9 @@ export default class BusStopArrivals extends PureComponent<Props> {
           >
             {this.renderAllBusStops(busStopCode)}
             {this.renderBusStop()}
-            {this.renderControls()}
           </MapboxGL.MapView>
         )}
+        {this.renderControls()}
         <BusArrivalList
           style={styles.arrivalList}
           busStopCode={busStopCode}

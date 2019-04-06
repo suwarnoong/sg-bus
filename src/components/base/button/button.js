@@ -98,10 +98,10 @@ export default class Button extends PureComponent<Props> {
     const { type, disabled, iconPlacement, style } = this.props;
 
     const containerStyles = [styles.container];
-    if (style) containerStyles.push(style);
     if (type) containerStyles.push(styles[`${type}Container`]);
     if (iconPlacement)
       containerStyles.push(styles[`${iconPlacement}IconContainer`]);
+    if (style) containerStyles.push(style);
 
     if (disabled) containerStyles.push(styles['disabledContainer']);
 
