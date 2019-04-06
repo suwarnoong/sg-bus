@@ -27,7 +27,7 @@ export default StyleSheet.create({
   },
   plainContainer: {
     borderWidth: 1,
-    borderColor: '#4A4A4A',
+    borderColor: '#AAAAAA',
     backgroundColor: '#FFFFFF'
   },
   clearContainer: {
@@ -44,6 +44,9 @@ export default StyleSheet.create({
     flexDirection: 'column'
   },
   label: {
+    color: '#FFFFFF'
+  },
+  defaultLabel: {
     color: '#FFFFFF'
   },
   plainLabel: {

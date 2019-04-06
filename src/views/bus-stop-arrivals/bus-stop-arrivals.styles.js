@@ -11,6 +11,15 @@ export default StyleSheet.create({
     bottom: 0,
     left: 0
   },
+  controlContainer: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    flexDirection: 'column'
+  },
+  controlItem: {
+    marginBottom: 10
+  },
   row: {
     flexDirection: 'row'
   },

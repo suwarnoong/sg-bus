@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { TextStyle, ViewStyle } from 'react-native';
 import { Label } from '../label';
 import { View, TouchableOpacity } from '../native';
+import { pickStyles } from '../../../utils';
 import styles from './button.styles';
 
 type Props = {
@@ -42,11 +43,20 @@ export default class Button extends PureComponent<Props> {
   };
 
   renderIcon = _ => {
-    const { disabled, Icon, iconPlacement, iconSize, type } = this.props;
+    const {
+      disabled,
+      Icon,
+      iconPlacement,
+      iconSize,
+      labelStyle,
+      type
+    } = this.props;
     const iconStyles = [styles.icon, styles[`${iconPlacement}Icon`]];
+    const overrideStyles = pickStyles(labelStyle, ['color']);
 
     let color = styles.label.color;
     if (type) color = styles[`${type}Label`].color;
+    if (overrideStyles.color) color = overrideStyles.color;
     if (disabled) color = styles.disabledLabel.color;
 
     if (Icon) {
@@ -73,6 +83,10 @@ export default class Button extends PureComponent<Props> {
     if (Icon && iconPlacement)
       labelStyles.push(styles[`${iconPlacement}IconLabel`]);
     if (labelStyle) labelStyles.push(labelStyle);
+
+    const overrideStyles = pickStyles(labelStyle, ['color']);
+    if (overrideStyles) labelStyles.push(overrideStyles);
+
     if (disabled) labelStyles.push(styles['disabledLabel']);
 
     if (label) {

@@ -4,15 +4,14 @@ const borderRadius = 40;
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: '#FFFFFF',
-    opacity: 0.8,
     borderRadius,
-    borderWidth: 2,
-    borderColor: '#CCCCCC'
+    overflow: 'hidden'
   },
   button: {
     borderRadius: 0,
-    borderBottomWidth: 2,
+    borderColor: 'transparent',
+    borderWidth: 0,
+    borderBottomWidth: 1,
     borderBottomColor: '#EFEFEF'
   },
   firstButton: {

@@ -12,6 +12,7 @@ import {
   Button,
   ButtonIconLeft,
   ButtonIconRight,
+  GPSLocateControl,
   ToolbarItem,
   View,
   ZoomControl
@@ -79,21 +80,42 @@ export default class BusStopArrivals extends PureComponent<Props> {
   };
 
   renderControls = () => {
+    const {
+      stopsByStop,
+      params: { busStopCode }
+    } = this.props;
+
+    const busStop = stopsByStop[busStopCode];
+
     return (
-      <ZoomControl
-        zoomLevel={initialZoomLevel}
-        maxZoomLevel={18}
-        minZoomLevel={12}
-        onZoom={async zoomLevel => {
-          const center = await this._map.getCenter();
-          const options = {
-            centerCoordinate: center,
-            zoom: zoomLevel,
-            duration: 1000
-          };
-          this._map.setCamera(options);
-        }}
-      />
+      <View style={styles.controlContainer}>
+        <ZoomControl
+          style={styles.controlItem}
+          zoomLevel={initialZoomLevel}
+          maxZoomLevel={18}
+          minZoomLevel={12}
+          onZoom={async zoomLevel => {
+            const center = await this._map.getCenter();
+            const options = {
+              centerCoordinate: center,
+              zoom: zoomLevel,
+              duration: 1000
+            };
+            this._map.setCamera(options);
+          }}
+        />
+        <GPSLocateControl
+          style={styles.controlItem}
+          onLocate={async _ => {
+            const zoom = await this._map.getZoom();
+            this._map.setCamera({
+              centerCoordinate: [busStop.longitude, busStop.latitude],
+              zoom: zoom,
+              duration: 1000
+            });
+          }}
+        />
+      </View>
     );
   };
 

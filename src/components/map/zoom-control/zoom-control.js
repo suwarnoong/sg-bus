@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import { Text, View } from 'react-native';
 import styles from './zoom-control.styles';
 import { Button, ButtonGroup } from '../../base';
 import { AddIcon, MinusIcon } from '../../../icons';
@@ -36,10 +35,9 @@ export default class ZoomControl extends PureComponent<Props> {
   };
 
   render() {
-    const { onZoom, minZoomLevel, maxZoomLevel, style } = this.props;
+    const { minZoomLevel, maxZoomLevel, style } = this.props;
     const { currentZoom } = this.state;
 
-    console.log('render zoom-control');
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
