@@ -711,6 +711,13 @@
     "@turf/helpers" "4.6.0"
     underscore "^1.8.3"
 
+"@mapbox/react-native-mapbox-gl@https://github.com/nitaliano/react-native-mapbox-gl.git":
+  version "6.1.4"
+  resolved "https://github.com/nitaliano/react-native-mapbox-gl.git#bc5f589d3782a7d3ed7d78c9050b2fd12ea6c77a"
+  dependencies:
+    "@turf/helpers" "4.6.0"
+    underscore "^1.8.3"
+
 "@react-native-community/cli@^1.2.1":
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-1.5.1.tgz#21a93266ecf1885990ac86680a369aa3ff432973"
