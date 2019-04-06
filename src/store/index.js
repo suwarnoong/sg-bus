@@ -17,15 +17,20 @@ const middlewares = applyMiddleware(
   screenTracking
 );
 
-// if (__DEV__) {
-//   // Reactotron
-//   const Reactotron = require('../../reactotron').default;
-//   store = createStore(rootReducer, middlewares, Reactotron.createEnhancer());
-// } else {
-//   store = createStore(rootReducer, middlewares);
-// }
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, composeEnhancer(middlewares));
+let store;
+if (__DEV__) {
+  const composeEnhancer =
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+  // Reactotron
+  const reactotron = require('../../reactotron').default;
+  store = createStore(
+    rootReducer,
+    composeEnhancer(middlewares, reactotron.createEnhancer())
+  );
+} else {
+  store = createStore(rootReducer, middlewares);
+}
 
 const persistor = persistStore(store);
 // persistor.purge();

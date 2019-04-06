@@ -18,9 +18,10 @@ const onScreenChanged = (nav, dispatch) => {
 const isRehydratingNavigation = action =>
   action.type === REHYDRATE && action.key === 'nav';
 
+const isBack = action => action.type === NavigationActions.BACK;
+
 const isNavigateOrBack = action =>
-  action.type === NavigationActions.NAVIGATE ||
-  action.type === NavigationActions.BACK;
+  action.type === NavigationActions.NAVIGATE || isBack(action);
 
 const screenTracking = ({ getState, dispatch }) => next => action => {
   if (isRehydratingNavigation(action)) {
