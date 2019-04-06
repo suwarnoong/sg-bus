@@ -1,5 +1,5 @@
 import { reduxConnect } from '../../utils';
-import { updateInset } from '../../store/actions';
+// import { updateInset } from '../../store/actions';
 import { getStopsByStop } from '../../store/selectors';
 import BusStopArrivals from './bus-stop-arrivals';
 
@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateInset: (type, value) => dispatch(updateInset(type, value))
+  // updateInset: (type, value) => dispatch(updateInset(type, value))
 });
 
 export default reduxConnect(mapStateToProps, mapDispatchToProps)(

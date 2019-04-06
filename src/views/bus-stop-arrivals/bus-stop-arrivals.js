@@ -70,9 +70,9 @@ export default class BusStopArrivals extends PureComponent<Props> {
     };
   }
 
-  componentDidMount() {
-    this.props.updateInset('bottom', false);
-  }
+  // componentDidMount() {
+  //   this.props.updateInset('bottom', false);
+  // }
 
   calculateHeight = event => {
     const { height } = event.nativeEvent.layout;
