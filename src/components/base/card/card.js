@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react';
 import { View } from '../native';
-import styles from './card.styles.js';
+import styles from './card.styles';
 
 type Props = {
   color: string,
-  padding: number
+  padding: number,
+  onLayout: Function
 };
 
 export default class Card extends PureComponent<Props> {
@@ -13,13 +14,17 @@ export default class Card extends PureComponent<Props> {
   };
 
   render() {
-    const { color, padding, children, style } = this.props;
+    const { color, padding, children, style, onLayout } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
     if (color) containerStyles.push({ backgroundColor: color });
     if (padding) containerStyles.push({ padding });
 
-    return <View style={containerStyles}>{children}</View>;
+    return (
+      <View style={containerStyles} onLayout={onLayout}>
+        {children}
+      </View>
+    );
   }
 }

@@ -9,7 +9,7 @@ import {
 } from '../../components';
 import NearestBusStops from './nearest-bus-stops';
 import FavoriteServiceStop from './favorite-service-stop';
-import styles from './home.styles.js';
+import styles from './home.styles';
 
 type Props = {
   routes: Array<mixed>,

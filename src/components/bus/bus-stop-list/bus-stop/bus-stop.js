@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import styles from './bus-stop.styles.js';
+import styles from './bus-stop.styles';
 import {
   H1,
   H2,

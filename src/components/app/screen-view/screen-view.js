@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { View } from '../../base';
-import styles from './screen-view.styles.js';
+import styles from './screen-view.styles';
 
 type Props = {};
 

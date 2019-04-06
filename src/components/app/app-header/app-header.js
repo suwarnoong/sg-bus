@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { H3, Label, Small, TouchableOpacity, View } from '../../base';
 import { ArrowLeftIcon } from '../../../icons';
-import styles from './app-header.styles.js';
+import styles from './app-header.styles';
 
 type Props = {
   title: string,

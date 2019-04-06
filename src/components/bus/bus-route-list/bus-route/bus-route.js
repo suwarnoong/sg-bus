@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Label, Small, TouchableOpacity, View } from '../../../base';
 import { BusStopRoad } from '../../../bus/bus-stop-road';
-import styles from './bus-route.styles.js';
+import styles from './bus-route.styles';
 
 import pick from 'lodash/fp/pick';
 

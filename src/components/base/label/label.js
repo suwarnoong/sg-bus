@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Text } from 'react-native';
-import styles from './label.styles.js';
+import styles from './label.styles';
 
 type Props = {
   size: string | number,

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Label, Small, View } from '../../base';
-import styles from './bus-stop-road.styles.js';
+import styles from './bus-stop-road.styles';
 
 type Props = {
   description: string,

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { SafeAreaView } from 'react-navigation';
-import styles from './main-view.styles.js';
+import styles from './main-view.styles';
 
 type Props = {
   inset: string

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import BusStop from './bus-stop';
 import { Card, FlatList, View } from '../../base';
-import styles from './bus-stop-list.styles.js';
+import styles from './bus-stop-list.styles';
 
 type Props = {
   Container: React.Element,

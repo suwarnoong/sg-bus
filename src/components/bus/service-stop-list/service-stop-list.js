@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import ServiceStop from './service-stop';
 import { Card, Label, SectionList, View } from '../../base';
 import { IBusArrival } from '../../../types.d';
-import styles from './service-stop-list.styles.js';
+import styles from './service-stop-list.styles';
 
 import pick from 'lodash/fp/pick';
 

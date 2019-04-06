@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { parse, differenceInMinutes } from 'date-fns';
 import { Label, View } from '../../../base';
 import { IArrivalTime } from '../../../../types.d';
-import styles from './arrival-times.styles.js';
+import styles from './arrival-times.styles';
 
 const busLoadColorMapping = {
   LSD: '#EA2027', // Limited Standing

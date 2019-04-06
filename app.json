@@ -1,4 +1,5 @@
 {
   "name": "SGBus",
-  "displayName": "SGBus"
+  "displayName": "SGBus",
+  "mapboxAccessToken": "yourmapboxtoken"
 }

@@ -3,7 +3,7 @@ import { Button, Label, TouchableOpacity, View } from '../../base';
 import { StarOutlineIcon, StarFilledIcon } from '../../../icons';
 import ArrivalTimes from './arrival-times';
 import { IArrivalTime } from '../../../types.d.js';
-import styles from './bus-arrival.styles.js';
+import styles from './bus-arrival.styles';
 
 import find from 'lodash/fp/find';
 
@@ -46,7 +46,6 @@ export default class BusArrival extends PureComponent<Props> {
   handlePress = () => {
     const { busStopCode, serviceNo, stopsByStop } = this.props;
     const busStop = stopsByStop[busStopCode];
-    console.log('bus-arrival', busStop, stopsByStop);
     this.props.navigate('BusRoutes', {
       title: serviceNo,
       subTitle: `${busStop.description}`,

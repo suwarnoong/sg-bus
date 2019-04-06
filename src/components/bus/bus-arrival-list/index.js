@@ -1,1 +1,1 @@
-export { default as BusArrivalList } from './bus-arrival-list';
+export { default as BusArrivalList } from './bus-arrival-list.container';

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { ServiceStopList, View, Timer } from '../../../components';
-import styles from './favorite-service-stop.styles.js';
+import styles from './favorite-service-stop.styles';
 
 type Props = {};
 

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { TextInput as NativeTextInput, View } from 'react-native';
-import styles from './text-input.styles.js';
+import styles from './text-input.styles';
 
 type Props = {
   placeholder: string

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { TextStyle, ViewStyle } from 'react-native';
 import { Label } from '../label';
 import { View, TouchableOpacity } from '../native';
-import styles from './button.styles.js';
+import styles from './button.styles';
 
 type Props = {
   label: string,
@@ -42,15 +42,17 @@ export default class Button extends PureComponent<Props> {
   };
 
   renderIcon = _ => {
-    const { Icon, iconPlacement, iconSize } = this.props;
+    const { disabled, Icon, iconPlacement, iconSize, type } = this.props;
     const iconStyles = [styles.icon, styles[`${iconPlacement}Icon`]];
 
-    const a = this.props.testing;
+    let color = styles.label.color;
+    if (type) color = styles[`${type}Label`].color;
+    if (disabled) color = styles.disabledLabel.color;
 
     if (Icon) {
       return (
         <View style={iconStyles}>
-          <Icon size={iconSize} />
+          <Icon size={iconSize} color={color} />
         </View>
       );
     }
@@ -87,7 +89,7 @@ export default class Button extends PureComponent<Props> {
     if (iconPlacement)
       containerStyles.push(styles[`${iconPlacement}IconContainer`]);
 
-    if (disabled) containerStyle.push(styles['disabledContainer']);
+    if (disabled) containerStyles.push(styles['disabledContainer']);
 
     const isTopOrLeftIcon =
       iconPlacement === Button.ICON_PLACEMENT_LEFT ||
@@ -95,7 +97,11 @@ export default class Button extends PureComponent<Props> {
     const isRightIcon = iconPlacement === Button.ICON_PLACEMENT_RIGHT;
 
     return (
-      <TouchableOpacity style={containerStyles} onPress={this.handlePress}>
+      <TouchableOpacity
+        style={containerStyles}
+        disabled={disabled}
+        onPress={this.handlePress}
+      >
         {isTopOrLeftIcon && this.renderIcon()}
         {this.renderLabel()}
         {isRightIcon && this.renderIcon()}

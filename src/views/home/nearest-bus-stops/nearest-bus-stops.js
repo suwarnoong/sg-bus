@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { BusStopList, View, Label } from '../../../components';
-import styles from './nearest-bus-stops.styles.js';
+import styles from './nearest-bus-stops.styles';
 
 type Props = {};
 

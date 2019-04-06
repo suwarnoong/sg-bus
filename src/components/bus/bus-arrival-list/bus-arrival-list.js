@@ -1,13 +1,16 @@
 import React, { PureComponent } from 'react';
 import { Card, FlatList } from '../../base';
+import { Timer } from '../../services';
 import BusArrival from '../bus-arrival';
 import { IBusArrival } from '../../../types.d';
-import styles from './bus-arrival-list.styles.js';
+import styles from './bus-arrival-list.styles';
 
 type Props = {
   Container: React.Element,
   busStopCode: string,
-  list: Array<IBusArrival>
+  arrivals: { [string]: Array<mixed> },
+  getArrivals: (busStopCode: string) => void,
+  onLayout: Function
 };
 
 export default class BusArrivalList extends PureComponent<Props> {
@@ -15,16 +18,30 @@ export default class BusArrivalList extends PureComponent<Props> {
     Container: Card
   };
 
+  handleTick = () => {
+    this.props.getArrivals(this.props.params.busStopCode);
+  };
+
   render() {
-    const { Container, busStopCode, list, favorites, style } = this.props;
+    const {
+      Container,
+      busStopCode,
+      arrivals,
+      favorites,
+      style,
+      onLayout
+    } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
+    const arrivalList = arrivals[busStopCode];
+
     return (
-      <Container style={containerStyles} padding={0}>
+      <Container style={containerStyles} padding={0} onLayout={onLayout}>
+        <Timer autoStart={true} interval={5000} onTick={this.handleTick} />
         <FlatList
-          data={list}
+          data={arrivalList}
           keyExtractor={(item, index) => item.serviceNo}
           extraData={favorites}
           renderItem={({ item }) => (

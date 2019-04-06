@@ -7,7 +7,7 @@ import {
   View,
   Text
 } from 'react-native';
-import styles from './select-switch.styles.js';
+import styles from './select-switch.styles';
 
 type Props = {};
 

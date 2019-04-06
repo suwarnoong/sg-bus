@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     minHeight: 45,
+    minWidth: 45,
     borderRadius: 10,
     paddingVertical: 10,
     flexDirection: 'row',
@@ -51,8 +52,14 @@ export default StyleSheet.create({
   clearLabel: {
     color: '#4A4A4A'
   },
-  disabledLable: {
+  warningLabel: {
     color: '#FFFFFF'
+  },
+  dangerLabel: {
+    color: '#FFFFFF'
+  },
+  disabledLabel: {
+    color: '#999999'
   },
   leftIconLabel: {
     marginLeft: 7

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Card, FlatList, Label, View } from '../../base';
 import BusRoute from './bus-route';
-import styles from './bus-route-list.styles.js';
+import styles from './bus-route-list.styles';
 
 type Props = {
   Container: React.Element,
