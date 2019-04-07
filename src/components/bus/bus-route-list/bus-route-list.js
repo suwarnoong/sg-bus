@@ -1,56 +1,112 @@
-import React, { PureComponent } from 'react';
-import { Card, FlatList, Label, View } from '../../base';
+// @flow
+import * as React from 'react';
+import { Card, FlatList } from '../../base';
 import BusRoute from './bus-route';
+import { BUS_ROUTE_HEIGHT } from '../../../constants';
+import { distance } from '../../../utils';
+import {
+  IBusRoute,
+  IBusStop,
+  IBusStopLocation,
+  ICoordinate
+} from '../../../types.d';
 import styles from './bus-route-list.styles';
 
+type IRenderItem = { item: any, index: number };
+
 type Props = {
-  Container: React.Element,
+  Container: React.ElementType,
   serviceNo: string,
-  list: Array<{
-    busStopCode: string,
-    roadName: string,
-    description: string,
-    distance: number
-  }>
+  geolocation: ICoordinate,
+  persisted: boolean,
+  routesByService: { [string]: Array<mixed> },
+  stopsByStop: { [string]: mixed },
+  onLocate: Function,
+  onLayout: Function,
+  style: { [string]: mixed }
 };
 
-export default class BusRouteList extends PureComponent<Props> {
+type State = {
+  currentBusStopCode: string | null
+};
+
+export default class BusRouteList extends React.PureComponent<Props, State> {
   static defaultProps = {
     Container: Card
   };
 
-  constructor(props) {
+  _list: any;
+  routeList: Array<IBusRoute>;
+  nearestStopCode: string;
+
+  constructor(props: Props) {
     super(props);
 
     this.state = {
-      selected: null,
       currentBusStopCode: null
     };
   }
 
-  handleScroll = event => {
-    const { nativeEvent } = event;
-    const { list } = this.props;
-    if (!list) return;
+  componentDidMount() {
+    setTimeout(this.scrollToNearest);
+  }
 
-    const scrollY = nativeEvent.contentOffset.y;
-    if (scrollY < 0) return;
+  getItemLayout = (data: any, index: number) => ({
+    length: BUS_ROUTE_HEIGHT,
+    offset: BUS_ROUTE_HEIGHT * index,
+    index
+  });
 
-    const item = list[parseInt(scrollY / 80)];
-    if (item) {
-      this.setState({ selected: item });
+  scrollToNearest = () => {
+    if (this._list == null) return;
+
+    const { geolocation, stopsByStop } = this.props;
+    const nearestStop = this.routeList.sort((a, b) =>
+      a.distance < b.distance ? -1 : 1
+    );
+
+    this.nearestStopCode = nearestStop[0].busStopCode;
+    this.setState({ currentBusStopCode: this.nearestStopCode });
+
+    const index = this.routeList.findIndex(
+      r => r.busStopCode === this.nearestStopCode
+    );
+
+    this._list.scrollToIndex({ index });
+  };
+
+  handleLocationPress = (busStopLocation: IBusStopLocation) => {
+    const { onLocate } = this.props;
+
+    this.setState({ currentBusStopCode: busStopLocation.busStopCode });
+
+    if (typeof onLocate === 'function') {
+      onLocate(busStopLocation);
     }
   };
 
-  handleLocationPress = ({ busStopCode, longitude, latitude }) => {
-    this.setState({ currentBusStopCode: busStopCode });
+  getRouteListWDistance = (): Array<IBusRoute> => {
+    const { geolocation, routesByService, stopsByStop, serviceNo } = this.props;
+
+    const routeList = routesByService[serviceNo];
+    if (routeList == null) return [];
+
+    return routeList.map((r: IBusRoute) => {
+      const busStop: IBusStop = stopsByStop[r.busStopCode];
+      return {
+        ...r,
+        distance: distance(geolocation, {
+          latitude: busStop.latitude,
+          longitude: busStop.longitude
+        })
+      };
+    });
   };
 
-  renderItem = ({ item, index }) => {
-    const { list } = this.props;
+  renderItem = ({ item, index }: IRenderItem) => {
     const { currentBusStopCode } = this.state;
     const isFirst = index === 0;
-    const isLast = index === list.length - 1;
+    const isLast = index === this.routeList.length - 1;
 
     return (
       <BusRoute
@@ -58,30 +114,31 @@ export default class BusRouteList extends PureComponent<Props> {
         distance={item.distance}
         isFirst={isFirst}
         isLast={isLast}
-        onLocationPress={this.handleLocationPress}
-        isCurrentLocation={item.busStopCode === currentBusStopCode}
+        isActive={item.busStopCode === currentBusStopCode}
+        onPress={this.handleLocationPress}
       />
     );
   };
 
   render() {
-    const { Container, list, style } = this.props;
-    const { selected, currentBusStopCode } = this.state;
+    const { Container, persisted, style, onLayout } = this.props;
+    const { currentBusStopCode } = this.state;
+
+    if (!persisted) return null;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
+    this.routeList = this.getRouteListWDistance();
+
     return (
-      <Container style={containerStyles} padding={0}>
+      <Container style={containerStyles} padding={0} onLayout={onLayout}>
         <FlatList
-          data={list}
+          ref={c => (this._list = c)}
+          data={this.routeList}
           keyExtractor={(item, index) => `${index}`}
           extraData={currentBusStopCode}
-          decelerationRate={0}
-          snapToInterval={80}
-          snapToAlignment="start"
-          scrollEventThrottle={1000}
-          onScroll={this.handleScroll}
+          getItemLayout={this.getItemLayout}
           renderItem={this.renderItem}
         />
       </Container>

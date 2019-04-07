@@ -1,1 +1,1 @@
-export { default as BusRouteList } from './bus-route-list';
+export { default as BusRouteList } from './bus-route-list.container';

@@ -2,7 +2,8 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    justifyContent: 'flex-end'
+    flexDirection: 'row',
+    alignItems: 'flex-end'
   },
   mapView: {
     position: 'absolute',
@@ -11,14 +12,9 @@ export default StyleSheet.create({
     bottom: 0,
     left: 0
   },
-  row: {
-    flexDirection: 'row'
-  },
   arrivalList: {
+    flex: 1,
     height: '50%',
     opacity: 0.9
-  },
-  busStopRoad: {
-    marginTop: 5
   }
 });

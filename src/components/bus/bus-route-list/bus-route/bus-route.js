@@ -1,6 +1,7 @@
-import React, { PureComponent } from 'react';
+import * as React from 'react';
 import { Label, Small, TouchableOpacity, View } from '../../../base';
 import { BusStopRoad } from '../../../bus/bus-stop-road';
+import { IBusStopLocation } from '../../../../types.d';
 import styles from './bus-route.styles';
 
 import pick from 'lodash/fp/pick';
@@ -11,15 +12,15 @@ type Props = {
   stopsByStop: Array<mixed>,
   isFirst: boolean,
   isLast: boolean,
-  isCurrentLocation: boolean,
-  onLocationPress: Function
+  isActive: boolean,
+  onPress: Function
 };
 
-export default class BusRoute extends PureComponent<Props> {
-  handleBulletPress = ({ busStopCode, longitude, latitude }) => {
-    const { onLocationPress } = this.props;
-    if (typeof onLocationPress === 'function') {
-      onLocationPress({ busStopCode, longitude, latitude });
+export default class BusRoute extends React.PureComponent<Props> {
+  handlePress = (busStopLocation: IBusStopLocation) => {
+    const { onPress } = this.props;
+    if (typeof onPress === 'function') {
+      onPress(busStopLocation);
     }
   };
 
@@ -27,7 +28,7 @@ export default class BusRoute extends PureComponent<Props> {
     const {
       busStopCode,
       distance,
-      isCurrentLocation,
+      isActive,
       isFirst,
       isLast,
       stopsByStop,
@@ -46,27 +47,25 @@ export default class BusRoute extends PureComponent<Props> {
     if (isLast) routeConnectorStyles.push(styles.lastRouteConnector);
 
     const bulletStyles = [styles.bullet];
-    if (isCurrentLocation) bulletStyles.push(styles.currentBullet);
+    if (isActive) bulletStyles.push(styles.currentBullet);
 
     return (
-      <View style={containerStyles}>
+      <TouchableOpacity
+        style={containerStyles}
+        onPress={() => this.handlePress({ busStopCode, longitude, latitude })}
+      >
         <BusStopRoad
           style={styles.roadContainer}
           {...pick(['description', 'roadName'], stopsByStop[busStopCode])}
         />
         <View style={styles.distanceContainer}>
           <View>
-            <TouchableOpacity
-              style={bulletStyles}
-              onPress={() =>
-                this.handleBulletPress({ busStopCode, longitude, latitude })
-              }
-            />
+            <View style={bulletStyles} />
             <View style={routeConnectorStyles} />
           </View>
           <Small weight={Label.WEIGHT_MEDIUM}>{distance.toFixed(1)}</Small>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   }
 }

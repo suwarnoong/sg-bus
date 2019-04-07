@@ -1,7 +1,9 @@
-import React, { PureComponent } from 'react';
+// @flow
+import * as React from 'react';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
 import { BusArrivalList, ScreenView, MapView } from '../../components';
 import { SCREEN_HEIGHT } from '../../constants';
+import { IBusStop, IBusStopLocation } from '../../types.d';
 
 import stopActiveIcon from '../../assets/stop-active.png';
 import stopIcon from '../../assets/stop.png';
@@ -34,13 +36,20 @@ const mapboxStyles = MapboxGL.StyleSheet.create({
 const initialZoomLevel = 16;
 
 type Props = {
-  params: { [string]: mixed },
+  params: { [string]: string },
+  stops: Array<IBusStop>,
   stopsByStop: { [string]: mixed },
   style: { [string]: mixed }
 };
 
-export default class BusStopArrivals extends PureComponent<Props> {
-  constructor(props) {
+type State = {
+  mapBottomInset: number
+};
+
+export default class BusStopArrivals extends React.PureComponent<Props, State> {
+  _map;
+
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -52,31 +61,30 @@ export default class BusStopArrivals extends PureComponent<Props> {
   //   this.props.updateInset('bottom', false);
   // }
 
-  calculateHeight = event => {
+  calculateHeight = (event: any) => {
     const { height } = event.nativeEvent.layout;
     this.setState({ mapBottomInset: height });
   };
 
-  handleZoom = async zoomLevel => {
-    const center = await this._map.getCenter();
-    const options = {
-      centerCoordinate: center,
-      zoom: zoomLevel,
-      duration: 1000
-    };
-    this._map.setCamera(options);
-  };
-
-  handleLocate = async coordinates => {
-    const zoom = await this._map.getZoom();
+  handleZoom = async (zoom: number) => {
+    const centerCoordinate = await this._map.getCenter();
     this._map.setCamera({
-      centerCoordinate: coordinates,
-      zoom: zoom,
+      centerCoordinate,
+      zoom,
       duration: 1000
     });
   };
 
-  renderBusStop = coordinates => {
+  handleLocate = async (centerCoordinate: Array<number>) => {
+    const zoom = await this._map.getZoom();
+    this._map.setCamera({
+      centerCoordinate,
+      zoom,
+      duration: 1000
+    });
+  };
+
+  renderBusStop = (coordinates: Array<number>) => {
     const {
       params: { busStopCode }
     } = this.props;
@@ -112,7 +120,7 @@ export default class BusStopArrivals extends PureComponent<Props> {
     );
   };
 
-  renderAllBusStops = excludeStop => {
+  renderAllBusStops = (excludeStop: string) => {
     const { stops } = this.props;
 
     const featureCollection = {
@@ -157,8 +165,10 @@ export default class BusStopArrivals extends PureComponent<Props> {
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
-    const busStop = stopsByStop[busStopCode];
-    const coordinates = busStop && [busStop.longitude, busStop.latitude];
+    const busStop: IBusStopLocation = stopsByStop[busStopCode];
+    const coordinates: Array<number> = busStop
+      ? [busStop.longitude, busStop.latitude]
+      : [0, 0];
 
     return (
       <ScreenView style={containerStyles}>

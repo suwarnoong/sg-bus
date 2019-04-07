@@ -6,3 +6,5 @@ export const IS_ANDROID = Platform.OS === 'android';
 const { height, width } = Dimensions.get('window');
 export const SCREEN_HEIGHT = height;
 export const SCREEN_WIDTH = width;
+
+export const BUS_ROUTE_HEIGHT = 80;

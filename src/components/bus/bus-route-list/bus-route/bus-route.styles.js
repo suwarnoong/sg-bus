@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
+import { BUS_ROUTE_HEIGHT } from '../../../../constants';
 
-const height = 80;
+const height = BUS_ROUTE_HEIGHT;
 const bulletSize = 20;
 const routeLineSize = 3;
 
