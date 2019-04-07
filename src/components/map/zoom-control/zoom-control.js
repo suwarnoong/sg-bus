@@ -1,17 +1,25 @@
+// @flow
 import React, { PureComponent } from 'react';
+import type { Node } from 'react';
 import styles from './zoom-control.styles';
 import { Button, ButtonGroup } from '../../base';
 import { AddIcon, MinusIcon } from '../../../icons';
 
 type Props = {
-  zoomLevel: Number,
-  maxZoomLevel: Number,
-  minZoomLevel: Number,
-  onZoom: Function
+  zoomLevel: number,
+  maxZoomLevel: number,
+  minZoomLevel: number,
+  onZoom: Function,
+  style: { [string]: mixed },
+  children: Node
 };
 
-export default class ZoomControl extends PureComponent<Props> {
-  constructor(props) {
+type State = {
+  currentZoom: number
+};
+
+export default class ZoomControl extends PureComponent<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -19,7 +27,7 @@ export default class ZoomControl extends PureComponent<Props> {
     };
   }
 
-  handleZoom = isZoomIn => {
+  handleZoom = (isZoomIn: boolean) => {
     const { onZoom, minZoomLevel, maxZoomLevel } = this.props;
     let { currentZoom } = this.state;
 

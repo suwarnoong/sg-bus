@@ -1,13 +1,6 @@
 import React, { PureComponent } from 'react';
 import styles from './bus-routes.styles';
-import {
-  BusRouteList,
-  Card,
-  FlatList,
-  Label,
-  View,
-  ScreenView
-} from '../../components';
+import { BusRouteList, ScreenView } from '../../components';
 
 type Props = {
   params: { [string]: mixed },

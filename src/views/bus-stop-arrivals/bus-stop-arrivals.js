@@ -1,28 +1,6 @@
 import React, { PureComponent } from 'react';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
-import {
-  ArrivalTimes,
-  BusStopRoad,
-  BusArrivalList,
-  Card,
-  H3,
-  Label,
-  ScreenView,
-  Small,
-  Button,
-  ButtonIconLeft,
-  ButtonIconRight,
-  GPSLocateControl,
-  ToolbarItem,
-  View,
-  ZoomControl
-} from '../../components';
-import {
-  StarFilledIcon,
-  StarOutlineIcon,
-  ChevronDownIcon,
-  ArrowRightIcon
-} from '../../icons';
+import { BusArrivalList, ScreenView, MapView } from '../../components';
 import { SCREEN_HEIGHT } from '../../constants';
 
 import stopActiveIcon from '../../assets/stop-active.png';
@@ -79,53 +57,29 @@ export default class BusStopArrivals extends PureComponent<Props> {
     this.setState({ mapBottomInset: height });
   };
 
-  renderControls = () => {
-    const {
-      stopsByStop,
-      params: { busStopCode }
-    } = this.props;
-
-    const busStop = stopsByStop[busStopCode];
-
-    return (
-      <View style={styles.controlContainer}>
-        <ZoomControl
-          style={styles.controlItem}
-          zoomLevel={initialZoomLevel}
-          maxZoomLevel={18}
-          minZoomLevel={12}
-          onZoom={async zoomLevel => {
-            const center = await this._map.getCenter();
-            const options = {
-              centerCoordinate: center,
-              zoom: zoomLevel,
-              duration: 1000
-            };
-            this._map.setCamera(options);
-          }}
-        />
-        <GPSLocateControl
-          style={styles.controlItem}
-          onLocate={async _ => {
-            const zoom = await this._map.getZoom();
-            this._map.setCamera({
-              centerCoordinate: [busStop.longitude, busStop.latitude],
-              zoom: zoom,
-              duration: 1000
-            });
-          }}
-        />
-      </View>
-    );
+  handleZoom = async zoomLevel => {
+    const center = await this._map.getCenter();
+    const options = {
+      centerCoordinate: center,
+      zoom: zoomLevel,
+      duration: 1000
+    };
+    this._map.setCamera(options);
   };
 
-  renderBusStop = () => {
+  handleLocate = async coordinates => {
+    const zoom = await this._map.getZoom();
+    this._map.setCamera({
+      centerCoordinate: coordinates,
+      zoom: zoom,
+      duration: 1000
+    });
+  };
+
+  renderBusStop = coordinates => {
     const {
-      stopsByStop,
       params: { busStopCode }
     } = this.props;
-
-    const busStop = stopsByStop[busStopCode];
 
     const featureCollection = {
       type: 'FeatureCollection',
@@ -138,7 +92,7 @@ export default class BusStopArrivals extends PureComponent<Props> {
           },
           geometry: {
             type: 'Point',
-            coordinates: [busStop.longitude, busStop.latitude]
+            coordinates
           }
         }
       ]
@@ -204,25 +158,24 @@ export default class BusStopArrivals extends PureComponent<Props> {
     if (style) containerStyles.push(style);
 
     const busStop = stopsByStop[busStopCode];
+    const coordinates = busStop && [busStop.longitude, busStop.latitude];
 
     return (
       <ScreenView style={containerStyles}>
         {busStop && (
-          <MapboxGL.MapView
+          <MapView
             style={styles.mapView}
-            zoomEnabled={false}
-            logoEnabled={false}
-            pitch={0}
-            ref={c => (this._map = c)}
-            centerCoordinate={[busStop.longitude, busStop.latitude]}
+            mapRef={c => (this._map = c)}
+            centerCoordinate={coordinates}
             showUserLocation={true}
             contentInset={[0, 0, mapBottomInset, 0]}
+            onZoom={this.handleZoom}
+            onLocate={() => this.handleLocate(coordinates)}
           >
             {this.renderAllBusStops(busStopCode)}
-            {this.renderBusStop()}
-          </MapboxGL.MapView>
+            {this.renderBusStop(coordinates)}
+          </MapView>
         )}
-        {this.renderControls()}
         <BusArrivalList
           style={styles.arrivalList}
           busStopCode={busStopCode}
