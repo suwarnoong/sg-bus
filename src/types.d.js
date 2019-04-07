@@ -17,17 +17,12 @@ export type IBusArrival = {
 
 export type IBusRoute = {
   serviceNo: string,
-  operator: string,
-  direction: number,
-  stopSequence: number,
+  direction: string,
   busStopCode: string,
   distance: number,
-  wd_FirstBus: string,
-  wd_LastBus: string,
-  sat_FirstBus: string,
-  sat_LastBus: string,
-  sun_FirstBus: string,
-  sun_LastBus: string
+  weekday: Array<number>,
+  saturday: Array<number>,
+  sunday: Array<number>
 };
 
 export type IBusStop = {

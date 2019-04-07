@@ -8,3 +8,13 @@ export const SCREEN_HEIGHT = height;
 export const SCREEN_WIDTH = width;
 
 export const BUS_ROUTE_HEIGHT = 80;
+
+export const lta = {
+  FETCH_REMOTE: false,
+  BUS_ROUTES_URL: 'http://datamall2.mytransport.sg/ltaodataservice/BusRoutes',
+  BUS_SERVICES_URL:
+    'http://datamall2.mytransport.sg/ltaodataservice/BusServices',
+  BUS_STOPS_URL: 'http://datamall2.mytransport.sg/ltaodataservice/BusStops',
+  BUS_ARRIVALS_URL:
+    'http://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2?BusStopCode={BusStopCode}'
+};

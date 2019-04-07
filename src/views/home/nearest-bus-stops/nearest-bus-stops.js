@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { BusStopList, View, Label } from '../../../components';
+import { isGeolocationEmpty } from '../../../utils';
 import styles from './nearest-bus-stops.styles';
 
 type Props = {};
@@ -7,19 +8,23 @@ type Props = {};
 export default class NearestBusStops extends PureComponent<Props> {
   componentDidMount() {
     const { persisted, getNearestStops, geolocation } = this.props;
-    if (persisted) {
+    if (persisted && !isGeolocationEmpty(geolocation)) {
       getNearestStops(geolocation);
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.persisted) {
-      const { getNearestStops, geolocation } = this.props;
-      const locationChanged =
-        nextProps.geolocation.latitude != this.props.geolocation.latitude ||
-        nextProps.geolocation.longitude != this.props.geolocation.longitude;
+    const { getNearestStops, geolocation, persisted } = this.props;
 
-      if (locationChanged) {
+    const locationChanged =
+      nextProps.geolocation.latitude != geolocation.latitude ||
+      nextProps.geolocation.longitude != geolocation.longitude;
+    const persistedChanged = nextProps.persisted && !persisted;
+
+    if (persistedChanged || locationChanged) {
+      if ('geolocation' in nextProps) {
+        getNearestStops(nextProps.geolocation);
+      } else {
         getNearestStops(geolocation);
       }
     }

@@ -14,7 +14,7 @@ const initialState = {
 const updateGeolocation = (state, action) => {
   const geolocation = Object.assign({}, state.geolocation, {
     latitude: action.latitude,
-    longitude: action.longitude || ''
+    longitude: action.longitude
   });
 
   return Object.assign({}, state, { geolocation });
