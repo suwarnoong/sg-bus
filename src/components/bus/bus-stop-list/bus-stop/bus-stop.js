@@ -48,7 +48,11 @@ export default class BusStop extends PureComponent<Props> {
     const services = routesByStop[busStopCode];
 
     return (
-      <TouchableOpacity style={containerStyles} onPress={this.handlePress}>
+      <TouchableOpacity
+        style={containerStyles}
+        onPress={this.handlePress}
+        delayPressIn={100}
+      >
         <BusStopRoad
           style={styles.busStopContainer}
           {...pick(

@@ -53,6 +53,7 @@ export default class BusRoute extends React.PureComponent<Props> {
       <TouchableOpacity
         style={containerStyles}
         onPress={() => this.handlePress({ busStopCode, longitude, latitude })}
+        delayPressIn={100}
       >
         <BusStopRoad
           style={styles.roadContainer}

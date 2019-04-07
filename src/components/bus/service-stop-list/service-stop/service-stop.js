@@ -48,7 +48,11 @@ export default class ServiceStop extends PureComponent<Props> {
     if (style) containerStyles.push(style);
 
     return (
-      <TouchableOpacity style={containerStyles} onPress={this.handlePress}>
+      <TouchableOpacity
+        style={containerStyles}
+        onPress={this.handlePress}
+        delayPressIn={100}
+      >
         <BusArrival
           {...arrivals}
           busStopCode={busStopCode}

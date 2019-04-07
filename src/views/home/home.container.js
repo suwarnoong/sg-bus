@@ -5,7 +5,8 @@ import { getRoutes, getServices, getStops } from '../../store/actions';
 const mapStateToProps = state => ({
   services: state.bus.services,
   routes: state.bus.routes,
-  stops: state.bus.stops
+  stops: state.bus.stops,
+  favorites: state.bus.favorites
 });
 
 const mapDispatchToProps = dispatch => ({

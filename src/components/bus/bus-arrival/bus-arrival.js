@@ -71,7 +71,7 @@ export default class BusArrival extends PureComponent<Props> {
       <View style={containerStyles}>
         <View style={styles.row}>
           <View style={[styles.row, styles.fill]}>
-            <TouchableOpacity onPress={this.handlePress}>
+            <TouchableOpacity onPress={this.handlePress} delayPressIn={100}>
               <Label
                 size={30}
                 weight={Label.WEIGHT_DEMI_BOLD}

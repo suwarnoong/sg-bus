@@ -58,7 +58,7 @@ export default class Home extends PureComponent<Props, State> {
   };
 
   render() {
-    const { style } = this.props;
+    const { style, favorites } = this.props;
     const { selectedTab } = this.state;
 
     const containerStyles = [styles.container];
@@ -69,10 +69,10 @@ export default class Home extends PureComponent<Props, State> {
         <H1 style={{ paddingHorizontal: 10, paddingVertical: 20 }}>
           Bus Arrivals
         </H1>
-        {this.renderTabs()}
+        {this.renderTabs(favorites.length > 0 ? 0 : 1)}
         <View style={{ flex: 1 }}>
-          {selectedTab === 'N' && <NearestBusStops />}
           {selectedTab === 'S' && <FavoriteServiceStop />}
+          {selectedTab === 'N' && <NearestBusStops />}
         </View>
       </ScreenView>
     );
