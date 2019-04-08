@@ -62,7 +62,7 @@ type Props = {
   busStopCode: string,
   stops: Array<IBusStop>,
   stopsByStop: { [string]: mixed },
-  stopsGeojsonFeatures: Array<any>,
+  stopsGeojson: Array<any>,
   contentInset: Array<number>,
   style?: { [string]: mixed }
 };
@@ -123,11 +123,11 @@ export default class BusStopMap extends React.PureComponent<Props> {
   };
 
   renderAllBusStops = (excludeStop: string) => {
-    const { stops, stopsGeojsonFeatures } = this.props;
+    const { stops, stopsGeojson } = this.props;
 
     const featureCollection = {
       type: 'FeatureCollection',
-      features: stopsGeojsonFeatures.filter(s => s.id !== excludeStop)
+      features: stopsGeojson.filter(s => s.id !== excludeStop)
     };
 
     return (

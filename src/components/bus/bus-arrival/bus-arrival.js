@@ -46,7 +46,7 @@ export default class BusArrival extends PureComponent<Props> {
   handlePress = () => {
     const { busStopCode, serviceNo, stopsByStop } = this.props;
     const busStop = stopsByStop[busStopCode];
-    this.props.navigate('BusRoutes', {
+    this.props.navigate('BusRoute', {
       title: serviceNo,
       subTitle: `${busStop.description}`,
       serviceNo,

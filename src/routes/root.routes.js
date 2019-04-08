@@ -1,6 +1,6 @@
 import Home from '../views/home';
 import BusStopArrivals from '../views/bus-stop-arrivals';
-import BusRoutes from '../views/bus-routes';
+import BusRoute from '../views/bus-route';
 
 export default {
   Home: {
@@ -18,8 +18,8 @@ export default {
     screen: BusStopArrivals,
     path: 'bus-stop-arrivals'
   },
-  BusRoutes: {
-    screen: BusRoutes,
-    path: 'bus-routes'
+  BusRoute: {
+    screen: BusRoute,
+    path: 'bus-route'
   }
 };

@@ -5,7 +5,7 @@ import { mapboxIcon } from '../../../constants';
 const getStops = state => state.stops;
 const getRoutes = state => state.routes;
 
-export const getStopsGeojsonFeatures = createSelector(
+export const getStopsGeojson = createSelector(
   [getStops, getRoutesByStop, getRoutes],
   (stops, routesByStop, routes) => {
     const features = stops.map(s => {

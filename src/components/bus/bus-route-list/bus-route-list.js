@@ -22,6 +22,7 @@ type Props = {
   routesByService: { [string]: Array<mixed> },
   stopsByStop: { [string]: mixed },
   onLocate: Function,
+  onNearestStopFound: Function,
   onLayout: Function,
   style: { [string]: mixed }
 };
@@ -37,7 +38,6 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
 
   _list: any;
   routeList: Array<IBusRoute>;
-  nearestStopCode: string;
 
   constructor(props: Props) {
     super(props);
@@ -60,14 +60,30 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
   scrollToNearest = () => {
     if (this._list == null) return;
 
-    const { geolocation, stopsByStop } = this.props;
-    const nearestStop = this.routeList.sort((a, b) => a.distance - b.distance);
+    const { onNearestStopFound, stopsByStop } = this.props;
+    const sortedRoutes = this.routeList.sort((a, b) => a.distance - b.distance);
 
-    this.nearestStopCode = nearestStop[0].busStopCode;
-    this.setState({ currentBusStopCode: this.nearestStopCode });
+    if (sortedRoutes == null || sortedRoutes.length < 0) return;
+
+    let nearestStop: IBusRoute = sortedRoutes[0];
+    const stop: IBusStop = stopsByStop[nearestStop.busStopCode];
+
+    if (stop == null) return;
+
+    nearestStop = {
+      ...nearestStop,
+      latitude: stop.latitude,
+      longitude: stop.longitude
+    };
+
+    if (typeof onNearestStopFound === 'function') {
+      onNearestStopFound(nearestStop);
+    }
+
+    this.setState({ currentBusStopCode: nearestStop.busStopCode });
 
     const index = this.routeList.findIndex(
-      r => r.busStopCode === this.nearestStopCode
+      r => r.busStopCode === nearestStop.busStopCode
     );
 
     this._list.scrollToIndex({ index });
