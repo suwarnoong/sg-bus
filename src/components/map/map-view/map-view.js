@@ -12,6 +12,7 @@ type Props = {
   pitch: number,
   showUserLocation: boolean,
   zoomEnabled: boolean,
+  rotateEnabled: boolean,
   contentInset: Array<number>,
   showZoomControl: boolean,
   zoomLevel: number,
@@ -29,10 +30,12 @@ export default class MapView extends PureComponent<Props> {
   static defaultProps = {
     showUserLocation: true,
     showZoomControl: true,
+    zoomEnabled: false,
     zoomLevel: 16,
     minZoomLevel: 9,
     maxZoomLevel: 18,
     showLocateControl: true,
+    rotateEnabled: false,
     pitch: 0
   };
 
