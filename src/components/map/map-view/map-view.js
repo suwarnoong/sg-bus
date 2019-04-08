@@ -30,10 +30,13 @@ export default class MapView extends PureComponent<Props> {
     showUserLocation: true,
     showZoomControl: true,
     zoomLevel: 16,
-    minZoomLevel: 12,
+    minZoomLevel: 9,
     maxZoomLevel: 18,
-    showLocateControl: true
+    showLocateControl: true,
+    pitch: 0
   };
+
+  _map;
 
   renderControls = () => {
     const {
@@ -47,6 +50,9 @@ export default class MapView extends PureComponent<Props> {
     } = this.props;
 
     if (!showZoomControl && !showLocateControl) return;
+    if (this._map == null) return;
+
+    // const zoomLevel = await this._map.getZoom();
 
     return (
       <View style={styles.controlContainer}>
@@ -75,7 +81,10 @@ export default class MapView extends PureComponent<Props> {
     return (
       <View style={containerStyles}>
         <MapboxGL.MapView
-          ref={mapRef}
+          ref={c => {
+            this._map = c;
+            mapRef(c);
+          }}
           style={styles.mapView}
           {...this.props}
           logoEnabled={false}

@@ -27,6 +27,12 @@ export default class ZoomControl extends PureComponent<Props, State> {
     };
   }
 
+  componentWillReceiveProps(nextProps: Props) {
+    if (this.props.zoomLevel !== nextProps.zoomLevel) {
+      this.setState({ currentZoom: nextProps.zoomLevel });
+    }
+  }
+
   handleZoom = (isZoomIn: boolean) => {
     const { onZoom, minZoomLevel, maxZoomLevel } = this.props;
     let { currentZoom } = this.state;

@@ -61,9 +61,7 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
     if (this._list == null) return;
 
     const { geolocation, stopsByStop } = this.props;
-    const nearestStop = this.routeList.sort((a, b) =>
-      a.distance < b.distance ? -1 : 1
-    );
+    const nearestStop = this.routeList.sort((a, b) => a.distance - b.distance);
 
     this.nearestStopCode = nearestStop[0].busStopCode;
     this.setState({ currentBusStopCode: this.nearestStopCode });

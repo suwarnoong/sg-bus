@@ -21,7 +21,7 @@ export const getFavoriteServiceStop = createSelector(
           })
         }))
         .filter(busStop => busStop.distance < 0.3)
-        .sort((a, b) => (a.distance < b.distance ? -1 : 1))
+        .sort((a, b) => a.distance - b.distance)
         .map(f => f.name)
     );
 

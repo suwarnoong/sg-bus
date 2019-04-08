@@ -1,11 +1,12 @@
 import { reduxConnect } from '../../utils';
 // import { updateInset } from '../../store/actions';
-import { getStopsByStop } from '../../store/selectors';
+import { getStopsByStop, getStopsGeojsonFeatures } from '../../store/selectors';
 import BusStopArrivals from './bus-stop-arrivals';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, props) => ({
   stops: state.bus.stops,
-  stopsByStop: getStopsByStop(state.bus)
+  stopsByStop: getStopsByStop(state.bus),
+  stopsGeojsonFeatures: getStopsGeojsonFeatures(state.bus)
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -18,3 +18,8 @@ export const lta = {
   BUS_ARRIVALS_URL:
     'http://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2?BusStopCode={BusStopCode}'
 };
+
+export const mapboxIcon = {
+  BUS_STOP: 'stop',
+  ACTIVE_BUS_STOP: 'activeStop'
+};

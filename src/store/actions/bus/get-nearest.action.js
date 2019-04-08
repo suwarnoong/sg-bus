@@ -14,7 +14,7 @@ export const getNearestStops = position => {
         })
       }))
       .filter(busStop => busStop.distance < 0.3)
-      .sort((a, b) => (a.distance < b.distance ? -1 : 1));
+      .sort((a, b) => a.distance - b.distance);
 
     dispatch({ type: actions.UPDATE_NEAREST, nearest: nearestStops });
   };

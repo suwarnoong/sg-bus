@@ -1,20 +1,17 @@
 // @flow
 import * as React from 'react';
+import { Image } from 'react-native';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
 import { BusArrivalList, ScreenView, MapView } from '../../components';
-import { SCREEN_HEIGHT } from '../../constants';
+import { SCREEN_HEIGHT, mapboxIcon } from '../../constants';
 import { IBusStop, IBusStopLocation } from '../../types.d';
-
-import stopActiveIcon from '../../assets/stop-active.png';
-import stopIcon from '../../assets/stop.png';
 
 import styles from './bus-stop-arrivals.styles';
 
-const mapIconSize = [['stop', 0.5], ['stopActive', 0.7]];
-const mapIconAnchor = [
-  ['stop', MapboxGL.IconAnchor.Center],
-  ['stopActive', MapboxGL.IconAnchor.Center]
-];
+const stopActiveImage = require('../../assets/stop-active.png');
+const stopImage = require('../../assets/stop.png');
+
+const mapIconSize = [[mapboxIcon.BUS_STOP, 1], [mapboxIcon.ACTIVE_BUS_STOP, 1]];
 
 const mapboxStyles = MapboxGL.StyleSheet.create({
   icon: {
@@ -24,12 +21,30 @@ const mapboxStyles = MapboxGL.StyleSheet.create({
       'icon',
       MapboxGL.InterpolationMode.Categorical
     ),
-    iconAnchor: MapboxGL.StyleSheet.source(
-      mapIconAnchor,
-      'icon',
-      MapboxGL.InterpolationMode.Categorical
-    ),
+    iconAnchor: MapboxGL.IconAnchor.Center,
     iconAllowOverlap: true
+  },
+  clusteredPoints: {
+    circlePitchAlignment: 'map',
+    circleColor: MapboxGL.StyleSheet.source(
+      [[5, '#3073C2'], [15, '#1D599F'], [50, '#0C3E77'], [100, '#012F65']],
+      'point_count',
+      MapboxGL.InterpolationMode.Exponential
+    ),
+    circleRadius: MapboxGL.StyleSheet.source(
+      [[0, 15], [100, 20], [750, 30]],
+      'point_count',
+      MapboxGL.InterpolationMode.Exponential
+    ),
+    circleOpacity: 0.84,
+    circleStrokeWidth: 5,
+    circleStrokeColor: 'white'
+  },
+  clusterCount: {
+    textField: '{point_count}',
+    textSize: 12,
+    textPitchAlignment: 'map',
+    textColor: 'white'
   }
 });
 
@@ -39,6 +54,7 @@ type Props = {
   params: { [string]: string },
   stops: Array<IBusStop>,
   stopsByStop: { [string]: mixed },
+  stopsGeojsonFeatures: Array<any>,
   style: { [string]: mixed }
 };
 
@@ -96,7 +112,7 @@ export default class BusStopArrivals extends React.PureComponent<Props, State> {
           type: 'Feature',
           id: busStopCode,
           properties: {
-            icon: 'stopActive'
+            icon: mapboxIcon.ACTIVE_BUS_STOP
           },
           geometry: {
             type: 'Point',
@@ -110,7 +126,7 @@ export default class BusStopArrivals extends React.PureComponent<Props, State> {
       <MapboxGL.ShapeSource
         id={`shape-${busStopCode}`}
         shape={featureCollection}
-        images={{ stopActive: stopActiveIcon }}
+        images={{ [mapboxIcon.ACTIVE_BUS_STOP]: stopActiveImage }}
       >
         <MapboxGL.SymbolLayer
           id={`sym-${busStopCode}`}
@@ -121,34 +137,31 @@ export default class BusStopArrivals extends React.PureComponent<Props, State> {
   };
 
   renderAllBusStops = (excludeStop: string) => {
-    const { stops } = this.props;
+    const { stops, stopsGeojsonFeatures } = this.props;
 
     const featureCollection = {
       type: 'FeatureCollection',
-      features: stops
-        .filter(s => s.busStopCode !== excludeStop)
-        .map(s => {
-          return {
-            type: 'Feature',
-            id: s.busStopCode,
-            properties: {
-              icon: 'stop'
-            },
-            geometry: {
-              type: 'Point',
-              coordinates: [s.longitude, s.latitude]
-            }
-          };
-        })
+      features: stopsGeojsonFeatures.filter(s => s.id !== excludeStop)
     };
 
     return (
       <MapboxGL.ShapeSource
         id="shape-all-stops"
         shape={featureCollection}
-        images={{ stop: stopIcon }}
+        images={{ [mapboxIcon.BUS_STOP]: stopImage }}
+        cluster
+        clusterRadius={40}
+        clusterMaxZoomLevel={13}
+        onPress={() => {}}
       >
-        <MapboxGL.SymbolLayer id="sym-all-stops" style={mapboxStyles.icon} />
+        <MapboxGL.SymbolLayer id="symCount" style={mapboxStyles.clusterCount} />
+        <MapboxGL.CircleLayer
+          id="clusteredPoints"
+          belowLayerID="symCount"
+          filter={['has', 'point_count']}
+          style={mapboxStyles.clusteredPoints}
+        />
+        <MapboxGL.SymbolLayer id="symAllStops" style={mapboxStyles.icon} />
       </MapboxGL.ShapeSource>
     );
   };
