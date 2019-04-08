@@ -1,12 +1,17 @@
+// @flow
 import Home from './home';
 import { reduxConnect } from '../../utils';
 import { getRoutes, getServices, getStops } from '../../store/actions';
+import { getFavoriteServiceStop } from '../../store/selectors';
 
 const mapStateToProps = state => ({
   services: state.bus.services,
   routes: state.bus.routes,
   stops: state.bus.stops,
-  favorites: state.bus.favorites
+  favoriteServiceStop: getFavoriteServiceStop(
+    state.bus,
+    state.service.geolocation
+  )
 });
 
 const mapDispatchToProps = dispatch => ({
