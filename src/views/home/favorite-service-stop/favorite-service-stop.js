@@ -18,6 +18,7 @@ export default class FavoriteServiceStop extends PureComponent<Props> {
 
     return (
       <View>
+        <Timer onTick={this.handleTick} />
         <ServiceStopList
           list={favoriteServiceStop}
           onPress={item => {
@@ -29,7 +30,6 @@ export default class FavoriteServiceStop extends PureComponent<Props> {
           }}
           style={containerStyles}
         />
-        <Timer autoStart={true} interval={5000} onTick={this.handleTick} />
       </View>
     );
   }

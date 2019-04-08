@@ -1,5 +1,6 @@
+// @flow
 import React, { PureComponent } from 'react';
-import { Text, View } from 'react-native';
+import { AppState } from '../../services';
 
 type Props = {
   autoStart: boolean,
@@ -9,17 +10,12 @@ type Props = {
 
 export default class Timer extends PureComponent<Props> {
   static defaultProps = {
-    autoStart: false,
-    interval: 1000 // miliseconds
+    autoStart: true,
+    interval: 5000 // miliseconds
   };
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      timerId: null
-    };
-  }
+  _timerId: ?IntervalID;
+  _appStatePaused: boolean = false;
 
   componentDidMount() {
     if (this.props.autoStart) {
@@ -34,30 +30,45 @@ export default class Timer extends PureComponent<Props> {
   tick = () => {
     const { onTick } = this.props;
     if (typeof onTick === 'function') {
-      console.log('tick');
+      console.log('tick', this._timerId);
       onTick();
     }
   };
 
   start = () => {
-    console.log('start');
-    if (!isNaN(this.state.timerId) && this.state.timerId >= 0) {
-      clearInterval(this.state.timerId);
-    }
+    this.stop();
+    this._timerId = setInterval(this.tick, this.props.interval);
+    console.log('start', this._timerId);
     this.tick();
-    const timerId = setInterval(this.tick, this.props.interval);
-    this.setState({ timerId });
   };
 
   stop = () => {
-    console.log('stop');
-    if (!isNaN(this.state.timerId) && this.state.timerId >= 0) {
-      clearInterval(this.state.timerId);
-      this.setState({ timerId: null });
+    if (this.isRunning()) {
+      console.log('stop', this._timerId);
+      clearInterval(this._timerId);
+      this._timerId = null;
     }
   };
 
+  handleAppStateChange = (state: ?string) => {
+    const isActive = state === 'active';
+    if (!isActive) {
+      if (this.isRunning()) {
+        this._appStatePaused = true;
+        this.stop();
+      }
+    } else {
+      if (this._appStatePaused) {
+        this.start();
+      }
+    }
+  };
+
+  isRunning = () => {
+    return !isNaN(this._timerId) && Number(this._timerId) >= 0;
+  };
+
   render() {
-    return null;
+    return <AppState onChange={this.handleAppStateChange} />;
   }
 }

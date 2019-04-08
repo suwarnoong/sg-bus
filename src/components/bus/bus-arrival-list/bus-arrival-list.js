@@ -39,7 +39,7 @@ export default class BusArrivalList extends PureComponent<Props> {
 
     return (
       <Container style={containerStyles} padding={0} onLayout={onLayout}>
-        <Timer autoStart={true} interval={5000} onTick={this.handleTick} />
+        <Timer onTick={this.handleTick} />
         <FlatList
           data={arrivalList}
           keyExtractor={(item, index) => item.serviceNo}
