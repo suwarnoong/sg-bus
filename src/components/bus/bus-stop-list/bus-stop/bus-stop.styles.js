@@ -13,6 +13,7 @@ export default StyleSheet.create({
   },
   routesContainer: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     marginTop: 3
   }
 });
