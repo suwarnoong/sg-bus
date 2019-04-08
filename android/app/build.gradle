@@ -109,6 +109,18 @@ android {
         versionName "1.0"
         multiDexEnabled true
     }
+
+    signingConfigs {
+        release {
+            if (project.hasProperty('SGBUS_RELEASE_STORE_FILE')) {
+                storeFile file(SGBUS_RELEASE_STORE_FILE)
+                storePassword SGBUS_RELEASE_STORE_PASSWORD
+                keyAlias SGBUS_RELEASE_KEY_ALIAS
+                keyPassword SGBUS_RELEASE_KEY_PASSWORD
+            }
+        }
+    }
+
     splits {
         abi {
             reset()
@@ -121,6 +133,7 @@ android {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
