@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Button, Label, TouchableOpacity, View } from '../../base';
 import { StarOutlineIcon, StarFilledIcon } from '../../../icons';
+import { isArrivalEmpty } from '../../../utils';
 import ArrivalTimes from './arrival-times';
 import { IArrivalTime } from '../../../types.d.js';
 import styles from './bus-arrival.styles';
@@ -90,11 +91,17 @@ export default class BusArrival extends PureComponent<Props> {
             )}
           </View>
 
-          <ArrivalTimes
-            nextBus={nextBus}
-            nextBus2={nextBus2}
-            nextBus3={nextBus3}
-          />
+          {isArrivalEmpty(nextBus) ? (
+            <Label weight={Label.WEIGHT_DEMI_BOLD} style={styles.noArrivals}>
+              Not Operating
+            </Label>
+          ) : (
+            <ArrivalTimes
+              nextBus={nextBus}
+              nextBus2={nextBus2}
+              nextBus3={nextBus3}
+            />
+          )}
         </View>
       </View>
     );

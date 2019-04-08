@@ -16,6 +16,7 @@ import { IBusArrival } from '../../../../types.d.js';
 import pick from 'lodash/fp/pick';
 
 type Props = {
+  serviceNo: string,
   busStopCode: string,
   description: string,
   roadName: string,
@@ -35,6 +36,7 @@ export default class ServiceStop extends PureComponent<Props> {
 
   render() {
     const {
+      serviceNo,
       busStopCode,
       description,
       roadName,
@@ -55,6 +57,7 @@ export default class ServiceStop extends PureComponent<Props> {
       >
         <BusArrival
           {...arrivals}
+          serviceNo={serviceNo}
           busStopCode={busStopCode}
           hideFavorite={true}
         />

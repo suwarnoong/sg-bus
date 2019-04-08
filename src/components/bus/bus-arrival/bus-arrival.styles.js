@@ -18,5 +18,10 @@ export default StyleSheet.create({
   },
   busStopRoad: {
     marginTop: 5
+  },
+  noArrivals: {
+    fontSize: 18,
+    color: '#D0021B',
+    alignSelf: 'center'
   }
 });
