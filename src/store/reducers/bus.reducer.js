@@ -14,7 +14,8 @@ const initialState = {
   routes: [],
   arrivals: {},
   nearest: [],
-  favorites: []
+  favorites: [],
+  nearestDistance: 0.5
 };
 
 const updateServices = (state, action) => {

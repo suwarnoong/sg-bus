@@ -7,9 +7,11 @@ import uniq from 'lodash/fp/uniq';
 const getFavorites = (state, location) =>
   state.favorites.map(f => ({ ...f, location }));
 
+const getNearestDistance = state => state.nearestDistance;
+
 export const getFavoriteServiceStop = createSelector(
-  [getFavorites, getStopsByStop],
-  (favorites, stopsByStop) => {
+  [getFavorites, getStopsByStop, getNearestDistance],
+  (favorites, stopsByStop, nearestDistance) => {
     const names = uniq(
       favorites
         .map(f => ({
@@ -20,7 +22,7 @@ export const getFavoriteServiceStop = createSelector(
             longitude: stopsByStop[f.busStopCode].longitude
           })
         }))
-        .filter(busStop => busStop.distance < 0.3)
+        .filter(busStop => busStop.distance < nearestDistance)
         .sort((a, b) => a.distance - b.distance)
         .map(f => f.name)
     );
