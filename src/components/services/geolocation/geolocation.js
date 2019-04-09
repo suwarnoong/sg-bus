@@ -19,7 +19,7 @@ export default class Geolocation extends PureComponent<Props> {
     enableHighAccuracy: true,
     timeout: 20000,
     maximumAge: 1000,
-    distanceFilter: 10
+    distanceFilter: 20
   };
 
   constructor(props) {

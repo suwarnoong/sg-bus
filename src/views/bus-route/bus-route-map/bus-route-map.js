@@ -31,6 +31,7 @@ const mapStyles = MapboxGL.StyleSheet.create({
 type Props = {
   mapRef: Function,
   serviceNo: string,
+  busStopCode: string,
   centerCoordinate: Array<number>,
   routeGeojson: Array<any>,
   contentInset: Array<number>,

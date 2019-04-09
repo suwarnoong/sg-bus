@@ -17,10 +17,11 @@ type IRenderItem = { item: any, index: number };
 type Props = {
   Container: React.ElementType,
   serviceNo: string,
+  busStopCode: string,
   geolocation: ICoordinate,
   persisted: boolean,
-  routesByService: { [string]: Array<mixed> },
   stopsByStop: { [string]: mixed },
+  routeByServiceDirection: Array<IBusRoute>,
   onLocate: Function,
   onNearestStopFound: Function,
   onLayout: Function,
@@ -37,7 +38,7 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
   };
 
   _list: any;
-  routeList: Array<IBusRoute>;
+  _routeList: Array<IBusRoute>;
 
   constructor(props: Props) {
     super(props);
@@ -60,32 +61,10 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
   scrollToNearest = () => {
     if (this._list == null) return;
 
-    const { onNearestStopFound, stopsByStop } = this.props;
-    const sortedRoutes = this.routeList.sort((a, b) => a.distance - b.distance);
+    const { busStopCode } = this.props;
+    this.setState({ currentBusStopCode: busStopCode });
 
-    if (sortedRoutes == null || sortedRoutes.length < 0) return;
-
-    let nearestStop: IBusRoute = sortedRoutes[0];
-    const stop: IBusStop = stopsByStop[nearestStop.busStopCode];
-
-    if (stop == null) return;
-
-    nearestStop = {
-      ...nearestStop,
-      latitude: stop.latitude,
-      longitude: stop.longitude
-    };
-
-    if (typeof onNearestStopFound === 'function') {
-      onNearestStopFound(nearestStop);
-    }
-
-    this.setState({ currentBusStopCode: nearestStop.busStopCode });
-
-    const index = this.routeList.findIndex(
-      r => r.busStopCode === nearestStop.busStopCode
-    );
-
+    const index = this._routeList.findIndex(r => r.busStopCode === busStopCode);
     this._list.scrollToIndex({ index });
   };
 
@@ -100,9 +79,9 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
   };
 
   getRouteListWDistance = (): Array<IBusRoute> => {
-    const { geolocation, routesByService, stopsByStop, serviceNo } = this.props;
+    const { geolocation, routeByServiceDirection, stopsByStop } = this.props;
 
-    const routeList = routesByService[serviceNo];
+    const routeList = routeByServiceDirection;
     if (routeList == null) return [];
 
     return routeList.map((r: IBusRoute) => {
@@ -120,7 +99,7 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
   renderItem = ({ item, index }: IRenderItem) => {
     const { currentBusStopCode } = this.state;
     const isFirst = index === 0;
-    const isLast = index === this.routeList.length - 1;
+    const isLast = index === this._routeList.length - 1;
 
     return (
       <BusRoute
@@ -143,13 +122,14 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
-    this.routeList = this.getRouteListWDistance();
+    // todo: getRouteListWDistance once only
+    this._routeList = this.getRouteListWDistance();
 
     return (
       <Container style={containerStyles} padding={0} onLayout={onLayout}>
         <FlatList
           ref={c => (this._list = c)}
-          data={this.routeList}
+          data={this._routeList}
           keyExtractor={(item, index) => `${index}`}
           extraData={currentBusStopCode}
           getItemLayout={this.getItemLayout}

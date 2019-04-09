@@ -1,18 +1,23 @@
 import { createSelector } from 'reselect';
-import { getRoutesByService } from './get-routes-by-service';
+import { getRouteDirection } from './get-route-direction';
+import { getRouteByServiceDirection } from './get-route-by-service-direction';
 import { getStopsByStop } from './get-stops-by-stop';
 import { mapboxIcon } from '../../../constants';
 
-const getRouteByService = (state, serviceNo) => {
-  return getRoutesByService(state)[serviceNo];
+const getRoute = (state, serviceNo, busStopCode) => {
+  return getRouteByServiceDirection(
+    state,
+    serviceNo,
+    getRouteDirection(state, serviceNo, busStopCode)
+  );
 };
 
 export const getRouteGeojson = createSelector(
-  [getRouteByService, getStopsByStop],
-  (routeByService, stopsByStop) => {
-    if (routeByService == null) return;
+  [getRoute, getStopsByStop],
+  (route, stopsByStop) => {
+    if (route == null) return;
 
-    const features = routeByService.map(r => {
+    const features = route.map(r => {
       const coordinates = stopsByStop[r.busStopCode] && [
         stopsByStop[r.busStopCode].longitude,
         stopsByStop[r.busStopCode].latitude
@@ -31,7 +36,6 @@ export const getRouteGeojson = createSelector(
         }
       };
     });
-
     return features;
   }
 );

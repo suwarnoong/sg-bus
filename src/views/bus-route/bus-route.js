@@ -7,9 +7,9 @@ import { SCREEN_HEIGHT } from '../../constants';
 import { IBusStop, IBusStopLocation, ICoordinate } from '../../types.d';
 
 type Props = {
+  stopsByStop: { [string]: Array<IBusStop> },
   params: { [string]: string },
-  style: { [string]: mixed },
-  geolocation: ICoordinate
+  style: { [string]: mixed }
 };
 
 type State = {
@@ -29,13 +29,20 @@ export default class BusRoute extends PureComponent<Props, State> {
     };
   }
 
+  componentWillMount() {
+    const {
+      params: { busStopCode },
+      stopsByStop
+    } = this.props;
+
+    const stop: IBusStop = stopsByStop[busStopCode];
+    const { latitude, longitude } = stop;
+    this.setState({ coordinates: [longitude, latitude] });
+  }
+
   calculateHeight = (event: any) => {
     const { height } = event.nativeEvent.layout;
     this.setState({ mapBottomInset: height });
-  };
-
-  nearestStopFound = (stop: IBusStop) => {
-    this.setState({ coordinates: [stop.longitude, stop.latitude] });
   };
 
   locateBusStop = async (busStopLocation: IBusStopLocation) => {
@@ -55,8 +62,7 @@ export default class BusRoute extends PureComponent<Props, State> {
 
   render() {
     const {
-      geolocation,
-      params: { serviceNo },
+      params: { serviceNo, busStopCode },
       style
     } = this.props;
 
@@ -72,15 +78,16 @@ export default class BusRoute extends PureComponent<Props, State> {
           style={styles.mapView}
           mapRef={c => (this._map = c)}
           serviceNo={serviceNo}
+          busStopCode={busStopCode}
           centerCoordinate={coordinates}
           contentInset={[0, 0, mapBottomInset, 0]}
         />
         <BusRouteList
           style={styles.routeList}
           serviceNo={serviceNo}
+          busStopCode={busStopCode}
           onLocate={this.locateBusStop}
           onLayout={this.calculateHeight}
-          onNearestStopFound={this.nearestStopFound}
         />
       </ScreenView>
     );

@@ -8,7 +8,6 @@ const fetchRoutes = async _ => {
   routes = await requestLoop.get(lta.BUS_ROUTES_URL);
   routes = routes.map(r => {
     const {
-      direction,
       stopSequence,
       wd_FirstBus,
       wd_LastBus,
@@ -30,7 +29,7 @@ const fetchRoutes = async _ => {
         'sun_FirstBus',
         'sun_LastBus'
       ]),
-      direction: `${direction}-${stopSequence}`,
+      seq: stopSequence,
       weekday: [wd_FirstBus, wd_LastBus],
       saturday: [sat_FirstBus, sat_LastBus],
       sunday: [sun_FirstBus, sun_LastBus]

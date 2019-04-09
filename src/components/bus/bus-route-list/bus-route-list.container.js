@@ -1,12 +1,20 @@
 import { reduxConnect } from '../../../utils';
-import { getRoutesByService, getStopsByStop } from '../../../store/selectors';
+import {
+  getRouteByServiceDirection,
+  getRouteDirection,
+  getStopsByStop
+} from '../../../store/selectors';
 import BusRouteList from './bus-route-list';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, props) => ({
   geolocation: state.service.geolocation,
   persisted: state.bus.persisted,
-  routesByService: getRoutesByService(state.bus),
-  stopsByStop: getStopsByStop(state.bus)
+  stopsByStop: getStopsByStop(state.bus),
+  routeByServiceDirection: getRouteByServiceDirection(
+    state.bus,
+    props.serviceNo,
+    getRouteDirection(state.bus, props.serviceNo, props.busStopCode)
+  )
 });
 
 export default reduxConnect(mapStateToProps)(BusRouteList);
