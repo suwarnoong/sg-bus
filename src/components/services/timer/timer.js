@@ -1,5 +1,6 @@
 // @flow
 import React, { PureComponent } from 'react';
+import throttledQueue from 'throttled-queue';
 import { AppState } from '../../services';
 
 type Props = {
@@ -16,8 +17,11 @@ export default class Timer extends PureComponent<Props> {
 
   _timerId: ?IntervalID;
   _appStatePaused: boolean = false;
+  _throttle;
 
   componentDidMount() {
+    this._throttle = throttledQueue(1, this.props.interval);
+
     if (this.props.autoStart) {
       this.start();
     }
@@ -30,8 +34,10 @@ export default class Timer extends PureComponent<Props> {
   tick = () => {
     const { onTick } = this.props;
     if (typeof onTick === 'function') {
-      console.log('tick', this._timerId);
-      onTick();
+      this._throttle(() => {
+        console.log('tick', this._timerId);
+        onTick();
+      });
     }
   };
 
@@ -39,7 +45,11 @@ export default class Timer extends PureComponent<Props> {
     this.stop();
     this._timerId = setInterval(this.tick, this.props.interval);
     console.log('start', this._timerId);
-    this.tick();
+
+    const { onTick } = this.props;
+    if (typeof onTick === 'function') {
+      onTick();
+    }
   };
 
   stop = () => {
