@@ -12,6 +12,7 @@ import FavoriteServiceStop from './favorite-service-stop';
 import styles from './home.styles';
 
 type Props = {
+  currentNavRoute: any,
   routes: Array<mixed>,
   services: Array<mixed>,
   stops: Array<mixed>,
@@ -58,11 +59,13 @@ export default class Home extends PureComponent<Props, State> {
   };
 
   render() {
-    const { style, favoriteServiceStop } = this.props;
+    const { currentNavRoute, favoriteServiceStop, style } = this.props;
     const { selectedTab } = this.state;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
+
+    const isActiveRoute = currentNavRoute.routeName === this.constructor.name;
 
     return (
       <ScreenView style={containerStyles}>
@@ -71,7 +74,9 @@ export default class Home extends PureComponent<Props, State> {
         </H1>
         {this.renderTabs(favoriteServiceStop.length > 0 ? 0 : 1)}
         <View style={{ flex: 1 }}>
-          {selectedTab === 'S' && <FavoriteServiceStop />}
+          {selectedTab === 'S' && (
+            <FavoriteServiceStop timerEnabled={isActiveRoute} />
+          )}
           {selectedTab === 'N' && <NearestBusStops />}
         </View>
       </ScreenView>

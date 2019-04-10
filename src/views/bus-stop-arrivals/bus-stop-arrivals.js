@@ -7,6 +7,7 @@ import BusStopMap from './bus-stop-map';
 import styles from './bus-stop-arrivals.styles';
 
 type Props = {
+  currentNavRoute: any,
   params: { [string]: string },
   style: { [string]: mixed }
 };
@@ -35,6 +36,7 @@ export default class BusStopArrivals extends React.PureComponent<Props, State> {
 
   render() {
     const {
+      currentNavRoute,
       style,
       params: { busStopCode }
     } = this.props;
@@ -43,6 +45,8 @@ export default class BusStopArrivals extends React.PureComponent<Props, State> {
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
+
+    const isActiveRoute = currentNavRoute.routeName === this.constructor.name;
 
     return (
       <ScreenView style={containerStyles}>
@@ -55,6 +59,7 @@ export default class BusStopArrivals extends React.PureComponent<Props, State> {
           style={styles.arrivalList}
           busStopCode={busStopCode}
           onLayout={this.calculateHeight}
+          timerEnabled={isActiveRoute}
         />
       </ScreenView>
     );

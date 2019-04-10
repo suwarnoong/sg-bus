@@ -2,7 +2,9 @@ import React, { PureComponent } from 'react';
 import { ServiceStopList, View, Timer } from '../../../components';
 import styles from './favorite-service-stop.styles';
 
-type Props = {};
+type Props = {
+  timerEnabled: boolean
+};
 
 export default class FavoriteServiceStop extends PureComponent<Props> {
   handleTick = () => {
@@ -11,14 +13,18 @@ export default class FavoriteServiceStop extends PureComponent<Props> {
   };
 
   render() {
-    const { favoriteServiceStop, style } = this.props;
+    const { favoriteServiceStop, timerEnabled, style } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
     return (
       <View>
-        <Timer onTick={this.handleTick} />
+        <Timer
+          id="fav-service-stop"
+          onTick={this.handleTick}
+          enabled={timerEnabled}
+        />
         <ServiceStopList
           list={favoriteServiceStop}
           onPress={item => {

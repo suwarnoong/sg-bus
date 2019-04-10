@@ -1,10 +1,11 @@
 // @flow
 import Home from './home';
-import { reduxConnect } from '../../utils';
+import { reduxConnect, getCurrentRoute } from '../../utils';
 import { getRoutes, getServices, getStops } from '../../store/actions';
 import { getFavoriteServiceStop } from '../../store/selectors';
 
 const mapStateToProps = state => ({
+  currentNavRoute: getCurrentRoute(state.nav),
   services: state.bus.services,
   routes: state.bus.routes,
   stops: state.bus.stops,

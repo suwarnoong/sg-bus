@@ -10,7 +10,8 @@ type Props = {
   busStopCode: string,
   arrivals: { [string]: Array<mixed> },
   getArrivals: (busStopCode: string) => void,
-  onLayout: Function
+  onLayout: Function,
+  timerEnabled: boolean
 };
 
 export default class BusArrivalList extends PureComponent<Props> {
@@ -29,7 +30,8 @@ export default class BusArrivalList extends PureComponent<Props> {
       arrivals,
       favorites,
       style,
-      onLayout
+      onLayout,
+      timerEnabled
     } = this.props;
 
     const containerStyles = [styles.container];
@@ -39,7 +41,11 @@ export default class BusArrivalList extends PureComponent<Props> {
 
     return (
       <Container style={containerStyles} padding={0} onLayout={onLayout}>
-        <Timer onTick={this.handleTick} />
+        <Timer
+          id="bus-arrival-list"
+          onTick={this.handleTick}
+          enabled={timerEnabled}
+        />
         <FlatList
           data={arrivalList}
           keyExtractor={(item, index) => item.serviceNo}

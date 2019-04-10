@@ -5576,10 +5576,6 @@ throat@^4.0.0, throat@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/throat/-/throat-4.1.0.tgz#89037cbc92c56ab18926e6ba4cbb200e15672a6a"
 
-throttled-queue@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/throttled-queue/-/throttled-queue-1.0.5.tgz#d57e75c9bc33bd2df09be74f62fd1bc27224cafd"
-
 through2@^2.0.0:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.5.tgz#01c1e39eb31d07cb7d03a96a70823260b23132cd"

@@ -1,12 +1,13 @@
 // @flow
 import React, { PureComponent } from 'react';
-import throttledQueue from 'throttled-queue';
 import { AppState } from '../../services';
 
 type Props = {
+  id: string,
   autoStart: boolean,
   interval: number,
-  onTick: Function
+  onTick: Function,
+  enabled: boolean
 };
 
 export default class Timer extends PureComponent<Props> {
@@ -15,15 +16,20 @@ export default class Timer extends PureComponent<Props> {
     interval: 5000 // miliseconds
   };
 
-  _timerId: ?IntervalID;
+  _timerId: ?TimeoutID;
   _appStatePaused: boolean = false;
-  _throttle;
 
   componentDidMount() {
-    this._throttle = throttledQueue(1, this.props.interval);
-
     if (this.props.autoStart) {
       this.start();
+    }
+  }
+
+  componentWillReceiveProps(nextProps: Props) {
+    const { enabled } = this.props;
+    const onEnabledChanged = nextProps.enabled !== enabled;
+    if (onEnabledChanged) {
+      nextProps.enabled ? this.start() : this.stop();
     }
   }
 
@@ -32,30 +38,26 @@ export default class Timer extends PureComponent<Props> {
   }
 
   tick = () => {
-    const { onTick } = this.props;
+    const { onTick, interval } = this.props;
     if (typeof onTick === 'function') {
-      this._throttle(() => {
-        console.log('tick', this._timerId);
-        onTick();
-      });
+      onTick();
+      this._timerId = setTimeout(() => {
+        requestAnimationFrame(this.tick);
+      }, interval);
+      console.log('tick', this.props.id, this._timerId);
     }
   };
 
   start = () => {
+    console.log('start', this.props.id);
     this.stop();
-    this._timerId = setInterval(this.tick, this.props.interval);
-    console.log('start', this._timerId);
-
-    const { onTick } = this.props;
-    if (typeof onTick === 'function') {
-      onTick();
-    }
+    this.tick();
   };
 
   stop = () => {
     if (this.isRunning()) {
-      console.log('stop', this._timerId);
-      clearInterval(this._timerId);
+      console.log('stop', this.props.id, this._timerId);
+      clearTimeout(this._timerId);
       this._timerId = null;
     }
   };
