@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Platform, PermissionsAndroid } from 'react-native';
 import NativeGeo from 'react-native-geolocation-service';
+import { AppState } from '../../services';
 import { requestAndroidPermission } from '../../../utils';
 
 type Props = {
@@ -22,13 +23,9 @@ export default class Geolocation extends PureComponent<Props> {
     distanceFilter: 20
   };
 
-  constructor(props) {
-    super(props);
+  _watchId;
+  _appStatePaused: boolean = false;
 
-    this.state = {
-      watchId: null
-    };
-  }
   componentDidMount() {
     if (Platform.OS === 'android') {
       requestAndroidPermission(
@@ -49,10 +46,9 @@ export default class Geolocation extends PureComponent<Props> {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.enabled) {
-      this.startWatch();
-    } else {
-      this.stopWatch();
+    const enabledChanged = nextProps.enabled !== this.props.enabled;
+    if (enabledChanged) {
+      nextProps.enabled ? this.startWatch() : this.stopWatch();
     }
   }
 
@@ -61,6 +57,7 @@ export default class Geolocation extends PureComponent<Props> {
   }
 
   startWatch = () => {
+    console.log('geolc start');
     const {
       enableHighAccuracy,
       timeout,
@@ -68,8 +65,11 @@ export default class Geolocation extends PureComponent<Props> {
       distanceFilter
     } = this.props;
 
-    const watchId = NativeGeo.watchPosition(
+    this.stopWatch();
+
+    this._watchId = NativeGeo.watchPosition(
       ({ coords: { latitude, longitude } }) => {
+        console.log('geolc tick', this._watchId, latitude, longitude);
         this.props.updateGeolocation({
           latitude,
           longitude
@@ -81,19 +81,39 @@ export default class Geolocation extends PureComponent<Props> {
       {
         enableHighAccuracy,
         timeout,
-        // maximumAge,
+        maximumAge,
         distanceFilter
       }
     );
-
-    this.setState({ watchId });
   };
 
   stopWatch = () => {
-    NativeGeo.clearWatch(this.state.watchId);
+    if (this.isRunning()) {
+      console.log('geolc stop', this._watchId);
+      NativeGeo.clearWatch(this._watchId);
+      this._watchId = null;
+    }
+  };
+
+  handleAppStateChange = (state: ?string) => {
+    const isActive = state === 'active';
+    if (!isActive) {
+      if (this.isRunning()) {
+        this._appStatePaused = true;
+        this.stopWatch();
+      }
+    } else {
+      if (this._appStatePaused) {
+        this.startWatch();
+      }
+    }
+  };
+
+  isRunning = () => {
+    return !isNaN(this._watchId) && Number(this._watchId) >= 0;
   };
 
   render() {
-    return null;
+    return <AppState onChange={this.handleAppStateChange} />;
   }
 }
