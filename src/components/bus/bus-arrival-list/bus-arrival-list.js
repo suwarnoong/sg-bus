@@ -37,8 +37,6 @@ export default class BusArrivalList extends PureComponent<Props> {
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
-    const arrivalList = arrivals[busStopCode];
-
     return (
       <Container style={containerStyles} padding={0} onLayout={onLayout}>
         <Timer
@@ -47,7 +45,7 @@ export default class BusArrivalList extends PureComponent<Props> {
           enabled={timerEnabled}
         />
         <FlatList
-          data={arrivalList}
+          data={arrivals}
           keyExtractor={(item, index) => item.serviceNo}
           extraData={favorites}
           renderItem={({ item }) => (

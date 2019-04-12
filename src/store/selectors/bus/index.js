@@ -1,3 +1,4 @@
+export * from './get-arrivals-full';
 export * from './get-favorite-service-stop';
 export * from './get-favorite-stops';
 export * from './get-route-geojson';
