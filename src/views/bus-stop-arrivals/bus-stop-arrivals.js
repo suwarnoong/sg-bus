@@ -46,7 +46,7 @@ export default class BusStopArrivals extends React.PureComponent<Props, State> {
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
-    const isActiveRoute = currentNavRoute.routeName === this.constructor.name;
+    const isActiveRoute = currentNavRoute.routeName === 'BusStopArrivals';
 
     return (
       <ScreenView style={containerStyles}>

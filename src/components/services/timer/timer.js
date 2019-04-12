@@ -4,15 +4,14 @@ import { AppState } from '../../services';
 
 type Props = {
   id: string,
-  autoStart: boolean,
+  enabled: boolean,
   interval: number,
-  onTick: Function,
-  enabled: boolean
+  onTick: Function
 };
 
 export default class Timer extends PureComponent<Props> {
   static defaultProps = {
-    autoStart: true,
+    enabled: true,
     interval: 5000 // miliseconds
   };
 
@@ -20,15 +19,14 @@ export default class Timer extends PureComponent<Props> {
   _appStatePaused: boolean = false;
 
   componentDidMount() {
-    if (this.props.autoStart) {
+    if (this.props.enabled) {
       this.start();
     }
   }
 
   componentWillReceiveProps(nextProps: Props) {
-    const { enabled } = this.props;
-    const onEnabledChanged = nextProps.enabled !== enabled;
-    if (onEnabledChanged) {
+    const enabledChanged = nextProps.enabled !== this.props.enabled;
+    if (enabledChanged) {
       nextProps.enabled ? this.start() : this.stop();
     }
   }

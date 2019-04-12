@@ -65,7 +65,7 @@ export default class Home extends PureComponent<Props, State> {
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
-    const isActiveRoute = currentNavRoute.routeName === this.constructor.name;
+    const isActiveRoute = currentNavRoute.routeName === 'Home';
 
     return (
       <ScreenView style={containerStyles}>
