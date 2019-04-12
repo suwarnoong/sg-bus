@@ -21,7 +21,7 @@ export default StyleSheet.create({
   distanceContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     paddingVertical: 15,
     paddingHorizontal: 10,
     width: 70
