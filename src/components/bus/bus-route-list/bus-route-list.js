@@ -20,8 +20,7 @@ type Props = {
   busStopCode: string,
   geolocation: ICoordinate,
   persisted: boolean,
-  stopsByStop: { [string]: mixed },
-  routeByServiceDirection: Array<IBusRoute>,
+  routeWithDistance: Array<IBusRoute>,
   onLocate: Function,
   onNearestStopFound: Function,
   onLayout: Function,
@@ -38,7 +37,6 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
   };
 
   _list: any;
-  _routeList: Array<IBusRoute>;
 
   constructor(props: Props) {
     super(props);
@@ -61,10 +59,12 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
   scrollToNearest = () => {
     if (this._list == null) return;
 
-    const { busStopCode } = this.props;
+    const { busStopCode, routeWithDistance } = this.props;
     this.setState({ currentBusStopCode: busStopCode });
 
-    const index = this._routeList.findIndex(r => r.busStopCode === busStopCode);
+    const index = routeWithDistance.findIndex(
+      r => r.busStopCode === busStopCode
+    );
     this._list.scrollToIndex({ index });
   };
 
@@ -78,28 +78,11 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
     }
   };
 
-  getRouteListWDistance = (): Array<IBusRoute> => {
-    const { geolocation, routeByServiceDirection, stopsByStop } = this.props;
-
-    const routeList = routeByServiceDirection;
-    if (routeList == null) return [];
-
-    return routeList.map((r: IBusRoute) => {
-      const busStop: IBusStop = stopsByStop[r.busStopCode];
-      return {
-        ...r,
-        distance: distance(geolocation, {
-          latitude: busStop.latitude,
-          longitude: busStop.longitude
-        })
-      };
-    });
-  };
-
   renderItem = ({ item, index }: IRenderItem) => {
+    const { routeWithDistance } = this.props;
     const { currentBusStopCode } = this.state;
     const isFirst = index === 0;
-    const isLast = index === this._routeList.length - 1;
+    const isLast = index === routeWithDistance.length - 1;
 
     return (
       <BusRoute
@@ -114,7 +97,13 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { Container, persisted, style, onLayout } = this.props;
+    const {
+      Container,
+      persisted,
+      routeWithDistance,
+      style,
+      onLayout
+    } = this.props;
     const { currentBusStopCode } = this.state;
 
     if (!persisted) return null;
@@ -122,14 +111,11 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
-    // todo: getRouteListWDistance once only
-    this._routeList = this.getRouteListWDistance();
-
     return (
       <Container style={containerStyles} padding={0} onLayout={onLayout}>
         <FlatList
           ref={c => (this._list = c)}
-          data={this._routeList}
+          data={routeWithDistance}
           keyExtractor={(item, index) => `${index}`}
           extraData={currentBusStopCode}
           getItemLayout={this.getItemLayout}
