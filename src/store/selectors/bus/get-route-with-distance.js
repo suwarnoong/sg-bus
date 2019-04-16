@@ -25,7 +25,7 @@ const getRouteWDistance = (state, serviceNo, busStopCode, geolocation) => {
   });
 };
 
-export const getRoutesWithDistance = createSelector(
+export const getRouteWithDistance = createSelector(
   [getRouteWDistance],
   routeWDistance => routeWDistance
 );
