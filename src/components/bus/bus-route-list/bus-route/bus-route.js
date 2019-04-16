@@ -10,6 +10,7 @@ type Props = {
   busStopCode: string,
   distance: number,
   stopsByStop: Array<mixed>,
+  routeType: string,
   isFirst: boolean,
   isLast: boolean,
   isActive: boolean,
@@ -24,16 +25,47 @@ export default class BusRoute extends React.PureComponent<Props> {
     }
   };
 
+  renderBullet() {
+    const { isActive, routeType } = this.props;
+
+    const bulletStyles = [styles.bullet];
+    if (['F', '1', '2'].includes(routeType))
+      bulletStyles.push(styles.bulletRoute);
+    if (isActive) bulletStyles.push(styles.bulletActive);
+
+    return <View style={bulletStyles} />;
+  }
+
+  renderConnector() {
+    const { isFirst, isLast, routeType } = this.props;
+
+    const topRouteConnectorStyles = [];
+    const bottomRouteConnectorStyles = [];
+
+    if (!isFirst)
+      topRouteConnectorStyles.push([
+        styles.routeConnector,
+        styles.routeConnectorTop,
+        ['F', '2'].includes(routeType) && styles.routeConnectorActive
+      ]);
+
+    if (!isLast)
+      bottomRouteConnectorStyles.push([
+        styles.routeConnector,
+        styles.routeConnectorBottom,
+        ['F', '1'].includes(routeType) && styles.routeConnectorActive
+      ]);
+
+    return (
+      <View>
+        <View style={topRouteConnectorStyles} />
+        <View style={bottomRouteConnectorStyles} />
+      </View>
+    );
+  }
+
   render() {
-    const {
-      busStopCode,
-      distance,
-      isActive,
-      isFirst,
-      isLast,
-      stopsByStop,
-      style
-    } = this.props;
+    const { busStopCode, distance, stopsByStop, style } = this.props;
 
     const { description, roadName, longitude, latitude } = stopsByStop[
       busStopCode
@@ -41,13 +73,6 @@ export default class BusRoute extends React.PureComponent<Props> {
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
-
-    const routeConnectorStyles = [styles.routeConnector];
-    if (isFirst) routeConnectorStyles.push(styles.firstRouteConnector);
-    if (isLast) routeConnectorStyles.push(styles.lastRouteConnector);
-
-    const bulletStyles = [styles.bullet];
-    if (isActive) bulletStyles.push(styles.currentBullet);
 
     return (
       <TouchableOpacity
@@ -57,12 +82,16 @@ export default class BusRoute extends React.PureComponent<Props> {
       >
         <BusStopRoad
           style={styles.roadContainer}
-          {...pick(['description', 'roadName'], stopsByStop[busStopCode])}
+          {...pick(
+            ['description', 'roadName', 'busStopCode'],
+            stopsByStop[busStopCode]
+          )}
+          layout={2}
         />
         <View style={styles.distanceContainer}>
           <View>
-            <View style={bulletStyles} />
-            <View style={routeConnectorStyles} />
+            {this.renderConnector()}
+            {this.renderBullet()}
           </View>
           <Small weight={Label.WEIGHT_MEDIUM}>{distance.toFixed(1)}</Small>
         </View>

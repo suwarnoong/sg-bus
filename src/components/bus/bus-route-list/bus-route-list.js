@@ -87,6 +87,7 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
       <BusRoute
         busStopCode={item.busStopCode}
         distance={item.distance}
+        routeType={item.routeType}
         isFirst={isFirst}
         isLast={isLast}
         isActive={item.busStopCode === currentBusStopCode}

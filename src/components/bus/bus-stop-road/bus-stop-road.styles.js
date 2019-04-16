@@ -12,8 +12,8 @@ export default StyleSheet.create({
     color: '#777'
   },
   busStopCode: {
-    color: '#4A4A4A',
-    marginLeft: 15
+    color: '#777',
+    marginRight: 15
   },
   distance: {
     color: '#9B9B9B'

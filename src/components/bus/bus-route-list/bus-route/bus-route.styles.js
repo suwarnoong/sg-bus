@@ -35,22 +35,28 @@ export default StyleSheet.create({
     borderColor: '#9B9B9B',
     backgroundColor: 'white'
   },
-  currentBullet: {
+  bulletActive: {
     borderColor: '#d35400'
   },
+  bulletRoute: {
+    borderColor: '#1289A7'
+  },
   routeConnector: {
-    height,
     width: routeLineSize,
     position: 'absolute',
-    top: -(height - bulletSize) / 2,
     left: (bulletSize - routeLineSize) / 2,
     backgroundColor: '#9B9B9B',
     zIndex: -1
   },
-  firstRouteConnector: {
-    top: 0
-  },
-  lastRouteConnector: {
+  routeConnectorTop: {
+    top: -(height - bulletSize) / 2,
     height: (height - bulletSize) / 2
+  },
+  routeConnectorBottom: {
+    top: 0,
+    height
+  },
+  routeConnectorActive: {
+    backgroundColor: '#1289A7'
   }
 });
