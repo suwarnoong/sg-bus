@@ -7,8 +7,7 @@ const mapStateToProps = (state, props) => ({
   routeWithDistance: getRouteWithDistance(
     state.bus,
     props.serviceNo,
-    props.busStopCode,
-    props.geolocation
+    props.busStopCode
   )
 });
 
