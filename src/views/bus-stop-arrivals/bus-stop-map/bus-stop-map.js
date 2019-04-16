@@ -11,7 +11,7 @@ const stopImage = require('../../../assets/stop.png');
 
 const mapIconSizes = [
   [mapboxIcon.BUS_STOP, 1],
-  [mapboxIcon.ACTIVE_BUS_STOP, 1]
+  [mapboxIcon.ACTIVE_BUS_STOP, 1.2]
 ];
 
 const mapClusterColors = [

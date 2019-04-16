@@ -12,7 +12,7 @@ const stopImage = require('../../../assets/stop.png');
 
 const mapIconSizes = [
   [mapboxIcon.BUS_STOP, 1],
-  [mapboxIcon.ACTIVE_BUS_STOP, 1]
+  [mapboxIcon.ACTIVE_BUS_STOP, 1.2]
 ];
 
 const mapStyles = MapboxGL.StyleSheet.create({
@@ -60,18 +60,28 @@ export default class BusRouteMap extends React.PureComponent<Props> {
   };
 
   renderBusRoute = () => {
-    const { routeGeojson } = this.props;
+    const { busStopCode, routeGeojson } = this.props;
 
     const featureCollection = {
       type: 'FeatureCollection',
-      features: routeGeojson
+      features: routeGeojson.map(r => {
+        r.properties.icon =
+          r.id === busStopCode
+            ? mapboxIcon.ACTIVE_BUS_STOP
+            : mapboxIcon.BUS_STOP;
+
+        return r;
+      })
     };
 
     return (
       <MapboxGL.ShapeSource
         id="shape-all-stops"
         shape={featureCollection}
-        images={{ [mapboxIcon.BUS_STOP]: stopImage }}
+        images={{
+          [mapboxIcon.BUS_STOP]: stopImage,
+          [mapboxIcon.ACTIVE_BUS_STOP]: stopActiveImage
+        }}
         onPress={() => {}}
       >
         <MapboxGL.SymbolLayer id="symAllStops" style={mapStyles.icon} />

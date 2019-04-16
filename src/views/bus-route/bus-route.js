@@ -14,6 +14,7 @@ type Props = {
 };
 
 type State = {
+  busStopCode: string,
   coordinates: Array<number>,
   mapBottomInset: number
 };
@@ -25,6 +26,7 @@ export default class BusRoute extends PureComponent<Props, State> {
     super(props);
 
     this.state = {
+      busStopCode: props.params.busStopCode,
       coordinates: [0, 0],
       mapBottomInset: SCREEN_HEIGHT / 2
     };
@@ -59,16 +61,18 @@ export default class BusRoute extends PureComponent<Props, State> {
       zoom,
       duration: 1000
     });
+
+    this.setState({ busStopCode: busStopLocation.busStopCode });
   };
 
   render() {
     const {
-      params: { serviceNo, busStopCode },
+      params: { serviceNo, busStopCode: initialBusStopCode },
       style,
       geolocation
     } = this.props;
 
-    const { coordinates } = this.state;
+    const { busStopCode, coordinates } = this.state;
     const { mapBottomInset } = this.state;
 
     const containerStyles = [styles.container];
@@ -87,8 +91,7 @@ export default class BusRoute extends PureComponent<Props, State> {
         <BusRouteList
           style={styles.routeList}
           serviceNo={serviceNo}
-          busStopCode={busStopCode}
-          geolocation={geolocation}
+          busStopCode={initialBusStopCode}
           onLocate={this.locateBusStop}
           onLayout={this.calculateHeight}
         />

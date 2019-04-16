@@ -18,7 +18,6 @@ type Props = {
   Container: React.ElementType,
   serviceNo: string,
   busStopCode: string,
-  geolocation: ICoordinate,
   persisted: boolean,
   routeWithDistance: Array<IBusRoute>,
   onLocate: Function,
