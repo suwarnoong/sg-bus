@@ -24,7 +24,7 @@ const getRouteWDistance = (state, serviceNo, busStopCode) => {
   let isRouteStarting = false;
   return route.map((r: IBusRoute) => {
     const busStop: IBusStop = stopsByStop[r.busStopCode];
-    const routeType = null;
+    let routeType = null;
     if (busStopCode === r.busStopCode) {
       isRouteStarting = true;
       routeType = '1';
