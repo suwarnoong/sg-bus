@@ -27,7 +27,7 @@ type Props = {
 };
 
 type State = {
-  currentBusStopCode: string | null
+  selectedBusStopCode: string | null
 };
 
 export default class BusRouteList extends React.PureComponent<Props, State> {
@@ -41,7 +41,7 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
     super(props);
 
     this.state = {
-      currentBusStopCode: null
+      selectedBusStopCode: null
     };
   }
 
@@ -59,7 +59,7 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
     if (this._list == null) return;
 
     const { busStopCode, routeWithDistance } = this.props;
-    this.setState({ currentBusStopCode: busStopCode });
+    this.setState({ selectedBusStopCode: busStopCode });
 
     const index = routeWithDistance.findIndex(
       r => r.busStopCode === busStopCode
@@ -70,7 +70,7 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
   handleLocationPress = (busStopLocation: IBusStopLocation) => {
     const { onLocate } = this.props;
 
-    this.setState({ currentBusStopCode: busStopLocation.busStopCode });
+    this.setState({ selectedBusStopCode: busStopLocation.busStopCode });
 
     if (typeof onLocate === 'function') {
       onLocate(busStopLocation);
@@ -79,7 +79,7 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
 
   renderItem = ({ item, index }: IRenderItem) => {
     const { routeWithDistance } = this.props;
-    const { currentBusStopCode } = this.state;
+    const { selectedBusStopCode } = this.state;
     const isFirst = index === 0;
     const isLast = index === routeWithDistance.length - 1;
 
@@ -90,7 +90,7 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
         routeType={item.routeType}
         isFirst={isFirst}
         isLast={isLast}
-        isActive={item.busStopCode === currentBusStopCode}
+        isSelected={item.busStopCode === selectedBusStopCode}
         onPress={this.handleLocationPress}
       />
     );
@@ -104,7 +104,7 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
       style,
       onLayout
     } = this.props;
-    const { currentBusStopCode } = this.state;
+    const { selectedBusStopCode } = this.state;
 
     if (!persisted) return null;
 
@@ -117,7 +117,7 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
           ref={c => (this._list = c)}
           data={routeWithDistance}
           keyExtractor={(item, index) => `${index}`}
-          extraData={currentBusStopCode}
+          extraData={selectedBusStopCode}
           getItemLayout={this.getItemLayout}
           renderItem={this.renderItem}
         />

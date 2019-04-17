@@ -27,10 +27,10 @@ const getRouteWDistance = (state, serviceNo, busStopCode) => {
     let routeType = null;
     if (busStopCode === r.busStopCode) {
       isRouteStarting = true;
-      routeType = '1';
+      routeType = 'start';
     } else if (isRouteStarting) {
       const isLast = route.indexOf(r) === route.length - 1;
-      routeType = isLast ? '2' : 'F';
+      routeType = isLast ? 'end' : 'mid';
     }
 
     return {

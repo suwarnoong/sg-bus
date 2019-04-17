@@ -18,6 +18,10 @@ export default StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#f2f2f2'
   },
+  roadDisabled: {
+    backgroundColor: '#FFFFFF',
+    opacity: 0.5
+  },
   distanceContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -32,20 +36,20 @@ export default StyleSheet.create({
     marginRight: 10,
     borderRadius: bulletSize,
     borderWidth: 6,
-    borderColor: '#9B9B9B',
+    borderColor: '#EEEEEE',
     backgroundColor: 'white'
-  },
-  bulletActive: {
-    borderColor: '#d35400'
   },
   bulletRoute: {
     borderColor: '#1289A7'
+  },
+  bulletSelected: {
+    borderColor: '#d35400'
   },
   routeConnector: {
     width: routeLineSize,
     position: 'absolute',
     left: (bulletSize - routeLineSize) / 2,
-    backgroundColor: '#9B9B9B',
+    backgroundColor: '#EEEEEE',
     zIndex: -1
   },
   routeConnectorTop: {

@@ -8,7 +8,6 @@ import { IBusStop, IBusStopLocation, ICoordinate } from '../../types.d';
 
 type Props = {
   stopsByStop: { [string]: Array<IBusStop> },
-  geolocation: ICoordinate,
   params: { [string]: string },
   style: { [string]: mixed }
 };
@@ -67,9 +66,8 @@ export default class BusRoute extends PureComponent<Props, State> {
 
   render() {
     const {
-      params: { serviceNo, busStopCode: initialBusStopCode },
-      style,
-      geolocation
+      params: { serviceNo, busStopCode: startingBusStopCode },
+      style
     } = this.props;
 
     const { busStopCode, coordinates } = this.state;
@@ -91,7 +89,7 @@ export default class BusRoute extends PureComponent<Props, State> {
         <BusRouteList
           style={styles.routeList}
           serviceNo={serviceNo}
-          busStopCode={initialBusStopCode}
+          busStopCode={startingBusStopCode}
           onLocate={this.locateBusStop}
           onLayout={this.calculateHeight}
         />

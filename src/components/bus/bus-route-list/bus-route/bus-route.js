@@ -13,7 +13,7 @@ type Props = {
   routeType: string,
   isFirst: boolean,
   isLast: boolean,
-  isActive: boolean,
+  isSelected: boolean,
   onPress: Function
 };
 
@@ -25,36 +25,42 @@ export default class BusRoute extends React.PureComponent<Props> {
     }
   };
 
-  renderBullet() {
-    const { isActive, routeType } = this.props;
+  isValidRoute = () => {
+    const { routeType } = this.props;
+    return ['mid', 'start', 'end'].includes(routeType);
+  };
+
+  renderBullet = () => {
+    const { isSelected, routeType } = this.props;
 
     const bulletStyles = [styles.bullet];
-    if (['F', '1', '2'].includes(routeType))
-      bulletStyles.push(styles.bulletRoute);
-    if (isActive) bulletStyles.push(styles.bulletActive);
+    if (this.isValidRoute()) bulletStyles.push(styles.bulletRoute);
+    if (isSelected) bulletStyles.push(styles.bulletSelected);
 
     return <View style={bulletStyles} />;
-  }
+  };
 
-  renderConnector() {
+  renderConnector = () => {
     const { isFirst, isLast, routeType } = this.props;
 
     const topRouteConnectorStyles = [];
     const bottomRouteConnectorStyles = [];
 
-    if (!isFirst)
+    if (!isFirst) {
       topRouteConnectorStyles.push([
         styles.routeConnector,
         styles.routeConnectorTop,
-        ['F', '2'].includes(routeType) && styles.routeConnectorActive
+        ['mid', 'end'].includes(routeType) && styles.routeConnectorActive
       ]);
+    }
 
-    if (!isLast)
+    if (!isLast) {
       bottomRouteConnectorStyles.push([
         styles.routeConnector,
         styles.routeConnectorBottom,
-        ['F', '1'].includes(routeType) && styles.routeConnectorActive
+        ['mid', 'start'].includes(routeType) && styles.routeConnectorActive
       ]);
+    }
 
     return (
       <View>
@@ -62,10 +68,10 @@ export default class BusRoute extends React.PureComponent<Props> {
         <View style={bottomRouteConnectorStyles} />
       </View>
     );
-  }
+  };
 
   render() {
-    const { busStopCode, distance, stopsByStop, style } = this.props;
+    const { busStopCode, distance, routeType, stopsByStop, style } = this.props;
 
     const { description, roadName, longitude, latitude } = stopsByStop[
       busStopCode
@@ -74,6 +80,9 @@ export default class BusRoute extends React.PureComponent<Props> {
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
+    const roadContainerStyles = [styles.roadContainer];
+    if (!this.isValidRoute()) roadContainerStyles.push(styles.roadDisabled);
+
     return (
       <TouchableOpacity
         style={containerStyles}
@@ -81,7 +90,7 @@ export default class BusRoute extends React.PureComponent<Props> {
         delayPressIn={100}
       >
         <BusStopRoad
-          style={styles.roadContainer}
+          style={roadContainerStyles}
           {...pick(
             ['description', 'roadName', 'busStopCode'],
             stopsByStop[busStopCode]
