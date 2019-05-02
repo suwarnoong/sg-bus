@@ -704,6 +704,10 @@
     "@types/istanbul-lib-coverage" "^1.1.0"
     "@types/yargs" "^12.0.9"
 
+"@mapbox/polyline@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@mapbox/polyline/-/polyline-1.0.0.tgz#b6f1c3cf61f8dddcf9ac6dce0b2e50e5f4e965bc"
+
 "@mapbox/react-native-mapbox-gl@https://github.com/nitaliano/react-native-mapbox-gl.git":
   version "6.1.4"
   resolved "https://github.com/nitaliano/react-native-mapbox-gl.git#bc5f589d3782a7d3ed7d78c9050b2fd12ea6c77a"

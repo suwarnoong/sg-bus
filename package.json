@@ -35,6 +35,7 @@
   "devDependencies": {
     "@babel/core": "^7.4.0",
     "@babel/runtime": "^7.4.2",
+    "@mapbox/polyline": "^1.0.0",
     "@react-native-community/eslint-config": "^0.0.3",
     "babel-jest": "^24.5.0",
     "eslint": "^5.15.3",
