@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Platform, PermissionsAndroid } from 'react-native';
 import NativeGeo from 'react-native-geolocation-service';
-import { AppState } from '../../services';
+import { AppState } from '../../services/app-state';
 import { requestAndroidPermission } from '../../../utils';
 
 type Props = {

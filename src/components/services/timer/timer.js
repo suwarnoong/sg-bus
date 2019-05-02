@@ -1,6 +1,6 @@
 // @flow
 import React, { PureComponent } from 'react';
-import { AppState } from '../../services';
+import { AppState } from '../../services/app-state';
 
 type Props = {
   id: string,
