@@ -25,6 +25,11 @@ const mapStyles = MapboxGL.StyleSheet.create({
     ),
     iconAnchor: MapboxGL.IconAnchor.Center,
     iconAllowOverlap: true
+  },
+  routeLine: {
+    lineColor: '#1289A7',
+    lineWidth: 4,
+    lineOpacity: 0.84
   }
 });
 
@@ -34,6 +39,7 @@ type Props = {
   busStopCode: string,
   centerCoordinate: Array<number>,
   routeGeojson: Array<any>,
+  routeLineGeojson: Array<any>,
   contentInset: Array<number>,
   style?: { [string]: mixed }
 };
@@ -62,6 +68,8 @@ export default class BusRouteMap extends React.PureComponent<Props> {
   renderBusRoute = () => {
     const { busStopCode, routeGeojson } = this.props;
 
+    if (routeGeojson == null) return;
+
     const featureCollection = {
       type: 'FeatureCollection',
       features: routeGeojson.map(r => {
@@ -84,7 +92,8 @@ export default class BusRouteMap extends React.PureComponent<Props> {
         }}
         onPress={() => {}}
       >
-        <MapboxGL.SymbolLayer id="symAllStops" style={mapStyles.icon} />
+        <MapboxGL.LineLayer id="routeLine" style={mapStyles.routeLine} />
+        <MapboxGL.SymbolLayer id="allStops" style={mapStyles.icon} />
       </MapboxGL.ShapeSource>
     );
   };

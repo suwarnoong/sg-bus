@@ -15,7 +15,10 @@ const getRoute = (state, serviceNo, busStopCode) => {
 export const getRouteGeojson = createSelector(
   [getRoute, getStopsByStop],
   (route, stopsByStop) => {
-    if (route == null) return;
+    if (route == null || route.length <= 0) return;
+
+    const serviceNo = route[0].serviceNo;
+    const direction = route[0].direction;
 
     const features = route.map(r => {
       const coordinates = stopsByStop[r.busStopCode] && [
@@ -36,6 +39,20 @@ export const getRouteGeojson = createSelector(
         }
       };
     });
+
+    const routesCoords = require(`../../../stubs/routes/onemapsg/routes-coords.json`);
+    if (routesCoords) {
+      const key = `${serviceNo}-${direction}`;
+      features.push({
+        type: 'Feature',
+        properties: {},
+        geometry: {
+          type: 'LineString',
+          coordinates: routesCoords[key]
+        }
+      });
+    }
+
     return features;
   }
 );

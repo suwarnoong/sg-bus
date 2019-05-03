@@ -3,7 +3,7 @@ import { BUS_ROUTE_HEIGHT } from '../../../../constants';
 
 const height = BUS_ROUTE_HEIGHT;
 const bulletSize = 20;
-const routeLineSize = 3;
+const routeLineSize = 4;
 
 export default StyleSheet.create({
   container: {

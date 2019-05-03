@@ -10,4 +10,5 @@ export {
 } from './request-android-permission';
 export { default as requestLoop } from './request-loop';
 export { default as request } from './request';
+export { default as sleep } from './sleep';
 export { default as toCamelCase } from './to-camelcase';

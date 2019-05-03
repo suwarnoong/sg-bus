@@ -14,20 +14,26 @@ module.exports = async (token, serviceNo, direction) => {
     .replace('{ServiceNo}', serviceNo)
     .replace('{BusDirection}', direction)
     .replace('{AccessToken}', token);
-  const response = await request.get(url);
 
-  let routeLine = [];
-  const sequences =
-    response.data[`BUS_DIRECTION_${String(direction) === '1' ? 'ONE' : 'TWO'}`];
-  if (!sequences) return;
+  try {
+    const response = await request.get(url);
 
-  sequences.forEach(seq => {
-    routeLine = routeLine.concat(decode(seq.GEOMETRIES).map(c => c.reverse()));
-  });
+    let routeLine = [];
+    const sequences =
+      response.data[
+        `BUS_DIRECTION_${String(direction) === '1' ? 'ONE' : 'TWO'}`
+      ];
+    if (!sequences) return;
 
-  if (routeLine && routeLine.length > 0) {
-    const filePath = `src/stubs/routes/onemapsg/${serviceNo}.json`;
-    fs.writeFileSync(filePath, JSON.stringify([routeLine], null, '\t'));
-    console.log(`Generated ${filePath}`);
+    sequences.forEach(seq => {
+      routeLine = routeLine.concat(
+        decode(seq.GEOMETRIES).map(c => c.reverse())
+      );
+    });
+
+    console.log('Success', 'getBusRouteUrl', serviceNo, direction);
+    return routeLine;
+  } catch (ex) {
+    console.log('Error', 'getBusRouteUrl', serviceNo, direction);
   }
 };
