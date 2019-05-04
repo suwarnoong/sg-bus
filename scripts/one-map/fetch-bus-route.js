@@ -1,7 +1,7 @@
 import axios from 'axios';
 import fs from 'fs';
 import { request } from '../../utils';
-import { oneMap } from '../config.json';
+import { oneMap } from '../../app.config';
 
 const requestBusRoute = async (token, serviceNo, direction) => {
   const { busRouteUrl } = oneMap;

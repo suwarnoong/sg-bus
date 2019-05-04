@@ -1,7 +1,7 @@
 import fs from 'fs';
 import omit from 'lodash/omit';
 import requestLoop from './request-loop';
-import { lta } from '../config.json';
+import { lta } from '../../app.config';
 
 const requestRoutes = async _ => {
   let routes = await requestLoop(lta.busRoutesUrl);

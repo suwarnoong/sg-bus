@@ -1,6 +1,6 @@
 import fs from 'fs';
 import requestLoop from './request-loop';
-import { lta } from '../config.json';
+import { lta } from '../../app.config';
 
 const requestServices = async _ => {
   return await requestLoop(lta.busServicesUrl);

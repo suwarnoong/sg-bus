@@ -1,5 +1,5 @@
 import { request } from '../../utils';
-import { oneMap } from '../config.json';
+import { oneMap } from '../../app.config';
 
 const authenticate = async () => {
   const { email, password, tokenUrl } = oneMap;
