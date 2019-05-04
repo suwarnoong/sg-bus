@@ -25,10 +25,6 @@ export default class BusStopArrivals extends React.PureComponent<Props, State> {
     };
   }
 
-  // componentDidMount() {
-  //   this.props.updateInset('bottom', false);
-  // }
-
   calculateHeight = (event: any) => {
     const { height } = event.nativeEvent.layout;
     this.setState({ mapBottomInset: height });
