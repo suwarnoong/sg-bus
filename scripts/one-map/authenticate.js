@@ -1,13 +1,15 @@
-const axios = require('axios');
-const { oneMap } = require('../config.json');
+import { request } from '../../utils';
+import { oneMap } from '../config.json';
 
-const request = axios.create();
+const authenticate = async () => {
+  const { email, password, tokenUrl } = oneMap;
 
-module.exports = async () => {
-  const { email, password, getTokenUrl } = oneMap;
-  const response = await request.post(getTokenUrl, { email, password });
-
-  if (response.status === 200) {
-    return response.data.access_token;
+  try {
+    const data = await request.post(tokenUrl, { email, password });
+    return data.access_token;
+  } catch (ex) {
+    console.error('authenticate', ex);
   }
 };
+
+export default authenticate;

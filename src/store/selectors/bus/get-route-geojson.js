@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { decode } from '@mapbox/polyline';
 import { getRouteDirection } from './get-route-direction';
 import { getRouteByServiceDirection } from './get-route-by-service-direction';
 import { getStopsByStop } from './get-stops-by-stop';
@@ -40,15 +41,20 @@ export const getRouteGeojson = createSelector(
       };
     });
 
-    const routesCoords = require(`../../../stubs/routes/onemapsg/routes-coords.json`);
-    if (routesCoords) {
+    const routesGeometrics = require(`../../../stubs/bus/routes-polyline.json`);
+    if (routesGeometrics) {
+      let routesCoords = [];
       const key = `${serviceNo}-${direction}`;
+      routesGeometrics[key].forEach(g => {
+        routesCoords = routesCoords.concat(decode(g).map(c => c.reverse()));
+      });
+
       features.push({
         type: 'Feature',
         properties: {},
         geometry: {
           type: 'LineString',
-          coordinates: routesCoords[key]
+          coordinates: routesCoords
         }
       });
     }

@@ -1,7 +1,9 @@
-const authenticateOneMap = require('./one-map/authenticate');
-const fetchAllBusRoutesOneMap = require('./one-map/fetch-all-bus-routes');
+import { authenticateOneMap, fetchAllBusRoutesOneMap } from './one-map';
+import { fetchRoutesLta, fetchServicesLta, fetchStopsLta } from './lta';
 
 (async () => {
+  await Promise.all([fetchRoutesLta(), fetchServicesLta(), fetchStopsLta()]);
+
   const token = await authenticateOneMap();
-  fetchAllBusRoutesOneMap(token);
+  await fetchAllBusRoutesOneMap(token);
 })();

@@ -1,10 +1,8 @@
-const fs = require('fs');
-const fetchBusRoute = require('./fetch-bus-route');
-import sleep from '../../src/utils/sleep';
+import fs from 'fs';
+import fetchBusRoute from './fetch-bus-route';
+import { sleep } from '../../utils';
 
-module.exports = async token => {
-  if (!token) return;
-
+const fetchBusRoutesFromAllServices = async token => {
   const routesCoords = {};
   const services = JSON.parse(fs.readFileSync('src/stubs/bus/services.json'));
 
@@ -16,12 +14,22 @@ module.exports = async token => {
       service.serviceNo,
       service.direction
     );
-    await sleep(10);
+    await sleep(5);
   }
 
+  return routesCoords;
+};
+
+const fetchAllBusRoutes = async token => {
+  if (!token) return;
+
+  const routesCoords = await fetchBusRoutesFromAllServices(token);
+
   if (routesCoords) {
-    const filePath = 'src/stubs/routes/onemapsg/routes-coords.json';
-    fs.writeFileSync(filePath, JSON.stringify(routesCoords, null, '\t'));
+    const filePath = 'src/stubs/bus/routes-polyline.json';
+    fs.writeFileSync(filePath, JSON.stringify(routesCoords, null, 0));
     console.log(`Generated ${filePath}`);
   }
 };
+
+export default fetchAllBusRoutes;

@@ -1,39 +1,37 @@
-const axios = require('axios');
-const { decode } = require('@mapbox/polyline');
-const fs = require('fs');
+import axios from 'axios';
+import fs from 'fs';
+import { request } from '../../utils';
+import { oneMap } from '../config.json';
 
-const { oneMap } = require('../config.json');
-
-const request = axios.create();
-
-module.exports = async (token, serviceNo, direction) => {
-  if (!token) return;
-
-  const { getBusRouteUrl } = oneMap;
-  const url = getBusRouteUrl
+const requestBusRoute = async (token, serviceNo, direction) => {
+  const { busRouteUrl } = oneMap;
+  const url = busRouteUrl
     .replace('{ServiceNo}', serviceNo)
     .replace('{BusDirection}', direction)
     .replace('{AccessToken}', token);
 
+  return await request.get(url);
+};
+
+const fetchBusRoute = async (token, serviceNo, direction) => {
+  if (!token) return;
+
   try {
-    const response = await request.get(url);
+    const data = await requestBusRoute(token, serviceNo, direction);
 
     let routeLine = [];
     const sequences =
-      response.data[
-        `BUS_DIRECTION_${String(direction) === '1' ? 'ONE' : 'TWO'}`
-      ];
+      data[`BUS_DIRECTION_${String(direction) === '1' ? 'ONE' : 'TWO'}`];
     if (!sequences) return;
 
     sequences.forEach(seq => {
-      routeLine = routeLine.concat(
-        decode(seq.GEOMETRIES).map(c => c.reverse())
-      );
+      routeLine = routeLine.concat(seq.GEOMETRIES);
     });
 
-    console.log('Success', 'getBusRouteUrl', serviceNo, direction);
     return routeLine;
   } catch (ex) {
-    console.log('Error', 'getBusRouteUrl', serviceNo, direction);
+    console.error('fetchBusRoute', serviceNo, direction, ex);
   }
 };
+
+export default fetchBusRoute;
