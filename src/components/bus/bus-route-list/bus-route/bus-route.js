@@ -1,10 +1,14 @@
 import * as React from 'react';
-import { Label, Small, TouchableOpacity, View } from '../../../base';
+import { Label, Image, Small, TouchableOpacity, View } from '../../../base';
 import { BusStopRoad } from '../../../bus/bus-stop-road';
 import { IBusStopLocation } from '../../../../types.d';
 import styles from './bus-route.styles';
 
 import pick from 'lodash/fp/pick';
+
+const stopActiveImage = require('../../../../assets/stop-active.png');
+const stopDisabledImage = require('../../../../assets/stop-disabled.png');
+const stopImage = require('../../../../assets/stop.png');
 
 type Props = {
   busStopCode: string,
@@ -31,13 +35,15 @@ export default class BusRoute extends React.PureComponent<Props> {
   };
 
   renderBullet = () => {
-    const { isSelected, routeType } = this.props;
+    const { isSelected } = this.props;
 
-    const bulletStyles = [styles.bullet];
-    if (this.isValidRoute()) bulletStyles.push(styles.bulletRoute);
-    if (isSelected) bulletStyles.push(styles.bulletSelected);
-
-    return <View style={bulletStyles} />;
+    let image = stopDisabledImage;
+    if (isSelected) {
+      image = stopActiveImage;
+    } else if (this.isValidRoute()) {
+      image = stopImage;
+    }
+    return <Image source={image} style={styles.bullet} />;
   };
 
   renderConnector = () => {

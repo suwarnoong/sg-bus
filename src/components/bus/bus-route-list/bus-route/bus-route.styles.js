@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import { BUS_ROUTE_HEIGHT } from '../../../../constants';
 
 const height = BUS_ROUTE_HEIGHT;
-const bulletSize = 20;
+const bulletSize = 25;
 const routeLineSize = 4;
 
 export default StyleSheet.create({
@@ -33,17 +33,7 @@ export default StyleSheet.create({
   bullet: {
     width: bulletSize,
     height: bulletSize,
-    marginRight: 10,
-    borderRadius: bulletSize,
-    borderWidth: 6,
-    borderColor: '#EEEEEE',
-    backgroundColor: 'white'
-  },
-  bulletRoute: {
-    borderColor: '#1289A7'
-  },
-  bulletSelected: {
-    borderColor: '#d35400'
+    marginRight: 10
   },
   routeConnector: {
     width: routeLineSize,
