@@ -1,5 +1,6 @@
 import { reduxConnect } from '../../../utils';
 import { getRouteWithDistance } from '../../../store/selectors';
+import { updateSelectedRouteStop } from '../../../store/actions';
 import BusRouteList from './bus-route-list';
 
 const mapStateToProps = (state, props) => ({
@@ -7,8 +8,15 @@ const mapStateToProps = (state, props) => ({
   routeWithDistance: getRouteWithDistance(
     state.bus,
     props.serviceNo,
-    props.busStopCode
-  )
+    state.bus.routeStop
+  ),
+  routeStop: state.bus.routeStop,
+  selectedRouteStop: state.bus.selectedRouteStop
 });
 
-export default reduxConnect(mapStateToProps)(BusRouteList);
+const mapDispatchToProps = dispatch => ({
+  updateSelectedRouteStop: busStopCode =>
+    dispatch(updateSelectedRouteStop(busStopCode))
+});
+
+export default reduxConnect(mapStateToProps, mapDispatchToProps)(BusRouteList);

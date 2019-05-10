@@ -17,33 +17,22 @@ type IRenderItem = { item: any, index: number };
 type Props = {
   Container: React.ElementType,
   serviceNo: string,
-  busStopCode: string,
+  routeStop: string,
   persisted: boolean,
   routeWithDistance: Array<IBusRoute>,
-  onLocate: Function,
+  updateSelectedRouteStop: Function,
+  selectedRouteStop: string,
   onNearestStopFound: Function,
   onLayout: Function,
   style: { [string]: mixed }
 };
 
-type State = {
-  selectedBusStopCode: string | null
-};
-
-export default class BusRouteList extends React.PureComponent<Props, State> {
+export default class BusRouteList extends React.PureComponent<Props> {
   static defaultProps = {
     Container: Card
   };
 
   _list: any;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      selectedBusStopCode: null
-    };
-  }
 
   componentDidMount() {
     setTimeout(this.scrollToNearest);
@@ -58,28 +47,18 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
   scrollToNearest = () => {
     if (this._list == null) return;
 
-    const { busStopCode, routeWithDistance } = this.props;
-    this.setState({ selectedBusStopCode: busStopCode });
-
-    const index = routeWithDistance.findIndex(
-      r => r.busStopCode === busStopCode
-    );
-    this._list.scrollToIndex({ index });
+    const { routeStop, routeWithDistance } = this.props;
+    const index = routeWithDistance.findIndex(r => r.busStopCode === routeStop);
+    if (index >= 0) this._list.scrollToIndex({ index });
   };
 
   handleLocationPress = (busStopLocation: IBusStopLocation) => {
-    const { onLocate } = this.props;
-
-    this.setState({ selectedBusStopCode: busStopLocation.busStopCode });
-
-    if (typeof onLocate === 'function') {
-      onLocate(busStopLocation);
-    }
+    const { updateSelectedRouteStop } = this.props;
+    updateSelectedRouteStop(busStopLocation.busStopCode);
   };
 
   renderItem = ({ item, index }: IRenderItem) => {
-    const { routeWithDistance } = this.props;
-    const { selectedBusStopCode } = this.state;
+    const { routeWithDistance, selectedRouteStop } = this.props;
     const isFirst = index === 0;
     const isLast = index === routeWithDistance.length - 1;
 
@@ -90,7 +69,7 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
         routeType={item.routeType}
         isFirst={isFirst}
         isLast={isLast}
-        isSelected={item.busStopCode === selectedBusStopCode}
+        isSelected={item.busStopCode === selectedRouteStop}
         onPress={this.handleLocationPress}
       />
     );
@@ -104,7 +83,6 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
       style,
       onLayout
     } = this.props;
-    const { selectedBusStopCode } = this.state;
 
     if (!persisted) return null;
 
@@ -117,7 +95,6 @@ export default class BusRouteList extends React.PureComponent<Props, State> {
           ref={c => (this._list = c)}
           data={routeWithDistance}
           keyExtractor={(item, index) => `${index}`}
-          extraData={selectedBusStopCode}
           getItemLayout={this.getItemLayout}
           renderItem={this.renderItem}
         />

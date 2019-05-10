@@ -4,6 +4,7 @@ import { getRouteDirection } from './get-route-direction';
 import { getRouteByServiceDirection } from './get-route-by-service-direction';
 import { getStopsByStop } from './get-stops-by-stop';
 import { mapboxIcon } from '../../../constants';
+import { distance } from '../../../utils';
 
 const getRoute = (state, serviceNo, busStopCode) => {
   return getRouteByServiceDirection(
@@ -13,10 +14,20 @@ const getRoute = (state, serviceNo, busStopCode) => {
   );
 };
 
+const getParams = (state, serviceNo, busStopCode) => {
+  return { selectedStopCode: state.selectedRouteStop, busStopCode };
+};
+
 export const getRouteGeojson = createSelector(
-  [getRoute, getStopsByStop],
-  (route, stopsByStop) => {
+  [getParams, getRoute, getStopsByStop],
+  (params, route, stopsByStop) => {
     if (route == null || route.length <= 0) return;
+    const { busStopCode, selectedStopCode } = params;
+
+    const startCoord = stopsByStop[busStopCode] && {
+      longitude: stopsByStop[busStopCode].longitude,
+      latitude: stopsByStop[busStopCode].latitude
+    };
 
     const serviceNo = route[0].serviceNo;
     const direction = route[0].direction;
@@ -28,11 +39,11 @@ export const getRouteGeojson = createSelector(
       ];
       return {
         type: 'Feature',
-        id: r.busStopCode,
         properties: {
-          busStopCode: r.busStopCode,
-          coordinates,
-          icon: mapboxIcon.BUS_STOP
+          icon:
+            selectedStopCode === r.busStopCode
+              ? mapboxIcon.ACTIVE_BUS_STOP
+              : mapboxIcon.BUS_STOP
         },
         geometry: {
           type: 'Point',

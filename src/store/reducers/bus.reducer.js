@@ -15,7 +15,9 @@ const initialState = {
   arrivals: {},
   nearest: [],
   favorites: [],
-  nearestDistance: 0.5
+  nearestDistance: 0.5,
+  routeStop: null,
+  selectedRouteStop: null
 };
 
 const updateServices = (state, action) => {
@@ -98,6 +100,19 @@ const removeFromFavorites = (state, action) => {
   return Object.assign({}, state, { favorites });
 };
 
+const updateRouteStop = (state, action) => {
+  return Object.assign({}, state, {
+    routeStop: action.routeStop,
+    selectedRouteStop: action.routeStop
+  });
+};
+
+const updateSelectedRouteStop = (state, action) => {
+  return Object.assign({}, state, {
+    selectedRouteStop: action.selectedRouteStop
+  });
+};
+
 const busReducer = createReducer(initialState, {
   [actions.UPDATE_ARRIVALS]: updateArrivals,
   [actions.UPDATE_SERVICES]: updateServices,
@@ -105,13 +120,22 @@ const busReducer = createReducer(initialState, {
   [actions.UPDATE_STOPS]: updateStops,
   [actions.UPDATE_NEAREST]: updateNearest,
   [actions.ADD_TO_FAVORITES]: addToFavorites,
-  [actions.REMOVE_FROM_FAVORITES]: removeFromFavorites
+  [actions.REMOVE_FROM_FAVORITES]: removeFromFavorites,
+  [actions.UPDATE_ROUTE_STOP]: updateRouteStop,
+  [actions.UPDATE_SELECTED_ROUTE_STOP]: updateSelectedRouteStop
 });
 
 const busPersistConfig = {
   key: 'bus',
   storage,
-  whitelist: ['services', 'stops', 'favorites'] // 'routes',
+  whitelist: [
+    'services',
+    'stops',
+    // 'routes',
+    'favorites',
+    'routeStop',
+    'selectedRouteStop'
+  ]
 };
 
 const persistedBusReducer = persistReducer(busPersistConfig, busReducer);

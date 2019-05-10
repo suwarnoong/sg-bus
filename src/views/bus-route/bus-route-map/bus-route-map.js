@@ -8,6 +8,7 @@ import { IBusStop, IBusStopLocation } from '../../../types.d';
 import styles from './bus-route-map.styles';
 
 const stopActiveImage = require('../../../assets/stop-active.png');
+const stopDisabledImage = require('../../../assets/stop-disabled.png');
 const stopImage = require('../../../assets/stop.png');
 
 const mapIconSizes = [
@@ -26,26 +27,43 @@ const mapStyles = MapboxGL.StyleSheet.create({
     iconAnchor: MapboxGL.IconAnchor.Center,
     iconAllowOverlap: true
   },
-  routeLine: {
+  line: {
     lineColor: '#1289A7',
-    lineWidth: 4,
-    lineOpacity: 0.84
+    lineWidth: 4
   }
 });
 
 type Props = {
-  mapRef: Function,
   serviceNo: string,
-  busStopCode: string,
+  routeStop: string,
+  selectedRouteStop: string,
+  stopsByStop: { [string]: Array<IBusStop> },
   centerCoordinate: Array<number>,
   routeGeojson: Array<any>,
-  routeLineGeojson: Array<any>,
   contentInset: Array<number>,
   style?: { [string]: mixed }
 };
 
 export default class BusRouteMap extends React.PureComponent<Props> {
   _map;
+
+  componentDidMount() {
+    this.centerlizeBusStop(this.props.selectedRouteStop);
+  }
+
+  async componentWillReceiveProps(nextProps) {
+    if (nextProps.selectedRouteStop !== this.props.selectedRouteStop) {
+      this.centerlizeBusStop(nextProps.selectedRouteStop);
+    }
+  }
+
+  centerlizeBusStop = busStopCode => {
+    const { stopsByStop } = this.props;
+    if (stopsByStop) {
+      const stop = stopsByStop[busStopCode];
+      this.handleLocate([stop.longitude, stop.latitude]);
+    }
+  };
 
   handleZoom = async (zoom: number) => {
     const centerCoordinate = await this._map.getCenter();
@@ -66,20 +84,13 @@ export default class BusRouteMap extends React.PureComponent<Props> {
   };
 
   renderBusRoute = () => {
-    const { busStopCode, routeGeojson } = this.props;
+    const { routeStop, routeGeojson } = this.props;
 
     if (routeGeojson == null) return;
 
     const featureCollection = {
       type: 'FeatureCollection',
-      features: routeGeojson.map(r => {
-        r.properties.icon =
-          r.id === busStopCode
-            ? mapboxIcon.ACTIVE_BUS_STOP
-            : mapboxIcon.BUS_STOP;
-
-        return r;
-      })
+      features: routeGeojson
     };
 
     return (
@@ -92,20 +103,14 @@ export default class BusRouteMap extends React.PureComponent<Props> {
         }}
         onPress={() => {}}
       >
-        <MapboxGL.LineLayer id="routeLine" style={mapStyles.routeLine} />
+        <MapboxGL.LineLayer id="line" style={mapStyles.line} />
         <MapboxGL.SymbolLayer id="allStops" style={mapStyles.icon} />
       </MapboxGL.ShapeSource>
     );
   };
 
   render() {
-    const {
-      mapRef,
-      serviceNo,
-      centerCoordinate,
-      contentInset,
-      style
-    } = this.props;
+    const { serviceNo, centerCoordinate, contentInset, style } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
@@ -115,14 +120,12 @@ export default class BusRouteMap extends React.PureComponent<Props> {
     return (
       <MapView
         style={containerStyles}
-        mapRef={c => {
-          this._map = c;
-          mapRef(c);
-        }}
+        mapRef={c => (this._map = c)}
         centerCoordinate={centerCoordinate}
         showUserLocation={true}
         showLocateControl={false}
         contentInset={contentInset}
+        zoomLevel={15}
         onZoom={this.handleZoom}
       >
         {this.renderBusRoute()}

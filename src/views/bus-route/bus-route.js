@@ -7,26 +7,20 @@ import { SCREEN_HEIGHT } from '../../constants';
 import { IBusStop, IBusStopLocation, ICoordinate } from '../../types.d';
 
 type Props = {
-  stopsByStop: { [string]: Array<IBusStop> },
+  updateRouteStop: Function,
   params: { [string]: string },
   style: { [string]: mixed }
 };
 
 type State = {
-  busStopCode: string,
-  coordinates: Array<number>,
   mapBottomInset: number
 };
 
 export default class BusRoute extends PureComponent<Props, State> {
-  _map;
-
   constructor(props: Props) {
     super(props);
 
     this.state = {
-      busStopCode: props.params.busStopCode,
-      coordinates: [0, 0],
       mapBottomInset: SCREEN_HEIGHT / 2
     };
   }
@@ -34,12 +28,10 @@ export default class BusRoute extends PureComponent<Props, State> {
   componentWillMount() {
     const {
       params: { busStopCode },
-      stopsByStop
+      updateRouteStop
     } = this.props;
 
-    const stop: IBusStop = stopsByStop[busStopCode];
-    const { latitude, longitude } = stop;
-    this.setState({ coordinates: [longitude, latitude] });
+    updateRouteStop(busStopCode);
   }
 
   calculateHeight = (event: any) => {
@@ -47,30 +39,12 @@ export default class BusRoute extends PureComponent<Props, State> {
     this.setState({ mapBottomInset: height });
   };
 
-  locateBusStop = async (busStopLocation: IBusStopLocation) => {
-    const zoom = await this._map.getZoom();
-
-    const centerCoordinate = [
-      busStopLocation.longitude,
-      busStopLocation.latitude
-    ];
-
-    this._map.setCamera({
-      centerCoordinate,
-      zoom,
-      duration: 1000
-    });
-
-    this.setState({ busStopCode: busStopLocation.busStopCode });
-  };
-
   render() {
     const {
-      params: { serviceNo, busStopCode: startingBusStopCode },
+      params: { serviceNo },
       style
     } = this.props;
 
-    const { busStopCode, coordinates } = this.state;
     const { mapBottomInset } = this.state;
 
     const containerStyles = [styles.container];
@@ -80,17 +54,12 @@ export default class BusRoute extends PureComponent<Props, State> {
       <ScreenView style={containerStyles}>
         <BusRouteMap
           style={styles.mapView}
-          mapRef={c => (this._map = c)}
           serviceNo={serviceNo}
-          busStopCode={busStopCode}
-          centerCoordinate={coordinates}
           contentInset={[0, 0, mapBottomInset, 0]}
         />
         <BusRouteList
           style={styles.routeList}
           serviceNo={serviceNo}
-          busStopCode={startingBusStopCode}
-          onLocate={this.locateBusStop}
           onLayout={this.calculateHeight}
         />
       </ScreenView>

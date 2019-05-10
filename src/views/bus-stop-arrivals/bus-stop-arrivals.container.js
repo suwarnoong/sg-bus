@@ -10,10 +10,4 @@ const mapStateToProps = (state, props) => ({
   stopsGeojson: getStopsGeojson(state.bus)
 });
 
-const mapDispatchToProps = dispatch => ({
-  // updateInset: (type, value) => dispatch(updateInset(type, value))
-});
-
-export default reduxConnect(mapStateToProps, mapDispatchToProps)(
-  BusStopArrivals
-);
+export default reduxConnect(mapStateToProps)(BusStopArrivals);
