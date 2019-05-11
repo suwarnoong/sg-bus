@@ -13,9 +13,7 @@ import styles from './home.styles';
 
 type Props = {
   currentNavRoute: any,
-  routes: Array<mixed>,
-  services: Array<mixed>,
-  stops: Array<mixed>,
+  favoritesCount: number,
   getRoutes: () => void,
   getServices: () => void,
   getStops: () => void,
@@ -61,7 +59,7 @@ export default class Home extends PureComponent<Props, State> {
   };
 
   render() {
-    const { currentNavRoute, favoriteServiceStop, style } = this.props;
+    const { currentNavRoute, favoritesCount, style } = this.props;
     const { selectedTab } = this.state;
 
     const containerStyles = [styles.container];
@@ -72,7 +70,7 @@ export default class Home extends PureComponent<Props, State> {
     return (
       <ScreenView style={containerStyles}>
         <H1 style={styles.title}>Bus Arrivals</H1>
-        {this.renderTabs(favoriteServiceStop.length > 0 ? 0 : 1)}
+        {this.renderTabs(favoritesCount > 0 ? 0 : 1)}
         <View style={{ flex: 1 }}>
           {selectedTab === 'S' && (
             <FavoriteServiceStop timerEnabled={isActiveRoute} />

@@ -9,7 +9,6 @@ export const getStopsByStop = createSelector(
     stops.forEach(s => {
       stopsByStop[s.busStopCode] = s;
     });
-
     return stopsByStop;
   }
 );
