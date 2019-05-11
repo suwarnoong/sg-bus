@@ -7,6 +7,11 @@ import NavigatorContainer from './routes';
 
 type Props = {};
 
+// if (process.env.NODE_ENV !== 'production') {
+//   const { whyDidYouUpdate } = require('why-did-you-update');
+//   whyDidYouUpdate(React, { include: /^ServiceStop/ });
+// }
+
 export default class App extends Component<Props> {
   render() {
     return (

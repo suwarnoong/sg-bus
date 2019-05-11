@@ -3,9 +3,14 @@ import { addToFavorites, removeFromFavorites } from '../../../store/actions';
 import { getStopsByStop } from '../../../store/selectors';
 import BusArrival from './bus-arrival';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, props) => ({
   favorites: state.bus.favorites,
-  stopsByStop: getStopsByStop(state.bus)
+  stopsByStop: getStopsByStop(state.bus),
+  arrival:
+    state.bus.arrivals[props.busStopCode] &&
+    state.bus.arrivals[props.busStopCode].find(
+      a => a.serviceNo === props.serviceNo
+    )
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -15,7 +15,6 @@ const initialState = {
   arrivals: {},
   nearest: [],
   favorites: [],
-  nearestDistance: 0.5,
   routeStop: null,
   selectedRouteStop: null
 };

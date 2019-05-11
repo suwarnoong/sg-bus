@@ -3,7 +3,7 @@ import { Button, Label, TouchableOpacity, View } from '../../base';
 import { StarOutlineIcon, StarFilledIcon } from '../../../icons';
 import { isArrivalEmpty } from '../../../utils';
 import ArrivalTimes from './arrival-times';
-import { IArrivalTime } from '../../../types.d.js';
+import { IArrivalTime, IBusArrival } from '../../../types.d.js';
 import styles from './bus-arrival.styles';
 
 import find from 'lodash/fp/find';
@@ -11,9 +11,7 @@ import find from 'lodash/fp/find';
 type Props = {
   busStopCode: string,
   serviceNo: string,
-  nextBus: IArrivalTime,
-  nextBus2: IArrivalTime,
-  nextBus3: IArrivalTime,
+  arrival: IBusArrival,
   favorites: Array<mixed>,
   stopsByStop: Array<mixed>,
   hideFavorite: boolean,
@@ -56,14 +54,7 @@ export default class BusArrival extends PureComponent<Props> {
   };
 
   render() {
-    const {
-      serviceNo,
-      nextBus,
-      nextBus2,
-      nextBus3,
-      hideFavorite,
-      style
-    } = this.props;
+    const { serviceNo, arrival, hideFavorite, style } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
@@ -91,15 +82,15 @@ export default class BusArrival extends PureComponent<Props> {
             )}
           </View>
 
-          {isArrivalEmpty(nextBus) ? (
+          {!arrival || isArrivalEmpty(arrival.nextBus) ? (
             <Label weight={Label.WEIGHT_DEMI_BOLD} style={styles.noArrivals}>
               Not Operating
             </Label>
           ) : (
             <ArrivalTimes
-              nextBus={nextBus}
-              nextBus2={nextBus2}
-              nextBus3={nextBus3}
+              nextBus={arrival.nextBus}
+              nextBus2={arrival.nextBus2}
+              nextBus3={arrival.nextBus3}
             />
           )}
         </View>

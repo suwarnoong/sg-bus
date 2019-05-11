@@ -1,20 +1,55 @@
 import React, { PureComponent } from 'react';
 import Label from './label';
 
-export const H1 = props => 
-  <Label {...props} size={Label.SIZE_XXLARGE} weight={Label.WEIGHT_MEDIUM} />;
+export class H1 extends PureComponent {
+  render() {
+    return (
+      <Label
+        {...this.props}
+        size={Label.SIZE_XXLARGE}
+        weight={Label.WEIGHT_MEDIUM}
+      />
+    );
+  }
+}
 
-export const H2 = props => 
-  <Label {...props} size={Label.SIZE_XLARGE} weight={Label.WEIGHT_MEDIUM} />;
+export class H2 extends PureComponent {
+  render() {
+    return (
+      <Label
+        {...this.props}
+        size={Label.SIZE_XLARGE}
+        weight={Label.WEIGHT_MEDIUM}
+      />
+    );
+  }
+}
 
-export const H3 = props =>
-  <Label {...props} size={Label.SIZE_LARGE} weight={Label.WEIGHT_MEDIUM} />;
+export class H3 extends PureComponent {
+  render() {
+    return (
+      <Label
+        {...this.props}
+        size={Label.SIZE_LARGE}
+        weight={Label.WEIGHT_MEDIUM}
+      />
+    );
+  }
+}
 
-  export const Small = props =>
-  <Label {...props} size={Label.SIZE_SMALL} />;
+export class Small extends PureComponent {
+  render() {
+    return <Label {...this.props} size={Label.SIZE_SMALL} />;
+  }
+}
 
-export const XSmall = props =>
-  <Label {...props} size={Label.SIZE_XSMALL} />;
-
-export const XXSmall = props =>
-  <Label {...props} size={Label.SIZE_XXSMALL} />;
+export class XSmall extends PureComponent {
+  render() {
+    return <Label {...this.props} size={Label.SIZE_XSMALL} />;
+  }
+}
+export class XXSmall extends PureComponent {
+  render() {
+    return <Label {...this.props} size={Label.SIZE_XXSMALL} />;
+  }
+}

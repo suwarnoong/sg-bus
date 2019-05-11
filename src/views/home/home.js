@@ -41,13 +41,15 @@ export default class Home extends PureComponent<Props, State> {
     this.props.getStops();
   }
 
+  switchSelected = ({ value }) => this.setState({ selectedTab: value });
+
   renderTabs = (initialTab: number = 0) => {
     return (
       <View style={{ alignItems: 'flex-start', paddingBottom: 10 }}>
         <View style={{ width: 200 }}>
           <SelectSwitch
             initial={initialTab}
-            onPress={({ value }) => this.setState({ selectedTab: value })}
+            onPress={this.switchSelected}
             options={[
               { label: 'SAVED', value: 'S' },
               { label: 'NEAREST', value: 'N' }
@@ -69,9 +71,7 @@ export default class Home extends PureComponent<Props, State> {
 
     return (
       <ScreenView style={containerStyles}>
-        <H1 style={{ paddingHorizontal: 10, paddingVertical: 20 }}>
-          Bus Arrivals
-        </H1>
+        <H1 style={styles.title}>Bus Arrivals</H1>
         {this.renderTabs(favoriteServiceStop.length > 0 ? 0 : 1)}
         <View style={{ flex: 1 }}>
           {selectedTab === 'S' && (

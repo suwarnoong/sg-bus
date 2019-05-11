@@ -13,3 +13,5 @@ export const mapboxIcon = {
   BUS_STOP: 'stop',
   ACTIVE_BUS_STOP: 'activeStop'
 };
+
+export const NEAREST_DISTANCE = 0.5;

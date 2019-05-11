@@ -21,16 +21,15 @@ type Props = {
   description: string,
   roadName: string,
   distance: number,
-  arrivals: Array<IBusArrival>,
   onPress: Function,
   style: { [string]: mixed }
 };
 
 export default class ServiceStop extends PureComponent<Props> {
   handlePress = () => {
-    const { onPress } = this.props;
+    const { onPress, busStopCode, description, roadName } = this.props;
     if (typeof onPress === 'function') {
-      onPress();
+      onPress({ busStopCode, roadName, description });
     }
   };
 
@@ -41,7 +40,6 @@ export default class ServiceStop extends PureComponent<Props> {
       description,
       roadName,
       distance,
-      arrivals,
       style,
       onPress
     } = this.props;
@@ -56,7 +54,6 @@ export default class ServiceStop extends PureComponent<Props> {
         delayPressIn={100}
       >
         <BusArrival
-          {...arrivals}
           serviceNo={serviceNo}
           busStopCode={busStopCode}
           hideFavorite={true}

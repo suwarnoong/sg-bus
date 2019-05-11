@@ -7,10 +7,6 @@ import {
 } from '../../../store/selectors';
 
 const mapStateToProps = state => ({
-  favoriteServiceStop: getFavoriteServiceStop(
-    state.bus,
-    state.service.geolocation
-  ),
   favoriteStops: getFavoriteStops(state.bus)
 });
 
