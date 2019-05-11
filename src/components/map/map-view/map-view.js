@@ -39,7 +39,7 @@ export default class MapView extends PureComponent<Props> {
     pitch: 0
   };
 
-  _map;
+  _map: any;
 
   renderControls = () => {
     const {

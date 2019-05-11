@@ -38,29 +38,33 @@ type Props = {
   routeStop: string,
   selectedRouteStop: string,
   stopsByStop: { [string]: Array<IBusStop> },
-  centerCoordinate: Array<number>,
   routeGeojson: Array<any>,
   contentInset: Array<number>,
   style?: { [string]: mixed }
 };
 
 export default class BusRouteMap extends React.PureComponent<Props> {
-  _map;
+  _map: any;
+  centerCoordinate: Array<number>;
 
-  componentDidMount() {
-    this.centerlizeBusStop(this.props.selectedRouteStop);
+  componentWillMount() {
+    const { stopsByStop, routeStop } = this.props;
+    if (stopsByStop) {
+      const stop: IBusStop = stopsByStop[routeStop];
+      this.centerCoordinate = [stop.longitude, stop.latitude];
+    }
   }
 
-  async componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: Props) {
     if (nextProps.selectedRouteStop !== this.props.selectedRouteStop) {
       this.centerlizeBusStop(nextProps.selectedRouteStop);
     }
   }
 
-  centerlizeBusStop = busStopCode => {
+  centerlizeBusStop = (busStopCode: string) => {
     const { stopsByStop } = this.props;
     if (stopsByStop) {
-      const stop = stopsByStop[busStopCode];
+      const stop: IBusStop = stopsByStop[busStopCode];
       this.handleLocate([stop.longitude, stop.latitude]);
     }
   };
@@ -110,18 +114,18 @@ export default class BusRouteMap extends React.PureComponent<Props> {
   };
 
   render() {
-    const { serviceNo, centerCoordinate, contentInset, style } = this.props;
+    const { serviceNo, contentInset, style } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
-    if (isGeolocationEmpty(centerCoordinate) == null) return null;
+    if (isGeolocationEmpty(this.centerCoordinate) == null) return null;
 
     return (
       <MapView
         style={containerStyles}
         mapRef={c => (this._map = c)}
-        centerCoordinate={centerCoordinate}
+        centerCoordinate={this.centerCoordinate}
         showUserLocation={true}
         showLocateControl={false}
         contentInset={contentInset}
