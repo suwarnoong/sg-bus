@@ -6,22 +6,23 @@ import { getStopsByStop } from './get-stops-by-stop';
 import { mapboxIcon } from '../../../constants';
 import { distance } from '../../../utils';
 
-const getRoute = (state, serviceNo, busStopCode) => {
-  return getRouteByServiceDirection(
+const getRoute = state =>
+  getRouteByServiceDirection(
     state,
-    serviceNo,
-    getRouteDirection(state, serviceNo, busStopCode)
+    state.routeService,
+    getRouteDirection(state, state.routeService, state.routeStop)
   );
-};
 
-const getParams = (state, serviceNo, busStopCode) => {
-  return { selectedStopCode: state.selectedRouteStop, busStopCode };
-};
+const getParams = state => ({
+  selectedStopCode: state.selectedRouteStop,
+  busStopCode: state.routeStop
+});
 
 export const getRouteGeojson = createSelector(
   [getParams, getRoute, getStopsByStop],
   (params, route, stopsByStop) => {
     if (route == null || route.length <= 0) return;
+
     const { busStopCode, selectedStopCode } = params;
 
     const startCoord = stopsByStop[busStopCode] && {

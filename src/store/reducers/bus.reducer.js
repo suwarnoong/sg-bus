@@ -16,7 +16,8 @@ const initialState = {
   nearest: [],
   favorites: [],
   routeStop: null,
-  selectedRouteStop: null
+  selectedRouteStop: null,
+  routeService: null
 };
 
 const updateServices = (state, action) => {
@@ -102,7 +103,8 @@ const removeFromFavorites = (state, action) => {
 const updateRouteStop = (state, action) => {
   return Object.assign({}, state, {
     routeStop: action.routeStop,
-    selectedRouteStop: action.routeStop
+    selectedRouteStop: action.routeStop,
+    routeService: action.routeService
   });
 };
 
@@ -133,7 +135,8 @@ const busPersistConfig = {
     // 'routes',
     'favorites',
     'routeStop',
-    'selectedRouteStop'
+    'selectedRouteStop',
+    'routeService'
   ]
 };
 

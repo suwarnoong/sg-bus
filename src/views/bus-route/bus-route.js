@@ -27,11 +27,16 @@ export default class BusRoute extends PureComponent<Props, State> {
 
   componentWillMount() {
     const {
-      params: { busStopCode },
+      params: { busStopCode, serviceNo },
       updateRouteStop
     } = this.props;
 
-    updateRouteStop(busStopCode);
+    updateRouteStop(busStopCode, serviceNo);
+  }
+
+  componentWillUnmount() {
+    const { updateRouteStop } = this.props;
+    updateRouteStop(null, null);
   }
 
   calculateHeight = (event: any) => {
@@ -40,11 +45,7 @@ export default class BusRoute extends PureComponent<Props, State> {
   };
 
   render() {
-    const {
-      params: { serviceNo },
-      style
-    } = this.props;
-
+    const { style } = this.props;
     const { mapBottomInset } = this.state;
 
     const containerStyles = [styles.container];
@@ -54,12 +55,10 @@ export default class BusRoute extends PureComponent<Props, State> {
       <ScreenView style={containerStyles}>
         <BusRouteMap
           style={styles.mapView}
-          serviceNo={serviceNo}
           contentInset={[0, 0, mapBottomInset, 0]}
         />
         <BusRouteList
           style={styles.routeList}
-          serviceNo={serviceNo}
           onLayout={this.calculateHeight}
         />
       </ScreenView>

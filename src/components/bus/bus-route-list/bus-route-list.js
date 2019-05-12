@@ -16,7 +16,6 @@ type IRenderItem = { item: any, index: number };
 
 type Props = {
   Container: React.ElementType,
-  serviceNo: string,
   routeStop: string,
   persisted: boolean,
   routeWithDistance: Array<IBusRoute>,

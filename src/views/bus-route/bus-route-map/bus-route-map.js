@@ -34,38 +34,64 @@ const mapStyles = MapboxGL.StyleSheet.create({
 });
 
 type Props = {
-  serviceNo: string,
   routeStop: string,
   selectedRouteStop: string,
+  routeService: string,
   stopsByStop: { [string]: Array<IBusStop> },
   routeGeojson: Array<any>,
   contentInset: Array<number>,
   style?: { [string]: mixed }
 };
 
-export default class BusRouteMap extends React.PureComponent<Props> {
-  _map: any;
-  centerCoordinate: Array<number>;
+type State = {
+  centerCoordinate: Array<number>
+};
 
-  componentWillMount() {
-    const { stopsByStop, routeStop } = this.props;
-    if (stopsByStop) {
-      const stop: IBusStop = stopsByStop[routeStop];
-      this.centerCoordinate = [stop.longitude, stop.latitude];
-    }
+const DEFAULT_ZOOM = 15;
+
+export default class BusRouteMap extends React.PureComponent<Props, State> {
+  _map: any;
+
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      centerCoordinate: [0, 0]
+    };
+  }
+
+  componentDidMount() {
+    setTimeout(() => this.centerlizeBusStop(this.props.selectedRouteStop, 15));
   }
 
   componentWillReceiveProps(nextProps: Props) {
-    if (nextProps.selectedRouteStop !== this.props.selectedRouteStop) {
-      this.centerlizeBusStop(nextProps.selectedRouteStop);
+    if ('selectedRouteStop' in nextProps) {
+      const selectedRouteStopChanged =
+        nextProps.selectedRouteStop !== this.props.selectedRouteStop;
+
+      if (selectedRouteStopChanged) {
+        this.centerlizeBusStop(nextProps.selectedRouteStop);
+      }
     }
   }
 
-  centerlizeBusStop = (busStopCode: string) => {
+  centerlizeBusStop = async (
+    busStopCode: string,
+    zoomLevel: number | null = null
+  ) => {
     const { stopsByStop } = this.props;
     if (stopsByStop) {
       const stop: IBusStop = stopsByStop[busStopCode];
-      this.handleLocate([stop.longitude, stop.latitude]);
+      if (stop) {
+        const centerCoordinate = [stop.longitude, stop.latitude];
+
+        const zoom = zoomLevel || (await this._map.getZoom());
+        this._map.setCamera({
+          centerCoordinate,
+          zoom,
+          duration: 1000
+        });
+      }
     }
   };
 
@@ -78,17 +104,8 @@ export default class BusRouteMap extends React.PureComponent<Props> {
     });
   };
 
-  handleLocate = async (centerCoordinate: Array<number>) => {
-    const zoom = await this._map.getZoom();
-    this._map.setCamera({
-      centerCoordinate,
-      zoom,
-      duration: 1000
-    });
-  };
-
   renderBusRoute = () => {
-    const { routeStop, routeGeojson } = this.props;
+    const { routeGeojson } = this.props;
 
     if (routeGeojson == null) return;
 
@@ -114,22 +131,23 @@ export default class BusRouteMap extends React.PureComponent<Props> {
   };
 
   render() {
-    const { serviceNo, contentInset, style } = this.props;
+    const { contentInset, style } = this.props;
+    const { centerCoordinate } = this.state;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
-    if (isGeolocationEmpty(this.centerCoordinate) == null) return null;
+    if (isGeolocationEmpty(centerCoordinate) == null) return null;
 
     return (
       <MapView
         style={containerStyles}
         mapRef={c => (this._map = c)}
-        centerCoordinate={this.centerCoordinate}
+        centerCoordinate={centerCoordinate}
         showUserLocation={true}
         showLocateControl={false}
         contentInset={contentInset}
-        zoomLevel={15}
+        zoomLevel={DEFAULT_ZOOM}
         onZoom={this.handleZoom}
       >
         {this.renderBusRoute()}

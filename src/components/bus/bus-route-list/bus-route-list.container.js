@@ -5,11 +5,7 @@ import BusRouteList from './bus-route-list';
 
 const mapStateToProps = (state, props) => ({
   persisted: state.bus.persisted,
-  routeWithDistance: getRouteWithDistance(
-    state.bus,
-    props.serviceNo,
-    state.bus.routeStop
-  ),
+  routeWithDistance: getRouteWithDistance(state.bus),
   routeStop: state.bus.routeStop,
   selectedRouteStop: state.bus.selectedRouteStop
 });

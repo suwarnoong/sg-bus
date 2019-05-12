@@ -6,7 +6,8 @@ import { getStopsByStop } from '../../store/selectors';
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
-  updateRouteStop: busStopCode => dispatch(updateRouteStop(busStopCode))
+  updateRouteStop: (busStopCode, serviceNo) =>
+    dispatch(updateRouteStop(busStopCode, serviceNo))
 });
 
 export default reduxConnect(mapStateToProps, mapDispatchToProps)(BusRoute);
