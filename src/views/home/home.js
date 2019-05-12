@@ -8,7 +8,7 @@ import {
   View
 } from '../../components';
 import NearestBusStops from './nearest-bus-stops';
-import FavoriteServiceStop from './favorite-service-stop';
+import NearestFavorites from './nearest-favorites';
 import styles from './home.styles';
 
 type Props = {
@@ -73,7 +73,7 @@ export default class Home extends PureComponent<Props, State> {
         {this.renderTabs(favoritesCount > 0 ? 0 : 1)}
         <View style={{ flex: 1 }}>
           {selectedTab === 'S' && (
-            <FavoriteServiceStop timerEnabled={isActiveRoute} />
+            <NearestFavorites timerEnabled={isActiveRoute} />
           )}
           {selectedTab === 'N' && <NearestBusStops />}
         </View>

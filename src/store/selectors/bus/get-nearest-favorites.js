@@ -3,17 +3,17 @@ import { distance } from '../../../utils';
 import { NEAREST_DISTANCE } from '../../../constants';
 import { getStopsByStop } from './get-stops-by-stop';
 
-const getFavorites = (state, location) =>
-  state.favorites.map(f => ({ ...f, location }));
+const getFavorites = (state, location) => state.favorites;
 
-export const getFavoriteServiceStop = createSelector(
-  [getFavorites, getStopsByStop],
-  (favorites, stopsByStop) => {
+const getLocation = (state, location) => location;
+
+export const getNearestFavorites = createSelector(
+  [getFavorites, getStopsByStop, getLocation],
+  (favorites, stopsByStop, location) => {
     const names = favorites
       .map(f => ({
-        ...f,
-        ...stopsByStop[f.busStopCode],
-        distance: distance(f.location, {
+        name: f.name,
+        distance: distance(location, {
           latitude: stopsByStop[f.busStopCode].latitude,
           longitude: stopsByStop[f.busStopCode].longitude
         })
@@ -22,8 +22,7 @@ export const getFavoriteServiceStop = createSelector(
       .sort((a, b) => a.distance - b.distance)
       .map(f => f.name);
 
-    const distinctNames = [...new Set(names)];
-    return distinctNames.map(n => ({
+    return Array.from(new Set(names)).map(n => ({
       name: n,
       data: favorites
         .filter(f => f.name === n)

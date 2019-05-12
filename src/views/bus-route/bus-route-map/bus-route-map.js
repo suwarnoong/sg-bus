@@ -43,22 +43,10 @@ type Props = {
   style?: { [string]: mixed }
 };
 
-type State = {
-  centerCoordinate: Array<number>
-};
-
 const DEFAULT_ZOOM = 15;
 
-export default class BusRouteMap extends React.PureComponent<Props, State> {
+export default class BusRouteMap extends React.PureComponent<Props> {
   _map: any;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      centerCoordinate: [0, 0]
-    };
-  }
 
   componentDidMount() {
     setTimeout(() => this.centerlizeBusStop(this.props.selectedRouteStop, 15));
@@ -132,18 +120,14 @@ export default class BusRouteMap extends React.PureComponent<Props, State> {
 
   render() {
     const { contentInset, style } = this.props;
-    const { centerCoordinate } = this.state;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
-
-    if (isGeolocationEmpty(centerCoordinate) == null) return null;
 
     return (
       <MapView
         style={containerStyles}
         mapRef={c => (this._map = c)}
-        centerCoordinate={centerCoordinate}
         showUserLocation={true}
         showLocateControl={false}
         contentInset={contentInset}

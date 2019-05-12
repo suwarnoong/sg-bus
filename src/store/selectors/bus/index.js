@@ -1,5 +1,5 @@
 export * from './get-arrivals-full';
-export * from './get-favorite-service-stop';
+export * from './get-nearest-favorites';
 export * from './get-favorite-stops';
 export * from './get-route-geojson';
 export * from './get-route-by-service-direction';

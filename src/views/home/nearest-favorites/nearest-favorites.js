@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
-import { ServiceStopList, View, Timer } from '../../../components';
-import styles from './favorite-service-stop.styles';
+import { FavoriteList, View, Timer } from '../../../components';
+import styles from './nearest-favorites.styles';
 
 type Props = {
   timerEnabled: boolean
 };
 
-export default class FavoriteServiceStop extends PureComponent<Props> {
+export default class NearestFavorites extends PureComponent<Props> {
   handleTick = () => {
     const { favoriteStops } = this.props;
     favoriteStops.forEach(b => this.props.getArrivals(b));
@@ -21,7 +21,7 @@ export default class FavoriteServiceStop extends PureComponent<Props> {
   };
 
   render() {
-    const { timerEnabled, style } = this.props;
+    const { nearestFavorites, timerEnabled, style } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
@@ -33,7 +33,11 @@ export default class FavoriteServiceStop extends PureComponent<Props> {
           onTick={this.handleTick}
           enabled={timerEnabled}
         />
-        <ServiceStopList onPress={this.handlePress} style={containerStyles} />
+        <FavoriteList
+          list={nearestFavorites}
+          onPress={this.handlePress}
+          style={containerStyles}
+        />
       </View>
     );
   }

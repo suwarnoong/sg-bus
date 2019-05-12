@@ -2,16 +2,22 @@ import { createSelector } from 'reselect';
 import { getRoutesByStop } from './get-routes-by-stop';
 import { isArrivalEmpty } from '../../../utils';
 
-const getArrival = (state, busStopCode) => state.arrivals[busStopCode];
-const getStopServices = (state, busStopCode) =>
-  getRoutesByStop(state)[busStopCode];
+const getArrivals = (state, busStopCode) => state.arrivals;
+
+const getBusStopCode = (state, busStopCode) => busStopCode;
 
 export const getArrivalsFull = createSelector(
-  [getArrival, getStopServices],
-  (arrival, stopServices) => {
-    if (stopServices == null) return [];
+  [getArrivals, getRoutesByStop, getBusStopCode],
+  (arrivals, routeByStop, busStopCode) => {
+    if (arrivals == null) return [];
+    if (routeByStop == null) return [];
 
-    return stopServices
+    const arrival = arrivals[busStopCode];
+    const services = routeByStop[busStopCode];
+
+    if (services == null) return [];
+
+    return services
       .map(s => ({
         ...(arrival && arrival.find(a => a.serviceNo === s.serviceNo)),
         busStopCode: s.busStopCode,

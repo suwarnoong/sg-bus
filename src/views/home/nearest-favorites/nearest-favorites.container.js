@@ -1,13 +1,14 @@
-import FavoriteServiceStop from './favorite-service-stop';
+import NearestFavorites from './nearest-favorites';
 import { reduxConnect } from '../../../utils';
 import { getArrivals } from '../../../store/actions';
 import {
-  getFavoriteServiceStop,
-  getFavoriteStops
+  getFavoriteStops,
+  getNearestFavorites
 } from '../../../store/selectors';
 
 const mapStateToProps = state => ({
-  favoriteStops: getFavoriteStops(state.bus)
+  favoriteStops: getFavoriteStops(state.bus),
+  nearestFavorites: getNearestFavorites(state.bus, state.service.geolocation)
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -15,5 +16,5 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default reduxConnect(mapStateToProps, mapDispatchToProps)(
-  FavoriteServiceStop
+  NearestFavorites
 );

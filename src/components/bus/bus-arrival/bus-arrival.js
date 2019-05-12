@@ -54,8 +54,34 @@ export default class BusArrival extends PureComponent<Props> {
     });
   };
 
+  renderArrivalTimes() {
+    const { arrival } = this.props;
+
+    if (!arrival) {
+      return (
+        <Label weight={Label.WEIGHT_DEMI_BOLD} style={styles.noArrivals}>
+          Loading
+        </Label>
+      );
+    } else if (isArrivalEmpty(arrival.nextBus)) {
+      return (
+        <Label weight={Label.WEIGHT_DEMI_BOLD} style={styles.noArrivals}>
+          Not Operating
+        </Label>
+      );
+    } else {
+      return (
+        <ArrivalTimes
+          nextBus={arrival.nextBus}
+          nextBus2={arrival.nextBus2}
+          nextBus3={arrival.nextBus3}
+        />
+      );
+    }
+  }
+
   render() {
-    const { serviceNo, arrival, hideFavorite, style } = this.props;
+    const { serviceNo, hideFavorite, style } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
@@ -82,18 +108,7 @@ export default class BusArrival extends PureComponent<Props> {
               />
             )}
           </View>
-
-          {!arrival || isArrivalEmpty(arrival.nextBus) ? (
-            <Label weight={Label.WEIGHT_DEMI_BOLD} style={styles.noArrivals}>
-              Not Operating
-            </Label>
-          ) : (
-            <ArrivalTimes
-              nextBus={arrival.nextBus}
-              nextBus2={arrival.nextBus2}
-              nextBus3={arrival.nextBus3}
-            />
-          )}
+          {this.renderArrivalTimes()}
         </View>
       </View>
     );

@@ -1,13 +1,19 @@
 import { createSelector } from 'reselect';
 
-const getDirection = (state, serviceNo, busStopCode) => {
-  const routeStop = state.routes.find(
-    r => r.serviceNo === serviceNo && r.busStopCode === busStopCode
-  );
-  if (routeStop) return routeStop.direction;
-};
+const getRoutes = (state, serviceNo, busStopCode) => state.routes;
+
+const getParams = (state, serviceNo, busStopCode) => ({
+  serviceNo,
+  busStopCode
+});
 
 export const getRouteDirection = createSelector(
-  [getDirection],
-  direction => direction
+  [getRoutes, getParams],
+  (routes, params) => {
+    const { serviceNo, busStopCode } = params;
+    const route = routes.find(
+      r => r.serviceNo === serviceNo && r.busStopCode === busStopCode
+    );
+    if (route) return route.direction;
+  }
 );

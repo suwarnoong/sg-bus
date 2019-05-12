@@ -1,24 +1,18 @@
 import React, { PureComponent } from 'react';
-import ServiceStop from './service-stop';
-import { Card, Label, SectionList, View } from '../../base';
-import { IBusArrival } from '../../../types.d';
-import styles from './service-stop-list.styles';
-
-import pick from 'lodash/fp/pick';
+import { Label, SectionList, TouchableOpacity, View } from '../../base';
+import BusArrival from '../bus-arrival';
+import styles from './favorite-list.styles';
 
 type Props = {
   Container: React.Element,
-  favoriteServiceStop: Array<{
-    serviceNo: string,
-    busStopCode: string,
-    roadName: string,
-    description: string,
-    distance: number
+  list: Array<{
+    name: string,
+    data: Array<mixed>
   }>,
   onPress: Function
 };
 
-export default class ServiceStopList extends PureComponent<Props> {
+export default class FavoriteList extends PureComponent<Props> {
   static defaultProps = {
     Container: View
   };
@@ -39,21 +33,41 @@ export default class ServiceStopList extends PureComponent<Props> {
     );
   };
 
+  handlePress = item => {
+    const { onPress } = this.props;
+    if (typeof onPress === 'function') {
+      onPress(item);
+    }
+  };
+
   renderItem = ({ item, index, section }) => {
     const itemContainerStyles = [styles.itemContainer];
     if (index === 0) itemContainerStyles.push(styles.firstItemContainer);
     if (index === section.data.length - 1)
       itemContainerStyles.push(styles.lastItemContainer);
 
+    const { busStopCode, serviceNo, roadName, description } = item;
+
     return (
       <View style={itemContainerStyles}>
-        <ServiceStop {...item} onPress={this.props.onPress} />
+        <TouchableOpacity
+          onPress={() =>
+            this.handlePress({ busStopCode, roadName, description })
+          }
+          delayPressIn={100}
+        >
+          <BusArrival
+            serviceNo={serviceNo}
+            busStopCode={busStopCode}
+            hideFavorite={true}
+          />
+        </TouchableOpacity>
       </View>
     );
   };
 
   render() {
-    const { Container, favoriteServiceStop, style } = this.props;
+    const { Container, list, style } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
@@ -61,7 +75,7 @@ export default class ServiceStopList extends PureComponent<Props> {
     return (
       <Container style={containerStyles}>
         <SectionList
-          sections={favoriteServiceStop}
+          sections={list}
           keyExtractor={this.keyExtractor}
           renderSectionHeader={this.renderSectionHeader}
           renderItem={this.renderItem}

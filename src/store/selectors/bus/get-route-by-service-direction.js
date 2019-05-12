@@ -1,12 +1,15 @@
 import { createSelector } from 'reselect';
 
-const getRoute = (state, serviceNo, direction) => {
-  return state.routes.filter(
-    r => r.serviceNo === serviceNo && r.direction === direction
-  );
-};
+const getRoutes = (state, serviceNo, direction) => state.routes;
+
+const getParams = (state, serviceNo, direction) => ({ serviceNo, direction });
 
 export const getRouteByServiceDirection = createSelector(
-  [getRoute],
-  route => route
+  [getRoutes, getParams],
+  (routes, params) => {
+    const { serviceNo, direction } = params;
+    return routes.filter(
+      r => r.serviceNo === serviceNo && r.direction === direction
+    );
+  }
 );
