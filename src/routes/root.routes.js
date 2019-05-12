@@ -1,6 +1,6 @@
-import Home from '../views/home';
-import BusStopArrivals from '../views/bus-stop-arrivals';
-import BusRoute from '../views/bus-route';
+import Home from '../pages/home';
+import BusStopArrivals from '../pages/bus-stop-arrivals';
+import BusRoute from '../pages/bus-route';
 
 export default {
   Home: {
