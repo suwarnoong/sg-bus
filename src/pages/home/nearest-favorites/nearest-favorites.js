@@ -3,13 +3,15 @@ import { FavoriteList, View, Timer } from '../../../components';
 import styles from './nearest-favorites.styles';
 
 type Props = {
-  timerEnabled: boolean
+  timerEnabled: boolean,
+  nearestFavoriteStops: Array<string>,
+  nearestFavorites: Array<{ name: string, data: mixed }>
 };
 
 export default class NearestFavorites extends PureComponent<Props> {
   handleTick = () => {
-    const { favoriteStops } = this.props;
-    favoriteStops.forEach(b => this.props.getArrivals(b));
+    const { nearestFavoriteStops } = this.props;
+    nearestFavoriteStops.forEach(b => this.props.getArrivals(b));
   };
 
   handlePress = item => {

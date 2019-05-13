@@ -2,10 +2,14 @@
 import Home from './home';
 import { reduxConnect, getCurrentRoute } from '../../utils';
 import { getRoutes, getServices, getStops } from '../../store/actions';
+import { getNearestFavoriteStops } from '../../store/selectors';
 
 const mapStateToProps = state => ({
   currentNavRoute: getCurrentRoute(state.nav),
-  favoritesCount: state.bus.favorites.length
+  nearestFavoriteStops: getNearestFavoriteStops(
+    state.bus,
+    state.service.geolocation
+  )
 });
 
 const mapDispatchToProps = dispatch => ({

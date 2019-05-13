@@ -12,7 +12,7 @@ type Props = {
 export default class Timer extends PureComponent<Props> {
   static defaultProps = {
     enabled: true,
-    interval: 5000 // miliseconds
+    interval: 15000 // miliseconds
   };
 
   _timerId: ?TimeoutID;
