@@ -1,16 +1,12 @@
 import { reduxConnect } from '../../../utils';
 import { addToFavorites, removeFromFavorites } from '../../../store/actions';
-import { getStopsByStop } from '../../../store/selectors';
+import { getStopsByStop, getArrival } from '../../../store/selectors';
 import BusArrival from './bus-arrival';
 
 const mapStateToProps = (state, props) => ({
   favorites: state.bus.favorites,
   stopsByStop: getStopsByStop(state.bus),
-  arrival:
-    state.bus.arrivals[props.busStopCode] &&
-    state.bus.arrivals[props.busStopCode].find(
-      a => a.serviceNo === props.serviceNo
-    )
+  arrival: getArrival(state.bus, props.busStopCode, props.serviceNo)
 });
 
 const mapDispatchToProps = dispatch => ({

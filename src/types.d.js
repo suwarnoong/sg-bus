@@ -9,6 +9,7 @@ export type IArrivalTime = {
 };
 
 export type IBusArrival = {
+  busStopCode: string,
   serviceNo: string,
   nextBus: Array<IArrivalTime>,
   nextBus2: Array<IArrivalTime>,

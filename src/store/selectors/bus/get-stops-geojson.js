@@ -3,6 +3,7 @@ import { getRoutesByStop } from './get-routes-by-stop';
 import { mapboxIcon } from '../../../constants';
 
 const getStops = state => state.stops;
+
 const getRoutes = state => state.routes;
 
 export const getStopsGeojson = createSelector(

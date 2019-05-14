@@ -1,4 +1,5 @@
-export * from './get-arrivals-full';
+export * from './get-arrival';
+export * from './get-arrivals-by-stop';
 export * from './get-nearest-favorites';
 export * from './get-nearest-favorite-stops';
 export * from './get-route-geojson';

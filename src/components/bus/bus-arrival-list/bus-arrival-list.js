@@ -23,6 +23,21 @@ export default class BusArrivalList extends PureComponent<Props> {
     this.props.getArrivals(this.props.params.busStopCode);
   };
 
+  renderItem = ({ item }) => {
+    if (!item) return null;
+
+    return (
+      <BusArrival
+        busStopCode={item.busStopCode}
+        serviceNo={item.serviceNo}
+        nextBus={item.nextBus}
+        nextBus2={item.nextBus2}
+        nextBus3={item.nextBus3}
+        onSaved={this.handleSaved}
+      />
+    );
+  };
+
   render() {
     const {
       Container,
@@ -48,16 +63,7 @@ export default class BusArrivalList extends PureComponent<Props> {
           data={arrivals}
           keyExtractor={(item, index) => item.serviceNo}
           extraData={favorites}
-          renderItem={({ item }) => (
-            <BusArrival
-              busStopCode={busStopCode}
-              serviceNo={item.serviceNo}
-              nextBus={item.nextBus}
-              nextBus2={item.nextBus2}
-              nextBus3={item.nextBus3}
-              onSaved={this.handleSaved}
-            />
-          )}
+          renderItem={this.renderItem}
         />
       </Container>
     );
