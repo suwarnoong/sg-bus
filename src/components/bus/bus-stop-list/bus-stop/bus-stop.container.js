@@ -1,5 +1,5 @@
 import { reduxConnect } from '../../../../utils';
-import { getRoutesByStop } from '../../../../store/selectors';
+import { getRoutesByStop } from '../../../../store/bus';
 import BusStop from './bus-stop';
 
 const mapStateToProps = state => ({

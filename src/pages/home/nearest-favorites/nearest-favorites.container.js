@@ -1,10 +1,10 @@
 import NearestFavorites from './nearest-favorites';
 import { reduxConnect } from '../../../utils';
-import { getArrivals } from '../../../store/actions';
 import {
+  getArrivals,
   getNearestFavoriteStops,
   getNearestFavorites
-} from '../../../store/selectors';
+} from '../../../store/bus';
 
 const mapStateToProps = state => ({
   nearestFavoriteStops: getNearestFavoriteStops(

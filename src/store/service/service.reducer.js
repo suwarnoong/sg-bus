@@ -1,7 +1,7 @@
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import createReducer from './create-reducer';
-import * as actions from '../actions/types';
+import createReducer from '../reducers/create-reducer';
+import * as actions from './actions/types';
 
 const initialState = {
   geolocation: {

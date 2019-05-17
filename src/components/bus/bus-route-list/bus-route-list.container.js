@@ -1,6 +1,8 @@
 import { reduxConnect } from '../../../utils';
-import { getRouteWithDistance } from '../../../store/selectors';
-import { updateSelectedRouteStop } from '../../../store/actions';
+import {
+  getRouteWithDistance,
+  updateSelectedRouteStop
+} from '../../../store/bus';
 import BusRouteList from './bus-route-list';
 
 const mapStateToProps = (state, props) => ({

@@ -1,5 +1,5 @@
 import { reduxConnect } from '../../../utils';
-import { back } from '../../../store/actions';
+import { back } from '../../../store/navigation';
 import ScreenView from './screen-view';
 
 const mapStateToProps = state => ({

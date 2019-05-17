@@ -1,7 +1,7 @@
 import {
   updateGeolocation,
   updateGeolocationError
-} from '../../../store/actions';
+} from '../../../store/service';
 import { reduxConnect } from '../../../utils';
 import Geolocation from './geolocation';
 

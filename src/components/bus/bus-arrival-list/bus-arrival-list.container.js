@@ -1,6 +1,5 @@
 import { reduxConnect } from '../../../utils';
-import { getArrivals } from '../../../store/actions';
-import { getArrivalsByStop } from '../../../store/selectors';
+import { getArrivals, getArrivalsByStop } from '../../../store/bus';
 import BusArrivalList from './bus-arrival-list';
 
 const mapStateToProps = (state, props) => ({

@@ -1,4 +1,4 @@
-import { getNearestStops } from '../../../store/actions';
+import { getNearestStops } from '../../../store/bus';
 import { reduxConnect } from '../../../utils';
 import NearestBusStops from './nearest-bus-stops';
 

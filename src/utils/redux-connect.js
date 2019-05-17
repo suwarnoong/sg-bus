@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { navigate, back, setParams } from '../store/actions/navigation';
+import { navigate, back, setParams } from '../store/navigation';
 import getCurrentRoute from './get-current-route';
 
 export default (mapStateToProps, mapDispatchToProps) => {

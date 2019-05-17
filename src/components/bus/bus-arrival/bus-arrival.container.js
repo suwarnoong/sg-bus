@@ -1,6 +1,10 @@
 import { reduxConnect } from '../../../utils';
-import { addToFavorites, removeFromFavorites } from '../../../store/actions';
-import { getStopsByStop, getArrival } from '../../../store/selectors';
+import {
+  addToFavorites,
+  removeFromFavorites,
+  getStopsByStop,
+  getArrival
+} from '../../../store/bus';
 import BusArrival from './bus-arrival';
 
 const mapStateToProps = (state, props) => ({

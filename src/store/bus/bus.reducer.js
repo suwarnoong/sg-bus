@@ -1,7 +1,7 @@
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import createReducer from './create-reducer';
-import * as actions from '../actions/types';
+import createReducer from '../reducers/create-reducer';
+import * as actions from './actions/types';
 
 import map from 'lodash/fp/map';
 import concat from 'lodash/fp/concat';
@@ -132,7 +132,7 @@ const busPersistConfig = {
   whitelist: [
     'services',
     'stops',
-    // 'routes',
+    'routes',
     'favorites',
     'routeStop',
     'selectedRouteStop',

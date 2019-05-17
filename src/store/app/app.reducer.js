@@ -1,5 +1,5 @@
-import createReducer from './create-reducer';
-import * as actions from '../actions/types';
+import createReducer from '../reducers/create-reducer';
+import * as actions from './actions/types';
 
 const initialState = {
   header: {

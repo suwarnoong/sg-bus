@@ -1,7 +1,7 @@
 import { NavigationActions } from 'react-navigation';
 import { REHYDRATE } from 'redux-persist';
 import { getCurrentRoute } from '../../utils';
-import { reset, updateHeaderBackgroundColor } from '../actions';
+import { reset, updateHeaderBackgroundColor } from '../app';
 import rootRoutes from '../../routes/root.routes';
 
 const onScreenChanged = (nav, dispatch) => {
