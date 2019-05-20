@@ -1,7 +1,15 @@
 // @flow
 import React, { PureComponent } from 'react';
 import styles from './bus-route.styles';
-import { BusRouteList, ScreenView } from '../../components';
+import {
+  BusRouteList,
+  InteractionManager,
+  Placeholder,
+  Box,
+  ScreenView,
+  VBox,
+  View
+} from '../../components';
 import BusRouteMap from './bus-route-map';
 import { SCREEN_HEIGHT } from '../../constants';
 import { IBusStop, IBusStopLocation, ICoordinate } from '../../types.d';
@@ -13,7 +21,8 @@ type Props = {
 };
 
 type State = {
-  mapBottomInset: number
+  mapBottomInset: number,
+  didFinishInitialAnimation: boolean
 };
 
 export default class BusRoute extends PureComponent<Props, State> {
@@ -21,7 +30,8 @@ export default class BusRoute extends PureComponent<Props, State> {
     super(props);
 
     this.state = {
-      mapBottomInset: SCREEN_HEIGHT / 2
+      mapBottomInset: SCREEN_HEIGHT / 2,
+      didFinishInitialAnimation: false
     };
   }
 
@@ -34,6 +44,12 @@ export default class BusRoute extends PureComponent<Props, State> {
     updateRouteStop(busStopCode, serviceNo);
   }
 
+  componentDidMount() {
+    InteractionManager.runAfterInteractions(() => {
+      this.setState({ didFinishInitialAnimation: true });
+    });
+  }
+
   componentWillUnmount() {
     const { updateRouteStop } = this.props;
     updateRouteStop(null, null);
@@ -44,15 +60,11 @@ export default class BusRoute extends PureComponent<Props, State> {
     this.setState({ mapBottomInset: height });
   };
 
-  render() {
-    const { style } = this.props;
+  renderContent = () => {
     const { mapBottomInset } = this.state;
 
-    const containerStyles = [styles.container];
-    if (style) containerStyles.push(style);
-
     return (
-      <ScreenView style={containerStyles}>
+      <View style={styles.contentWrapper}>
         <BusRouteMap
           style={styles.mapView}
           contentInset={[0, 0, mapBottomInset, 0]}
@@ -61,6 +73,29 @@ export default class BusRoute extends PureComponent<Props, State> {
           style={styles.routeList}
           onLayout={this.calculateHeight}
         />
+      </View>
+    );
+  };
+
+  render() {
+    const { style } = this.props;
+    const { didFinishInitialAnimation } = this.state;
+
+    const containerStyles = [styles.container];
+    if (style) containerStyles.push(style);
+
+    return (
+      <ScreenView style={containerStyles}>
+        <Placeholder
+          style={styles.placeholder}
+          isReady={didFinishInitialAnimation}
+          whenReadyRender={this.renderContent}
+        >
+          <VBox>
+            <Box />
+            <Box />
+          </VBox>
+        </Placeholder>
       </ScreenView>
     );
   }

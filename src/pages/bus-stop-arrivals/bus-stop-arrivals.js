@@ -1,6 +1,15 @@
 // @flow
 import * as React from 'react';
-import { BusArrivalList, ScreenView } from '../../components';
+import {
+  BusArrivalList,
+  InteractionManager,
+  Label,
+  Placeholder,
+  Box,
+  VBox,
+  ScreenView,
+  View
+} from '../../components';
 import { SCREEN_HEIGHT } from '../../constants';
 import BusStopMap from './bus-stop-map';
 
@@ -13,7 +22,8 @@ type Props = {
 };
 
 type State = {
-  mapBottomInset: number
+  mapBottomInset: number,
+  didFinishInitialAnimation: boolean
 };
 
 export default class BusStopArrivals extends React.PureComponent<Props, State> {
@@ -21,8 +31,15 @@ export default class BusStopArrivals extends React.PureComponent<Props, State> {
     super(props);
 
     this.state = {
-      mapBottomInset: SCREEN_HEIGHT / 2
+      mapBottomInset: SCREEN_HEIGHT / 2,
+      didFinishInitialAnimation: false
     };
+  }
+
+  componentDidMount() {
+    InteractionManager.runAfterInteractions(() => {
+      this.setState({ didFinishInitialAnimation: true });
+    });
   }
 
   calculateHeight = (event: any) => {
@@ -30,22 +47,17 @@ export default class BusStopArrivals extends React.PureComponent<Props, State> {
     this.setState({ mapBottomInset: height });
   };
 
-  render() {
+  renderContent = () => {
     const {
       currentNavRoute,
-      style,
       params: { busStopCode }
     } = this.props;
-
     const { mapBottomInset } = this.state;
-
-    const containerStyles = [styles.container];
-    if (style) containerStyles.push(style);
 
     const isActiveRoute = currentNavRoute.routeName === 'BusStopArrivals';
 
     return (
-      <ScreenView style={containerStyles}>
+      <View style={styles.contentWrapper}>
         <BusStopMap
           style={styles.mapView}
           busStopCode={busStopCode}
@@ -57,6 +69,29 @@ export default class BusStopArrivals extends React.PureComponent<Props, State> {
           onLayout={this.calculateHeight}
           timerEnabled={isActiveRoute}
         />
+      </View>
+    );
+  };
+
+  render() {
+    const { style } = this.props;
+    const { didFinishInitialAnimation } = this.state;
+
+    const containerStyles = [styles.container];
+    if (style) containerStyles.push(style);
+
+    return (
+      <ScreenView style={containerStyles}>
+        <Placeholder
+          style={styles.placeholder}
+          isReady={didFinishInitialAnimation}
+          whenReadyRender={this.renderContent}
+        >
+          <VBox>
+            <Box />
+            <Box />
+          </VBox>
+        </Placeholder>
       </ScreenView>
     );
   }

@@ -75,25 +75,33 @@ export default class MapView extends PureComponent<Props> {
     );
   };
 
+  renderMap = () => {
+    const { mapRef, children } = this.props;
+
+    return (
+      <MapboxGL.MapView
+        ref={c => {
+          this._map = c;
+          mapRef(c);
+        }}
+        style={styles.mapView}
+        {...this.props}
+        logoEnabled={false}
+      >
+        {children}
+      </MapboxGL.MapView>
+    );
+  };
+
   render() {
-    const { mapRef, children, style } = this.props;
+    const { style } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
     return (
       <View style={containerStyles}>
-        <MapboxGL.MapView
-          ref={c => {
-            this._map = c;
-            mapRef(c);
-          }}
-          style={styles.mapView}
-          {...this.props}
-          logoEnabled={false}
-        >
-          {children}
-        </MapboxGL.MapView>
+        {this.renderMap()}
         {this.renderControls()}
       </View>
     );

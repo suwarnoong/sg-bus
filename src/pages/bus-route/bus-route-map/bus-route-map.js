@@ -48,10 +48,6 @@ const DEFAULT_ZOOM = 15;
 export default class BusRouteMap extends React.PureComponent<Props> {
   _map: any;
 
-  componentDidMount() {
-    setTimeout(() => this.centerlizeBusStop(this.props.selectedRouteStop, 15));
-  }
-
   componentWillReceiveProps(nextProps: Props) {
     if ('selectedRouteStop' in nextProps) {
       const selectedRouteStopChanged =
@@ -90,6 +86,10 @@ export default class BusRouteMap extends React.PureComponent<Props> {
       zoom,
       duration: 1000
     });
+  };
+
+  handleMapLoaded = () => {
+    this.centerlizeBusStop(this.props.selectedRouteStop, 15);
   };
 
   renderBusRoute = () => {
@@ -133,6 +133,7 @@ export default class BusRouteMap extends React.PureComponent<Props> {
         contentInset={contentInset}
         zoomLevel={DEFAULT_ZOOM}
         onZoom={this.handleZoom}
+        onDidFinishLoadingMap={this.handleMapLoaded}
       >
         {this.renderBusRoute()}
       </MapView>

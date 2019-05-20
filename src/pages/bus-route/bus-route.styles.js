@@ -1,7 +1,9 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  container: {
+  container: { flex: 1 },
+  contentWrapper: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-end'
   },
