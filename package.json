@@ -20,6 +20,7 @@
     "axios": "^0.18.0",
     "date-fns": "^1.30.1",
     "lodash": "^4.17.11",
+    "lottie-react-native": "^2.6.1",
     "react": "16.8.3",
     "react-native": "0.59.2",
     "react-native-geolocation-service": "^2.0.0",

@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react';
-import { ActivityIndicator } from 'react-native';
-import { Label, View } from '../../base';
+import { Label, Loader, FadeView, View } from '../../base';
 import styles from './placeholder.styles';
 
 type Props = {
@@ -14,10 +13,12 @@ type Props = {
 
 export default class Placeholder extends React.PureComponent<Props> {
   static defaultProps = {
+    isReady: false,
     margin: 0
   };
 
   hasChildren = false;
+  loader = require('../../../assets/loader.json');
 
   componentWillMount() {
     this.hasChildren = this.props.children != null;
@@ -36,22 +37,19 @@ export default class Placeholder extends React.PureComponent<Props> {
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
-    const wrapperStyles = [styles.wrapper];
-    if (margin) wrapperStyles.push({ margin });
+    const loaderWrapperStyles = [styles.loaderWrapper];
+    if (margin) loaderWrapperStyles.push({ margin });
+
+    const contentWrapperStyles = [styles.contentWrapper];
 
     return (
       <View style={containerStyles}>
-        {isReady ? (
-          this.renderContent()
-        ) : (
-          <View style={wrapperStyles}>
-            {this.hasChildren ? (
-              children
-            ) : (
-              <ActivityIndicator size="large" color="#1289A7" />
-            )}
-          </View>
-        )}
+        <View style={loaderWrapperStyles}>
+          {this.hasChildren ? children : <Loader source={this.loader} />}
+        </View>
+        <FadeView start={isReady} style={contentWrapperStyles}>
+          {this.renderContent()}
+        </FadeView>
       </View>
     );
   }

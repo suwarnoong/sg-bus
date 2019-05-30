@@ -5,8 +5,6 @@ import {
   InteractionManager,
   Label,
   Placeholder,
-  Box,
-  VBox,
   ScreenView,
   View
 } from '../../components';
@@ -86,12 +84,7 @@ export default class BusStopArrivals extends React.PureComponent<Props, State> {
           style={styles.placeholder}
           isReady={didFinishInitialAnimation}
           whenReadyRender={this.renderContent}
-        >
-          <VBox>
-            <Box />
-            <Box />
-          </VBox>
-        </Placeholder>
+        />
       </ScreenView>
     );
   }

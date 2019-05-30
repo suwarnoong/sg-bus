@@ -5,9 +5,7 @@ import {
   BusRouteList,
   InteractionManager,
   Placeholder,
-  Box,
   ScreenView,
-  VBox,
   View
 } from '../../components';
 import BusRouteMap from './bus-route-map';
@@ -90,12 +88,7 @@ export default class BusRoute extends PureComponent<Props, State> {
           style={styles.placeholder}
           isReady={didFinishInitialAnimation}
           whenReadyRender={this.renderContent}
-        >
-          <VBox>
-            <Box />
-            <Box />
-          </VBox>
-        </Placeholder>
+        />
       </ScreenView>
     );
   }

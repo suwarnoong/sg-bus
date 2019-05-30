@@ -1,14 +1,14 @@
 // @flow
 import * as React from 'react';
 import { View } from '../../base';
-import styles from './vbox.styles';
+import styles from './vlayout.styles';
 
 type Props = {
   style?: { [string]: mixed },
   children?: React.Node
 };
 
-export default class VBox extends React.PureComponent<Props> {
+export default class VLayout extends React.PureComponent<Props> {
   render() {
     const { style, children } = this.props;
 

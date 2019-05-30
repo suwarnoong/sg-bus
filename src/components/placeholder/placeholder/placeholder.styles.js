@@ -4,8 +4,15 @@ export default StyleSheet.create({
   container: {
     flex: 1
   },
-  wrapper: {
+  loaderWrapper: {
     flex: 1,
-    justifyContent: 'center'
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  contentWrapper: {
+    flex: 1
   }
 });

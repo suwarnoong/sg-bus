@@ -37,6 +37,8 @@ target 'SGBus' do
   pod 'RNSVG', :path => '../node_modules/react-native-svg'
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
+  pod 'lottie-react-native', :path => '../node_modules/lottie-react-native'
+
   target 'SGBusTests' do
     inherit! :search_paths
     # Pods for testing

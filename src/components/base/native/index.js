@@ -1,3 +1,4 @@
+export * from './animated';
 export * from './flat-list';
 export * from './image';
 export * from './interaction-manager';
