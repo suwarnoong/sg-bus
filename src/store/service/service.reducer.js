@@ -1,5 +1,5 @@
 import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import storage from 'redux-persist-filesystem-storage';
 import createReducer from '../reducers/create-reducer';
 import * as actions from './actions/types';
 

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import storage from 'redux-persist-filesystem-storage';
 import appReducer from '../app/app.reducer';
 import busReducer from '../bus/bus.reducer';
 import navigationReducer from '../navigation/navigation.reducer';

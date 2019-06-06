@@ -1,7 +1,7 @@
 import { createNavigationReducer } from 'react-navigation-redux-helpers';
 import { NavigationActions } from 'react-navigation';
 import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import storage from 'redux-persist-filesystem-storage';
 import createReducer from '../reducers/create-reducer';
 import RootNavigator from '../../routes/root.navigator';
 import rootRoutes from '../../routes/root.routes';
