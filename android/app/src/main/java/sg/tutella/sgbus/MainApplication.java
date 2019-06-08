@@ -1,4 +1,4 @@
-package com.sgbus;
+package sg.tutella.sgbus;
 
 import android.app.Application;
 

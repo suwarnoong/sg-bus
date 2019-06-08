@@ -1561,7 +1561,7 @@
 				INFOPLIST_FILE = SGBus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tutella.sgbus;
+				PRODUCT_BUNDLE_IDENTIFIER = sg.tutella.sgbus;
 				PRODUCT_NAME = SGBus;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1590,7 +1590,7 @@
 				INFOPLIST_FILE = SGBus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tutella.sgbus;
+				PRODUCT_BUNDLE_IDENTIFIER = sg.tutella.sgbus;
 				PRODUCT_NAME = SGBus;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
