@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "yarn ios",
-    "ios": "node node_modules/react-native/local-cli/cli.js run-ios",
+    "ios": "node node_modules/react-native/local-cli/cli.js run-ios --simulator='iPhone XS Max'",
     "android": "node node_modules/react-native/local-cli/cli.js run-android",
     "android:run-release": "node node_modules/react-native/local-cli/cli.js run-android --variant=release",
     "android:release": "cd android && ./gradlew assembleRelease && cd ..",
