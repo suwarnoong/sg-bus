@@ -57,18 +57,20 @@ export const getRouteGeojson = createSelector(
     if (routesGeometrics) {
       let routesCoords = [];
       const key = `${serviceNo}-${direction}`;
-      routesGeometrics[key].forEach(g => {
-        routesCoords = routesCoords.concat(decode(g).map(c => c.reverse()));
-      });
+      if (routesGeometrics[key]) {
+        routesGeometrics[key].forEach(g => {
+          routesCoords = routesCoords.concat(decode(g).map(c => c.reverse()));
+        });
 
-      features.push({
-        type: 'Feature',
-        properties: {},
-        geometry: {
-          type: 'LineString',
-          coordinates: routesCoords
-        }
-      });
+        features.push({
+          type: 'Feature',
+          properties: {},
+          geometry: {
+            type: 'LineString',
+            coordinates: routesCoords
+          }
+        });
+      }
     }
 
     return features;

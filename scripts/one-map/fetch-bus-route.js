@@ -22,7 +22,10 @@ const fetchBusRoute = async (token, serviceNo, direction) => {
     let routeLine = [];
     const sequences =
       data[`BUS_DIRECTION_${String(direction) === '1' ? 'ONE' : 'TWO'}`];
-    if (!sequences) return;
+    if (!sequences) {
+      console.log('No available route for bus service ', serviceNo, direction);
+      return;
+    }
 
     sequences.forEach(seq => {
       routeLine = routeLine.concat(seq.GEOMETRIES);
