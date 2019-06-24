@@ -29,17 +29,13 @@ export default class NearestFavorites extends PureComponent<Props> {
     if (style) containerStyles.push(style);
 
     return (
-      <View>
+      <View style={containerStyles}>
         <Timer
           id="fav-service-stop"
           onTick={this.handleTick}
           enabled={timerEnabled}
         />
-        <FavoriteList
-          list={nearestFavorites}
-          onPress={this.handlePress}
-          style={containerStyles}
-        />
+        <FavoriteList list={nearestFavorites} onPress={this.handlePress} />
       </View>
     );
   }

@@ -4,7 +4,7 @@ import { AppHeader } from '../components';
 import rootRoutes from './root.routes';
 
 export default createStackNavigator(rootRoutes, {
-  initialRouteName: 'Home',
+  initialRouteName: 'TabNavigator',
   headerMode: 'screen',
   defaultNavigationOptions: ({ navigation }) => ({
     header: (

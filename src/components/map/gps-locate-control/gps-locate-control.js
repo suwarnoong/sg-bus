@@ -2,7 +2,7 @@
 import React, { PureComponent } from 'react';
 import type { Node } from 'react';
 import { Button, ButtonGroup } from '../../base';
-import { GPSLocateIcon } from '../../../icons';
+import { GpsLocateIcon } from '../../../icons';
 import styles from './gps-locate-control.styles';
 
 type Props = {
@@ -30,7 +30,7 @@ export default class GPSLocateControl extends PureComponent<Props> {
       <ButtonGroup style={containerStyles}>
         <Button
           labelStyle={{ color: '#287CFA' }}
-          Icon={GPSLocateIcon}
+          Icon={GpsLocateIcon}
           type={Button.TYPE_PLAIN}
           iconSize={24}
           onPress={this.handleLocate}

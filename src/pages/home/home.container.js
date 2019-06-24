@@ -8,13 +8,7 @@ import {
   getNearestFavoriteStops
 } from '../../store/bus';
 
-const mapStateToProps = state => ({
-  currentNavRoute: getCurrentRoute(state.nav),
-  nearestFavoriteStops: getNearestFavoriteStops(
-    state.bus,
-    state.service.geolocation
-  )
-});
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
   getRoutes: _ => dispatch(getRoutes()),

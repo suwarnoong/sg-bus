@@ -3,16 +3,16 @@ import { REHYDRATE } from 'redux-persist';
 import { getCurrentRoute } from '../../utils';
 import { reset, updateHeaderBackgroundColor } from '../app';
 import rootRoutes from '../../routes/root.routes';
+import routesConfig from '../../routes/routes.config';
 
 const onScreenChanged = (nav, dispatch) => {
   if (!nav) return;
 
   const screen = getCurrentRoute(nav);
-  const data =
-    (rootRoutes[screen.routeName] && rootRoutes[screen.routeName].data) || {};
+  const config = routesConfig[screen.routeName] || {};
 
-  if (data.headerBackgroundColor)
-    dispatch(updateHeaderBackgroundColor(data.headerBackgroundColor));
+  if (config.headerBackgroundColor)
+    dispatch(updateHeaderBackgroundColor(config.headerBackgroundColor));
 };
 
 const isRehydratingNavigation = action =>

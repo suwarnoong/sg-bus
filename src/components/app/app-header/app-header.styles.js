@@ -21,9 +21,7 @@ export default StyleSheet.create({
     justifyContent: 'flex-end'
   },
   titleContainer: {
-    position: 'absolute',
-    left: 45,
-    right: 0,
+    paddingLeft: 10,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'flex-start',

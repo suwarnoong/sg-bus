@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { SafeAreaView } from 'react-navigation';
+import { View } from '../../base';
 import styles from './main-view.styles';
 
 type Props = {

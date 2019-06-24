@@ -7,7 +7,7 @@ import RootNavigator from '../../routes/root.navigator';
 import rootRoutes from '../../routes/root.routes';
 
 const initialState = RootNavigator.router.getStateForAction(
-  RootNavigator.router.getActionForPathAndParams('home')
+  RootNavigator.router.getActionForPathAndParams('tab-navigator')
 );
 
 const updateNavigation = (state, action) => {

@@ -10,7 +10,7 @@ const initialState = {
   backgroundColor: '#F0F0F0',
   inset: {
     top: true,
-    bottom: true
+    bottom: false
   }
 };
 

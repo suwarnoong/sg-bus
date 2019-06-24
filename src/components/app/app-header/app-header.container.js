@@ -3,6 +3,7 @@ import AppHeader from './app-header';
 
 const mapStateToProps = state => {
   const currentRoute = getCurrentRoute(state.nav);
+  currentRoute.params = currentRoute.params || {};
 
   return {
     title: currentRoute.params.title || state.app.header.title,

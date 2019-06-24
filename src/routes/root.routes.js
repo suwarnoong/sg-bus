@@ -1,25 +1,16 @@
-import Home from '../pages/home';
-import BusStopArrivals from '../pages/bus-stop-arrivals';
-import BusRoute from '../pages/bus-route';
+import Onboarding from '../pages/onboarding';
+import TabNavigator from './tab.navigator';
 
 export default {
-  Home: {
-    screen: Home,
-    path: 'home',
-    data: {
-      headerBackgroundColor: '#F0F0F0'
-    },
+  Onboarding: {
+    screen: Onboarding,
+    path: 'onboarding'
+  },
+  TabNavigator: {
+    screen: TabNavigator,
+    path: 'tab-navigator',
     navigationOptions: {
-      title: 'Home',
       header: null
     }
-  },
-  BusStopArrivals: {
-    screen: BusStopArrivals,
-    path: 'bus-stop-arrivals'
-  },
-  BusRoute: {
-    screen: BusRoute,
-    path: 'bus-route'
   }
 };
