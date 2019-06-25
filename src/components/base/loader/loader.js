@@ -6,7 +6,6 @@ import styles from './loader.styles';
 
 type Props = {
   source: object,
-  visible: boolean,
   speed: number,
   loop: boolean,
   style?: { [string]: mixed },

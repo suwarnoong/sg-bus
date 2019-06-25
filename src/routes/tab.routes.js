@@ -6,6 +6,14 @@ import NearbyNavigator from './nearby.navigator';
 import { SearchIcon, NearbyIcon, StarIcon } from '../icons';
 
 export default {
+  Search: {
+    screen: Search,
+    path: 'search',
+    navigationOptions: {
+      tabBarIcon: ({ focused, tintColor }) => <SearchIcon color={tintColor} />,
+      title: 'Search'
+    }
+  },
   NearbyNavigator: {
     screen: NearbyNavigator,
     path: 'nearby-navigator',
@@ -20,14 +28,6 @@ export default {
     navigationOptions: {
       tabBarIcon: ({ focused, tintColor }) => <StarIcon color={tintColor} />,
       title: 'Favorites'
-    }
-  },
-  Search: {
-    screen: Search,
-    path: 'search',
-    navigationOptions: {
-      tabBarIcon: ({ focused, tintColor }) => <SearchIcon color={tintColor} />,
-      title: 'Search'
     }
   }
 };

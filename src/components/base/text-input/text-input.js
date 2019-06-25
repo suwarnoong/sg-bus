@@ -3,12 +3,21 @@ import { TextInput as NativeTextInput, View } from 'react-native';
 import styles from './text-input.styles';
 
 type Props = {
-  placeholder: string
+  placeholder: string,
+  IconBefore: ReactNode
 };
 
 export default class TextInput extends PureComponent<Props> {
-  constructor(props) {
-    super(props);
+  hasIconBefore: boolean = false;
+
+  componentWillMount() {
+    this.hasIconBefore = this.props.IconBefore != null;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.IconBefore !== this.props.IconBefore) {
+      this.hasIconBefore = nextProps.IconBefore != null;
+    }
   }
 
   handleFocus = () => {};
@@ -16,13 +25,15 @@ export default class TextInput extends PureComponent<Props> {
   handleBlur = () => {};
 
   render() {
-    const { style } = this.props;
+    const { IconBefore, style } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
+    console.log('this.hasIconBefore', this.props.IconBefore);
     return (
       <View style={containerStyles}>
+        {this.hasIconBefore && IconBefore}
         <NativeTextInput
           style={styles.input}
           ref={r => {

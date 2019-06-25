@@ -1,7 +1,11 @@
 import { NavigationActions } from 'react-navigation';
 import { REHYDRATE } from 'redux-persist';
 import { getCurrentRoute } from '../../utils';
-import { reset, updateHeaderBackgroundColor } from '../app';
+import {
+  reset,
+  updateBackgroundColor,
+  updateHeaderBackgroundColor
+} from '../app';
 import rootRoutes from '../../routes/root.routes';
 import routesConfig from '../../routes/routes.config';
 
@@ -13,6 +17,9 @@ const onScreenChanged = (nav, dispatch) => {
 
   if (config.headerBackgroundColor)
     dispatch(updateHeaderBackgroundColor(config.headerBackgroundColor));
+
+  if (config.backgroundColor)
+    dispatch(updateBackgroundColor(config.backgroundColor));
 };
 
 const isRehydratingNavigation = action =>

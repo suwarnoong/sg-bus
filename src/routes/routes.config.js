@@ -4,5 +4,8 @@ export default {
   },
   Favorites: {
     headerBackgroundColor: '#F0F0F0'
+  },
+  Search: {
+    backgroundColor: '#1289A7'
   }
 };
