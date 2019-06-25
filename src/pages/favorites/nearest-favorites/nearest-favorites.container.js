@@ -11,6 +11,7 @@ const mapStateToProps = state => ({
     state.bus,
     state.service.geolocation
   ),
+  geolocation: state.service.geolocation,
   nearestFavorites: getNearestFavorites(state.bus, state.service.geolocation)
 });
 
