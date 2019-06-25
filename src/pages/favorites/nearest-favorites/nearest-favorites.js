@@ -1,5 +1,14 @@
 import React, { PureComponent } from 'react';
-import { FavoriteList, View, Timer } from '../../../components';
+import {
+  FavoriteList,
+  Image,
+  H1,
+  Label,
+  View,
+  Timer
+} from '../../../components';
+import { BusIcon } from '../../../icons';
+import StarAnimate from './star-animate';
 import { IBusStop, IBusStopLocation, ICoordinate } from '../../../types.d';
 import styles from './nearest-favorites.styles';
 
@@ -11,6 +20,8 @@ type Props = {
 };
 
 export default class NearestFavorites extends PureComponent<Props> {
+  busArrivalImage = require('../../../assets/bus-arrival.png');
+
   componentWillReceiveProps(nextProps) {
     let nextLat = 0,
       nextLng = 0,
@@ -44,21 +55,48 @@ export default class NearestFavorites extends PureComponent<Props> {
     });
   };
 
+  renderFavorites() {
+    const { nearestFavorites, timerEnabled } = this.props;
+    if (nearestFavorites && nearestFavorites.length > 0) {
+      return (
+        <View style={{ flex: 1 }}>
+          <H1 style={styles.title}>Favorites Arrivals</H1>
+          <Timer
+            id="fav-service-stop"
+            onTick={this.handleTick}
+            enabled={timerEnabled}
+          />
+          <FavoriteList list={nearestFavorites} onPress={this.handlePress} />
+        </View>
+      );
+    } else {
+      return (
+        <View style={{ flex: 1 }}>
+          <View style={styles.infoContainer}>
+            <BusIcon style={styles.infoIcon} size={106} color="#1289A7" />
+            <H1 style={styles.infoTitle}>No Favorites Yet!</H1>
+            <Label style={styles.infoDesc}>
+              Tap on the star at your selected bus stop to add into favorites.
+            </Label>
+          </View>
+          <View style={styles.sampleContainer}>
+            <Image
+              source={this.busArrivalImage}
+              style={styles.busArrivalImage}
+            />
+            <StarAnimate style={styles.star} />
+          </View>
+        </View>
+      );
+    }
+  }
+
   render() {
     const { nearestFavorites, timerEnabled, style } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
-    return (
-      <View style={containerStyles}>
-        <Timer
-          id="fav-service-stop"
-          onTick={this.handleTick}
-          enabled={timerEnabled}
-        />
-        <FavoriteList list={nearestFavorites} onPress={this.handlePress} />
-      </View>
-    );
+    return <View style={containerStyles}>{this.renderFavorites()}</View>;
   }
 }

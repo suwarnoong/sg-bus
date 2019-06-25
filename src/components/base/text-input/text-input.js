@@ -30,7 +30,6 @@ export default class TextInput extends PureComponent<Props> {
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
-    console.log('this.hasIconBefore', this.props.IconBefore);
     return (
       <View style={containerStyles}>
         {this.hasIconBefore && IconBefore}

@@ -16,7 +16,6 @@ export default class Favorites extends PureComponent<Props> {
 
     return (
       <ScreenView style={containerStyles}>
-        <H1 style={styles.title}>Favorites Arrivals</H1>
         <NearestFavorites />
       </ScreenView>
     );

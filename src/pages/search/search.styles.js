@@ -2,13 +2,13 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: '#1289A7',
-    paddingHorizontal: 25
+    paddingVertical: 10,
+    paddingHorizontal: 25,
+    backgroundColor: '#1289A7'
   },
   infoContainer: {
-    flex: 1,
-    justifyContent: 'flex-end',
     alignItems: 'center',
+    marginTop: 100,
     marginBottom: 40,
     paddingHorizontal: 70
   },
