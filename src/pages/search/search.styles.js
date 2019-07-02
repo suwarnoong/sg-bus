@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
+    flex: 1,
     paddingVertical: 10,
     paddingHorizontal: 25,
     backgroundColor: '#1289A7'
@@ -24,8 +25,5 @@ export default StyleSheet.create({
   infoDesc: {
     color: '#FFFFFF',
     textAlign: 'center'
-  },
-  bottomContainer: {
-    flex: 1
   }
 });

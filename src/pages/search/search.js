@@ -1,6 +1,12 @@
 // @flow
 import * as React from 'react';
-import { H1, Label, ScreenView, View, TextInput } from '../../components';
+import {
+  H1,
+  Label,
+  ScreenViewKeyboardAware,
+  View,
+  TextInput
+} from '../../components';
 import { SearchIcon, BusIcon } from '../../icons';
 import styles from './search.styles';
 
@@ -17,7 +23,7 @@ export default class Search extends React.PureComponent<Props> {
     if (style) containerStyles.push(style);
 
     return (
-      <ScreenView style={containerStyles}>
+      <ScreenViewKeyboardAware style={containerStyles}>
         <View style={styles.infoContainer}>
           <BusIcon style={styles.infoIcon} size={106} color="#FFFFFF" />
           <H1 style={styles.infoTitle}>Looking for a bus?</H1>
@@ -31,8 +37,7 @@ export default class Search extends React.PureComponent<Props> {
           }
           placeholder="Search"
         />
-        <View style={styles.bottomContainer} />
-      </ScreenView>
+      </ScreenViewKeyboardAware>
     );
   }
 }

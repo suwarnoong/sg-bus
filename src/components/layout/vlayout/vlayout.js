@@ -5,7 +5,7 @@ import styles from './vlayout.styles';
 
 type Props = {
   style?: { [string]: mixed },
-  children?: React.Node
+  children: Array<React.Node>
 };
 
 export default class VLayout extends React.PureComponent<Props> {

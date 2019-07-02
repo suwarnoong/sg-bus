@@ -8,7 +8,6 @@ import {
   Timer
 } from '../../../components';
 import { BusIcon } from '../../../icons';
-import StarAnimate from './star-animate';
 import { IBusStop, IBusStopLocation, ICoordinate } from '../../../types.d';
 import styles from './nearest-favorites.styles';
 
@@ -78,13 +77,6 @@ export default class NearestFavorites extends PureComponent<Props> {
             <Label style={styles.infoDesc}>
               Tap on the star at your selected bus stop to add into favorites.
             </Label>
-          </View>
-          <View style={styles.sampleContainer}>
-            <Image
-              source={this.busArrivalImage}
-              style={styles.busArrivalImage}
-            />
-            <StarAnimate style={styles.star} />
           </View>
         </View>
       );
