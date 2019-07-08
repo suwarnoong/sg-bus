@@ -1,6 +1,7 @@
 import fs from 'fs';
 import fetchBusRoute from './fetch-bus-route';
-import { sleep } from '../../utils';
+import { sleep } from '../../../utils';
+import { writeJsonToFile } from '../../utils';
 
 const fetchBusRoutesFromAllServices = async token => {
   const routesCoords = {};
@@ -26,9 +27,7 @@ const fetchAllBusRoutes = async token => {
   const routesCoords = await fetchBusRoutesFromAllServices(token);
 
   if (routesCoords) {
-    const filePath = 'src/stubs/bus/routes-polyline.json';
-    fs.writeFileSync(filePath, JSON.stringify(routesCoords, null, 0));
-    console.log(`Generated ${filePath}`);
+    writeJsonToFile('src/stubs/bus/routes-polyline.json', routesCoords);
   }
 };
 

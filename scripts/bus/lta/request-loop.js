@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { request } from '../../utils';
-import { lta } from '../../app.config';
+import { request } from '../../../utils';
+import { lta } from '../../../app.config';
 
 const requestLoop = async (url, increaseParam = '$skip', increasedBy = 500) => {
   let result = [],

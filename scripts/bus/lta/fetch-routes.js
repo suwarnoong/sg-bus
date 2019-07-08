@@ -1,7 +1,8 @@
 import fs from 'fs';
 import omit from 'lodash/omit';
 import requestLoop from './request-loop';
-import { lta } from '../../app.config';
+import { lta } from '../../../app.config';
+import { writeJsonToFile } from '../../utils';
 
 const requestRoutes = async _ => {
   let routes = await requestLoop(lta.busRoutesUrl);
@@ -41,12 +42,7 @@ const requestRoutes = async _ => {
 const fetchRoutes = async _ => {
   try {
     const routes = await requestRoutes();
-
-    if (routes) {
-      const filePath = 'src/stubs/bus/routes.json';
-      fs.writeFileSync(filePath, JSON.stringify(routes, null, 0));
-      console.log(`Generated ${filePath}`);
-    }
+    if (routes) writeJsonToFile('src/stubs/bus/routes.json', routes);
   } catch (ex) {
     console.error('fetchRoutes', ex);
   }

@@ -1,6 +1,7 @@
 import fs from 'fs';
 import requestLoop from './request-loop';
-import { lta } from '../../app.config';
+import { lta } from '../../../app.config';
+import { writeJsonToFile } from '../../utils';
 
 const requestServices = async _ => {
   return await requestLoop(lta.busServicesUrl);
@@ -9,12 +10,7 @@ const requestServices = async _ => {
 const fetchServices = async _ => {
   try {
     const services = await requestServices();
-
-    if (services) {
-      const filePath = 'src/stubs/bus/services.json';
-      fs.writeFileSync(filePath, JSON.stringify(services, null, 0));
-      console.log(`Generated ${filePath}`);
-    }
+    if (services) writeJsonToFile('src/stubs/bus/services.json', services);
   } catch (ex) {
     console.error('fetchServices', ex);
   }
