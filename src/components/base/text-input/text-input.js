@@ -1,9 +1,13 @@
 import React, { PureComponent } from 'react';
-import { TextInput as NativeTextInput, View } from 'react-native';
+import {
+  TextInput as NativeTextInput,
+  View,
+  TouchableWithoutFeedback
+} from 'react-native';
 import styles from './text-input.styles';
+import { omit } from 'lodash';
 
 type Props = {
-  placeholder: string,
   IconBefore: ReactNode
 };
 
@@ -20,9 +24,11 @@ export default class TextInput extends PureComponent<Props> {
     }
   }
 
-  handleFocus = () => {};
-
-  handleBlur = () => {};
+  handleContainerPress = () => {
+    if (this.input) {
+      this.input.focus();
+    }
+  };
 
   render() {
     const { IconBefore, style } = this.props;
@@ -31,18 +37,17 @@ export default class TextInput extends PureComponent<Props> {
     if (style) containerStyles.push(style);
 
     return (
-      <View style={containerStyles}>
-        {this.hasIconBefore && IconBefore}
-        <NativeTextInput
-          style={styles.input}
-          ref={r => {
-            this.input = r;
-          }}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          {...this.props}
-        />
-      </View>
+      <TouchableWithoutFeedback onPress={this.handleContainerPress}>
+        <View style={containerStyles}>
+          {this.hasIconBefore && IconBefore}
+          <NativeTextInput
+            style={styles.input}
+            ref={r => (this.input = r)}
+            {...omit(this.props, 'style')}
+            autoCorrect={false}
+          />
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 }
