@@ -5,7 +5,7 @@ export const getStops = _ => {
     let stops = getState().bus.stops;
     if (!stops || stops.length === 0) {
       stops = require('../../../stubs/bus/stops.json');
+      dispatch({ type: actions.UPDATE_STOPS, stops });
     }
-    dispatch({ type: actions.UPDATE_STOPS, stops });
   };
 };

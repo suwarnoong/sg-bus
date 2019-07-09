@@ -2,7 +2,12 @@ import { connect } from 'react-redux';
 import { navigate, back, setParams } from '../store/navigation';
 import getCurrentRoute from './get-current-route';
 
-export default (mapStateToProps, mapDispatchToProps) => {
+export default (
+  mapStateToProps,
+  mapDispatchToProps,
+  mergeProps?: Function,
+  options?: Object
+) => {
   const stateToProps = (state, props) => {
     const newState = {
       params: state.nav ? getCurrentRoute(state.nav).params : null
@@ -33,6 +38,8 @@ export default (mapStateToProps, mapDispatchToProps) => {
 
   return connect(
     stateToProps,
-    dispatchToProps
+    dispatchToProps,
+    mergeProps,
+    options
   );
 };

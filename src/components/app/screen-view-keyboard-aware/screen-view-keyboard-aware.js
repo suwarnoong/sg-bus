@@ -1,8 +1,8 @@
 //@flow
 import * as React from 'react';
+import { UIManager, TextInput } from 'react-native';
 import {
   Animated,
-  Dimensions,
   LayoutChangeEvent,
   EmitterSubscription,
   Keyboard,
@@ -13,21 +13,34 @@ import {
 import { ScreenView } from '../screen-view';
 import styles from './screen-view-keyboard-aware.styles';
 
+const { State: TextInputState } = TextInput;
+
 type Props = {
   style?: { [string]: mixed },
   children?: React.Node
 };
 
-export default class ScreenViewKeyboardAware extends React.PureComponent<Props> {
-  viewHeight = Dimensions.get('window').height;
+type State = {
+  viewHeight: number | string,
+  scrollTo: number
+};
+
+export default class ScreenViewKeyboardAware extends React.PureComponent<
+  Props,
+  State
+> {
   scrollView: ScrollView;
-  animHeight: Animated.Value;
+  scrollTop: number = 0;
+  viewOriginHeight: number;
   kbShow: EmitterSubscription;
   kbHide: EmitterSubscription;
 
   constructor(props: Props) {
     super(props);
-    this.animHeight = new Animated.Value(this.viewHeight);
+    this.state = {
+      viewHeight: 'auto',
+      scrollTo: 0
+    };
   }
 
   componentWillMount() {
@@ -41,46 +54,76 @@ export default class ScreenViewKeyboardAware extends React.PureComponent<Props> 
   }
 
   keyboardShow = (event: KeyboardEvent) => {
-    Animated.timing(this.animHeight, {
-      duration: event.duration,
-      toValue: this.viewHeight + event.endCoordinates.height
-    }).start(() => {
-      this.scrollView.scrollTo({
-        x: 0,
-        y: event.endCoordinates.height
-      });
-    });
+    const {
+      height: keyboardHeight,
+      screenY: availableHeight
+    } = event.endCoordinates;
+
+    const currentlyFocusedField = TextInputState.currentlyFocusedField();
+    if (!currentlyFocusedField) return;
+
+    UIManager.measure(
+      currentlyFocusedField,
+      (originX, originY, width, height, pageX, pageY) => {
+        const fieldHeight = height;
+        const fieldTop = pageY;
+        const gap = availableHeight - (fieldTop + fieldHeight);
+        if (gap >= 0) {
+          return;
+        }
+
+        this.setState({
+          scrollTo: this.scrollTop - gap + 30,
+          viewHeight: this.viewOriginHeight + keyboardHeight
+        });
+      }
+    );
   };
 
   keyboardHide = (event: KeyboardEvent) => {
-    Animated.timing(this.animHeight, {
-      duration: event.duration,
-      toValue: this.viewHeight
-    }).start();
+    this.setState({ viewHeight: this.viewOriginHeight, scrollTo: 0 });
+  };
+
+  handleScroll = (event: any) => {
+    this.scrollTop = event.nativeEvent.contentOffset.y;
   };
 
   handleLayout = (event: LayoutChangeEvent) => {
-    const { height } = event.nativeEvent.layout;
-    this.viewHeight = height;
+    if (!this.viewOriginHeight) {
+      this.viewOriginHeight = event.nativeEvent.layout.height;
+    }
+
+    if (!this.scrollView) return;
+    if (this.state.scrollTo <= 0) return;
+
+    this.scrollView.scrollTo({
+      x: 0,
+      y: this.state.scrollTo
+    });
   };
 
   render() {
+    const { viewHeight } = this.state;
     const { style, children } = this.props;
 
-    const containerStyles = [styles.container];
+    const containerStyles = [styles.container, { flex: 1 }];
     if (style) containerStyles.push(style);
-
-    const animatedStyles = [{ height: this.animHeight }];
 
     return (
       <ScreenView
         style={containerStyles}
         scrollable={true}
-        comRef={ref => (this.scrollView = ref)}
+        onScroll={this.handleScroll}
+        scrollEventThrottle={16}
+        containerRef={c => (this.scrollView = c)}
+        contentContainerStyle={{ flexGrow: 1 }}
       >
-        <Animated.View style={animatedStyles}>
-          <View onLayout={this.handleLayout}>{children}</View>
-        </Animated.View>
+        <View
+          style={{ flex: 1, height: viewHeight }}
+          onLayout={this.handleLayout}
+        >
+          {children}
+        </View>
       </ScreenView>
     );
   }

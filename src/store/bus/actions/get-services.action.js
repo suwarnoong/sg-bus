@@ -5,7 +5,7 @@ export const getServices = _ => {
     let services = getState().bus.services;
     if (!services || services.length === 0) {
       services = require('../../../stubs/bus/services.json');
+      dispatch({ type: actions.UPDATE_SERVICES, services });
     }
-    dispatch({ type: actions.UPDATE_SERVICES, services });
   };
 };

@@ -4,5 +4,6 @@ export * from './card';
 export * from './label';
 export * from './loader';
 export * from './native';
+export * from './search-input';
 export * from './select-switch';
 export * from './text-input';

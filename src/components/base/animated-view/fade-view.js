@@ -6,6 +6,7 @@ type Props = {
   start: boolean,
   effect: string,
   duration: number,
+  delay: number,
   style?: { [string]: mixed },
   children?: React.Node
 };
@@ -21,7 +22,7 @@ export default class FadeView extends React.PureComponent<Props, State> {
     delay: 1200
   };
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -29,7 +30,7 @@ export default class FadeView extends React.PureComponent<Props, State> {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: Props) {
     const { effect, start, delay, duration } = this.props;
     if (nextProps.start === true && nextProps.start !== start) {
       Animated.timing(this.state.anim, {

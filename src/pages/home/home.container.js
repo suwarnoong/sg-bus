@@ -1,6 +1,6 @@
 // @flow
 import Home from './home';
-import { reduxConnect, getCurrentRoute } from '../../utils';
+import { reduxConnect } from '../../utils';
 import {
   getRoutes,
   getServices,

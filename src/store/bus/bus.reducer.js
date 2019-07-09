@@ -17,7 +17,9 @@ const initialState = {
   favorites: [],
   routeStop: null,
   selectedRouteStop: null,
-  routeService: null
+  routeService: null,
+  searchable: [],
+  found: []
 };
 
 const updateServices = (state, action) => {
@@ -114,6 +116,18 @@ const updateSelectedRouteStop = (state, action) => {
   });
 };
 
+const updateSearchable = (state, action) => {
+  return Object.assign({}, state, {
+    searchable: action.searchable
+  });
+};
+
+const updateFound = (state, action) => {
+  return Object.assign({}, state, {
+    found: action.found
+  });
+};
+
 const busReducer = createReducer(initialState, {
   [actions.UPDATE_ARRIVALS]: updateArrivals,
   [actions.UPDATE_SERVICES]: updateServices,
@@ -123,7 +137,9 @@ const busReducer = createReducer(initialState, {
   [actions.ADD_TO_FAVORITES]: addToFavorites,
   [actions.REMOVE_FROM_FAVORITES]: removeFromFavorites,
   [actions.UPDATE_ROUTE_STOP]: updateRouteStop,
-  [actions.UPDATE_SELECTED_ROUTE_STOP]: updateSelectedRouteStop
+  [actions.UPDATE_SELECTED_ROUTE_STOP]: updateSelectedRouteStop,
+  [actions.UPDATE_SEARCHABLE]: updateSearchable,
+  [actions.UPDATE_FOUND]: updateFound
 });
 
 const busPersistConfig = {
@@ -136,7 +152,8 @@ const busPersistConfig = {
     'favorites',
     'routeStop',
     'selectedRouteStop',
-    'routeService'
+    'routeService',
+    'searchable'
   ]
 };
 

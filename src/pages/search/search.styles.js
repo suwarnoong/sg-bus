@@ -25,5 +25,9 @@ export default StyleSheet.create({
   infoDesc: {
     color: '#FFFFFF',
     textAlign: 'center'
+  },
+  searchInput: {},
+  searchResult: {
+    flex: 1
   }
 });

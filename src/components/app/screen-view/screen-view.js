@@ -5,7 +5,7 @@ import styles from './screen-view.styles';
 
 type Props = {
   scrollable: boolean,
-  comRef: Function
+  containerRef: Function
 };
 
 export default class ScreenView extends PureComponent<Props> {
@@ -27,14 +27,20 @@ export default class ScreenView extends PureComponent<Props> {
 
   render() {
     const { Container } = this;
-    const { backgroundColor, comRef, children, scrollable, style } = this.props;
+    const {
+      backgroundColor,
+      containerRef,
+      children,
+      scrollable,
+      style
+    } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
     if (backgroundColor) containerStyles.push({ backgroundColor });
 
     return (
-      <Container ref={comRef} style={containerStyles}>
+      <Container {...this.props} ref={containerRef} style={containerStyles}>
         {children}
       </Container>
     );

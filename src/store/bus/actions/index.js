@@ -7,3 +7,4 @@ export * from './get-services.action';
 export * from './get-stops.action';
 export * from './update-route-stop.action';
 export * from './update-selected-route-stop.action';
+export * from './search.action';

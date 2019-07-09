@@ -36,3 +36,10 @@ export type IBusStopLocation = {
   busStopCode: string,
   ...ICoordinate
 };
+
+export type ISearchable = {
+  key: string,
+  type: string,
+  name: string,
+  description: string
+};
