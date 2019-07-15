@@ -14,9 +14,9 @@ export default {
       title: 'Search'
     }
   },
-  NearbyNavigator: {
-    screen: NearbyNavigator,
-    path: 'nearby-navigator',
+  Home: {
+    screen: Home,
+    path: 'home',
     navigationOptions: {
       tabBarIcon: ({ focused, tintColor }) => <NearbyIcon color={tintColor} />,
       title: 'Nearby'

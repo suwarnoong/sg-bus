@@ -4,7 +4,7 @@ import { AppTabs } from '../components';
 
 export default createBottomTabNavigator(tabRoutes, {
   // order: ['Search', 'Favorites', 'NearbyNavigator'],
-  initialRouteName: 'NearbyNavigator',
+  initialRouteName: 'Home',
   tabBarComponent: AppTabs,
   tabBarOptions: {
     activeTintColor: '#FFFFFF',

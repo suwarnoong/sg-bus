@@ -1,5 +1,7 @@
 import Onboarding from '../pages/onboarding';
 import TabNavigator from './tab.navigator';
+import BusStopArrivals from '../pages/bus-stop-arrivals';
+import BusRoute from '../pages/bus-route';
 
 export default {
   Onboarding: {
@@ -12,5 +14,13 @@ export default {
     navigationOptions: {
       header: null
     }
+  },
+  BusStopArrivals: {
+    screen: BusStopArrivals,
+    path: 'bus-stop-arrivals'
+  },
+  BusRoute: {
+    screen: BusRoute,
+    path: 'bus-route'
   }
 };
