@@ -2,7 +2,6 @@ import React from 'react';
 import Home from '../pages/home';
 import Search from '../pages/search';
 import Favorites from '../pages/favorites';
-import NearbyNavigator from './nearby.navigator';
 import { SearchIcon, NearbyIcon, StarIcon } from '../icons';
 
 export default {
