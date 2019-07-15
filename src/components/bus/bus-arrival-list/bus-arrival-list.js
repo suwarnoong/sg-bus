@@ -20,7 +20,9 @@ export default class BusArrivalList extends PureComponent<Props> {
   };
 
   handleTick = () => {
-    this.props.getArrivals(this.props.params.busStopCode);
+    if ('busStopCode' in this.props.params) {
+      this.props.getArrivals(this.props.params.busStopCode);
+    }
   };
 
   renderItem = ({ item }) => {
