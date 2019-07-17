@@ -4,6 +4,7 @@ export default StyleSheet.create({
   container: {
     paddingHorizontal: 15,
     paddingVertical: 20,
+    backgroundColor: '#FFFFFF',
     borderBottomWidth: 1,
     borderBottomColor: '#f2f2f2'
   },

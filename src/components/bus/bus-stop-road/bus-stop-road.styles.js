@@ -3,7 +3,8 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {},
   row: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   fill: {
     flex: 1

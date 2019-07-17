@@ -68,7 +68,7 @@ export default class BusStopRoad extends PureComponent<Props> {
               >
                 {busStopCode}
               </Label>
-              <Label style={styles.roadName} size={15}>
+              <Label style={[styles.roadName, { marginLeft: 10 }]} size={15}>
                 {roadName}
               </Label>
             </View>
