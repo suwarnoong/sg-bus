@@ -3,9 +3,7 @@ import Search from './search';
 import { reduxConnect } from '../../utils';
 import { search } from '../../store/bus';
 
-const mapStateToProps = state => ({
-  found: state.bus.found
-});
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
   search: text => dispatch(search(text))

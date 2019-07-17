@@ -19,7 +19,7 @@ const initialState = {
   selectedRouteStop: null,
   routeService: null,
   searchable: [],
-  found: []
+  found: {}
 };
 
 const updateServices = (state, action) => {

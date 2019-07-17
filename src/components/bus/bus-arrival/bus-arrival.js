@@ -48,7 +48,7 @@ export default class BusArrival extends PureComponent<Props> {
     const busStop = stopsByStop[busStopCode];
     navigate('BusRoute', {
       title: serviceNo,
-      subTitle: `${busStop.description}`,
+      subTitle: busStop.description,
       serviceNo,
       busStopCode
     });

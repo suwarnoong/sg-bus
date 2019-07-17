@@ -10,14 +10,12 @@ import {
   View
 } from '../../../base';
 import { BusStopRoad } from '../../bus-stop-road/index.js';
+import { IBusStop } from '../../../../types.d';
 
 import pick from 'lodash/fp/pick';
 
 type Props = {
-  busStopCode: string,
-  description: string,
-  roadName: string,
-  distance: number,
+  ...IBusStop,
   routesByStop: Array<mixed>,
   onPress: Function,
   style: { [string]: mixed }

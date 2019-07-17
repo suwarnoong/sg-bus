@@ -26,10 +26,18 @@ export type IBusRoute = {
   sunday: Array<number>
 };
 
+export type IBusService = {
+  serviceNo: string,
+  direction: number,
+  originCode: string,
+  destinationCode: string
+};
+
 export type IBusStop = {
   ...IBusStopLocation,
   roadName: string,
-  description: string
+  description: string,
+  distance: number
 };
 
 export type IBusStopLocation = {
@@ -38,8 +46,12 @@ export type IBusStopLocation = {
 };
 
 export type ISearchable = {
-  key: string,
   type: string,
-  name: string,
-  description: string
+  key: string,
+  tags: string
+};
+
+export type IFound = {
+  stop: Array<ISearchable>,
+  service: Array<ISearchable>
 };

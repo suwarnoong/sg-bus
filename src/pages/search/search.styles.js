@@ -3,14 +3,15 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: 10,
-    paddingHorizontal: 25,
     backgroundColor: '#1289A7'
+  },
+  scrollView: {
+    paddingHorizontal: 10
   },
   infoContainer: {
     alignItems: 'center',
-    marginTop: 100,
-    marginBottom: 40,
+    paddingTop: 100,
+    paddingBottom: 40,
     paddingHorizontal: 70
   },
   infoIcon: {
@@ -26,7 +27,10 @@ export default StyleSheet.create({
     color: '#FFFFFF',
     textAlign: 'center'
   },
-  searchInput: {},
+  searchInputContainer: {
+    backgroundColor: '#1289A7',
+    paddingVertical: 10
+  },
   searchResult: {
     flex: 1
   }

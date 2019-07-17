@@ -5,7 +5,7 @@ import { Label, View } from '../native';
 import styles from './loader.styles';
 
 type Props = {
-  source: object,
+  source: any,
   speed: number,
   loop: boolean,
   style?: { [string]: mixed },
@@ -18,7 +18,7 @@ export default class Loader extends React.PureComponent<Props> {
     loop: true
   };
 
-  animation = React.createRef();
+  animation = React.createRef<any>();
 
   componentDidMount() {
     if (this.animation.current) {
@@ -29,7 +29,7 @@ export default class Loader extends React.PureComponent<Props> {
   render() {
     const { style, source, speed, loop } = this.props;
 
-    if (!source) return;
+    if (!source) return null;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);

@@ -1,16 +1,12 @@
 import React, { PureComponent } from 'react';
 import BusStop from './bus-stop';
 import { Card, FlatList, View } from '../../base';
+import { IBusStop } from '../../../types.d';
 import styles from './bus-stop-list.styles';
 
 type Props = {
   Container: React.Element,
-  list: Array<{
-    busStopCode: string,
-    roadName: string,
-    description: string,
-    distance: number
-  }>,
+  list: Array<IBusStop>,
   onPress: Function
 };
 
