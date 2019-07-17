@@ -38,28 +38,28 @@ const getSearchable = () => {
   if (stops) {
     stops.forEach(s => {
       searchable.push({
-        key: `stop-${s.busStopCode}`,
         type: 'stop',
-        name: s.busStopCode,
-        description: `${s.roadName} ${s.description}`
+        key: s.busStopCode,
+        tags: [s.busStopCode, s.roadName, s.description],
+        priority: 2
       });
     });
   }
 
   if (services) {
     services.forEach(s => {
-      const origin = stopsByStop[s.originCode];
-      const destination = stopsByStop[s.destinationCode];
+      // const origin = stopsByStop[s.originCode];
+      // const destination = stopsByStop[s.destinationCode];
 
-      let description = '';
-      if (origin) description += origin.description;
-      if (destination) description += ` to ${destination.description}`;
+      // let description = '';
+      // if (origin) description += origin.description;
+      // if (destination) description += ` to ${destination.description}`;
 
       searchable.push({
-        key: `stop-${s.serviceNo}-${s.direction}`,
         type: 'service',
-        name: s.serviceNo,
-        description
+        key: `${s.serviceNo}-${s.direction}`,
+        tags: [s.serviceNo],
+        priority: 1
       });
     });
   }
