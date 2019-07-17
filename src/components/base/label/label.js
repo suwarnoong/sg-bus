@@ -38,7 +38,7 @@ export default class Label extends PureComponent<Props> {
       case Label.WEIGHT_MEDIUM:
         return { fontFamily: 'Avenir-Medium' };
       default:
-        return { fontFamily: 'Avenir Next' };
+        return { fontFamily: 'AvenirNext-Regular' };
     }
   }
 
