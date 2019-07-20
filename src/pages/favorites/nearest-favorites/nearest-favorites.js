@@ -3,6 +3,7 @@ import {
   FavoriteList,
   Image,
   H1,
+  Title,
   Label,
   View,
   Timer
@@ -59,7 +60,7 @@ export default class NearestFavorites extends PureComponent<Props> {
     if (nearestFavorites && nearestFavorites.length > 0) {
       return (
         <View style={{ flex: 1 }}>
-          <H1 style={styles.title}>Favorites Arrivals</H1>
+          <Title style={styles.title}>Favorites Arrivals</Title>
           <Timer
             id="fav-service-stop"
             onTick={this.handleTick}

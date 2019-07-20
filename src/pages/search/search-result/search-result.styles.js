@@ -2,8 +2,8 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
-    margin: 0
+    padding: 10,
+    flex: 1
   },
   busStopsContainer: {
     flex: 1
@@ -18,10 +18,8 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
   title: {
-    color: '#CCCCCC',
+    color: '#999999',
     marginRight: 7
   },
-  resultCount: {
-    color: '#FFFFFF'
-  }
+  resultCount: {}
 });

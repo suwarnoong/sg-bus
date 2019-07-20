@@ -6,6 +6,6 @@ export default {
     headerBackgroundColor: '#F0F0F0'
   },
   Search: {
-    backgroundColor: '#1289A7'
+    headerBackgroundColor: '#F0F0F0'
   }
 };

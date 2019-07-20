@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { H1, ScreenView } from '../../components';
+import { H1, Title, ScreenView } from '../../components';
 import NearestBusStops from './nearest-bus-stops';
 import styles from './home.styles';
 
@@ -24,8 +24,8 @@ export default class Home extends PureComponent<Props> {
     if (style) containerStyles.push(style);
 
     return (
-      <ScreenView style={containerStyles}>
-        <H1 style={styles.title}>Nearest Bus Stops</H1>
+      <ScreenView style={containerStyles} scrollable={true}>
+        <Title style={styles.title}>Nearest Bus Stops</Title>
         <NearestBusStops />
       </ScreenView>
     );

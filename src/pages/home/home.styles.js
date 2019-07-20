@@ -7,6 +7,7 @@ export default StyleSheet.create({
   },
   title: {
     paddingHorizontal: 10,
-    paddingVertical: 20
+    paddingTop: 20,
+    paddingBottom: 40
   }
 });

@@ -2,11 +2,12 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#1289A7'
+    margin: 0,
+    flex: 1
   },
   scrollView: {
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
+    paddingVertical: 10
   },
   infoContainer: {
     alignItems: 'center',
@@ -19,16 +20,15 @@ export default StyleSheet.create({
   },
   infoTitle: {
     fontSize: 24,
-    color: '#FFFFFF',
+    color: '#1289A7',
     textAlign: 'center',
     marginBottom: 5
   },
   infoDesc: {
-    color: '#FFFFFF',
     textAlign: 'center'
   },
   searchInputContainer: {
-    backgroundColor: '#1289A7',
+    backgroundColor: '#F0F0F0',
     paddingVertical: 10
   },
   searchResult: {

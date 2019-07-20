@@ -36,7 +36,7 @@ export default class Search extends React.PureComponent<Props> {
       <ScreenViewKeyboardAware style={containerStyles}>
         <ScrollView style={styles.scrollView} stickyHeaderIndices={[1]}>
           <View style={styles.infoContainer}>
-            <BusIcon style={styles.infoIcon} size={106} color="#FFFFFF" />
+            <BusIcon style={styles.infoIcon} size={106} color="#1289A7" />
             <H1 style={styles.infoTitle}>Looking for a bus?</H1>
             <Label style={styles.infoDesc}>
               Type in the bus stop number or service number.

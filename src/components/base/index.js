@@ -7,3 +7,4 @@ export * from './native';
 export * from './search-input';
 export * from './select-switch';
 export * from './text-input';
+export * from './title';

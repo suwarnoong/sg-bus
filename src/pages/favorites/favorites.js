@@ -15,7 +15,7 @@ export default class Favorites extends PureComponent<Props> {
     if (style) containerStyles.push(style);
 
     return (
-      <ScreenView style={containerStyles}>
+      <ScreenView style={containerStyles} scrollable={true}>
         <NearestFavorites />
       </ScreenView>
     );

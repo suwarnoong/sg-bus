@@ -4,8 +4,8 @@ export default StyleSheet.create({
   container: {},
   sectionHeader: {
     paddingHorizontal: 10,
-    paddingBottom: 5,
-    paddingTop: 20,
+    paddingBottom: 10,
+    paddingTop: 40,
     borderBottomWidth: 1,
     borderBottomColor: '#f2f2f2',
     backgroundColor: '#f2f2f2'

@@ -85,7 +85,11 @@ export default class SearchInput extends React.PureComponent<Props, State> {
           placeholder={placeholder}
         />
         <View style={buttonContainerStyles}>
-          <Button label={buttonLabel} onPress={this.handlePress} />
+          <Button
+            label={buttonLabel}
+            onPress={this.handlePress}
+            type={Button.TYPE_CLEAR}
+          />
         </View>
       </View>
     );

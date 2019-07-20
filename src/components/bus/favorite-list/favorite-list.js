@@ -20,8 +20,18 @@ export default class FavoriteList extends PureComponent<Props> {
   keyExtractor = (item, index) => `${item.busStopCode}|${item.serviceNo}`;
 
   renderSectionHeader = ({ section: { name } }) => {
+    const { list } = this.props;
+    const sectionItem = list.find(s => s.name === name);
+    const isFirstSection = list.indexOf(sectionItem) === 0;
+    console.log('section', sectionItem, list.indexOf(sectionItem));
+
+    const sectionHeaderStyles = [styles.sectionHeader];
+    if (isFirstSection) {
+      sectionHeaderStyles.push({ paddingTop: 20 });
+    }
+
     return (
-      <View style={styles.sectionHeader}>
+      <View style={sectionHeaderStyles}>
         <Label
           weight={Label.WEIGHT_DEMI_BOLD}
           size={Label.SIZE_LARGE}
