@@ -7,7 +7,7 @@
     "ios": "node node_modules/react-native/local-cli/cli.js run-ios --simulator='iPhone Xs Max'",
     "android": "node node_modules/react-native/local-cli/cli.js run-android",
     "android:run-release": "node node_modules/react-native/local-cli/cli.js run-android --variant=release",
-    "android:release": "cd android && ./gradlew assembleRelease && cd ..",
+    "android:release": "cd android && ./gradlew bundleRelease && cd ..",
     "generate:stubs": "yarn generate:bus-lta && yarn generate:bus-onemap && yarn generate:bus-searchable",
     "generate:bus-searchable": "babel-node ./scripts/bus/searchable.js --presets @babel/env",
     "generate:bus-lta": "babel-node ./scripts/bus/lta.js --presets @babel/env",
