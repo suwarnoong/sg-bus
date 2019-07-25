@@ -1,7 +1,9 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  container: {},
+  container: {
+    paddingHorizontal: 10
+  },
   sectionHeader: {
     paddingHorizontal: 10,
     paddingBottom: 10,

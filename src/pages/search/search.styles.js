@@ -7,11 +7,11 @@ export default StyleSheet.create({
   },
   scrollView: {
     paddingHorizontal: 10,
-    paddingVertical: 10
+    paddingBottom: 10
   },
   infoContainer: {
     alignItems: 'center',
-    paddingTop: 100,
+    paddingTop: 110,
     paddingBottom: 40,
     paddingHorizontal: 70
   },
