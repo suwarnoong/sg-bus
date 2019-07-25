@@ -1,12 +1,7 @@
 // @flow
 import Home from './home';
 import { reduxConnect } from '../../utils';
-import {
-  getRoutes,
-  getServices,
-  getStops,
-  getNearestFavoriteStops
-} from '../../store/bus';
+import { getRoutes, getServices, getStops } from '../../store/bus';
 
 const mapStateToProps = state => ({});
 
