@@ -53,3 +53,9 @@ export class XXSmall extends PureComponent {
     return <Label size={Label.SIZE_XXSMALL} {...this.props} />;
   }
 }
+
+export class B extends PureComponent {
+  render() {
+    return <Label weight={Label.WEIGHT_BOLD} {...this.props} />;
+  }
+}

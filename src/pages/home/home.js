@@ -25,7 +25,6 @@ export default class Home extends PureComponent<Props> {
 
     return (
       <ScreenView style={containerStyles} scrollable={true}>
-        <Title style={styles.title}>Nearest Bus Stops</Title>
         <NearestBusStops />
       </ScreenView>
     );
