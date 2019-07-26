@@ -1,4 +1,4 @@
-package sg.tutella.sgbus;
+package sg.tutella.bus;
 
 import com.facebook.react.ReactActivity;
 
