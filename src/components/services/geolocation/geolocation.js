@@ -85,6 +85,12 @@ export default class Geolocation extends PureComponent<Props> {
         distanceFilter
       }
     );
+
+    if (this._watchId === 0) {
+      this.props.updateGeolocationError({
+        error: 'Unable to watch location'
+      });
+    }
   };
 
   stopWatch = () => {

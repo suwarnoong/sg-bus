@@ -46,7 +46,7 @@ export default class NearestBusStops extends PureComponent<Props> {
   renderEmptyLocationText = () => {
     const { geolocation } = this.props;
 
-    if (!isGeolocationEmpty(geolocation)) {
+    if (isGeolocationEmpty(geolocation)) {
       return (
         <View>
           {IS_ANDROID ? (
@@ -55,7 +55,7 @@ export default class NearestBusStops extends PureComponent<Props> {
                 Label={H3}
                 texts={[
                   <H3>
-                    (Go to <B size={Label.SIZE_LARGE}>Settings</B>)
+                    Go to <B size={Label.SIZE_LARGE}>Settings</B>
                   </H3>,
                   <H3>
                     Tap on <B size={Label.SIZE_LARGE}>Location Services</B> or{' '}
