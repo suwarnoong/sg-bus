@@ -13,17 +13,20 @@ import {
 } from '../../components';
 import SearchResult from './search-result';
 import { SearchIcon, BusIcon } from '../../icons';
+import { ICoordinate } from '../../types.d';
 import styles from './search.styles';
 
 type Props = {
   search: Function,
+  geolocation: ICoordinate,
   style?: { [string]: mixed },
   children?: React.Node
 };
 
 export default class Search extends React.PureComponent<Props> {
   handleSearch = (searchText: string) => {
-    this.props.search(searchText);
+    const { geolocation } = this.props;
+    this.props.search(searchText, geolocation);
   };
 
   render() {

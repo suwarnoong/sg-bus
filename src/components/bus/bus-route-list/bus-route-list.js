@@ -3,7 +3,6 @@ import * as React from 'react';
 import { Card, FlatList } from '../../base';
 import BusRoute from './bus-route';
 import { BUS_ROUTE_HEIGHT } from '../../../constants';
-import { distance } from '../../../utils';
 import {
   IBusRoute,
   IBusStop,

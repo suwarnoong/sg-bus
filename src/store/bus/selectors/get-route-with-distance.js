@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 import { getRouteDirection } from './get-route-direction';
 import { getRouteByServiceDirection } from './get-route-by-service-direction';
 import { getStopsByStop } from './get-stops-by-stop';
-import { distance } from '../../../utils';
+import { calculateDistance } from '../../../utils';
 import { IBusStop } from '../../../types.d';
 
 const getRoute = state => {
@@ -45,7 +45,7 @@ export const getRouteWithDistance = createSelector(
       return {
         ...r,
         routeType,
-        distance: distance(currentStopLocation, {
+        distance: calculateDistance(currentStopLocation, {
           latitude: busStop.latitude,
           longitude: busStop.longitude
         })

@@ -1,5 +1,6 @@
 import * as actions from './types';
 import { getStopsByStop, getServicesByServiceDirection } from '../selectors';
+import { isGeolocationEmpty, calculateDistance } from '../../../utils';
 import groupBy from 'lodash/groupBy';
 
 const getSearchable = (dispatch, getState) => {
@@ -11,38 +12,88 @@ const getSearchable = (dispatch, getState) => {
   return searchable;
 };
 
-const simpleCompare = (item, searchText) => {
-  if (item.tags.some(t => t.toLowerCase() === searchText.toLowerCase())) {
-    return Object.assign({}, item, { closest: 1 });
-  } else if (item.tags.some(t => t.indexOf(searchText) === 0)) {
-    return Object.assign({}, item, { closest: 0.5 });
-  } else {
-    return Object.assign({}, item, { closest: 0.1 });
+const filterText = (item, searchText) => {
+  return item.tags.some(t => {
+    let match = false;
+
+    if (Array.isArray(t)) {
+      const text = t[t.length - 1];
+      const indices = t.slice(0, t.length - 1);
+
+      match = indices.some(i => {
+        if (i === 'exact') return text === searchText;
+        if (i === 'any') return text.includes(searchText);
+        if (i === 'start') return text.startsWith(searchText);
+        if (i === 'end') return text.endsWith(searchText);
+      });
+    } else {
+      match = t.includes(searchText);
+    }
+
+    return match;
+  });
+};
+
+const getScores = (full, part) => {
+  if (full.toLowerCase() === part.toLowerCase()) {
+    return 1;
+  } else if (full.startsWith(part)) {
+    return 0.5;
   }
+};
+
+const applyScores = (item, searchText, position) => {
+  if (item.type === 'stop') {
+    if (!isGeolocationEmpty(position) && !isGeolocationEmpty(item.location)) {
+      const distance = calculateDistance(position, item.location);
+      const scores = 2 - distance;
+      return Object.assign({}, item, { distance, scores });
+    }
+  } else {
+    let scores = 0;
+    item.tags.every(t => {
+      if (Array.isArray(t)) {
+        const text = t.slice(-1)[0];
+        scores = getScores(text, searchText);
+      } else {
+        scores = getScores(t, searchText);
+      }
+      if (scores > 0) return false;
+    });
+
+    if (scores > 0) return Object.assign({}, item, { scores });
+  }
+  return item;
 };
 
 const sorting = (a, b) => {
-  if (a.priority === b.priority) {
-    return a.closest < b.closest ? 1 : a.closest > b.closest ? -1 : 0;
-  } else {
-    return a.priority > b.priority ? 1 : a.priority < b.priority ? -1 : 0;
-  }
+  return a.scores < b.scores ? 1 : a.scores > b.scores ? -1 : 0;
 };
 
-export const search = text => {
+export const search = (text, position) => {
   return (dispatch, getState) => {
     const searchable = getSearchable(dispatch, getState);
-    const filtered = searchable
-      .filter(s => s.tags.some(t => t.indexOf(text) >= 0))
-      .map(s => simpleCompare(s, text))
+    const { stops, nearbyDistance } = getState().bus;
+
+    let filtered = searchable
+      .filter(s => filterText(s, text))
+      .map(s => applyScores(s, text, position))
       .sort(sorting);
+
+    /* show top 10 nearby stops or less */
+    const distances = [...new Set(filtered.map(f => f.distance))];
+    const limit = distances.length < 20 ? distances.length : 10;
+    filtered = filtered.filter(
+      s => s.distance == null || s.distance <= distances[limit - 1]
+    );
 
     const found = groupBy(filtered, 'type');
 
     if (found.stop && found.stop.length > 0) {
       const stopsByStop = getStopsByStop(getState().bus);
       found.stop = found.stop.map(f => ({
-        ...stopsByStop[f.key]
+        ...stopsByStop[f.key],
+        distance: f.distance
       }));
     }
 

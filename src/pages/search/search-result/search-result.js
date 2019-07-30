@@ -74,8 +74,8 @@ export default class SearchResult extends React.PureComponent<Props> {
 
     return (
       <View style={containerStyles}>
-        {this.renderBusServices(found.service)}
         {this.renderBusStops(found.stop)}
+        {this.renderBusServices(found.service)}
       </View>
     );
   }

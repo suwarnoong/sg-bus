@@ -1,5 +1,5 @@
 export * from '../../utils';
-export { default as distance } from './distance';
+export { default as calculateDistance } from './calculate-distance';
 export { default as getCurrentRoute } from './get-current-route';
 export { default as getRoute } from './get-route';
 export { default as isArrivalEmpty } from './is-arrival-empty';

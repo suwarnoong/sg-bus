@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { distance } from '../../../utils';
+import { calculateDistance } from '../../../utils';
 import { getStopsByStop } from './get-stops-by-stop';
 
 const getFavorites = (state, location) => state.favorites;
@@ -16,7 +16,7 @@ export const getNearestFavoriteStops = createSelector(
         favorites
           .map(f => ({
             busStopCode: f.busStopCode,
-            distance: distance(location, {
+            distance: calculateDistance(location, {
               latitude: stopsByStop[f.busStopCode].latitude,
               longitude: stopsByStop[f.busStopCode].longitude
             })

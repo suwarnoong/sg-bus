@@ -4,7 +4,6 @@ import { getRouteDirection } from './get-route-direction';
 import { getRouteByServiceDirection } from './get-route-by-service-direction';
 import { getStopsByStop } from './get-stops-by-stop';
 import { mapboxIcon } from '../../../constants';
-import { distance } from '../../../utils';
 
 const getRoute = state =>
   getRouteByServiceDirection(

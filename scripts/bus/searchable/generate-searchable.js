@@ -19,9 +19,21 @@ const getStopsByStop = stops => {
   return stopsByStop;
 };
 
+const getRoutesByStop = routes => {
+  const routesByStop = {};
+  routes.forEach(r => {
+    const stop = r.busStopCode;
+    routesByStop[stop] = routesByStop[stop] || {};
+    routesByStop[stop].services = routesByStop[stop].services || [];
+    routesByStop[stop].services.push(r.serviceNo);
+  });
+  return routesByStop;
+};
+
 const getSearchable = () => {
   const stopsFilePath = 'src/stubs/bus/stops.json';
   const servicesFilePath = 'src/stubs/bus/services.json';
+  const routesFilePath = 'src/stubs/bus/routes.json';
 
   if (!isFileExists(stopsFilePath)) return;
   if (!isFileExists(servicesFilePath)) return;
@@ -33,6 +45,10 @@ const getSearchable = () => {
   const servicesJson = fs.readFileSync(servicesFilePath);
   const services = JSON.parse(servicesJson);
 
+  const routesJson = fs.readFileSync(routesFilePath);
+  const routes = JSON.parse(routesJson);
+  const routesByStop = getRoutesByStop(routes);
+
   const searchable = [];
 
   if (stops) {
@@ -40,26 +56,26 @@ const getSearchable = () => {
       searchable.push({
         type: 'stop',
         key: s.busStopCode,
-        tags: [s.busStopCode, s.roadName, s.description],
-        priority: 2
+        tags: [
+          ['exact', s.busStopCode],
+          ['any', s.roadName],
+          ['any', s.description],
+          ...routesByStop[s.busStopCode].services.map(s => ['start', s])
+        ],
+        location: {
+          latitude: s.latitude,
+          longitude: s.longitude
+        }
       });
     });
   }
 
   if (services) {
     services.forEach(s => {
-      // const origin = stopsByStop[s.originCode];
-      // const destination = stopsByStop[s.destinationCode];
-
-      // let description = '';
-      // if (origin) description += origin.description;
-      // if (destination) description += ` to ${destination.description}`;
-
       searchable.push({
         type: 'service',
         key: `${s.serviceNo}-${s.direction}`,
-        tags: [s.serviceNo],
-        priority: 1
+        tags: [['start', s.serviceNo]]
       });
     });
   }
