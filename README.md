@@ -38,5 +38,5 @@ Some of the tokens and credentials are not supposed to share with you. Hence, yo
 - Run `yarn generate:stubs` to update latest stubs
 - Open `android` folder with Android Studio
 - Open `build.gradle` in `app` folder, increase `versionCode` and `versionName`
-- Run `yarn android:release`
+- Run `KEY=youkeystorepassword yarn android:release`
 - Locate `app.aab` in `android/app/build/outputs/bundle/release` folder

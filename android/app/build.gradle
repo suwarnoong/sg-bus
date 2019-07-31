@@ -114,9 +114,9 @@ android {
         release {
             if (project.hasProperty('SGBUS_RELEASE_STORE_FILE')) {
                 storeFile file(SGBUS_RELEASE_STORE_FILE)
-                storePassword SGBUS_RELEASE_STORE_PASSWORD
+                storePassword System.getenv('KEY')
                 keyAlias SGBUS_RELEASE_KEY_ALIAS
-                keyPassword SGBUS_RELEASE_KEY_PASSWORD
+                keyPassword System.getenv('KEY')
             }
         }
     }
