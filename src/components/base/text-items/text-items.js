@@ -6,7 +6,7 @@ import styles from './text-items.styles';
 
 type Props = {
   texts: Array<any>,
-  Label: React.Element,
+  Label: any,
   style?: { [string]: mixed },
   children?: React.Node
 };
@@ -27,7 +27,7 @@ export default class TextItems extends React.PureComponent<Props> {
         {texts.map((text, index) => (
           <View style={styles.row} key={index}>
             <Label style={styles.index}>{index + 1}.</Label>
-            <Label style={styles.desc}>{text}</Label>
+            <Label style={styles.text}>{text}</Label>
           </View>
         ))}
       </View>

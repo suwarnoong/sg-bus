@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import i18next from 'i18next';
 import {
   BusStopList,
   BusServiceList,
@@ -21,7 +22,7 @@ type Props = {
 
 export default class SearchResult extends React.PureComponent<Props> {
   renderResultText = (items: Array<any>) => {
-    return `(${items.length} result${items.length > 1 ? 's' : ''})`;
+    return i18next.t('countResult', { count: items.length });
   };
 
   renderBusStops = (stops: Array<IBusStop>) => {
@@ -30,7 +31,7 @@ export default class SearchResult extends React.PureComponent<Props> {
     return (
       <View style={styles.busStopsContainer}>
         <View style={styles.titleContainer}>
-          <H1 style={styles.title}>Bus Stops</H1>
+          <H1 style={styles.title}>{i18next.t('busStops')}</H1>
           <Label style={styles.resultCount}>
             {this.renderResultText(stops)}
           </Label>
@@ -56,7 +57,7 @@ export default class SearchResult extends React.PureComponent<Props> {
     return (
       <View style={styles.busServicesContainer}>
         <View style={styles.titleContainer}>
-          <H1 style={styles.title}>Bus Services</H1>
+          <H1 style={styles.title}>{i18next.t('busServices')}</H1>
           <Label style={styles.resultCount}>
             {this.renderResultText(services)}
           </Label>

@@ -1,0 +1,9 @@
+{
+  "L_NEAREST_BUS_STOPS": "zhNearest Bus Stops",
+  "M_LOC_SERVICE_OFF": {
+    "STEP1": {
+      "IOS": "zhGo to <B size={Label.SIZE_LARGE}>Settings</B>",
+      "ANDROID": "zhGo to <B size={Label.SIZE_LARGE}>Settings</B> > <B size={Label.SIZE_LARGE}>Privacy</B> > <B size={Label.SIZE_LARGE}>Location Services</B>"
+    }
+  }
+}

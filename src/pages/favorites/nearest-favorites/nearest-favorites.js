@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import i18next from 'i18next';
 import {
   FavoriteList,
   Image,
@@ -60,7 +61,7 @@ export default class NearestFavorites extends PureComponent<Props> {
     if (nearestFavorites && nearestFavorites.length > 0) {
       return (
         <View style={{ flex: 1 }}>
-          <Title style={styles.title}>Favorites Arrivals</Title>
+          <Title style={styles.title}>{i18next.t('favoritesTitle')}</Title>
           <Timer
             id="fav-service-stop"
             onTick={this.handleTick}
@@ -74,10 +75,8 @@ export default class NearestFavorites extends PureComponent<Props> {
         <View style={{ flex: 1 }}>
           <View style={styles.infoContainer}>
             <BusIcon style={styles.infoIcon} size={106} color="#1289A7" />
-            <H1 style={styles.infoTitle}>No Favorites Yet!</H1>
-            <Label style={styles.infoDesc}>
-              Tap on the star at your selected bus stop to add into favorites.
-            </Label>
+            <H1 style={styles.infoTitle}>{i18next.t('favoritesDesc1')}</H1>
+            <Label style={styles.infoDesc}>{i18next.t('favoritesDesc2')}</Label>
           </View>
         </View>
       );

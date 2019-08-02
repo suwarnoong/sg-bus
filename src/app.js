@@ -4,6 +4,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './store';
 import { BackgroundView, MainView, Geolocation } from './components';
 import NavigatorContainer from './routes';
+import './locales/i18next';
 
 type Props = {};
 

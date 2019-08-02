@@ -21,17 +21,13 @@ const filterText = (item, searchText) => {
       const indices = t.slice(0, t.length - 1);
 
       match = indices.some(i => {
-        if (i === 'exact')
-          return text.toLowerCase() === searchText.toLowerCase();
-        if (i === 'any')
-          return text.toLowerCase().includes(searchText.toLowerCase());
-        if (i === 'start')
-          return text.toLowerCase().startsWith(searchText.toLowerCase());
-        if (i === 'end')
-          return text.toLowerCase().endsWith(searchText.toLowerCase());
+        if (i === 'exact') return text === searchText;
+        if (i === 'any') return text.includes(searchText);
+        if (i === 'start') return text.startsWith(searchText);
+        if (i === 'end') return text.endsWith(searchText);
       });
     } else {
-      match = t.toLowerCase().includes(searchText.toLowerCase());
+      match = t.includes(searchText);
     }
 
     return match;
@@ -41,7 +37,7 @@ const filterText = (item, searchText) => {
 const getScores = (full, part) => {
   if (full.toLowerCase() === part.toLowerCase()) {
     return 1;
-  } else if (full.toLowerCase().startsWith(part.toLowerCase())) {
+  } else if (full.startsWith(part)) {
     return 0.5;
   }
 };
