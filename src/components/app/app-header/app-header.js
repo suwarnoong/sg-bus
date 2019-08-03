@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { H3, Label, Small, TouchableOpacity, View } from '../../base';
 import { ArrowLeftIcon } from '../../../icons';
+import { getTextColor } from '../../../utils';
 import styles from './app-header.styles';
 
 type Props = {
@@ -11,9 +12,12 @@ type Props = {
 
 export default class AppHeader extends PureComponent<Props> {
   renderBackButton = () => {
+    const { backgroundColor, back } = this.props;
+    const color = getTextColor(backgroundColor);
+
     return (
-      <TouchableOpacity style={styles.leftPanel} onPress={this.props.back}>
-        <ArrowLeftIcon style={styles.backIcon} size={16} color="#FFFFFF" />
+      <TouchableOpacity style={styles.leftPanel} onPress={back}>
+        <ArrowLeftIcon style={styles.backIcon} size={16} color={color} />
       </TouchableOpacity>
     );
   };
@@ -25,13 +29,17 @@ export default class AppHeader extends PureComponent<Props> {
     if (style) containerStyles.push(style);
     if (backgroundColor) containerStyles.push({ backgroundColor });
 
+    const color = getTextColor(backgroundColor);
+    const titleStyles = [styles.title, { color }];
+    const subTitleStyles = [styles.subTitle, { color }];
+
     return (
       <View style={containerStyles}>
         {this.renderBackButton()}
         <View style={styles.titleContainer}>
-          <H3 style={styles.title}>{title}</H3>
+          <H3 style={titleStyles}>{title}</H3>
           {!!subTitle && (
-            <Small style={styles.subTitle} weight={Label.WEIGHT_MEDIUM}>
+            <Small style={subTitleStyles} weight={Label.WEIGHT_MEDIUM}>
               {subTitle}
             </Small>
           )}

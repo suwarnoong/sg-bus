@@ -6,9 +6,9 @@ const mapStateToProps = state => {
   currentRoute.params = currentRoute.params || {};
 
   return {
-    title: currentRoute.params.title || state.app.header.title,
-    subTitle: currentRoute.params.subTitle || state.app.header.subTitle,
-    backgroundColor: state.app.header.backgroundColor
+    title: currentRoute.params.title || state.reset.header.title,
+    subTitle: currentRoute.params.subTitle || state.reset.header.subTitle,
+    backgroundColor: state.reset.header.backgroundColor
   };
 };
 

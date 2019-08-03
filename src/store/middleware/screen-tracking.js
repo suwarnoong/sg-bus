@@ -4,8 +4,9 @@ import { getCurrentRoute } from '../../utils';
 import {
   reset,
   updateBackgroundColor,
-  updateHeaderBackgroundColor
-} from '../app';
+  updateHeaderBackgroundColor,
+  updateShowSettings
+} from '../reset';
 import rootRoutes from '../../routes/root.routes';
 import routesConfig from '../../routes/routes.config';
 
@@ -20,6 +21,8 @@ const onScreenChanged = (nav, dispatch) => {
 
   if (config.backgroundColor)
     dispatch(updateBackgroundColor(config.backgroundColor));
+
+  dispatch(updateShowSettings(config.showSettings || false));
 };
 
 const isRehydratingNavigation = action =>

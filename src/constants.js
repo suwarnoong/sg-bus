@@ -13,3 +13,18 @@ export const mapboxIcon = {
   BUS_STOP: 'stop',
   ACTIVE_BUS_STOP: 'activeStop'
 };
+
+export const languages = [
+  {
+    key: 'en',
+    value: 'English'
+  },
+  {
+    key: 'zh',
+    value: '中文'
+  },
+  {
+    key: 'id',
+    value: 'Bahasa Indonesia'
+  }
+];

@@ -1,4 +1,5 @@
 import React from 'react';
+import i18next from 'i18next';
 import Home from '../pages/home';
 import Search from '../pages/search';
 import Favorites from '../pages/favorites';
@@ -8,25 +9,25 @@ export default {
   Search: {
     screen: Search,
     path: 'search',
-    navigationOptions: {
+    navigationOptions: ({ navigation, navigationOptions }) => ({
       tabBarIcon: ({ focused, tintColor }) => <SearchIcon color={tintColor} />,
-      title: 'Search'
-    }
+      tabBarLabel: i18next.t(navigation.state.key.toLowerCase())
+    })
   },
   Home: {
     screen: Home,
     path: 'home',
-    navigationOptions: {
+    navigationOptions: ({ navigation, navigationOptions }) => ({
       tabBarIcon: ({ focused, tintColor }) => <NearbyIcon color={tintColor} />,
-      title: 'Nearby'
-    }
+      tabBarLabel: i18next.t(navigation.state.key.toLowerCase())
+    })
   },
   Favorites: {
     screen: Favorites,
     path: 'favorites',
-    navigationOptions: {
+    navigationOptions: ({ navigation, navigationOptions }) => ({
       tabBarIcon: ({ focused, tintColor }) => <StarIcon color={tintColor} />,
-      title: 'Favorites'
-    }
+      title: i18next.t(navigation.state.key.toLowerCase())
+    })
   }
 };

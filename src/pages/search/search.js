@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import i18next from 'i18next';
 import {
   H1,
   Label,
@@ -40,14 +41,13 @@ export default class Search extends React.PureComponent<Props> {
         <ScrollView style={styles.scrollView} stickyHeaderIndices={[1]}>
           <View style={styles.infoContainer}>
             <BusIcon style={styles.infoIcon} size={106} color="#1289A7" />
-            <H1 style={styles.infoTitle}>Looking for a bus?</H1>
-            <Label style={styles.infoDesc}>
-              Type in the bus stop number or service number.
-            </Label>
+            <H1 style={styles.infoTitle}>{i18next.t('searchTitle')}</H1>
+            <Label style={styles.infoDesc}>{i18next.t('searchDesc')}</Label>
           </View>
           <View style={styles.searchInputContainer}>
             <SearchInput
-              placeholder="Search for bus"
+              placeholder={i18next.t('searchInputPlaceholder')}
+              buttonLabel={i18next.t('search')}
               onSearch={this.handleSearch}
             />
           </View>

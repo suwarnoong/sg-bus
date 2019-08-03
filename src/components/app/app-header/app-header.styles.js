@@ -27,15 +27,9 @@ export default StyleSheet.create({
     alignItems: 'flex-start',
     zIndex: -1
   },
-  title: {
-    color: '#FFFFFF'
-  },
+  title: {},
   subTitle: {
-    color: '#DDDDDD',
     marginTop: -3
-  },
-  backText: {
-    color: '#FFFFFF'
   },
   backIcon: {
     marginRight: 3,

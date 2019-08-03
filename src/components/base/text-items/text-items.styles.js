@@ -9,7 +9,5 @@ export default StyleSheet.create({
   index: {
     width: 30
   },
-  text: {
-    flex: 1
-  }
+  text: {}
 });

@@ -1,4 +1,6 @@
 import React, { PureComponent } from 'react';
+import i18next from 'i18next';
+import { Trans } from 'react-i18next';
 import {
   BusStopList,
   View,
@@ -55,15 +57,22 @@ export default class NearestBusStops extends PureComponent<Props> {
                 Label={H3}
                 texts={[
                   <H3>
-                    Go to <B size={Label.SIZE_LARGE}>Settings</B>
+                    {/* prettier-ignore */}
+                    <Trans i18nKey="androidLocationServiceOffStep1">
+                      Go to <B size={Label.SIZE_LARGE}>Settings </B> > <B size={Label.SIZE_LARGE}>Privacy</B> > <B size={Label.SIZE_LARGE}>Location Services</B>
+                    </Trans>
                   </H3>,
                   <H3>
-                    Tap on <B size={Label.SIZE_LARGE}>Location Services</B> or{' '}
-                    <B size={Label.SIZE_LARGE}>Location Access</B>
+                    {/* prettier-ignore */}
+                    <Trans i18nKey="androidLocationServiceOffStep2">
+                      Tap on <B size={Label.SIZE_LARGE}>Location Services</B> or <B size={Label.SIZE_LARGE}>Location Access</B>
+                    </Trans>
                   </H3>,
                   <H3>
-                    Make sure that{' '}
-                    <B size={Label.SIZE_LARGE}>Location Services</B> is on
+                    {/* prettier-ignore */}
+                    <Trans i18nKey="androidLocationServiceOffStep3">
+                      Make sure that <B size={Label.SIZE_LARGE}>Location Services</B> is on
+                    </Trans>
                   </H3>
                 ]}
               />
@@ -74,13 +83,16 @@ export default class NearestBusStops extends PureComponent<Props> {
                 Label={H3}
                 texts={[
                   <H3>
-                    Go to <B size={Label.SIZE_LARGE}>Settings</B> >{' '}
-                    <B size={Label.SIZE_LARGE}>Privacy</B> >{' '}
-                    <B size={Label.SIZE_LARGE}>Location Services</B>
+                    {/* prettier-ignore */}
+                    <Trans i18nKey="iosLocationServiceOffStep1">
+                      Go to <B size={Label.SIZE_LARGE}>Settings</B>
+                    </Trans>
                   </H3>,
                   <H3>
-                    Make sure that{' '}
-                    <B size={Label.SIZE_LARGE}>Location Services</B> is on
+                    {/* prettier-ignore */}
+                    <Trans i18nKey="iosLocationServiceOffStep2">
+                      Make sure that <B size={Label.SIZE_LARGE}>Location Services</B> is on
+                    </Trans>
                   </H3>
                 ]}
               />
@@ -92,12 +104,10 @@ export default class NearestBusStops extends PureComponent<Props> {
       return (
         <View>
           <View style={{ marginBottom: 10 }}>
-            <H3 style={styles.infoDesc}>Are you outside of Singapore?</H3>
+            <H3 style={styles.infoDesc}>{i18next.t('locationOutOfRange1')}</H3>
           </View>
           <View>
-            <H3 style={styles.infoDesc}>
-              We are sorry! The Bus Arrival app is only usable within Singapore.
-            </H3>
+            <H3 style={styles.infoDesc}>{i18next.t('locationOutOfRange2')}</H3>
           </View>
         </View>
       );
@@ -113,7 +123,7 @@ export default class NearestBusStops extends PureComponent<Props> {
     if (nearest && nearest.length > 0) {
       return (
         <View style={containerStyles}>
-          <Title style={styles.title}>Nearest Bus Stops</Title>
+          <Title style={styles.title}>{i18next.t('nearestTitle')}</Title>
           <BusStopList
             list={nearest}
             onPress={item => {
@@ -133,7 +143,7 @@ export default class NearestBusStops extends PureComponent<Props> {
           <View style={styles.infoIconMask}>
             <Loader source={this.searching} style={styles.infoIcon} />
           </View>
-          <H1 style={styles.infoTitle}>We are searching for your location</H1>
+          <H1 style={styles.infoTitle}>{i18next.t('locationNotFoundTitle')}</H1>
           {this.renderEmptyLocationText()}
         </View>
       );
