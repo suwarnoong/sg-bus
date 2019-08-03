@@ -11,7 +11,11 @@ export default {
     path: 'search',
     navigationOptions: ({ navigation, navigationOptions }) => ({
       tabBarIcon: ({ focused, tintColor }) => <SearchIcon color={tintColor} />,
+<<<<<<< HEAD
       title: i18next.t('search')
+=======
+      tabBarLabel: i18next.t(navigation.state.key.toLowerCase())
+>>>>>>> feat/i18n-settings
     })
   },
   Home: {
@@ -19,7 +23,11 @@ export default {
     path: 'home',
     navigationOptions: ({ navigation, navigationOptions }) => ({
       tabBarIcon: ({ focused, tintColor }) => <NearbyIcon color={tintColor} />,
+<<<<<<< HEAD
       title: i18next.t('nearby')
+=======
+      tabBarLabel: i18next.t(navigation.state.key.toLowerCase())
+>>>>>>> feat/i18n-settings
     })
   },
   Favorites: {
@@ -27,7 +35,11 @@ export default {
     path: 'favorites',
     navigationOptions: ({ navigation, navigationOptions }) => ({
       tabBarIcon: ({ focused, tintColor }) => <StarIcon color={tintColor} />,
+<<<<<<< HEAD
       title: i18next.t('favorites')
+=======
+      title: i18next.t(navigation.state.key.toLowerCase())
+>>>>>>> feat/i18n-settings
     })
   }
 };

@@ -83,9 +83,14 @@ export const search = (text, position) => {
     /* show top 10 nearby stops or less */
     const distances = [...new Set(filtered.map(f => f.distance))];
     const limit = distances.length < 20 ? distances.length : 10;
-    filtered = filtered.filter(
-      s => s.distance == null || s.distance <= distances[limit - 1]
-    );
+
+    if (distances.length == 1 && distances[0] == undefined) {
+      filtered = filtered.slice(0, filtered.length > 10 ? 10 : filtered.length);
+    } else {
+      filtered = filtered.filter(
+        s => s.distance == null || s.distance <= distances[limit - 1]
+      );
+    }
 
     const found = groupBy(filtered, 'type');
 

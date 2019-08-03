@@ -1,5 +1,5 @@
-import { NativeModules } from 'react-native';
-import i18n from 'i18next';
+import { NativeModules, AsyncStorage } from 'react-native';
+import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { IS_ANDROID } from '../constants';
 
@@ -10,14 +10,17 @@ const locale = IS_ANDROID
 const languageDetector = {
   type: 'languageDetector',
   async: true, // async detection
-  detect: cb => {
-    return cb(locale.replace('_', '-'));
+  detect: async callback => {
+    const language = await AsyncStorage.getItem('languageCode');
+    callback(language || locale.replace('_', '-'));
   },
   init: () => {},
-  cacheUserLanguage: () => {}
+  cacheUserLanguage: lang => {
+    AsyncStorage.setItem('languageCode', lang);
+  }
 };
 
-i18n
+i18next
   .use(languageDetector)
   .use(initReactI18next)
   .init({
@@ -27,10 +30,10 @@ i18n
       },
       id: {
         translations: require('./id.json')
+      },
+      zh: {
+        translations: require('./zh.json')
       }
-      // zh: {
-      //   translations: require('./zh.json')
-      // }
     },
     fallbackLng: 'en',
     debug: true,
@@ -41,3 +44,5 @@ i18n
       escapeValue: false
     }
   });
+
+export default i18next;

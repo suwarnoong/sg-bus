@@ -13,6 +13,7 @@ import {
 import { NavigationState } from 'react-navigation';
 import { Svg, Path } from 'react-native-svg';
 import * as shape from 'd3-shape';
+import i18next from 'i18next';
 import styles, { height } from './app-tabs.styles';
 
 const { width: screenWidth } = Dimensions.get('window');
@@ -159,7 +160,8 @@ export default class AppTabs extends React.Component<Props, State> {
           { color, opacity: this.itemsAnimation[index] }
         ]}
       >
-        {getLabelText({ route })}
+        {/* {getLabelText({ route })} */}
+        {i18next.t(route.key.toLowerCase())}
       </Animated.Text>
     );
   };

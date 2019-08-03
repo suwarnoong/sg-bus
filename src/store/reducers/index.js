@@ -4,12 +4,14 @@ import storage from 'redux-persist-filesystem-storage';
 import appReducer from '../app/app.reducer';
 import busReducer from '../bus/bus.reducer';
 import navigationReducer from '../navigation/navigation.reducer';
+import resetReducer from '../reset/reset.reducer';
 import serviceReducer from '../service/service.reducer';
 
 const rootReducer = combineReducers({
   app: appReducer,
   bus: busReducer,
   nav: navigationReducer,
+  reset: resetReducer,
   service: serviceReducer
 });
 
