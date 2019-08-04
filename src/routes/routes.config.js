@@ -5,7 +5,7 @@ export default {
   },
   Favorites: {
     headerBackgroundColor: '#F0F0F0',
-    showSettings: false
+    showSettings: true
   },
   Search: {
     headerBackgroundColor: '#F0F0F0',
