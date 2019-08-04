@@ -68,8 +68,6 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - RNDeviceInfo (2.3.2):
-    - React
   - RNGestureHandler (1.1.0):
     - React
   - RNSVG (9.3.6):
@@ -97,7 +95,6 @@ DEPENDENCIES:
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
-  - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -121,8 +118,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native"
   react-native-mapbox-gl:
     :path: "../node_modules/@mapbox/react-native-mapbox-gl"
-  RNDeviceInfo:
-    :path: "../node_modules/react-native-device-info"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNSVG:
@@ -139,11 +134,10 @@ SPEC CHECKSUMS:
   lottie-react-native: fc1fe3ee36ef1e19e56e9a4f90a3c50af6f3553e
   React: 1d605e098d69bdf08960787f3446f0a9dc2e2ccf
   react-native-mapbox-gl: b42480060cdcc515dfa3d8e403fb4dd32466a1b9
-  RNDeviceInfo: 5b5b42b12587207b6bd686441ac42d19d8e07933
   RNGestureHandler: afde2addc517e85cc97a25bfe119acbee779a7ce
   RNSVG: 4834be1d644eb77f0e3f6de851881b83758a3124
   yoga: 128daf064cacaede0c3bb27424b6b4c71052e6cd
 
-PODFILE CHECKSUM: 21b109e24770d952975b14f1dfe80739a2a97662
+PODFILE CHECKSUM: 93c3c89295eece55b6a842340263953485142377
 
 COCOAPODS: 1.5.3

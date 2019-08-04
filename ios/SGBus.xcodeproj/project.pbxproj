@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		197C596DF9483785CDDEEB40 /* libPods-SGBus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 873D47F097AC646A97B86851 /* libPods-SGBus.a */; };
 		403BFF9B225F96BA00ADBD85 /* queenstown-to-mbc.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 403BFF9A225F96BA00ADBD85 /* queenstown-to-mbc.gpx */; };
 		403FB43622E2BF5600E65E12 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		403FB43722E2BF6900E65E12 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -28,6 +27,7 @@
 		40FB966022E61DEC007243E6 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		40FB966122E61DF6007243E6 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		40FB966322E61E02007243E6 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FB966222E61E02007243E6 /* libRNGestureHandler.a */; };
+		ABE52B87BF6B61B0DCDE14B9 /* libPods-SGBus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7C278E3068011A1DEF5C5A8 /* libPods-SGBus.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -368,17 +368,17 @@
 		40FB965922E61DA0007243E6 /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		40FB966222E61E02007243E6 /* libRNGestureHandler.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNGestureHandler.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		48A34D3188694C0A95BF7EAC /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; };
+		4B1255B05108B1462382CC6F /* Pods-SGBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGBus.release.xcconfig"; path = "Pods/Target Support Files/Pods-SGBus/Pods-SGBus.release.xcconfig"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		631A9E29228045B6BBE9B886 /* libRNGestureHandler-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNGestureHandler-tvOS.a"; sourceTree = "<group>"; };
 		666C96A98FCF4D5B84534C46 /* RCTMapboxGLTests.xctest */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = RCTMapboxGLTests.xctest; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		873D47F097AC646A97B86851 /* libPods-SGBus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SGBus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7C278E3068011A1DEF5C5A8 /* libPods-SGBus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SGBus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
-		D2FF3CDC3268BCC885A12285 /* Pods-SGBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGBus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SGBus/Pods-SGBus.debug.xcconfig"; sourceTree = "<group>"; };
+		B1F377AE4AB26288B73406F5 /* Pods-SGBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGBus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SGBus/Pods-SGBus.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		FC863988B89251F4C59DD807 /* Pods-SGBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGBus.release.xcconfig"; path = "Pods/Target Support Files/Pods-SGBus/Pods-SGBus.release.xcconfig"; sourceTree = "<group>"; };
 		FE24B511B56D4F05A2032F82 /* libRNSVG.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSVG.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -402,7 +402,7 @@
 				40FB965422E61CBF007243E6 /* libRCTGeolocation.a in Frameworks */,
 				40FB965322E6195A007243E6 /* libRCTWebSocket.a in Frameworks */,
 				40FB965222E6194A007243E6 /* libRCTNetwork.a in Frameworks */,
-				197C596DF9483785CDDEEB40 /* libPods-SGBus.a in Frameworks */,
+				ABE52B87BF6B61B0DCDE14B9 /* libPods-SGBus.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,7 +507,7 @@
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
-				873D47F097AC646A97B86851 /* libPods-SGBus.a */,
+				A7C278E3068011A1DEF5C5A8 /* libPods-SGBus.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -561,6 +561,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		7744C766F9508E583F5D4287 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B1F377AE4AB26288B73406F5 /* Pods-SGBus.debug.xcconfig */,
+				4B1255B05108B1462382CC6F /* Pods-SGBus.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -611,7 +620,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				40B3ED6C224E6AE100B3A3D5 /* Recovered References */,
-				9AD26EFFBFFB4E6101E968C6 /* Pods */,
+				7744C766F9508E583F5D4287 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -624,15 +633,6 @@
 				13B07F961A680F5B00A75B9A /* SGBus.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		9AD26EFFBFFB4E6101E968C6 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				D2FF3CDC3268BCC885A12285 /* Pods-SGBus.debug.xcconfig */,
-				FC863988B89251F4C59DD807 /* Pods-SGBus.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		ADBDB9201DFEBF0600ED6528 /* Products */ = {
@@ -651,7 +651,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SGBus" */;
 			buildPhases = (
-				FFCD235AA433029E94258895 /* [CP] Check Pods Manifest.lock */,
+				4B307FE6C6626A584CD2B434 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
@@ -1101,7 +1101,7 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework/strip-frameworks.sh\"\n\n";
 		};
-		FFCD235AA433029E94258895 /* [CP] Check Pods Manifest.lock */ = {
+		4B307FE6C6626A584CD2B434 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1136,7 +1136,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2FF3CDC3268BCC885A12285 /* Pods-SGBus.debug.xcconfig */;
+			baseConfigurationReference = B1F377AE4AB26288B73406F5 /* Pods-SGBus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1167,7 +1167,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC863988B89251F4C59DD807 /* Pods-SGBus.release.xcconfig */;
+			baseConfigurationReference = 4B1255B05108B1462382CC6F /* Pods-SGBus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
