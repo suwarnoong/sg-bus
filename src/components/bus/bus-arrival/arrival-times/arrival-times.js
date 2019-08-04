@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import i18next from 'i18next';
 import { parse, differenceInMinutes } from 'date-fns';
 import { Label, View } from '../../../base';
 import { IArrivalTime } from '../../../../types.d';
@@ -16,7 +17,7 @@ type Props = {
   nextBus3: IArrivalTime
 };
 
-const arrivalWidth = 25;
+const arrivalWidth = 35;
 
 export default class ArrivalTimes extends PureComponent<Props> {
   getDisplayTime = time => {
@@ -29,7 +30,7 @@ export default class ArrivalTimes extends PureComponent<Props> {
     if (isNaN(displayTime)) {
       displayTime = '';
     } else if (displayTime <= 0) {
-      displayTime = 'Arr';
+      displayTime = i18next.t('arrivingShortForm');
     }
 
     return displayTime;
@@ -60,15 +61,13 @@ export default class ArrivalTimes extends PureComponent<Props> {
     const { nextBus, nextBus2, nextBus3 } = this.props;
     const arr = ['nextBus', 'nextBus2', 'nextBus3'];
     const arrivals = { nextBus, nextBus2, nextBus3 };
-    const totalWidth = 160;
     let count = 0;
 
     return (
       <View
         style={{
           flexDirection: 'row',
-          justifyContent: 'space-between',
-          width: totalWidth
+          justifyContent: 'space-between'
         }}
       >
         {arr.map(index => {
@@ -89,7 +88,7 @@ export default class ArrivalTimes extends PureComponent<Props> {
             position: 'absolute',
             bottom: 6,
             left: arrivalWidth / 2,
-            width: ((totalWidth - arrivalWidth) / 2) * (count - 1),
+            right: count === 3 ? arrivalWidth / 2 : '50%',
             height: 2,
             backgroundColor: '#979797',
             zIndex: -1

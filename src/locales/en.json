@@ -10,6 +10,7 @@
   "searchTitle": "Looking for a bus?",
   "searchDesc": "Type the bus stop number, service number or either road name.",
   "searchInputPlaceholder": "Search for bus",
+  "arrivingShortForm": "Arr",
   "busStops": "Bus Stops",
   "busServices": "Bus Services",
   "countResult": "{{count}} result",

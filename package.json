@@ -5,6 +5,7 @@
   "scripts": {
     "start": "yarn ios",
     "ios": "node node_modules/react-native/local-cli/cli.js run-ios --simulator='iPhone Xs Max'",
+    "ios2": "node node_modules/react-native/local-cli/cli.js run-ios --simulator='iPhone 4s'",
     "android": "node node_modules/react-native/local-cli/cli.js run-android",
     "android:run-release": "node node_modules/react-native/local-cli/cli.js run-android --variant=release",
     "android:release": "cd android && ./gradlew bundleRelease && cd ..",

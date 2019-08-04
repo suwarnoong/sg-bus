@@ -14,7 +14,7 @@ export default StyleSheet.create({
     flex: 1
   },
   serviceNo: {
-    width: 90
+    width: 80
   },
   busStopRoad: {
     marginTop: 5

@@ -10,6 +10,7 @@
   "searchTitle": "Mencari bus?",
   "searchDesc": "Masukkan nomor halte bus, nomor bus, atau nama jalan.",
   "searchInputPlaceholder": "Cari bus",
+  "arrivingShortForm": "Tiba",
   "busStops": "Halte Bus",
   "busServices": "Bus Servis",
   "countResult": "{{count}} hasil",

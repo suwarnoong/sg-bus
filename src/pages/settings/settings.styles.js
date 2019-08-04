@@ -2,7 +2,8 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#FFFFFF'
   },
   infoContainer: {
     flex: 1,
@@ -33,11 +34,13 @@ export default StyleSheet.create({
   languageContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    paddingHorizontal: 20
   },
   languageOption: {
-    width: 140,
-    height: 90,
+    width: '40%',
+    maxWidth: 150,
+    minHeight: 90,
     margin: 10,
     borderColor: '#FFFFFF',
     shadowColor: '#999999',

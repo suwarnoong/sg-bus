@@ -12,6 +12,7 @@ export default {
     showSettings: true
   },
   Settings: {
-    headerBackgroundColor: '#FFFFFF'
+    headerBackgroundColor: '#FFFFFF',
+    backgroundColor: '#FFFFFF'
   }
 };

@@ -10,6 +10,7 @@
   "searchTitle": "在找公交车？",
   "searchDesc": "输入巴士站号码，服务号码或道路名称。",
   "searchInputPlaceholder": "搜索公交车",
+  "arrivingShortForm": "到达",
   "busStops": "巴士站",
   "busServices": "巴士服务",
   "countResult": "{{count}} 结果",
