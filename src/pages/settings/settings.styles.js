@@ -9,7 +9,7 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     marginTop: 40,
-    marginBottom: 40,
+    marginBottom: 20,
     paddingHorizontal: 40
   },
   infoIconMask: {
@@ -25,8 +25,7 @@ export default StyleSheet.create({
   infoTitle: {
     fontSize: 24,
     color: '#1289A7',
-    textAlign: 'center',
-    marginBottom: 30
+    textAlign: 'center'
   },
   infoDesc: {
     textAlign: 'center'
@@ -35,7 +34,8 @@ export default StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    marginBottom: 50
   },
   languageOption: {
     width: '40%',
