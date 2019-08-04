@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
-import DeviceInfo from 'react-native-device-info';
+// import DeviceInfo from 'react-native-device-info';
 
-const top = DeviceInfo.hasNotch() ? 44 : 0;
+const top = 0; //DeviceInfo.hasNotch() ? 44 : 0;
 
 export default StyleSheet.create({
   container: {

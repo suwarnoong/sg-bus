@@ -6,14 +6,15 @@ import { languages } from '../../constants';
 import styles from './settings.styles';
 
 type Props = {
+  back: Function,
   style?: { [string]: mixed },
   children?: React.Node
 };
 
 export default class Settings extends React.PureComponent<Props> {
-  translate = require('../../assets/translate.json');
+  translate = require('../../assets/loader.json');
 
-  handleLanguage = lang => {
+  handleLanguage = (lang: { key: string, value: string }) => {
     const { back } = this.props;
     i18next.changeLanguage(lang.key);
     back();

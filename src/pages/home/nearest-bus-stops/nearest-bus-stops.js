@@ -59,19 +59,13 @@ export default class NearestBusStops extends PureComponent<Props> {
                   <H3>
                     {/* prettier-ignore */}
                     <Trans i18nKey="androidLocationServiceOffStep1">
-                      Go to <B size={Label.SIZE_LARGE}>Settings </B> > <B size={Label.SIZE_LARGE}>Privacy</B> > <B size={Label.SIZE_LARGE}>Location Services</B>
+                      Go to <B size={Label.SIZE_LARGE}>Settings </B> > <B size={Label.SIZE_LARGE}>Security & Location</B> > <B size={Label.SIZE_LARGE}>Location</B>
                     </Trans>
                   </H3>,
                   <H3>
                     {/* prettier-ignore */}
                     <Trans i18nKey="androidLocationServiceOffStep2">
-                      Tap on <B size={Label.SIZE_LARGE}>Location Services</B> or <B size={Label.SIZE_LARGE}>Location Access</B>
-                    </Trans>
-                  </H3>,
-                  <H3>
-                    {/* prettier-ignore */}
-                    <Trans i18nKey="androidLocationServiceOffStep3">
-                      Make sure that <B size={Label.SIZE_LARGE}>Location Services</B> is on
+                    Make sure that <B size={Label.SIZE_LARGE}>Use Location</B> is on
                     </Trans>
                   </H3>
                 ]}
@@ -85,7 +79,7 @@ export default class NearestBusStops extends PureComponent<Props> {
                   <H3>
                     {/* prettier-ignore */}
                     <Trans i18nKey="iosLocationServiceOffStep1">
-                      Go to <B size={Label.SIZE_LARGE}>Settings</B>
+                    Go to <B size={Label.SIZE_LARGE}>Settings</B> > <B size={Label.SIZE_LARGE}>Privacy</B> > <B size={Label.SIZE_LARGE}>Location Service</B>
                     </Trans>
                   </H3>,
                   <H3>
