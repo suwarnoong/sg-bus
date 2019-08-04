@@ -26,5 +26,9 @@ export const languages = [
   {
     key: 'id',
     value: 'Bahasa Indonesia'
+  },
+  {
+    key: 'ta',
+    value: 'தமிழ்'
   }
 ];

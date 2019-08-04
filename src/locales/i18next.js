@@ -33,6 +33,9 @@ i18next
       },
       zh: {
         translations: require('./zh.json')
+      },
+      ta: {
+        translations: require('./ta.json')
       }
     },
     fallbackLng: 'en',
