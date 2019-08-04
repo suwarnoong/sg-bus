@@ -12,7 +12,7 @@ type Props = {
 };
 
 export default class Settings extends React.PureComponent<Props> {
-  translate = require('../../assets/loader.json');
+  translate = require('../../assets/translate.json');
 
   handleLanguage = (lang: { key: string, value: string }) => {
     const { back } = this.props;
@@ -30,7 +30,11 @@ export default class Settings extends React.PureComponent<Props> {
       <View style={containerStyles}>
         <View style={styles.infoContainer}>
           <View style={styles.infoIconMask}>
-            <Loader source={this.translate} style={styles.infoIcon} />
+            <Loader
+              source={this.translate}
+              speed={0.5}
+              style={styles.infoIcon}
+            />
           </View>
           <H1 style={styles.infoTitle}>{i18next.t('chooseLanguage')}</H1>
           <View style={styles.languageContainer}>

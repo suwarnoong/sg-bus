@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import { SafeAreaView } from 'react-native';
 import i18next from 'i18next';
 import { Button, View } from '../../base';
 import { SettingsIcon } from '../../../icons';
@@ -7,21 +8,19 @@ import styles from './app-controller.styles';
 
 type Props = {
   showSettings: Boolean,
+  navigate: Function,
   style?: { [string]: mixed },
   children?: React.Node
 };
 
 export default class AppController extends React.PureComponent<Props> {
   render() {
-    const { style, navigate, showSettings } = this.props;
-
-    const containerStyles = [styles.container];
-    if (style) containerStyles.push(style);
+    const { navigate, showSettings } = this.props;
 
     if (!showSettings) return null;
 
     return (
-      <View style={containerStyles}>
+      <SafeAreaView style={styles.container}>
         <Button
           Icon={SettingsIcon}
           type={Button.TYPE_CLEAR}
@@ -30,7 +29,7 @@ export default class AppController extends React.PureComponent<Props> {
             navigate('Settings', { title: i18next.t('settings') });
           }}
         />
-      </View>
+      </SafeAreaView>
     );
   }
 }

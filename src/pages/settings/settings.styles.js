@@ -12,14 +12,14 @@ export default StyleSheet.create({
     paddingHorizontal: 40
   },
   infoIconMask: {
-    borderRadius: 200,
     overflow: 'hidden',
     marginBottom: 20,
-    height: 200
+    height: 120,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   infoIcon: {
-    width: 300,
-    height: 300
+    height: 410
   },
   infoTitle: {
     fontSize: 24,
