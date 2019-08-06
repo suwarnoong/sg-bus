@@ -22,5 +22,6 @@
   "iosLocationServiceOffStep2": "确保 <1>定位服务</1> 已开启",
   "androidLocationServiceOffStep1": "前往 <1>设置</1> > <1>安全和位置</1> > <1>定位</1>",
   "androidLocationServiceOffStep2": "确保 <1>定位</1> 已开启",
-  "chooseLanguage": "选择您的首选语言"
+  "chooseLanguage": "选择您的首选语言",
+  "offlineMessage": "没有网络连接"
 }

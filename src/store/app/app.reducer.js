@@ -4,7 +4,8 @@ import createReducer from '../reducers/create-reducer';
 import * as actions from './actions/types';
 
 const initialState = {
-  locale: 'en'
+  locale: 'en',
+  isOnline: true
 };
 
 const updateLocale = (state, action) => {
@@ -13,8 +14,15 @@ const updateLocale = (state, action) => {
   });
 };
 
+const updateIsOnline = (state, action) => {
+  return Object.assign({}, state, {
+    isOnline: action.isOnline
+  });
+};
+
 const appReducer = createReducer(initialState, {
-  [actions.UPDATE_LOCALE]: updateLocale
+  [actions.UPDATE_LOCALE]: updateLocale,
+  [actions.UPDATE_IS_ONLINE]: updateIsOnline
 });
 
 const appPersistConfig = {

@@ -1,1 +1,2 @@
 export const UPDATE_LOCALE = 'UPDATE_LOCALE';
+export const UPDATE_IS_ONLINE = 'UPDATE_IS_ONLINE';

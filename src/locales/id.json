@@ -22,5 +22,6 @@
   "iosLocationServiceOffStep2": "Pastikan <1>Layanan Lokasi</1> nyala",
   "androidLocationServiceOffStep1": "Pergi ke <1>Pengaturan</1> > <1>Keamanan & Lokasi</1> > <1>Lokasi</1>",
   "androidLocationServiceOffStep2": "Pastikan <1>Pemakaian Lokasi</1> nyala",
-  "chooseLanguage": "Pilih bahasa kesukaan Anda"
+  "chooseLanguage": "Pilih bahasa kesukaan Anda",
+  "offlineMessage": "Tidak ada koneksi internet"
 }
