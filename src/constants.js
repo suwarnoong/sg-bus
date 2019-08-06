@@ -9,6 +9,8 @@ export const SCREEN_WIDTH = width;
 
 export const BUS_ROUTE_HEIGHT = 80;
 
+export const OFFLINE_COLOR = '#B52424';
+
 export const mapboxIcon = {
   BUS_STOP: 'stop',
   ACTIVE_BUS_STOP: 'activeStop'

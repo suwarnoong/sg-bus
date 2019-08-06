@@ -14,6 +14,8 @@ PODS:
     - React/Core (= 0.59.2)
   - react-native-mapbox-gl (6.1.4):
     - React
+  - react-native-netinfo (4.1.3):
+    - React
   - React/Core (0.59.2):
     - yoga (= 0.59.2.React)
   - React/CxxBridge (0.59.2):
@@ -81,6 +83,7 @@ DEPENDENCIES:
   - lottie-ios (from `../node_modules/lottie-ios`)
   - lottie-react-native (from `../node_modules/lottie-react-native`)
   - "react-native-mapbox-gl (from `../node_modules/@mapbox/react-native-mapbox-gl`)"
+  - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
   - React/DevSupport (from `../node_modules/react-native`)
@@ -118,6 +121,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native"
   react-native-mapbox-gl:
     :path: "../node_modules/@mapbox/react-native-mapbox-gl"
+  react-native-netinfo:
+    :path: "../node_modules/@react-native-community/netinfo"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNSVG:
@@ -134,10 +139,11 @@ SPEC CHECKSUMS:
   lottie-react-native: fc1fe3ee36ef1e19e56e9a4f90a3c50af6f3553e
   React: 1d605e098d69bdf08960787f3446f0a9dc2e2ccf
   react-native-mapbox-gl: b42480060cdcc515dfa3d8e403fb4dd32466a1b9
+  react-native-netinfo: d16e16984e3ff0f164d3747508151a461ced301e
   RNGestureHandler: afde2addc517e85cc97a25bfe119acbee779a7ce
   RNSVG: 4834be1d644eb77f0e3f6de851881b83758a3124
   yoga: 128daf064cacaede0c3bb27424b6b4c71052e6cd
 
-PODFILE CHECKSUM: 93c3c89295eece55b6a842340263953485142377
+PODFILE CHECKSUM: 1dde9a1e6cca20297fc03fda4ead29cdf9be3975
 
 COCOAPODS: 1.5.3
