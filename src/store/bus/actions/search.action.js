@@ -13,21 +13,23 @@ const getSearchable = (dispatch, getState) => {
 };
 
 const filterText = (item, searchText) => {
-  return item.tags.some(t => {
+  return item.tags.some(tag => {
     let match = false;
 
-    if (Array.isArray(t)) {
-      const text = t[t.length - 1];
-      const indices = t.slice(0, t.length - 1);
+    if (Array.isArray(tag)) {
+      const ciText = tag[tag.length - 1].toLowerCase();
+      const ciSearchText = searchText.toLowerCase();
+      const ciTag = tag.toLowerCase();
+      const indices = tag.slice(0, tag.length - 1);
 
       match = indices.some(i => {
-        if (i === 'exact') return text === searchText;
-        if (i === 'any') return text.includes(searchText);
-        if (i === 'start') return text.startsWith(searchText);
-        if (i === 'end') return text.endsWith(searchText);
+        if (i === 'exact') return ciText === ciSearchText;
+        if (i === 'any') return ciText.includes(ciSearchText);
+        if (i === 'start') return ciText.startsWith(ciSearchText);
+        if (i === 'end') return ciText.endsWith(ciSearchText);
       });
     } else {
-      match = t.includes(searchText);
+      match = ciTag.includes(ciSearchText);
     }
 
     return match;
@@ -35,9 +37,11 @@ const filterText = (item, searchText) => {
 };
 
 const getScores = (full, part) => {
-  if (full.toLowerCase() === part.toLowerCase()) {
+  const ciFull = full.toLowerCase();
+  const ciPart = part.toLowerCase();
+  if (ciFull === ciPart) {
     return 1;
-  } else if (full.startsWith(part)) {
+  } else if (ciFull.startsWith(ciPart)) {
     return 0.5;
   }
 };
