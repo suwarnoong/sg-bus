@@ -18,10 +18,12 @@ export default class OfflineNotice extends React.PureComponent<Props> {
   unsubscribe: Function;
 
   componentDidMount() {
-    this.unsubscribe = NetInfo.addEventListener(state => {
-      const { type, isInternetReachable } = state;
-      this.props.updateIsOnline(isInternetReachable);
-    });
+    setTimeout(() => {
+      this.unsubscribe = NetInfo.addEventListener(state => {
+        const { type, isInternetReachable } = state;
+        this.props.updateIsOnline(isInternetReachable);
+      });
+    }, 2000);
   }
 
   componentWillUnmount() {
@@ -29,11 +31,12 @@ export default class OfflineNotice extends React.PureComponent<Props> {
   }
 
   render() {
-    const { style, isOnline } = this.props;
+    const { style, showOfflineNotice, isOnline } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
 
+    if (!showOfflineNotice) return null;
     if (isOnline) return null;
 
     return (
