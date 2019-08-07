@@ -1,6 +1,9 @@
 import { StyleSheet } from 'react-native';
 import { OFFLINE_COLOR } from '../../../constants';
 
+const TOP_OFFSET = 4;
+const HEIGHT = 23;
+
 export default StyleSheet.create({
   container: {
     backgroundColor: OFFLINE_COLOR,
@@ -13,6 +16,9 @@ export default StyleSheet.create({
     right: 0
   },
   label: {
-    color: 'white'
+    color: 'white',
+    fontSize: 14,
+    top: -TOP_OFFSET,
+    height: HEIGHT - TOP_OFFSET
   }
 });

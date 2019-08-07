@@ -25,6 +25,7 @@ export default class AppController extends React.PureComponent<Props> {
           Icon={SettingsIcon}
           type={Button.TYPE_CLEAR}
           iconSize={24}
+          style={styles.button}
           onPress={() => {
             navigate('Settings', { title: i18next.t('settings') });
           }}

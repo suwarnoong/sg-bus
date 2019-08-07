@@ -9,7 +9,7 @@ export const SCREEN_WIDTH = width;
 
 export const BUS_ROUTE_HEIGHT = 80;
 
-export const OFFLINE_COLOR = '#B52424';
+export const OFFLINE_COLOR = '#F7B12D';
 
 export const mapboxIcon = {
   BUS_STOP: 'stop',

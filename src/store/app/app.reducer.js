@@ -5,6 +5,7 @@ import * as actions from './actions/types';
 
 const initialState = {
   locale: 'en',
+  showOfflineNotice: true,
   isOnline: true
 };
 
