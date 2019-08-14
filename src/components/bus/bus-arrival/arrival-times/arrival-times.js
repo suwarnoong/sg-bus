@@ -88,7 +88,8 @@ export default class ArrivalTimes extends PureComponent<Props> {
             position: 'absolute',
             bottom: 6,
             left: arrivalWidth / 2,
-            right: count === 3 ? arrivalWidth / 2 : '50%',
+            right:
+              count === 3 ? arrivalWidth / 2 : count === 2 ? '50%' : '100%',
             height: 2,
             backgroundColor: '#979797',
             zIndex: -1
