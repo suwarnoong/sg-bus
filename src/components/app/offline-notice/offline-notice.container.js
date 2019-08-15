@@ -4,11 +4,11 @@ import OfflineNotice from './offline-notice';
 
 const mapStateToProps = state => ({
   showOfflineNotice: state.app.showOfflineNotice,
-  isOnline: state.app.isOnline
+  isOnline: state.app.isOnline,
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateIsOnline: isOnline => dispatch(updateIsOnline(isOnline))
+  updateIsOnline: isOnline => dispatch(updateIsOnline(isOnline)),
 });
 
 export default reduxConnect(mapStateToProps, mapDispatchToProps)(OfflineNotice);
