@@ -13,13 +13,13 @@ const getSearchable = (dispatch, getState) => {
 };
 
 const filterText = (item, searchText) => {
+  const ciSearchText = searchText.toLowerCase();
+
   return item.tags.some(tag => {
     let match = false;
 
     if (Array.isArray(tag)) {
       const ciText = tag[tag.length - 1].toLowerCase();
-      const ciSearchText = searchText.toLowerCase();
-      const ciTag = tag.toLowerCase();
       const indices = tag.slice(0, tag.length - 1);
 
       match = indices.some(i => {
@@ -29,6 +29,7 @@ const filterText = (item, searchText) => {
         if (i === 'end') return ciText.endsWith(ciSearchText);
       });
     } else {
+      const ciTag = tag.toLowerCase();
       match = ciTag.includes(ciSearchText);
     }
 
