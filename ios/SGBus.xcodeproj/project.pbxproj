@@ -15,7 +15,7 @@
 		40FB965522E61D62007243E6 /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A74E7D22AB912300F93DBF /* libRNFetchBlob.a */; };
 		40FB965622E61D6B007243E6 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		40FB966322E61E02007243E6 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FB966222E61E02007243E6 /* libRNGestureHandler.a */; };
-		CB6044C7187DA95A94348BED /* libPods-SGBus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 457FC4579C7FBE304A2D5F6E /* libPods-SGBus.a */; };
+		A62B75009B9104EE9C799C5F /* libPods-SGBus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F9B96242CABBC7495E5A99 /* libPods-SGBus.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +79,6 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SGBus/main.m; sourceTree = "<group>"; };
 		184C32A623104FB7891F975D /* libRCTMapboxGL.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTMapboxGL.a; sourceTree = "<group>"; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		2DD6E6314E338841895C533B /* Pods-SGBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGBus.release.xcconfig"; path = "Pods/Target Support Files/Pods-SGBus/Pods-SGBus.release.xcconfig"; sourceTree = "<group>"; };
 		34E1480FDFD74104B219987A /* libRNGestureHandler.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGestureHandler.a; sourceTree = "<group>"; };
 		403BFF9A225F96BA00ADBD85 /* queenstown-to-mbc.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "queenstown-to-mbc.gpx"; path = "../../../Downloads/queenstown-to-mbc.gpx"; sourceTree = "<group>"; };
 		40A74E7822AB912300F93DBF /* RNFetchBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNFetchBlob.xcodeproj; path = "../node_modules/rn-fetch-blob/ios/RNFetchBlob.xcodeproj"; sourceTree = "<group>"; };
@@ -89,11 +88,12 @@
 		40F34197229ED8B300586113 /* Lottie.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Lottie.xcodeproj; path = "../node_modules/lottie-ios/Lottie.xcodeproj"; sourceTree = "<group>"; };
 		40FB965922E61DA0007243E6 /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		40FB966222E61E02007243E6 /* libRNGestureHandler.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNGestureHandler.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		457FC4579C7FBE304A2D5F6E /* libPods-SGBus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SGBus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		41F9B96242CABBC7495E5A99 /* libPods-SGBus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SGBus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48A34D3188694C0A95BF7EAC /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; };
 		631A9E29228045B6BBE9B886 /* libRNGestureHandler-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNGestureHandler-tvOS.a"; sourceTree = "<group>"; };
 		666C96A98FCF4D5B84534C46 /* RCTMapboxGLTests.xctest */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = RCTMapboxGLTests.xctest; sourceTree = "<group>"; };
-		A560A503A8791D4A5ED2AA6E /* Pods-SGBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGBus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SGBus/Pods-SGBus.debug.xcconfig"; sourceTree = "<group>"; };
+		9A4A4E858A003F7FDB626A34 /* Pods-SGBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGBus.release.xcconfig"; path = "Pods/Target Support Files/Pods-SGBus/Pods-SGBus.release.xcconfig"; sourceTree = "<group>"; };
+		D2FBDFB2DD0CE47D7C5C58F7 /* Pods-SGBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGBus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SGBus/Pods-SGBus.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		FE24B511B56D4F05A2032F82 /* libRNSVG.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSVG.a; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 				40FB966322E61E02007243E6 /* libRNGestureHandler.a in Frameworks */,
 				40FB965622E61D6B007243E6 /* JavaScriptCore.framework in Frameworks */,
 				40FB965522E61D62007243E6 /* libRNFetchBlob.a in Frameworks */,
-				CB6044C7187DA95A94348BED /* libPods-SGBus.a in Frameworks */,
+				A62B75009B9104EE9C799C5F /* libPods-SGBus.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,9 +135,18 @@
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
-				457FC4579C7FBE304A2D5F6E /* libPods-SGBus.a */,
+				41F9B96242CABBC7495E5A99 /* libPods-SGBus.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		35CCADDEEEF86EBEA78CB5A8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D2FBDFB2DD0CE47D7C5C58F7 /* Pods-SGBus.debug.xcconfig */,
+				9A4A4E858A003F7FDB626A34 /* Pods-SGBus.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		40A74E7922AB912300F93DBF /* Products */ = {
@@ -192,7 +201,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				40B3ED6C224E6AE100B3A3D5 /* Recovered References */,
-				D0691F66F53FB6BEACBF72C5 /* Pods */,
+				35CCADDEEEF86EBEA78CB5A8 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -207,15 +216,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D0691F66F53FB6BEACBF72C5 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A560A503A8791D4A5ED2AA6E /* Pods-SGBus.debug.xcconfig */,
-				2DD6E6314E338841895C533B /* Pods-SGBus.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -223,7 +223,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SGBus" */;
 			buildPhases = (
-				359247745F24391721AB25E0 /* [CP] Check Pods Manifest.lock */,
+				9078ED06D656C01A6745533A /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
@@ -353,7 +353,20 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		359247745F24391721AB25E0 /* [CP] Check Pods Manifest.lock */ = {
+		40B3EE0A224F5F4800B3A3D5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework/strip-frameworks.sh\"\n\n";
+		};
+		9078ED06D656C01A6745533A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -370,19 +383,6 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
-		};
-		40B3EE0A224F5F4800B3A3D5 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework/strip-frameworks.sh\"\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -401,7 +401,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A560A503A8791D4A5ED2AA6E /* Pods-SGBus.debug.xcconfig */;
+			baseConfigurationReference = D2FBDFB2DD0CE47D7C5C58F7 /* Pods-SGBus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -432,7 +432,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2DD6E6314E338841895C533B /* Pods-SGBus.release.xcconfig */;
+			baseConfigurationReference = 9A4A4E858A003F7FDB626A34 /* Pods-SGBus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
