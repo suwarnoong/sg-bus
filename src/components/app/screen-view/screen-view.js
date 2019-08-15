@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react';
 import { BackHandler } from 'react-native';
 import { ScrollView, View } from '../../base';
+import { OfflineNotice } from '../offline-notice';
 import styles from './screen-view.styles';
 
 type Props = {
   scrollable: boolean,
-  containerRef: Function
+  containerRef: Function,
 };
 
 export default class ScreenView extends PureComponent<Props> {
@@ -27,13 +28,7 @@ export default class ScreenView extends PureComponent<Props> {
 
   render() {
     const { Container } = this;
-    const {
-      backgroundColor,
-      containerRef,
-      children,
-      scrollable,
-      style
-    } = this.props;
+    const { backgroundColor, containerRef, children, style } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
@@ -41,6 +36,7 @@ export default class ScreenView extends PureComponent<Props> {
 
     return (
       <Container {...this.props} ref={containerRef} style={containerStyles}>
+        <OfflineNotice />
         {children}
       </Container>
     );

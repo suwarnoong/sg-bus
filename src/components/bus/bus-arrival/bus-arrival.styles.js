@@ -5,23 +5,23 @@ export default StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 15,
     borderBottomWidth: 1,
-    borderBottomColor: '#f2f2f2'
+    borderBottomColor: '#f2f2f2',
   },
   row: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   fill: {
-    flex: 1
+    flex: 1,
   },
   serviceNo: {
-    width: 80
+    width: 83,
   },
   busStopRoad: {
-    marginTop: 5
+    marginTop: 5,
   },
   noArrivals: {
     fontSize: 18,
     color: '#D0021B',
-    alignSelf: 'center'
-  }
+    alignSelf: 'center',
+  },
 });

@@ -7,7 +7,7 @@ import {
   MainView,
   Geolocation,
   AppController,
-  OfflineNotice
+  OfflineNotice,
 } from './components';
 import NavigatorContainer from './routes';
 import './locales/i18next';
@@ -36,7 +36,6 @@ export default class App extends Component<Props> {
           <MainView>
             <NavigatorContainer />
             <AppController />
-            <OfflineNotice />
           </MainView>
         </PersistGate>
       </Provider>
