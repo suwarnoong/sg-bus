@@ -34,4 +34,5 @@ target 'SGBus' do
   pod 'lottie-react-native', :path => '../node_modules/lottie-react-native'
   pod 'react-native-netinfo', :path => '../node_modules/@react-native-community/netinfo'
   pod 'react-native-geolocation', path: '../node_modules/@react-native-community/geolocation'
+  pod 'rn-fetch-blob', :path => '../node_modules/rn-fetch-blob'
 end
