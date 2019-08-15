@@ -89,6 +89,8 @@ PODS:
     - React-Core (= 0.60.5)
   - React-RCTWebSocket (0.60.5):
     - React-Core (= 0.60.5)
+  - rn-fetch-blob (0.10.16):
+    - React-Core
   - RNGestureHandler (1.1.0):
     - React
   - RNSVG (9.3.6):
@@ -121,6 +123,7 @@ DEPENDENCIES:
   - React-RCTText (from `../node_modules/react-native/Libraries/Text`)
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-RCTWebSocket (from `../node_modules/react-native/Libraries/WebSocket`)
+  - rn-fetch-blob (from `../node_modules/rn-fetch-blob`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -180,6 +183,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/Vibration"
   React-RCTWebSocket:
     :path: "../node_modules/react-native/Libraries/WebSocket"
+  rn-fetch-blob:
+    :path: "../node_modules/rn-fetch-blob"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNSVG:
@@ -214,10 +219,11 @@ SPEC CHECKSUMS:
   React-RCTText: 36c0532feb5521cb295ba80e7e44b70cf1c36fc7
   React-RCTVibration: dabb8d59bb47e1d9124b3f77bfdc1b33d42b0a74
   React-RCTWebSocket: 2e7f6e98fd6d2bf447d145e499c3a235cc13e350
+  rn-fetch-blob: 6aa7c5b59f442fbfcdcc847edbc062119f6af66c
   RNGestureHandler: afde2addc517e85cc97a25bfe119acbee779a7ce
   RNSVG: 4834be1d644eb77f0e3f6de851881b83758a3124
   yoga: 88c514f310aff89b94a14c5fbf44b95735af0cb7
 
-PODFILE CHECKSUM: 866fe28e5211e22ad45af8011da98ac2280606b4
+PODFILE CHECKSUM: 8c52acd2d1e5a1030fc8aa85cbe5bc4169abd5d7
 
 COCOAPODS: 1.5.3
