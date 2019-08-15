@@ -32,7 +32,27 @@ local.properties
 
 # node.js
 #
-node_modules/
+!node_modules/
+node_modules/*
+
+!node_modules/lottie-react-native/
+node_modules/lottie-react-native/*
+!node_modules/lottie-react-native/src/
+node_modules/lottie-react-native/src/*
+!node_modules/lottie-react-native/src/android/
+node_modules/lottie-react-native/src/android/*
+!node_modules/lottie-react-native/src/android/build.gradle
+
+!node_modules/@mapbox/
+node_modules/@mapbox/*
+!node_modules/@mapbox/react-native-mapbox-gl/
+node_modules/@mapbox/react-native-mapbox-gl/*
+!node_modules/@mapbox/react-native-mapbox-gl/android/
+node_modules/@mapbox/react-native-mapbox-gl/android/*
+!node_modules/@mapbox/react-native-mapbox-gl/android/rctmgl/
+node_modules/@mapbox/react-native-mapbox-gl/android/rctmgl/*
+!node_modules/@mapbox/react-native-mapbox-gl/android/rctmgl/build.gradle
+
 npm-debug.log
 yarn-error.log
 
@@ -54,5 +74,8 @@ buck-out/
 
 # Bundle artifact
 *.jsbundle
+
+# CocoaPods
+/ios/Pods/
 
 app.secret.js
