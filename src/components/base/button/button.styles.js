@@ -1,4 +1,15 @@
 import { StyleSheet } from 'react-native';
+import {
+  primaryColor,
+  warningColor,
+  dangerColor,
+  textColor,
+  lightTextColor,
+  activeTextColor,
+  backgroundColor1,
+  strokeColor,
+  buttonBorderColor,
+} from '../../../colors';
 
 export default StyleSheet.create({
   container: {
@@ -8,70 +19,70 @@ export default StyleSheet.create({
     padding: 10,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   defaultContainer: {
     borderWidth: 1,
-    borderColor: '#1289A7',
-    backgroundColor: '#1289A7'
+    borderColor: primaryColor,
+    backgroundColor: primaryColor,
   },
   warningContainer: {
     borderWidth: 1,
-    borderColor: '#F5A623',
-    backgroundColor: '#F5A623'
+    borderColor: warningColor,
+    backgroundColor: warningColor,
   },
   dangerContainer: {
     borderWidth: 1,
-    borderColor: '#D0021B',
-    backgroundColor: '#D0021B'
+    borderColor: dangerColor,
+    backgroundColor: dangerColor,
   },
   plainContainer: {
     borderWidth: 1,
-    borderColor: '#AAAAAA',
-    backgroundColor: '#FFFFFF'
+    borderColor: buttonBorderColor,
+    backgroundColor: backgroundColor1,
   },
   clearContainer: {
     borderWidth: 0,
     borderColor: 'transparent',
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
   },
   disabledContainer: {
     borderWidth: 1,
-    borderColor: '#DDDDDD',
-    backgroundColor: '#DDDDDD'
+    borderColor: strokeColor,
+    backgroundColor: strokeColor,
   },
   topIconContainer: {
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   label: {
-    color: '#FFFFFF'
+    color: activeTextColor,
   },
   defaultLabel: {
-    color: '#FFFFFF'
+    color: activeTextColor,
   },
   plainLabel: {
-    color: '#4A4A4A'
+    color: textColor,
   },
   clearLabel: {
-    color: '#4A4A4A'
+    color: textColor,
   },
   warningLabel: {
-    color: '#FFFFFF'
+    color: activeTextColor,
   },
   dangerLabel: {
-    color: '#FFFFFF'
+    color: activeTextColor,
   },
   disabledLabel: {
-    color: '#999999'
+    color: lightTextColor,
   },
   leftIconLabel: {
-    marginLeft: 7
+    marginLeft: 7,
   },
   rightIconLabel: {
-    marginRight: 7
+    marginRight: 7,
   },
   topIconLabel: {
-    marginTop: 7
+    marginTop: 7,
   },
-  icon: {}
+  icon: {},
 });

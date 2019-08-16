@@ -1,8 +1,10 @@
+import { textColor, activeTextColor } from '../colors';
+
 const getTextColor = hex => {
-  threshold = 130;
-  hRed = hexToR(hex);
-  hGreen = hexToG(hex);
-  hBlue = hexToB(hex);
+  const threshold = 130;
+  const hRed = hexToR(hex);
+  const hGreen = hexToG(hex);
+  const hBlue = hexToB(hex);
 
   function hexToR(h) {
     return parseInt(cutHex(h).substring(0, 2), 16);
@@ -14,14 +16,14 @@ const getTextColor = hex => {
     return parseInt(cutHex(h).substring(4, 6), 16);
   }
   function cutHex(h) {
-    return h.charAt(0) == '#' ? h.substring(1, 7) : h;
+    return h.charAt(0) === '#' ? h.substring(1, 7) : h;
   }
 
-  cBrightness = (hRed * 299 + hGreen * 587 + hBlue * 114) / 1000;
+  const cBrightness = (hRed * 299 + hGreen * 587 + hBlue * 114) / 1000;
   if (cBrightness > threshold) {
-    return '#000000';
+    return textColor;
   } else {
-    return '#FFFFFF';
+    return activeTextColor;
   }
 };
 

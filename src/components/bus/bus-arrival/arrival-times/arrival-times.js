@@ -3,18 +3,25 @@ import i18next from 'i18next';
 import { parse, differenceInMinutes } from 'date-fns';
 import { Label, View } from '../../../base';
 import { IArrivalTime } from '../../../../types.d';
+import {
+  backgroundColor1,
+  strokeColor,
+  safeColor,
+  warningColor,
+  dangerColor,
+} from '../../../../colors';
 import styles from './arrival-times.styles';
 
 const busLoadColorMapping = {
-  LSD: '#EA2027', // Limited Standing
-  SDA: '#F79F1F', // Standing Available
-  SEA: '#009432' // Seat Available
+  LSD: dangerColor, // Limited Standing
+  SDA: warningColor, // Standing Available
+  SEA: safeColor, // Seat Available
 };
 
 type Props = {
   nextBus: IArrivalTime,
   nextBus2: IArrivalTime,
-  nextBus3: IArrivalTime
+  nextBus3: IArrivalTime,
 };
 
 const arrivalWidth = 35;
@@ -50,7 +57,7 @@ export default class ArrivalTimes extends PureComponent<Props> {
             borderRadius: 15,
             borderWidth: 4,
             borderColor,
-            backgroundColor: 'white'
+            backgroundColor: backgroundColor1,
           }}
         />
       </View>
@@ -67,9 +74,8 @@ export default class ArrivalTimes extends PureComponent<Props> {
       <View
         style={{
           flexDirection: 'row',
-          justifyContent: 'space-between'
-        }}
-      >
+          justifyContent: 'space-between',
+        }}>
         {arr.map(index => {
           const arrival = arrivals[index];
           if (arrival && arrival.estimatedArrival !== '') {
@@ -91,8 +97,8 @@ export default class ArrivalTimes extends PureComponent<Props> {
             right:
               count === 3 ? arrivalWidth / 2 : count === 2 ? '50%' : '100%',
             height: 2,
-            backgroundColor: '#979797',
-            zIndex: -1
+            backgroundColor: strokeColor,
+            zIndex: -1,
           }}
         />
       </View>

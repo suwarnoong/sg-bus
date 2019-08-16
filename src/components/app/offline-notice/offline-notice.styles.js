@@ -1,14 +1,14 @@
 import { StyleSheet } from 'react-native';
-import { OFFLINE_COLOR } from '../../../constants';
+import { activeTextColor, warningColor } from '../../../colors';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: OFFLINE_COLOR,
+    backgroundColor: warningColor,
     flexDirection: 'row',
     justifyContent: 'center',
   },
   label: {
-    color: 'white',
+    color: activeTextColor,
     paddingVertical: 5,
   },
 });

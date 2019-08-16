@@ -1,20 +1,15 @@
 import { StyleSheet } from 'react-native';
+import { backgroundColor1 } from '../../../colors';
+import { shadowStyles } from '../../../constants';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: 'white',
+    backgroundColor: backgroundColor1,
     borderRadius: 10,
     margin: 20,
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   shadow: {
-    shadowColor: '#555555',
-    shadowOffset: {
-      width: 0,
-      height: 3
-    },
-    shadowOpacity: 0.27,
-    shadowRadius: 4.65,
-    elevation: 6
-  }
+    ...shadowStyles,
+  },
 });

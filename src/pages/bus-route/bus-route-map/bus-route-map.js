@@ -3,7 +3,7 @@ import * as React from 'react';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
 import { MapView } from '../../../components';
 import { mapboxIcon } from '../../../constants';
-import { isGeolocationEmpty } from '../../../utils';
+import { primaryColor } from '../../../colors';
 import { IBusStop, IBusStopLocation } from '../../../types.d';
 import styles from './bus-route-map.styles';
 
@@ -13,7 +13,7 @@ const stopImage = require('../../../assets/stop.png');
 
 const mapIconSizes = [
   [mapboxIcon.BUS_STOP, 1],
-  [mapboxIcon.ACTIVE_BUS_STOP, 1.2]
+  [mapboxIcon.ACTIVE_BUS_STOP, 1.2],
 ];
 
 const mapStyles = MapboxGL.StyleSheet.create({
@@ -25,12 +25,12 @@ const mapStyles = MapboxGL.StyleSheet.create({
       MapboxGL.InterpolationMode.Categorical
     ),
     iconAnchor: MapboxGL.IconAnchor.Center,
-    iconAllowOverlap: true
+    iconAllowOverlap: true,
   },
   line: {
-    lineColor: '#1289A7',
-    lineWidth: 4
-  }
+    lineColor: primaryColor,
+    lineWidth: 4,
+  },
 });
 
 type Props = {
@@ -40,7 +40,7 @@ type Props = {
   stopsByStop: { [string]: Array<IBusStop> },
   routeGeojson: Array<any>,
   contentInset: Array<number>,
-  style?: { [string]: mixed }
+  style?: { [string]: mixed },
 };
 
 const DEFAULT_ZOOM = 15;
@@ -73,7 +73,7 @@ export default class BusRouteMap extends React.PureComponent<Props> {
         this._map.setCamera({
           centerCoordinate,
           zoom,
-          duration: 1000
+          duration: 1000,
         });
       }
     }
@@ -84,7 +84,7 @@ export default class BusRouteMap extends React.PureComponent<Props> {
     this._map.setCamera({
       centerCoordinate,
       zoom,
-      duration: 1000
+      duration: 1000,
     });
   };
 
@@ -99,7 +99,7 @@ export default class BusRouteMap extends React.PureComponent<Props> {
 
     const featureCollection = {
       type: 'FeatureCollection',
-      features: routeGeojson
+      features: routeGeojson,
     };
 
     return (
@@ -108,10 +108,9 @@ export default class BusRouteMap extends React.PureComponent<Props> {
         shape={featureCollection}
         images={{
           [mapboxIcon.BUS_STOP]: stopImage,
-          [mapboxIcon.ACTIVE_BUS_STOP]: stopActiveImage
+          [mapboxIcon.ACTIVE_BUS_STOP]: stopActiveImage,
         }}
-        onPress={() => {}}
-      >
+        onPress={() => {}}>
         <MapboxGL.LineLayer id="line" style={mapStyles.line} />
         <MapboxGL.SymbolLayer id="allStops" style={mapStyles.icon} />
       </MapboxGL.ShapeSource>
@@ -133,8 +132,7 @@ export default class BusRouteMap extends React.PureComponent<Props> {
         contentInset={contentInset}
         zoomLevel={DEFAULT_ZOOM}
         onZoom={this.handleZoom}
-        onDidFinishLoadingMap={this.handleMapLoaded}
-      >
+        onDidFinishLoadingMap={this.handleMapLoaded}>
         {this.renderBusRoute()}
       </MapView>
     );

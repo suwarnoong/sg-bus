@@ -10,10 +10,11 @@ import {
   ScreenViewKeyboardAware,
   ScrollView,
   View,
-  TextInput
+  TextInput,
 } from '../../components';
 import SearchResult from './search-result';
 import { SearchIcon, BusIcon } from '../../icons';
+import { primaryColor } from '../../colors';
 import { ICoordinate } from '../../types.d';
 import styles from './search.styles';
 
@@ -21,7 +22,7 @@ type Props = {
   search: Function,
   geolocation: ICoordinate,
   style?: { [string]: mixed },
-  children?: React.Node
+  children?: React.Node,
 };
 
 export default class Search extends React.PureComponent<Props> {
@@ -40,7 +41,7 @@ export default class Search extends React.PureComponent<Props> {
       <ScreenViewKeyboardAware style={containerStyles}>
         <ScrollView style={styles.scrollView} stickyHeaderIndices={[1]}>
           <View style={styles.infoContainer}>
-            <BusIcon style={styles.infoIcon} size={106} color="#1289A7" />
+            <BusIcon style={styles.infoIcon} size={106} color={primaryColor} />
             <H1 style={styles.infoTitle}>{i18next.t('searchTitle')}</H1>
             <Label style={styles.infoDesc}>{i18next.t('searchDesc')}</Label>
           </View>

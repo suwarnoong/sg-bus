@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native';
+import { dangerColor, backgroundColor2 } from '../../../colors';
 
 export default StyleSheet.create({
   container: {
     paddingHorizontal: 20,
     paddingVertical: 15,
     borderBottomWidth: 1,
-    borderBottomColor: '#f2f2f2',
+    borderBottomColor: backgroundColor2,
   },
   row: {
     flexDirection: 'row',
@@ -21,7 +22,7 @@ export default StyleSheet.create({
   },
   noArrivals: {
     fontSize: 18,
-    color: '#D0021B',
+    color: dangerColor,
     alignSelf: 'center',
   },
 });

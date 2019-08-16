@@ -1,18 +1,20 @@
+import { backgroundColor1, backgroundColor2 } from '../colors';
+
 export default {
   Home: {
-    headerBackgroundColor: '#F0F0F0',
-    showSettings: true
+    headerBackgroundColor: backgroundColor2,
+    showSettings: true,
   },
   Favorites: {
-    headerBackgroundColor: '#F0F0F0',
-    showSettings: true
+    headerBackgroundColor: backgroundColor2,
+    showSettings: true,
   },
   Search: {
-    headerBackgroundColor: '#F0F0F0',
-    showSettings: true
+    headerBackgroundColor: backgroundColor2,
+    showSettings: true,
   },
   Settings: {
-    headerBackgroundColor: '#FFFFFF',
-    backgroundColor: '#FFFFFF'
-  }
+    headerBackgroundColor: backgroundColor1,
+    backgroundColor: backgroundColor1,
+  },
 };

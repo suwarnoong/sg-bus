@@ -3,7 +3,7 @@ import { StatusBar, View } from '../../base';
 import styles from './background-view.styles';
 
 type Props = {
-  backgroundColor: string
+  backgroundColor: string,
 };
 
 export default class BackgroundView extends PureComponent<Props> {
@@ -35,7 +35,7 @@ export default class BackgroundView extends PureComponent<Props> {
       backgroundColor,
       headerBackgroundColor,
       style,
-      children
+      children,
     } = this.props;
 
     const containerStyles = [styles.container];

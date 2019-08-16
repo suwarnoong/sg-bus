@@ -1,20 +1,25 @@
 import { StyleSheet } from 'react-native';
+import {
+  primaryColor,
+  backgroundColor1,
+  backgroundColor2,
+} from '../../../../colors';
 
 export default StyleSheet.create({
   container: {
     paddingHorizontal: 15,
     paddingVertical: 20,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: backgroundColor1,
     borderBottomWidth: 1,
-    borderBottomColor: '#f2f2f2'
+    borderBottomColor: backgroundColor2,
   },
   bus: {
-    color: '#1289A7',
-    marginRight: 9
+    color: primaryColor,
+    marginRight: 9,
   },
   routesContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginTop: 3
-  }
+    marginTop: 3,
+  },
 });

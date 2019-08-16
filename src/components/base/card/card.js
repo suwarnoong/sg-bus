@@ -6,12 +6,12 @@ type Props = {
   color: string,
   padding: number,
   shadow: boolean,
-  onLayout: Function
+  onLayout: Function,
 };
 
 export default class Card extends PureComponent<Props> {
   static defaultProps = {
-    padding: 20
+    padding: 20,
   };
 
   render() {
