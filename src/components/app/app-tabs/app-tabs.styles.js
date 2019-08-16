@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { primaryColor, strokeColor, activeTextColor } from '../../../colors';
 export const height = 59;
 
 export default StyleSheet.create({
@@ -6,7 +7,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     position: 'relative',
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: '#CCCCCC'
+    borderTopColor: strokeColor,
   },
   text: {},
   item: {
@@ -14,7 +15,7 @@ export default StyleSheet.create({
     height,
     paddingVertical: 10,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   overlay: {
     width: 100,
@@ -22,18 +23,18 @@ export default StyleSheet.create({
     borderTopRightRadius: 50,
     borderTopLeftRadius: 50,
     position: 'absolute',
-    top: -20
+    top: -20,
   },
   activeItemIcon: {
     position: 'absolute',
-    color: '#FFFFFF'
+    color: activeTextColor,
   },
   activeItem: {
     position: 'absolute',
     top: 0,
     left: 0,
-    backgroundColor: '#1289A7',
+    backgroundColor: primaryColor,
     justifyContent: 'center',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 });

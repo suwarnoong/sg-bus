@@ -5,8 +5,14 @@ import {
   PanResponder,
   TouchableOpacity,
   View,
-  Text
+  Text,
 } from 'react-native';
+import {
+  primaryColor,
+  activeTextColor,
+  lightTextColor,
+  strokeColor,
+} from '../../../colors';
 import styles from './select-switch.styles';
 
 type Props = {};
@@ -14,24 +20,24 @@ type Props = {};
 export default class SelectSwitch extends PureComponent<Props> {
   static defaultProps = {
     height: 35,
-    textColor: '#888888',
-    selectedColor: 'white',
+    textColor: lightTextColor,
+    selectedColor: activeTextColor,
     backgroundColor: 'transparent',
     fontSize: 14,
-    borderColor: '#1289A7',
+    borderColor: primaryColor,
     borderRadius: 10,
     hasPadding: false,
     valuePadding: 1,
     bold: false,
-    buttonColor: '#1289A7',
-    animationDuration: 150
+    buttonColor: primaryColor,
+    animationDuration: 150,
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      selected: null
+      selected: null,
     };
 
     this.animatedValue = new Animated.Value(
@@ -44,7 +50,7 @@ export default class SelectSwitch extends PureComponent<Props> {
       onStartShouldSetPanResponder: this.shouldSetResponder,
       onMoveShouldSetPanResponder: this.shouldSetResponder,
       onPanResponderRelease: this.responderEnd,
-      onPanResponderTerminate: this.responderEnd
+      onPanResponderTerminate: this.responderEnd,
     });
 
     this.toggleItem(this.props.initial);
@@ -96,7 +102,7 @@ export default class SelectSwitch extends PureComponent<Props> {
       toValue: value,
       duration: this.props.animationDuration,
       easing: Easing.in,
-      useNativeDriver: true
+      useNativeDriver: true,
     }).start();
   };
 
@@ -123,18 +129,16 @@ export default class SelectSwitch extends PureComponent<Props> {
       textColor,
       selectedColor,
       textStyle,
-      selectedTextStyle
+      selectedTextStyle,
     } = this.props;
 
     return options.map((element, index) => (
       <View
         key={index}
-        style={{ flex: 1, flexDirection: 'column', justifyContent: 'center' }}
-      >
+        style={{ flex: 1, flexDirection: 'column', justifyContent: 'center' }}>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => this.toggleItem(index)}
-        >
+          onPress={() => this.toggleItem(index)}>
           {typeof element.customIcon === 'function'
             ? element.customIcon(this.state.selected == index)
             : element.customIcon}
@@ -145,11 +149,10 @@ export default class SelectSwitch extends PureComponent<Props> {
                 fontWeight: bold ? 'bold' : 'normal',
                 textAlign: 'center',
                 color: this.state.selected == index ? selectedColor : textColor,
-                backgroundColor: 'transparent'
+                backgroundColor: 'transparent',
               },
-              this.state.selected == index ? selectedTextStyle : textStyle
-            ]}
-          >
+              this.state.selected == index ? selectedTextStyle : textStyle,
+            ]}>
             {element.label}
           </Text>
         </TouchableOpacity>
@@ -165,7 +168,7 @@ export default class SelectSwitch extends PureComponent<Props> {
       height,
       hasPadding,
       valuePadding,
-      style
+      style,
     } = this.props;
 
     const containerStyles = [styles.container];
@@ -178,24 +181,22 @@ export default class SelectSwitch extends PureComponent<Props> {
             style={{
               borderRadius,
               backgroundColor,
-              height
+              height,
             }}
             onLayout={event => {
               const { width } = event.nativeEvent.layout;
               this.setState({
-                sliderWidth: width - (hasPadding ? valuePadding : 0)
+                sliderWidth: width - (hasPadding ? valuePadding : 0),
               });
-            }}
-          >
+            }}>
             <View
               style={{
                 flex: 1,
                 flexDirection: 'row',
-                borderColor: borderColor || '#c9c9c9',
+                borderColor: borderColor || strokeColor,
                 borderRadius,
-                borderWidth: hasPadding ? 1 : 0
-              }}
-            >
+                borderWidth: hasPadding ? 1 : 0,
+              }}>
               {!!this.state.sliderWidth && (
                 <Animated.View
                   style={[
@@ -212,15 +213,15 @@ export default class SelectSwitch extends PureComponent<Props> {
                             outputRange: [
                               hasPadding ? valuePadding : 0,
                               this.state.sliderWidth -
-                                (hasPadding ? valuePadding : 0)
-                            ]
-                          })
-                        }
+                                (hasPadding ? valuePadding : 0),
+                            ],
+                          }),
+                        },
                       ],
                       borderRadius,
-                      marginTop: hasPadding ? valuePadding : 0
+                      marginTop: hasPadding ? valuePadding : 0,
                     },
-                    styles.animated
+                    styles.animated,
                   ]}
                 />
               )}

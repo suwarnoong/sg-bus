@@ -1,25 +1,26 @@
 import { StyleSheet } from 'react-native';
+import { textColor } from '../../../colors';
 
 export default StyleSheet.create({
   container: {
     padding: 10,
-    flex: 1
+    flex: 1,
   },
   busStopsContainer: {
-    flex: 1
+    flex: 1,
   },
   busServicesContainer: {
-    flex: 1
+    flex: 1,
   },
   titleContainer: {
     flexDirection: 'row',
     paddingHorizontal: 10,
     paddingVertical: 20,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   title: {
-    color: '#999999',
-    marginRight: 7
+    color: textColor,
+    marginRight: 7,
   },
-  resultCount: {}
+  resultCount: {},
 });

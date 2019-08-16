@@ -1,21 +1,22 @@
 import { StyleSheet } from 'react-native';
+import { textColor, lightTextColor } from '../../../colors';
 
 export default StyleSheet.create({
   container: {},
   row: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   fill: {
-    flex: 1
+    flex: 1,
   },
   roadName: {
-    color: '#777'
+    color: lightTextColor,
   },
   busStopCode: {
-    color: '#777'
+    color: textColor,
   },
   distance: {
-    color: '#9B9B9B'
-  }
+    color: lightTextColor,
+  },
 });

@@ -7,9 +7,10 @@ import {
   Title,
   Label,
   View,
-  Timer
+  Timer,
 } from '../../../components';
 import { BusIcon } from '../../../icons';
+import { primaryColor } from '../../../colors';
 import { IBusStop, IBusStopLocation, ICoordinate } from '../../../types.d';
 import styles from './nearest-favorites.styles';
 
@@ -17,7 +18,7 @@ type Props = {
   timerEnabled: boolean,
   nearestFavoriteStops: Array<string>,
   nearestFavorites: Array<{ name: string, data: mixed }>,
-  geolocation: ICoordinate
+  geolocation: ICoordinate,
 };
 
 export default class NearestFavorites extends PureComponent<Props> {
@@ -52,7 +53,7 @@ export default class NearestFavorites extends PureComponent<Props> {
     this.props.navigate('BusStopArrivals', {
       title: item.description,
       subTitle: `${item.roadName}    ${item.busStopCode}`,
-      busStopCode: item.busStopCode
+      busStopCode: item.busStopCode,
     });
   };
 
@@ -72,9 +73,9 @@ export default class NearestFavorites extends PureComponent<Props> {
       );
     } else {
       return (
-        <View style={{ flex: 1 }}>
+        <View style={styles.fill}>
           <View style={styles.infoContainer}>
-            <BusIcon style={styles.infoIcon} size={106} color="#1289A7" />
+            <BusIcon style={styles.infoIcon} size={106} color={primaryColor} />
             <H1 style={styles.infoTitle}>{i18next.t('favoritesDesc1')}</H1>
             <Label style={styles.infoDesc}>{i18next.t('favoritesDesc2')}</Label>
           </View>

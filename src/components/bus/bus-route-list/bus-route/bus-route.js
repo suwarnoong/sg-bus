@@ -18,7 +18,7 @@ type Props = {
   isFirst: boolean,
   isLast: boolean,
   isSelected: boolean,
-  onPress: Function
+  onPress: Function,
 };
 
 export default class BusRoute extends React.PureComponent<Props> {
@@ -56,7 +56,7 @@ export default class BusRoute extends React.PureComponent<Props> {
       topRouteConnectorStyles.push([
         styles.routeConnector,
         styles.routeConnectorTop,
-        ['mid', 'end'].includes(routeType) && styles.routeConnectorActive
+        ['mid', 'end'].includes(routeType) && styles.routeConnectorActive,
       ]);
     }
 
@@ -64,7 +64,7 @@ export default class BusRoute extends React.PureComponent<Props> {
       bottomRouteConnectorStyles.push([
         styles.routeConnector,
         styles.routeConnectorBottom,
-        ['mid', 'start'].includes(routeType) && styles.routeConnectorActive
+        ['mid', 'start'].includes(routeType) && styles.routeConnectorActive,
       ]);
     }
 
@@ -77,11 +77,8 @@ export default class BusRoute extends React.PureComponent<Props> {
   };
 
   render() {
-    const { busStopCode, distance, routeType, stopsByStop, style } = this.props;
-
-    const { description, roadName, longitude, latitude } = stopsByStop[
-      busStopCode
-    ];
+    const { busStopCode, distance, stopsByStop, style } = this.props;
+    const { longitude, latitude } = stopsByStop[busStopCode];
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
@@ -93,8 +90,7 @@ export default class BusRoute extends React.PureComponent<Props> {
       <TouchableOpacity
         style={containerStyles}
         onPress={() => this.handlePress({ busStopCode, longitude, latitude })}
-        delayPressIn={100}
-      >
+        delayPressIn={100}>
         <BusStopRoad
           style={roadContainerStyles}
           {...pick(

@@ -1,10 +1,11 @@
 // @flow
 import * as React from 'react';
 import { LayoutAnimation } from 'react-native';
-import { Animated, View } from '../native';
+import { View } from '../native';
 import { TextInput } from '../text-input';
 import { Button } from '../button';
 import { SearchIcon } from '../../../icons';
+import { primaryColor } from '../../../colors';
 import styles from './search-input.styles';
 
 type Props = {
@@ -13,19 +14,19 @@ type Props = {
   onSearch: Function,
   duration: number,
   style?: { [string]: mixed },
-  children?: React.Node
+  children?: React.Node,
 };
 
 type State = {
   text: string,
-  showSearch: boolean
+  showSearch: boolean,
 };
 
 export default class SearchInput extends React.PureComponent<Props, State> {
   static defaultProps = {
     buttonLabel: 'Search',
     placeholder: 'Search',
-    duration: 200
+    duration: 200,
   };
 
   input: any;
@@ -35,7 +36,7 @@ export default class SearchInput extends React.PureComponent<Props, State> {
 
     this.state = {
       text: '',
-      showSearch: false
+      showSearch: false,
     };
   }
 
@@ -46,11 +47,11 @@ export default class SearchInput extends React.PureComponent<Props, State> {
         duration: this.props.duration,
         create: {
           type: LayoutAnimation.Types.linear,
-          property: LayoutAnimation.Properties.opacity
+          property: LayoutAnimation.Properties.opacity,
         },
         update: {
-          type: LayoutAnimation.Types.easeInEaseOut
-        }
+          type: LayoutAnimation.Types.easeInEaseOut,
+        },
       });
     }
     this.setState({ text, showSearch });
@@ -70,7 +71,7 @@ export default class SearchInput extends React.PureComponent<Props, State> {
 
     const buttonContainerStyles = [
       styles.buttonContainer,
-      this.state.showSearch ? { width: 'auto' } : { width: 0 }
+      this.state.showSearch ? { width: 'auto' } : { width: 0 },
     ];
 
     return (
@@ -80,7 +81,11 @@ export default class SearchInput extends React.PureComponent<Props, State> {
           style={styles.input}
           onChangeText={this.handleChangeText}
           IconBefore={
-            <SearchIcon size={24} color="#1298A7" style={{ marginRight: 5 }} />
+            <SearchIcon
+              size={24}
+              color={primaryColor}
+              style={styles.searchIcon}
+            />
           }
           placeholder={placeholder}
         />

@@ -1,20 +1,21 @@
 import { StyleSheet } from 'react-native';
+import { primaryColor, backgroundColor1 } from '../../../colors';
 
 export default StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: backgroundColor1,
     paddingHorizontal: 20,
     borderRadius: 50,
     minHeight: 50,
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0)'
+    borderColor: backgroundColor1,
   },
   input: {
     flex: 1,
     fontSize: 18,
-    color: '#1289A7',
-    marginLeft: 5
-  }
+    color: primaryColor,
+    marginLeft: 5,
+  },
 });

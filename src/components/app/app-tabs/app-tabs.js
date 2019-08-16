@@ -8,12 +8,12 @@ import {
   Animated,
   Dimensions,
   Easing,
-  Platform
 } from 'react-native';
 import { NavigationState } from 'react-navigation';
 import { Svg, Path } from 'react-native-svg';
 import * as shape from 'd3-shape';
 import i18next from 'i18next';
+import { strokeColor } from '../../../colors';
 import styles, { height } from './app-tabs.styles';
 
 const { width: screenWidth } = Dimensions.get('window');
@@ -30,7 +30,7 @@ interface OverwriteProps {
 
 interface RNProps {
   navigation: {
-    state: NavigationState
+    state: NavigationState,
   };
   onTabPress: Function;
   renderIcon?: any;
@@ -38,7 +38,7 @@ interface RNProps {
 }
 
 type State = {
-  previousIndex: null | number
+  previousIndex: null | number,
 };
 
 type Props = RNProps & OverwriteProps;
@@ -51,7 +51,7 @@ const line: any = shape
 
 const platformZeroPoint = Platform.select({
   ios: 0,
-  android: 1
+  android: 1,
 });
 
 export default class AppTabs extends React.Component<Props, State> {
@@ -60,7 +60,7 @@ export default class AppTabs extends React.Component<Props, State> {
   data: { x: number, y: number }[];
 
   state = {
-    previousIndex: null
+    previousIndex: null,
   };
 
   constructor(props: Props) {
@@ -80,7 +80,7 @@ export default class AppTabs extends React.Component<Props, State> {
       { x: 10, y: platformZeroPoint },
       { x: screenWidth / (routes.length * 2), y: 20 },
       { x: screenWidth / routes.length - 10, y: platformZeroPoint },
-      { x: screenWidth / routes.length, y: platformZeroPoint }
+      { x: screenWidth / routes.length, y: platformZeroPoint },
     ];
   }
 
@@ -99,7 +99,7 @@ export default class AppTabs extends React.Component<Props, State> {
       prevProps.navigation.state.index !== this.props.navigation.state.index
     ) {
       this.setState({
-        previousIndex: prevProps.navigation.state.index
+        previousIndex: prevProps.navigation.state.index,
       });
       this.navigateAnimation(prevProps.navigation.state.index);
     }
@@ -114,29 +114,29 @@ export default class AppTabs extends React.Component<Props, State> {
         toValue: 1,
         duration,
         easing: Easing.linear,
-        useNativeDriver: true
+        useNativeDriver: true,
       }),
       Animated.timing(this.itemsAnimation[state.index], {
         toValue: 0,
         duration,
         easing: Easing.linear,
-        useNativeDriver: true
+        useNativeDriver: true,
       }),
       Animated.spring(this.currentIndexAnimatedValue, {
         toValue: navigation.state.index,
-        useNativeDriver: true
-      })
+        useNativeDriver: true,
+      }),
     ]).start();
   };
 
   renderLabel = ({
     focused,
     route,
-    index
+    index,
   }: {
     index: number,
     focused: boolean,
-    route: any
+    route: any,
   }) => {
     if (focused) {
       return null;
@@ -147,7 +147,7 @@ export default class AppTabs extends React.Component<Props, State> {
       activeTintColor,
       inactiveTintColor,
       allowFontScaling,
-      labelStyle
+      labelStyle,
     } = this.props;
     const color = focused ? activeTintColor : inactiveTintColor;
 
@@ -157,9 +157,8 @@ export default class AppTabs extends React.Component<Props, State> {
         style={[
           styles.text,
           labelStyle,
-          { color, opacity: this.itemsAnimation[index] }
-        ]}
-      >
+          { color, opacity: this.itemsAnimation[index] },
+        ]}>
         {/* {getLabelText({ route })} */}
         {i18next.t(route.key.toLowerCase())}
       </Animated.Text>
@@ -171,7 +170,7 @@ export default class AppTabs extends React.Component<Props, State> {
     route: any,
     focused: boolean,
     forceRender?: boolean,
-    tintColor: string
+    tintColor: string,
   }): React.ReactNode => {
     const { renderIcon } = this.props;
 
@@ -192,7 +191,7 @@ export default class AppTabs extends React.Component<Props, State> {
       outputRange: routes.map(
         (_route, index) => index * (screenWidth / routes.length)
       ),
-      extrapolate: 'clamp'
+      extrapolate: 'clamp',
     });
 
     return (
@@ -207,12 +206,11 @@ export default class AppTabs extends React.Component<Props, State> {
             width: screenWidth / routes.length,
             transform: [
               {
-                translateX
-              }
-            ]
-          }
-        ]}
-      >
+                translateX,
+              },
+            ],
+          },
+        ]}>
         <Svg
           width={screenWidth / routes.length}
           height={height}
@@ -220,14 +218,13 @@ export default class AppTabs extends React.Component<Props, State> {
             top: -(height - platformZeroPoint),
             transform: [
               {
-                rotate: '180deg'
-              }
-            ]
-          }}
-        >
+                rotate: '180deg',
+              },
+            ],
+          }}>
           <Path
             d={line(this.data)}
-            stroke={'#CCCCCC'}
+            stroke={strokeColor}
             strokeWidth={StyleSheet.hairlineWidth}
             fill="white"
           />
@@ -250,19 +247,19 @@ export default class AppTabs extends React.Component<Props, State> {
       outputRange: routes.map(
         (_route, index) => index * (screenWidth / routes.length)
       ),
-      extrapolate: 'clamp'
+      extrapolate: 'clamp',
     });
 
     const scale = this.itemsAnimation[state.index].interpolate({
       inputRange: [0, 1],
       outputRange: [1, 1],
-      extrapolate: 'clamp'
+      extrapolate: 'clamp',
     });
 
     const translateY = this.itemsAnimation[state.index].interpolate({
       inputRange: [0, 1],
       outputRange: [-5, -5],
-      extrapolate: 'clamp'
+      extrapolate: 'clamp',
     });
 
     return (
@@ -276,18 +273,17 @@ export default class AppTabs extends React.Component<Props, State> {
             borderRadius: 50,
             transform: [
               {
-                translateX
+                translateX,
               },
               {
-                translateY
+                translateY,
               },
               {
-                scale
-              }
-            ]
-          }
-        ]}
-      >
+                scale,
+              },
+            ],
+          },
+        ]}>
         {previousIndex !== null ? (
           <Animated.View
             style={[
@@ -295,17 +291,16 @@ export default class AppTabs extends React.Component<Props, State> {
               {
                 opacity: this.itemsAnimation[previousIndex].interpolate({
                   inputRange: [0, 0.8],
-                  outputRange: [1, 0]
-                })
-              }
-            ]}
-          >
+                  outputRange: [1, 0],
+                }),
+              },
+            ]}>
             {this.renderIcon({
               index: previousIndex,
               route: routes[previousIndex],
               focused: true,
               forceRender: true,
-              tintColor: activeTintColor
+              tintColor: activeTintColor,
             })}
           </Animated.View>
         ) : null}
@@ -315,17 +310,16 @@ export default class AppTabs extends React.Component<Props, State> {
             {
               opacity: this.itemsAnimation[state.index].interpolate({
                 inputRange: [0, 1],
-                outputRange: [1, 0]
-              })
-            }
-          ]}
-        >
+                outputRange: [1, 0],
+              }),
+            },
+          ]}>
           {this.renderIcon({
             index: state.index,
             route: routes[state.index],
             focused: true,
             forceRender: true,
-            tintColor: activeTintColor
+            tintColor: activeTintColor,
           })}
         </Animated.View>
       </Animated.View>
@@ -338,7 +332,7 @@ export default class AppTabs extends React.Component<Props, State> {
       navigation,
       onTabPress,
       activeTintColor,
-      inactiveTintColor
+      inactiveTintColor,
     } = this.props;
     const { state } = navigation;
     const { routes } = state;
@@ -352,14 +346,13 @@ export default class AppTabs extends React.Component<Props, State> {
           return (
             <TouchableWithoutFeedback
               onPress={() => onTabPress({ route })}
-              key={index.toString()}
-            >
+              key={index.toString()}>
               <View style={styles.item}>
                 {this.renderIcon({
                   index,
                   route,
                   focused,
-                  tintColor: focused ? activeTintColor : inactiveTintColor
+                  tintColor: focused ? activeTintColor : inactiveTintColor,
                 })}
                 {this.renderLabel({ index, route, focused })}
               </View>

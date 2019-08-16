@@ -1,8 +1,9 @@
 import { StyleSheet } from 'react-native';
+import { textColor } from '../../../colors';
 
 export default StyleSheet.create({
   container: {
-    color: '#4A4A4A',
+    color: textColor,
   },
   xxsmall: {
     fontSize: 10,

@@ -8,7 +8,7 @@ import styles from './gps-locate-control.styles';
 type Props = {
   onLocate: Function,
   style: { [string]: mixed },
-  children: Node
+  children: Node,
 };
 
 export default class GPSLocateControl extends PureComponent<Props> {
@@ -29,7 +29,7 @@ export default class GPSLocateControl extends PureComponent<Props> {
     return (
       <ButtonGroup style={containerStyles}>
         <Button
-          labelStyle={{ color: '#287CFA' }}
+          labelStyle={styles.gpsLocate}
           Icon={GpsLocateIcon}
           type={Button.TYPE_PLAIN}
           iconSize={24}

@@ -1,23 +1,13 @@
 import React, { PureComponent } from 'react';
 import styles from './bus-service.styles';
-import {
-  H1,
-  H2,
-  H3,
-  Label,
-  Small,
-  TouchableOpacity,
-  View
-} from '../../../base';
+import { H1, Label, TouchableOpacity, View } from '../../../base';
 import { IBusService, IBusStop } from '../../../../types.d';
-
-import pick from 'lodash/fp/pick';
 
 type Props = {
   ...IBusService,
   servicesByServiceDirection: { [string]: IBusService },
   stopsByStop: { [string]: IBusStop },
-  style: { [string]: mixed }
+  style: { [string]: mixed },
 };
 
 export default class BusStop extends PureComponent<Props> {
@@ -31,7 +21,7 @@ export default class BusStop extends PureComponent<Props> {
       serviceNo,
       direction,
       servicesByServiceDirection,
-      stopsByStop
+      stopsByStop,
     } = this.props;
 
     this.key = `${serviceNo}-${direction}`;
@@ -45,12 +35,12 @@ export default class BusStop extends PureComponent<Props> {
       title: this.service.serviceNo,
       subTitle: this.origin.description,
       serviceNo: this.service.serviceNo,
-      busStopCode: this.origin.busStopCode
+      busStopCode: this.origin.busStopCode,
     });
   };
 
   render() {
-    const { style, onPress } = this.props;
+    const { style } = this.props;
 
     const containerStyles = [styles.container];
     if (style) containerStyles.push(style);
@@ -59,8 +49,7 @@ export default class BusStop extends PureComponent<Props> {
       <TouchableOpacity
         style={containerStyles}
         onPress={this.handlePress}
-        delayPressIn={100}
-      >
+        delayPressIn={100}>
         <View style={styles.routesContainer}>
           <H1 weight={Label.WEIGHT_DEMI_BOLD} style={styles.bus}>
             {this.service.serviceNo}
