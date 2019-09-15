@@ -9,13 +9,13 @@ type Props = {
   speed: number,
   loop: boolean,
   style?: { [string]: mixed },
-  children?: React.Node
+  children?: React.Node,
 };
 
 export default class Loader extends React.PureComponent<Props> {
   static defaultProps = {
     speed: 1,
-    loop: true
+    loop: true,
   };
 
   animation = React.createRef<any>();

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		14E76CA229DB6EDBC465EEF2 /* libPods-SGBus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2EA5B31EFECC174EC70C42 /* libPods-SGBus.a */; };
+		401CE5C5232DDD35008BFDFF /* FixLottieSwiftFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401CE5C4232DDD35008BFDFF /* FixLottieSwiftFile.swift */; };
 		403BFF9B225F96BA00ADBD85 /* queenstown-to-mbc.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 403BFF9A225F96BA00ADBD85 /* queenstown-to-mbc.gpx */; };
 		403FB43622E2BF5600E65E12 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		403FB43722E2BF6900E65E12 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -15,38 +15,8 @@
 		40CBC4302251175F0070CCF8 /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 40CBC42E2251175F0070CCF8 /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		40FB965622E61D6B007243E6 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		40FB966322E61E02007243E6 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FB966222E61E02007243E6 /* libRNGestureHandler.a */; };
+		7F8984C278FA694206AE41AC /* libPods-SGBus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8067FABD64658060EA7BC615 /* libPods-SGBus.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		40F3419E229ED8B300586113 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 40F34197229ED8B300586113 /* Lottie.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 62CA59B81E3C173B002D7188;
-			remoteInfo = Lottie_iOS;
-		};
-		40F341A0229ED8B300586113 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 40F34197229ED8B300586113 /* Lottie.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = FAE1F7E61E428CBE002E0974;
-			remoteInfo = Lottie_macOS;
-		};
-		40F341A2229ED8B300586113 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 40F34197229ED8B300586113 /* Lottie.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8C5379761FB471D100C1BC65;
-			remoteInfo = Lottie_tvOS;
-		};
-		40F341A4229ED8B300586113 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 40F34197229ED8B300586113 /* Lottie.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 84FE12EF1E4C1485009B157C;
-			remoteInfo = LottieLibraryIOS;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		40CBC4312251175F0070CCF8 /* Embed Frameworks */ = {
@@ -72,19 +42,20 @@
 		184C32A623104FB7891F975D /* libRCTMapboxGL.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTMapboxGL.a; sourceTree = "<group>"; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		34E1480FDFD74104B219987A /* libRNGestureHandler.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGestureHandler.a; sourceTree = "<group>"; };
+		401CE5C3232DDD34008BFDFF /* SGBus-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SGBus-Bridging-Header.h"; sourceTree = "<group>"; };
+		401CE5C4232DDD35008BFDFF /* FixLottieSwiftFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixLottieSwiftFile.swift; sourceTree = "<group>"; };
 		403BFF9A225F96BA00ADBD85 /* queenstown-to-mbc.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "queenstown-to-mbc.gpx"; path = "../../../Downloads/queenstown-to-mbc.gpx"; sourceTree = "<group>"; };
 		40A74FA722B4CAD000F93DBF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SGBus/Images.xcassets; sourceTree = "<group>"; };
 		40CBC42E2251175F0070CCF8 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mapbox.framework; path = "../node_modules/@mapbox/react-native-mapbox-gl/ios/Mapbox.framework"; sourceTree = "<group>"; };
 		40DC3B962250FBFD0019D2A8 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mapbox.framework; path = "../node_modules/@mapbox/react-native-mapbox-gl/ios/Mapbox.framework"; sourceTree = "<group>"; };
-		40F34197229ED8B300586113 /* Lottie.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Lottie.xcodeproj; path = "../node_modules/lottie-ios/Lottie.xcodeproj"; sourceTree = "<group>"; };
 		40FB965922E61DA0007243E6 /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		40FB966222E61E02007243E6 /* libRNGestureHandler.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNGestureHandler.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		48A34D3188694C0A95BF7EAC /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; };
-		4FEB78EF0906AF53A1F159BF /* Pods-SGBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGBus.release.xcconfig"; path = "Pods/Target Support Files/Pods-SGBus/Pods-SGBus.release.xcconfig"; sourceTree = "<group>"; };
+		5D93E765341C518A992240D8 /* Pods-SGBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGBus.release.xcconfig"; path = "Target Support Files/Pods-SGBus/Pods-SGBus.release.xcconfig"; sourceTree = "<group>"; };
 		631A9E29228045B6BBE9B886 /* libRNGestureHandler-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNGestureHandler-tvOS.a"; sourceTree = "<group>"; };
 		666C96A98FCF4D5B84534C46 /* RCTMapboxGLTests.xctest */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = RCTMapboxGLTests.xctest; sourceTree = "<group>"; };
-		A6E9421D07D56DA17097BC52 /* Pods-SGBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGBus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SGBus/Pods-SGBus.debug.xcconfig"; sourceTree = "<group>"; };
-		BB2EA5B31EFECC174EC70C42 /* libPods-SGBus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SGBus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8067FABD64658060EA7BC615 /* libPods-SGBus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SGBus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD53378AF1ED9516C9612A11 /* Pods-SGBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGBus.debug.xcconfig"; path = "Target Support Files/Pods-SGBus/Pods-SGBus.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		FE24B511B56D4F05A2032F82 /* libRNSVG.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSVG.a; sourceTree = "<group>"; };
@@ -97,7 +68,7 @@
 			files = (
 				40FB966322E61E02007243E6 /* libRNGestureHandler.a in Frameworks */,
 				40FB965622E61D6B007243E6 /* JavaScriptCore.framework in Frameworks */,
-				14E76CA229DB6EDBC465EEF2 /* libPods-SGBus.a in Frameworks */,
+				7F8984C278FA694206AE41AC /* libPods-SGBus.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,7 +96,7 @@
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
-				BB2EA5B31EFECC174EC70C42 /* libPods-SGBus.a */,
+				8067FABD64658060EA7BC615 /* libPods-SGBus.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -143,30 +114,9 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		40F34198229ED8B300586113 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				40F3419F229ED8B300586113 /* Lottie.framework */,
-				40F341A1229ED8B300586113 /* Lottie.framework */,
-				40F341A3229ED8B300586113 /* Lottie.framework */,
-				40F341A5229ED8B300586113 /* libLottie.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		6CD4AF435855A4786B063E0F /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A6E9421D07D56DA17097BC52 /* Pods-SGBus.debug.xcconfig */,
-				4FEB78EF0906AF53A1F159BF /* Pods-SGBus.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				40F34197229ED8B300586113 /* Lottie.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -174,6 +124,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				401CE5C4232DDD35008BFDFF /* FixLottieSwiftFile.swift */,
 				403BFF9A225F96BA00ADBD85 /* queenstown-to-mbc.gpx */,
 				40DC3B962250FBFD0019D2A8 /* Mapbox.framework */,
 				40CBC42E2251175F0070CCF8 /* Mapbox.framework */,
@@ -182,7 +133,8 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				40B3ED6C224E6AE100B3A3D5 /* Recovered References */,
-				6CD4AF435855A4786B063E0F /* Pods */,
+				DA9BF066C2E66EF35B0B381E /* Pods */,
+				401CE5C3232DDD34008BFDFF /* SGBus-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -197,6 +149,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		DA9BF066C2E66EF35B0B381E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DD53378AF1ED9516C9612A11 /* Pods-SGBus.debug.xcconfig */,
+				5D93E765341C518A992240D8 /* Pods-SGBus.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -204,7 +165,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SGBus" */;
 			buildPhases = (
-				B96194E08943B632447F4DFC /* [CP] Check Pods Manifest.lock */,
+				A22241413E32ED9F21C1C41F /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
@@ -232,6 +193,7 @@
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = 237KUGJ8WD;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -252,49 +214,12 @@
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 40F34198229ED8B300586113 /* Products */;
-					ProjectRef = 40F34197229ED8B300586113 /* Lottie.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* SGBus */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		40F3419F229ED8B300586113 /* Lottie.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Lottie.framework;
-			remoteRef = 40F3419E229ED8B300586113 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		40F341A1229ED8B300586113 /* Lottie.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Lottie.framework;
-			remoteRef = 40F341A0229ED8B300586113 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		40F341A3229ED8B300586113 /* Lottie.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Lottie.framework;
-			remoteRef = 40F341A2229ED8B300586113 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		40F341A5229ED8B300586113 /* libLottie.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libLottie.a;
-			remoteRef = 40F341A4229ED8B300586113 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		13B07F8E1A680F5B00A75B9A /* Resources */ = {
@@ -336,16 +261,20 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework/strip-frameworks.sh\"\n\n";
 		};
-		B96194E08943B632447F4DFC /* [CP] Check Pods Manifest.lock */ = {
+		A22241413E32ED9F21C1C41F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-SGBus-checkManifestLockResult.txt",
 			);
@@ -362,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				403FB43722E2BF6900E65E12 /* main.m in Sources */,
+				401CE5C5232DDD35008BFDFF /* FixLottieSwiftFile.swift in Sources */,
 				403FB43622E2BF5600E65E12 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,10 +301,12 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A6E9421D07D56DA17097BC52 /* Pods-SGBus.debug.xcconfig */;
+			baseConfigurationReference = DD53378AF1ED9516C9612A11 /* Pods-SGBus.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 237KUGJ8WD;
@@ -393,19 +325,56 @@
 				);
 				INFOPLIST_FILE = SGBus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/DoubleConversion\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Folly\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/RNGestureHandler\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/RNSVG\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-Core\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-DevSupport\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTActionSheet\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTAnimation\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTBlob\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTImage\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTLinking\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTNetwork\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTSettings\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTText\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTVibration\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTWebSocket\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-cxxreact\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-jsi\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-jsiexecutor\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-jsinspector\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/glog\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/lottie-ios\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/lottie-react-native\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-geolocation\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-mapbox-gl\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-netinfo\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/rn-fetch-blob\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/yoga\"",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
+				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = sg.tutella.bus;
 				PRODUCT_NAME = SGBus;
+				SWIFT_OBJC_BRIDGING_HEADER = "SGBus-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4FEB78EF0906AF53A1F159BF /* Pods-SGBus.release.xcconfig */;
+			baseConfigurationReference = 5D93E765341C518A992240D8 /* Pods-SGBus.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 237KUGJ8WD;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -423,9 +392,43 @@
 				);
 				INFOPLIST_FILE = SGBus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/DoubleConversion\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Folly\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/RNGestureHandler\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/RNSVG\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-Core\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-DevSupport\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTActionSheet\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTAnimation\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTBlob\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTImage\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTLinking\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTNetwork\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTSettings\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTText\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTVibration\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTWebSocket\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-cxxreact\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-jsi\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-jsiexecutor\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-jsinspector\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/glog\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/lottie-ios\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/lottie-react-native\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-geolocation\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-mapbox-gl\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-netinfo\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/rn-fetch-blob\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/yoga\"",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
+				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = sg.tutella.bus;
 				PRODUCT_NAME = SGBus;
+				SWIFT_OBJC_BRIDGING_HEADER = "SGBus-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
