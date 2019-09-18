@@ -35,14 +35,6 @@ local.properties
 !node_modules/
 node_modules/*
 
-!node_modules/lottie-react-native/
-node_modules/lottie-react-native/*
-!node_modules/lottie-react-native/src/
-node_modules/lottie-react-native/src/*
-!node_modules/lottie-react-native/src/android/
-node_modules/lottie-react-native/src/android/*
-!node_modules/lottie-react-native/src/android/build.gradle
-
 !node_modules/@mapbox/
 node_modules/@mapbox/*
 !node_modules/@mapbox/react-native-mapbox-gl/
