@@ -22,7 +22,8 @@
     "pod-reinstall": "cd ios && yarn pod-clear && pod install",
     "link-all": "react-native link react-native-gesture-handler && react-native link react-native-svg && react-native link react-native-geolocation-service && react-native link @mapbox/react-native-mapbox-gl && react-native link lottie-ios && react-native link lottie-react-native",
     "unlink-all": "react-native unlink react-native-gesture-handler && react-native unlink react-native-svg && react-native unlink react-native-geolocation-service && react-native unlink @mapbox/react-native-mapbox-gl && react-native link lottie-ios && react-native unlink lottie-react-native",
-    "flow": "flow"
+    "flow": "flow",
+    "postinstall": "npx jetify"
   },
   "dependencies": {
     "@mapbox/react-native-mapbox-gl": "https://github.com/nitaliano/react-native-mapbox-gl.git",
