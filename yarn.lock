@@ -3225,9 +3225,9 @@ http-signature@~1.2.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
-i18next@^17.0.7:
-  version "17.0.7"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-17.0.7.tgz#aae8591634b109c0ecec755b46c6414b0d743e07"
+i18next@^17.0.16:
+  version "17.0.16"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-17.0.16.tgz#4bee0f84d6c79db3095f4eca6ded7920eea6b139"
   dependencies:
     "@babel/runtime" "^7.3.1"
 
@@ -5292,9 +5292,9 @@ react-fast-compare@^2.0.3:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
 
-react-i18next@^10.11.4:
-  version "10.11.4"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-10.11.4.tgz#9277a609ee640fac353087a91935ee9a9eb65f40"
+react-i18next@^10.12.5:
+  version "10.12.5"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-10.12.5.tgz#b52ccf76bfafddd6f006d7784b2cb802076f724f"
   dependencies:
     "@babel/runtime" "^7.3.1"
     html-parse-stringify2 "2.0.1"
