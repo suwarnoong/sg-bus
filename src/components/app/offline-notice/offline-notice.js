@@ -25,7 +25,9 @@ export default class OfflineNotice extends React.PureComponent<Props> {
   }
 
   componentWillUnmount() {
-    this.unsubscribe();
+    if (typeof this.unsubscribe === 'function') {
+      this.unsubscribe();
+    }
   }
 
   render() {
