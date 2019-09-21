@@ -15,7 +15,7 @@
 		40CBC4302251175F0070CCF8 /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 40CBC42E2251175F0070CCF8 /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		40FB965622E61D6B007243E6 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		40FB966322E61E02007243E6 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FB966222E61E02007243E6 /* libRNGestureHandler.a */; };
-		FD663C73FA2A5F3183534F2B /* libPods-SGBus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4B4E799C4CEDA001065F5D9 /* libPods-SGBus.a */; };
+		4C591D18981A3997D0E74F1B /* libPods-SGBus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EDB50BA1F57433B08EAFCE5 /* libPods-SGBus.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,9 +53,9 @@
 		48A34D3188694C0A95BF7EAC /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; };
 		631A9E29228045B6BBE9B886 /* libRNGestureHandler-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNGestureHandler-tvOS.a"; sourceTree = "<group>"; };
 		666C96A98FCF4D5B84534C46 /* RCTMapboxGLTests.xctest */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = RCTMapboxGLTests.xctest; sourceTree = "<group>"; };
-		A75FD6625DB16ED1BB6EAA18 /* Pods-SGBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGBus.release.xcconfig"; path = "Target Support Files/Pods-SGBus/Pods-SGBus.release.xcconfig"; sourceTree = "<group>"; };
-		A9C34690399E9BA027B8B707 /* Pods-SGBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGBus.debug.xcconfig"; path = "Target Support Files/Pods-SGBus/Pods-SGBus.debug.xcconfig"; sourceTree = "<group>"; };
-		C4B4E799C4CEDA001065F5D9 /* libPods-SGBus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SGBus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6EDB50BA1F57433B08EAFCE5 /* libPods-SGBus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SGBus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A45A756FFCAAE1C135C874DD /* Pods-SGBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGBus.debug.xcconfig"; path = "Target Support Files/Pods-SGBus/Pods-SGBus.debug.xcconfig"; sourceTree = "<group>"; };
+		AAC86CB2AB0EA1CB21E75EC0 /* Pods-SGBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGBus.release.xcconfig"; path = "Target Support Files/Pods-SGBus/Pods-SGBus.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		FE24B511B56D4F05A2032F82 /* libRNSVG.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSVG.a; sourceTree = "<group>"; };
@@ -68,7 +68,7 @@
 			files = (
 				40FB966322E61E02007243E6 /* libRNGestureHandler.a in Frameworks */,
 				40FB965622E61D6B007243E6 /* JavaScriptCore.framework in Frameworks */,
-				FD663C73FA2A5F3183534F2B /* libPods-SGBus.a in Frameworks */,
+				4C591D18981A3997D0E74F1B /* libPods-SGBus.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +96,7 @@
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
-				C4B4E799C4CEDA001065F5D9 /* libPods-SGBus.a */,
+				6EDB50BA1F57433B08EAFCE5 /* libPods-SGBus.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -152,8 +152,8 @@
 		DA9BF066C2E66EF35B0B381E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A9C34690399E9BA027B8B707 /* Pods-SGBus.debug.xcconfig */,
-				A75FD6625DB16ED1BB6EAA18 /* Pods-SGBus.release.xcconfig */,
+				A45A756FFCAAE1C135C874DD /* Pods-SGBus.debug.xcconfig */,
+				AAC86CB2AB0EA1CB21E75EC0 /* Pods-SGBus.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -165,7 +165,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SGBus" */;
 			buildPhases = (
-				A72E0D20D7B4F077C3F4A284 /* [CP] Check Pods Manifest.lock */,
+				0FF6D6FB00DBD35199A1EFA0 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
@@ -248,20 +248,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		40B3EE0A224F5F4800B3A3D5 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework/strip-frameworks.sh\"\n\n";
-		};
-		A72E0D20D7B4F077C3F4A284 /* [CP] Check Pods Manifest.lock */ = {
+		0FF6D6FB00DBD35199A1EFA0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -283,6 +270,19 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		40B3EE0A224F5F4800B3A3D5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework/strip-frameworks.sh\"\n\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -301,7 +301,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A9C34690399E9BA027B8B707 /* Pods-SGBus.debug.xcconfig */;
+			baseConfigurationReference = A45A756FFCAAE1C135C874DD /* Pods-SGBus.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -369,7 +369,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A75FD6625DB16ED1BB6EAA18 /* Pods-SGBus.release.xcconfig */;
+			baseConfigurationReference = AAC86CB2AB0EA1CB21E75EC0 /* Pods-SGBus.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
