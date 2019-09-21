@@ -5,7 +5,7 @@
   "scripts": {
     "start": "yarn ios",
     "ios": "react-native run-ios --simulator='iPhone Xs Max'",
-    "ios2": "react-native run-ios --simulator='iPhone 4s'",
+    "ios2": "react-native run-ios --simulator='iPhone 5s'",
     "android": "react-native run-android",
     "android:run-release": "react-native run-android --variant=release",
     "android:release": "cd android && ./gradlew bundleRelease && cd ..",
